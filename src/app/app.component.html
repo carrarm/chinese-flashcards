@@ -2,8 +2,15 @@
   class="app-container mat-app-background"
   [class]="{ 'dark-mode': isDarkMode }"
 >
-  <chf-navbar (darkMode)="isDarkMode = $event"></chf-navbar>
-  <div class="main-content">
-    <router-outlet></router-outlet>
-  </div>
+  <chf-navbar (toggleMenu)="drawer.toggle()" />
+  <mat-drawer-container hasBackdrop>
+    <mat-drawer #drawer mode="over">
+      <chf-sidenav (darkMode)="isDarkMode = $event" />
+    </mat-drawer>
+    <mat-drawer-content>
+      <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </div>

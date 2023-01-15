@@ -1,25 +1,9 @@
 <div class="navbar">
-  <span class="app-name">Chinese Flashcards</span>
-  <nav>
-    <a class="active">Learn</a>
-    <a>Collections</a>
-  </nav>
-  <button
-    mat-icon-button
-    *ngIf="isDarkMode; else lightModeSwitch"
-    matTooltip="Switch to light mode"
-    (click)="toggleMode()"
-  >
-    <mat-icon>dark_mode</mat-icon>
+  <button class="sidenav-toggle" mat-icon-button (click)="toggleMenu.emit()">
+    <mat-icon>menu</mat-icon>
   </button>
+  <div class="title-group">
+    <span class="app-name">Chinese Flashcards</span>
+    <span class="page-title">{{ pageTitle$ | async }}</span>
+  </div>
 </div>
-
-<ng-template #lightModeSwitch>
-  <button
-    mat-icon-button
-    matTooltip="Switch to dark mode"
-    (click)="toggleMode()"
-  >
-    <mat-icon>light_mode</mat-icon>
-  </button>
-</ng-template>

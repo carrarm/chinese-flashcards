@@ -52,3 +52,7 @@ $chinese-flashcards-dark-theme: mat.define-dark-theme(
 .dark-mode {
   @include mat.all-component-colors($chinese-flashcards-dark-theme);
 }
+
+:root {
+  --primary-color: #e91e63;
+}
