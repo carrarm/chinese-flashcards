@@ -1,0 +1,28 @@
+<mat-table [dataSource]="cards">
+  <ng-container matColumnDef="meanings">
+    <mat-header-cell *matHeaderCellDef>Meanings</mat-header-cell>
+    <mat-cell *matCellDef="let card">
+      <span [innerHTML]="card.meanings | cardMeanings"></span>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="pinyin">
+    <mat-header-cell *matHeaderCellDef>Pinyin</mat-header-cell>
+    <mat-cell *matCellDef="let card">{{ card.pinyin }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="characters">
+    <mat-header-cell class="character-column" *matHeaderCellDef
+      >Char.</mat-header-cell
+    >
+    <mat-cell class="character-column" *matCellDef="let card">{{
+      card.characters
+    }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: columns"
+    (click)="openEditor(row)"
+  ></mat-row>
+</mat-table>

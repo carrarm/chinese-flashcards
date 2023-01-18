@@ -1,0 +1,25 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Meaning</mat-label>
+    <input matInput />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Pinyin</mat-label>
+    <input matInput />
+    <button mat-icon-button matSuffix>
+      <mat-icon>keyboard</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Chinese characters</mat-label>
+    <input matInput />
+  </mat-form-field>
+
+  <mat-checkbox>Add another card after this one</mat-checkbox>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-flat-button color="primary">{{ saveBtnText }}</button>
+</div>
