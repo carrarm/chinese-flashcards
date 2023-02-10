@@ -1,7 +1,10 @@
 import { Card } from './card.model';
 
-export interface CardCollection {
-  id: number;
+export interface CardCollectionModel {
+  id?: number;
   label: string;
+}
+
+export interface CardCollection extends CardCollectionModel {
   cards: Card[];
 }

@@ -1,6 +1,15 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Card } from 'src/app/core/model/card.model';
+import { CardService } from 'src/app/core/services/card.service';
+import { toOptional } from 'src/app/core/utils/form.utils';
+
+interface CardForm {
+  meaning: FormControl<string | null>;
+  pinyin: FormControl<string | null>;
+  chinese: FormControl<string | null>;
+}
 
 @Component({
   selector: 'chf-card-editor',
@@ -8,15 +17,77 @@ import { Card } from 'src/app/core/model/card.model';
   styleUrls: ['./card-editor.component.scss'],
 })
 export class CardEditorComponent {
-  public meanings: string[];
-  public pinyin?: string;
-  public characters?: string;
   public keepEditorOpen = false;
-  public saveBtnText = 'Save and close';
+  public virtualKeyboardOpen = false;
+  public creationMode = true;
 
-  constructor(@Inject(MAT_DIALOG_DATA) card?: Card) {
-    this.meanings = card?.meanings ?? [];
-    this.pinyin = card?.pinyin;
-    this.characters = card?.characters;
+  public form = new FormGroup<CardForm>({
+    meaning: new FormControl<string | null>(null, Validators.required),
+    pinyin: new FormControl<string | null>(null),
+    chinese: new FormControl<string | null>(null),
+  });
+
+  private collectionId: number;
+  private cardId?: number;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data: { card?: Card; collection: number },
+    public dialogRef: MatDialogRef<CardEditorComponent>,
+    private cardService: CardService
+  ) {
+    if (data.card) {
+      this.form.patchValue({
+        meaning: data.card.meanings.join(' ; '),
+        pinyin: data.card.pinyin,
+        chinese: data.card.characters,
+      });
+      this.creationMode = false;
+      this.cardId = data.card.id;
+    }
+    this.collectionId = data.collection;
+  }
+
+  public writePinyinCharacter(character: string): void {
+    this.form.patchValue({
+      pinyin: (this.form.value.pinyin ?? '') + character,
+    });
+  }
+
+  public removePinyinCharacter(): void {
+    const currentValue = this.form.value.pinyin;
+    if (currentValue?.length) {
+      this.form.patchValue({
+        pinyin: currentValue.substring(0, currentValue.length - 2),
+      });
+    }
+  }
+
+  public async saveCard(): Promise<void> {
+    const { meaning, chinese, pinyin } = this.form.value;
+    if (meaning && (chinese || pinyin)) {
+      const card: Card = {
+        meanings: meaning.split(';').map((meaning) => meaning.trim()),
+        pinyin: toOptional(pinyin),
+        characters: toOptional(chinese),
+        collectionId: this.collectionId,
+        id: this.cardId,
+      };
+      const savePromise = this.creationMode
+        ? this.cardService.createCard(card, this.collectionId)
+        : this.cardService.updateCard(card);
+
+      await savePromise;
+      if (this.keepEditorOpen) {
+        this.form.reset();
+      } else {
+        this.dialogRef.close();
+      }
+    }
+  }
+
+  public deleteCard(): void {
+    if (this.cardId) {
+      this.cardService.deleteCard(this.cardId);
+    }
   }
 }
