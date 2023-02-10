@@ -17,12 +17,14 @@ import { VirtualKeyboardComponent } from 'src/app/components/virtual-keyboard/vi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CollectionEditorComponent } from './collection-editor/collection-editor.component';
 
 @NgModule({
   declarations: [
     CollectionListComponent,
     CollectionCardsComponent,
     CardEditorComponent,
+    CollectionEditorComponent,
   ],
   imports: [
     CardMeaningsPipe,

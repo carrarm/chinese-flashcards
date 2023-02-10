@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CardCollection } from 'src/app/core/model/card-collection.model';
 import { CollectionService } from 'src/app/core/services/collection.service';
 import { NavigationService } from 'src/app/core/services/navigation.service';
+import { CollectionEditorComponent } from '../collection-editor/collection-editor.component';
 
 @Component({
   selector: 'chf-collection-list',
@@ -18,13 +20,28 @@ export class CollectionListComponent implements OnInit {
 
   constructor(
     private collectionService: CollectionService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
+    this.loadCollections();
+    this.navigationService.setTitle('Manage collections');
+  }
+
+  openEditor(collection?: CardCollection): void {
+    this.dialog
+      .open(CollectionEditorComponent, {
+        data: { collection },
+        panelClass: ['mat-app-background', 'dark-mode'],
+      })
+      .afterClosed()
+      .subscribe(() => this.loadCollections());
+  }
+
+  private loadCollections(): void {
     this.collectionService
       .getCollections()
       .then((collections) => (this.collections = collections));
-    this.navigationService.setTitle('Manage collections');
   }
 }

@@ -39,6 +39,18 @@ export class CollectionService {
       : undefined;
   }
 
+  createCollection(collection: CardCollectionModel): Promise<number> {
+    return this.database.cardCollections.add(collection);
+  }
+
+  updateCollection(collection: CardCollectionModel): Promise<number> {
+    return this.database.cardCollections.put(collection);
+  }
+
+  deleteCollection(collection: number) {
+    this.database.cardCollections.delete(collection);
+  }
+
   private async loadCollectionCards(
     collection: CardCollectionModel
   ): Promise<CardCollection> {

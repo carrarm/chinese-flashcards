@@ -4,9 +4,11 @@
   gap: 1rem;
 }
 
+mat-card-header {
+  margin-bottom: 1rem;
+}
+
 mat-card-title {
   font-size: large;
   font-weight: 500;
-
-  margin-bottom: 1rem;
 }
