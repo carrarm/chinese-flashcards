@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { CardCollection } from 'src/app/core/model/card-collection.model';
 import { CollectionService } from 'src/app/core/services/collection.service';
 import { NavigationService } from 'src/app/core/services/navigation.service';
@@ -23,7 +22,9 @@ export class CollectionListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.collections = this.collectionService.getCollections();
+    this.collectionService
+      .getCollections()
+      .then((collections) => (this.collections = collections));
     this.navigationService.setTitle('Manage collections');
   }
 }

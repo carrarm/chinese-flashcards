@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CollectionPageModule } from './pages/collection/collection-page.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    CollectionPageModule,
     MatSidenavModule,
     NavbarComponent,
     ServiceWorkerModule.register('ngsw-worker.js', {

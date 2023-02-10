@@ -13,6 +13,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { VirtualKeyboardComponent } from 'src/app/components/virtual-keyboard/virtual-keyboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CardMeaningsPipe,
     CommonModule,
+    FormsModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -30,8 +35,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatTableModule,
+    ReactiveFormsModule,
     RouterModule,
+    VirtualKeyboardComponent,
   ],
 })
 export class CollectionPageModule {}
