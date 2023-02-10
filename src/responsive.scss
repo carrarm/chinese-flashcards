@@ -1,0 +1,104 @@
+$breakpoints: (
+  desktop-lg: 1920px,
+  desktop-sm: 1280px,
+  tablet-landscape-lg: 1280px,
+  tablet-landscape-sm: 1024px,
+  tablet-portrait-lg: 800px,
+  tablet-portrait-sm: 768px,
+  mobile-lg: 375px,
+  mobile-md: 360px,
+  mobile-sm: 320px,
+);
+
+// Screen >= breakpoint
+// Usage: @include media-above(desktop-sm)
+@mixin media-above($breakpoint) {
+  @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+    $screenSize: map-get(
+      $map: $breakpoints,
+      $key: $breakpoint,
+    );
+
+    @media (min-width: $screenSize) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint name: #{$breakpoint}';
+  }
+}
+
+// Screen < breakpoint
+// Usage: @include media-below(desktop-lg)
+@mixin media-below($breakpoint) {
+  @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+    $screenSize: map-get(
+        $map: $breakpoints,
+        $key: $breakpoint,
+      ) -
+      1;
+
+    @media (max-width: $screenSize) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint name: #{$breakpoint}';
+  }
+}
+
+// Lower breakpoint <= screen < upper breakpoint
+// Usage: @include media-between(desktop-sm,mobile-md)
+@mixin media-between($lowerBreakpoint, $upperBreakpoint) {
+  $lowerExists: map-has-key(
+    $map: $breakpoints,
+    $key: $lowerBreakpoint,
+  );
+  $upperExists: map-has-key(
+    $map: $breakpoints,
+    $key: $upperBreakpoint,
+  );
+
+  @if $lowerExists and $upperExists {
+    $lowerScreenSize: map-get(
+      $map: $breakpoints,
+      $key: $lowerBreakpoint,
+    );
+    $upperScreenSize: map-get(
+        $map: $breakpoints,
+        $key: $upperBreakpoint,
+      ) -
+      1;
+
+    @media (min-width: $lowerScreenSize) and (max-width: $upperScreenSize) {
+      @content;
+    }
+  } @else {
+    @if ($lowerExists == false) {
+      @warn 'Invalid breakpoint name: #{$lowerBreakpoint}';
+    }
+
+    @if ($upperExists == false) {
+      @warn 'Invalid breakpoint name: #{$upperBreakpoint}';
+    }
+  }
+}
+
+// Usage: @include mobile { ... }
+@mixin mobile() {
+  @include media-below(tablet-portrait-sm) {
+    @content;
+  }
+}
+
+// Usage: @include tablet { ... }
+@mixin tablet() {
+  @include media-between(tablet-portrait-sm, desktop-sm) {
+    @content;
+  }
+}
+
+// Usage: @include desktop { ... }
+@mixin desktop() {
+  @include media-above(desktop-sm) {
+    @content;
+  }
+}

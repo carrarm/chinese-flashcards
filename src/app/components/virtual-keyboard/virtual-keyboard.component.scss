@@ -1,0 +1,85 @@
+:host {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10;
+  background-color: #141414;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+$keyGap: 4px;
+
+.main-keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: $keyGap;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: $keyGap;
+}
+
+.keyboard-key {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  color: white;
+
+  &.plain {
+    background-color: #323232;
+    border-radius: 25px;
+    height: 40px;
+  }
+
+  &.active {
+    --tone-line-color: orange;
+    color: orange;
+  }
+
+  &.space {
+    flex: 3;
+  }
+
+  &.validate {
+    background-color: var(--primary-color);
+  }
+}
+
+.tone-keyboard {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  gap: $keyGap * 2;
+  justify-content: center;
+
+  .keyboard-key {
+    max-width: 40px;
+  }
+}
+
+.tone-overlay-container {
+  background-color: red;
+  width: 170px;
+}
+
+$toneKeySize: 30px;
+.tone-overlay {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $keyGap;
+  width: 140px;
+  max-width: 170px;
+
+  .keyboard-key {
+    background-color: #565656;
+    min-width: $toneKeySize;
+    max-width: $toneKeySize;
+    height: 40px;
+  }
+}

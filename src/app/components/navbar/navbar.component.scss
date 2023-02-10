@@ -1,28 +1,25 @@
 .navbar {
-  font-family: Raleway, sans-serif;
   background-color: black;
-  height: 60px;
+  min-height: 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   color: white;
-  padding: 0 20px;
+  padding: 0 10px;
+  gap: 1rem;
 
-  .app-name {
-    font-size: x-large;
-  }
+  .title-group {
+    display: flex;
+    flex-direction: column;
 
-  nav {
-    a {
-      padding: 10px 20px;
-      cursor: pointer;
+    .app-name {
+      font-size: large;
+    }
 
-      &:hover {
-        background-color: #1c000a;
-      }
+    .page-title {
+      font-size: 0.9em;
 
-      &.active {
-        border-bottom: solid 3px #e91e63;
+      &:empty {
+        display: none;
       }
     }
   }

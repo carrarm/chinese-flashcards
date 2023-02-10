@@ -1,0 +1,56 @@
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Meanings</mat-label>
+      <input matInput formControlName="meaning" />
+      <mat-hint>Separate meanings with « ; » </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Pinyin</mat-label>
+      <input matInput formControlName="pinyin" />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="virtualKeyboardOpen = !virtualKeyboardOpen"
+      >
+        <mat-icon>keyboard</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Chinese characters</mat-label>
+      <input matInput formControlName="chinese" />
+    </mat-form-field>
+  </form>
+
+  <mat-checkbox
+    [(ngModel)]="keepEditorOpen"
+    *ngIf="creationMode; else deleteButton"
+  >
+    Add another card after this one
+  </mat-checkbox>
+
+  <ng-template #deleteButton>
+    <button mat-stroked-button color="warn" (click)="deleteCard()">
+      Delete card
+    </button>
+  </ng-template>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-flat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+  <button mat-flat-button color="primary" (click)="saveCard()">
+    <ng-container *ngIf="keepEditorOpen; else saveAndCloseText">
+      Save
+    </ng-container>
+    <ng-template #saveAndCloseText>Save and close</ng-template>
+  </button>
+</div>
+
+<chf-virtual-keyboard
+  *ngIf="virtualKeyboardOpen"
+  (typed)="writePinyinCharacter($event)"
+  (backspace)="removePinyinCharacter()"
+  (submit)="virtualKeyboardOpen = false"
+/>
