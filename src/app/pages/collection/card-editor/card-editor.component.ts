@@ -57,7 +57,7 @@ export class CardEditorComponent {
     const currentValue = this.form.value.pinyin;
     if (currentValue?.length) {
       this.form.patchValue({
-        pinyin: currentValue.substring(0, currentValue.length - 2),
+        pinyin: currentValue.substring(0, currentValue.length - 1),
       });
     }
   }
