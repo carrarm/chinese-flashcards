@@ -1,0 +1,48 @@
+<form [formGroup]="form">
+  <div class="setting-group">
+    <div class="title">General</div>
+
+    <mat-slide-toggle formControlName="darkTheme">Dark mode</mat-slide-toggle>
+  </div>
+
+  <div class="setting-group">
+    <div class="title">Learning sessions</div>
+
+    <mat-form-field>
+      <mat-label>Words per session</mat-label>
+      <mat-select formControlName="wordsPerSession">
+        <mat-option *ngFor="let words of wordsOptions" [value]="words">
+          {{ words }} words
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="field-with-ext-hint">
+      <mat-slide-toggle formControlName="learnPinyin">
+        Learn pinyin
+      </mat-slide-toggle>
+      <div>
+        If this option is disabled, the pinyin will still be shown to you next
+        to the character but you won't have to fill the pinyin field to learn
+        the card. Cards that only contain the pinyin will not be added to
+        learning sessions.
+      </div>
+    </div>
+  </div>
+
+  <div class="setting-group">
+    <div class="title">Collections</div>
+
+    <div class="field-with-ext-hint">
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Cards per page</mat-label>
+        <mat-select formControlName="pageSize">
+          <mat-option *ngFor="let size of pageOptions" [value]="size">
+            {{ size }} cards
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>Number of cards displayed at once in the table</div>
+    </div>
+  </div>
+</form>

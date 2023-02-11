@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CollectionPageModule } from './pages/collection/collection-page.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SettingsModule } from './pages/settings/settings.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
+    SettingsModule,
     SidenavComponent,
   ],
   providers: [],

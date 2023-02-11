@@ -1,16 +1,19 @@
 import Dexie, { Table } from 'dexie';
 import { CardCollectionModel } from './card-collection.model';
 import { CardModel } from './card.model';
+import { SettingsModel } from './settings.model';
 
 export class Database extends Dexie {
   public cards!: Table<CardModel, number>;
   public cardCollections!: Table<CardCollectionModel, number>;
+  public settings!: Table<SettingsModel, number>;
 
   constructor() {
     super('chinese-cards');
-    this.version(3).stores({
+    this.version(1).stores({
       cardCollections: '++id',
       cards: '++id, collectionId',
+      settings: '++id',
     });
     this.on('populate', () => this.populate());
   }
