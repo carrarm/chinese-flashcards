@@ -54,9 +54,9 @@ export class LongPressDirective implements OnDestroy {
     this.events$ = merge(mouseDown$, mouseUp$, touchStart$, touchEnd$)
       .pipe(
         switchMap((isPressing) =>
-          isPressing ? timer(this.pressDuration, 100) : of(null)
+          isPressing ? timer(this.pressDuration) : of(null)
         ),
-        filter((value) => !!value)
+        filter((value) => value !== null)
       )
       .subscribe(() => this.longPress.emit());
   }
