@@ -1,7 +1,9 @@
 import Dexie, { Table } from 'dexie';
-import { CardCollectionModel } from './card-collection.model';
-import { CardModel } from './card.model';
-import { SettingsModel } from './settings.model';
+import { environment } from 'src/environments/environment';
+import { CardCollectionModel } from '../model/card-collection.model';
+import { CardModel } from '../model/card.model';
+import { SettingsModel } from '../model/settings.model';
+import { upgrades } from './database-upgrades';
 
 export class Database extends Dexie {
   public cards!: Table<CardModel, number>;
@@ -10,12 +12,17 @@ export class Database extends Dexie {
 
   constructor() {
     super('chinese-cards');
-    this.version(1).stores({
-      cardCollections: '++id',
-      cards: '++id, collectionId',
-      settings: '++id',
-    });
-    this.on('populate', () => this.populate());
+    this.version(environment.dbVersion)
+      .stores({
+        cardCollections: '++id',
+        cards: '++id, collectionId',
+        settings: '++id',
+      })
+      .upgrade(upgrades[environment.dbVersion]);
+
+    if (!environment.production) {
+      this.on('populate', () => this.populate());
+    }
   }
 
   private async populate() {
@@ -29,24 +36,28 @@ export class Database extends Dexie {
         pinyin: 'mǎ',
         characters: '马',
         collectionId: firstCollection,
+        leitnerBox: 5,
       },
       {
         meanings: ['Goat'],
         pinyin: 'yáng',
         characters: '羊',
         collectionId: firstCollection,
+        leitnerBox: 2,
       },
       {
         meanings: ['Rooster'],
         pinyin: 'gōng jī',
         characters: '公鸡',
         collectionId: firstCollection,
+        leitnerBox: 0,
       },
       {
         meanings: ['Dog'],
         pinyin: 'gǒu',
         characters: '狗',
         collectionId: firstCollection,
+        leitnerBox: 0,
       },
     ]);
 
@@ -59,30 +70,35 @@ export class Database extends Dexie {
         pinyin: 'yī',
         characters: '一',
         collectionId: secondCollection,
+        leitnerBox: 3,
       },
       {
         meanings: ['Two'],
         pinyin: 'èr',
         characters: '二',
         collectionId: secondCollection,
+        leitnerBox: 1,
       },
       {
         meanings: ['Three'],
         pinyin: 'sān',
         characters: '三',
         collectionId: secondCollection,
+        leitnerBox: 3,
       },
       {
         meanings: ['Four'],
         pinyin: 'sì',
         characters: '四',
         collectionId: secondCollection,
+        leitnerBox: 0,
       },
       {
         meanings: ['Five'],
         pinyin: 'wǔ',
         characters: '五',
         collectionId: secondCollection,
+        leitnerBox: 0,
       },
     ]);
   }

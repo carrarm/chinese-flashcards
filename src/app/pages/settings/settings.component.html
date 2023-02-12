@@ -46,3 +46,8 @@
     </div>
   </div>
 </form>
+
+<ng-container *ngIf="!isProductionEnv">
+  <hr />
+  <button mat-stroked-button color="warn">Delete database</button>
+</ng-container>

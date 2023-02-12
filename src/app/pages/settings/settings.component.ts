@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Settings } from 'src/app/core/model/settings.model';
 import { NavigationService } from 'src/app/core/services/navigation.service';
 import { SettingsService } from 'src/app/core/services/settings.service';
+import { environment } from 'src/environments/environment';
 
 interface SettingsForm {
   darkTheme: FormControl<boolean | null>;
@@ -26,6 +27,7 @@ export class SettingsComponent implements OnInit {
   });
   public pageOptions = [5, 10, 15, 20, 50, 100];
   public wordsOptions = [5, 10, 15];
+  public isProductionEnv = environment.production;
 
   constructor(
     private navigationService: NavigationService,

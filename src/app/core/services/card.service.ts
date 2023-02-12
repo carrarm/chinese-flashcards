@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../model/card.model';
-import { Database } from '../model/database.model';
-import { DatabaseService } from './database.service';
+import { Database } from '../db/database.model';
+import { DatabaseService } from '../db/database.service';
 
 @Injectable({
   providedIn: 'root',

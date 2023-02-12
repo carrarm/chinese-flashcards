@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Database } from '../model/database.model';
+import { Database } from '../db/database.model';
 import { Settings } from '../model/settings.model';
-import { DatabaseService } from './database.service';
+import { DatabaseService } from '../db/database.service';
 
 const THEME_STORAGE_KEY = 'THEME';
 

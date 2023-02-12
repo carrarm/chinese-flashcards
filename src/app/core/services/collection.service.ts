@@ -3,8 +3,8 @@ import {
   CardCollection,
   CardCollectionModel,
 } from '../model/card-collection.model';
-import { Database } from '../model/database.model';
-import { DatabaseService } from './database.service';
+import { Database } from '../db/database.model';
+import { DatabaseService } from '../db/database.service';
 
 @Injectable({
   providedIn: 'root',
