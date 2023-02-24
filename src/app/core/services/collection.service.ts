@@ -5,6 +5,7 @@ import {
 } from '../model/card-collection.model';
 import { Database } from '../db/database.model';
 import { DatabaseService } from '../db/database.service';
+import { Card } from '../model/card.model';
 
 @Injectable({
   providedIn: 'root',
@@ -54,10 +55,10 @@ export class CollectionService {
   private async loadCollectionCards(
     collection: CardCollectionModel
   ): Promise<CardCollection> {
-    const cardCollection: CardCollection = { ...collection, cards: [] };
+    const cardCollection: CardCollection = new CardCollection(collection);
     await this.database.cards
       .where({ collectionId: collection.id })
-      .toArray((cards) => (cardCollection.cards = cards));
+      .toArray((cards) => cardCollection.addCards(cards));
     return cardCollection;
   }
 }

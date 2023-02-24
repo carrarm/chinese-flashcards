@@ -1,3 +1,4 @@
+import * as dayjs from 'dayjs';
 import Dexie, { Table } from 'dexie';
 import { environment } from 'src/environments/environment';
 import { CardCollectionModel } from '../model/card-collection.model';
@@ -37,6 +38,7 @@ export class Database extends Dexie {
         characters: '马',
         collectionId: firstCollection,
         leitnerBox: 5,
+        lastSession: dayjs().toISOString(),
       },
       {
         meanings: ['Goat'],
@@ -44,6 +46,7 @@ export class Database extends Dexie {
         characters: '羊',
         collectionId: firstCollection,
         leitnerBox: 2,
+        lastSession: dayjs().toISOString(),
       },
       {
         meanings: ['Rooster'],
@@ -71,6 +74,7 @@ export class Database extends Dexie {
         characters: '一',
         collectionId: secondCollection,
         leitnerBox: 3,
+        lastSession: dayjs().toISOString(),
       },
       {
         meanings: ['Two'],
@@ -78,6 +82,7 @@ export class Database extends Dexie {
         characters: '二',
         collectionId: secondCollection,
         leitnerBox: 1,
+        lastSession: dayjs().toISOString(),
       },
       {
         meanings: ['Three'],
@@ -85,6 +90,7 @@ export class Database extends Dexie {
         characters: '三',
         collectionId: secondCollection,
         leitnerBox: 3,
+        lastSession: dayjs().toISOString(),
       },
       {
         meanings: ['Four'],

@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CollectionPageModule } from './pages/collection/collection-page.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SettingsModule } from './pages/settings/settings.module';
+import { LearnPageModule } from './pages/learn/learn-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { SettingsModule } from './pages/settings/settings.module';
     BrowserModule,
     BrowserAnimationsModule,
     CollectionPageModule,
+    LearnPageModule,
     MatSidenavModule,
     NavbarComponent,
     ServiceWorkerModule.register('ngsw-worker.js', {

@@ -9,6 +9,14 @@
     <div class="title">Learning sessions</div>
 
     <mat-form-field>
+      <mat-label>Review known words after...</mat-label>
+      <mat-select formControlName="leitnerBoxes">
+        <mat-option [value]="5">1 week</mat-option>
+        <mat-option [value]="6">2 weeks</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
       <mat-label>Words per session</mat-label>
       <mat-select formControlName="wordsPerSession">
         <mat-option *ngFor="let words of wordsOptions" [value]="words">

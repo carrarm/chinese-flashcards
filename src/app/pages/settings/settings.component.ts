@@ -10,6 +10,7 @@ interface SettingsForm {
   learnPinyin: FormControl<boolean | null>;
   pageSize: FormControl<number | null>;
   wordsPerSession: FormControl<number | null>;
+  leitnerBoxes: FormControl<number | null>;
 }
 
 @Component({
@@ -24,6 +25,7 @@ export class SettingsComponent implements OnInit {
     learnPinyin: new FormControl<boolean | null>(true),
     pageSize: new FormControl<number | null>(10),
     wordsPerSession: new FormControl<number | null>(10),
+    leitnerBoxes: new FormControl<number | null>(5),
   });
   public pageOptions = [5, 10, 15, 20, 50, 100];
   public wordsOptions = [5, 10, 15];
@@ -41,6 +43,7 @@ export class SettingsComponent implements OnInit {
       this.form.patchValue({
         darkTheme: this.settings.theme === 'dark',
         learnPinyin: this.settings.learnPinyin,
+        leitnerBoxes: this.settings.leitnerBoxes,
         pageSize: this.settings.pageSize,
         wordsPerSession: this.settings.wordsPerSession,
       });
@@ -51,6 +54,7 @@ export class SettingsComponent implements OnInit {
         this.settings.learnPinyin = this.form.value.learnPinyin ?? true;
         this.settings.wordsPerSession = this.form.value.wordsPerSession ?? 10;
         this.settings.pageSize = this.form.value.pageSize ?? 10;
+        this.settings.leitnerBoxes = this.form.value.leitnerBoxes ?? 5;
         this.settingsService.updateSettings(this.settings);
       }
     });

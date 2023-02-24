@@ -6,6 +6,7 @@ export interface SettingsModel {
   pageSize: number;
   wordsPerSession: number;
   theme: AppTheme;
+  leitnerBoxes: number;
 }
 
 export class Settings implements SettingsModel {
@@ -14,6 +15,7 @@ export class Settings implements SettingsModel {
   public pageSize = 10;
   public wordsPerSession = 10;
   public theme: AppTheme = 'dark';
+  public leitnerBoxes = 5;
 
   constructor(settings?: SettingsModel) {
     if (settings) {
@@ -22,6 +24,7 @@ export class Settings implements SettingsModel {
       this.pageSize = settings.pageSize;
       this.wordsPerSession = settings.wordsPerSession;
       this.theme = settings.theme;
+      this.leitnerBoxes = settings.leitnerBoxes;
     }
   }
 

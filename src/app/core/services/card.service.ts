@@ -45,6 +45,6 @@ export class CardService {
     if (!card) {
       throw new Error(`Card with id ${id} does not exist`);
     }
-    return card;
+    return new Card(card);
   }
 }

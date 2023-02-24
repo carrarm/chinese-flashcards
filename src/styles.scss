@@ -8,3 +8,17 @@ body {
   margin: 0;
   font-family: Raleway, Roboto, "Helvetica Neue", sans-serif;
 }
+
+chf-session-launcher {
+  .to-learn .mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: red;
+  }
+
+  .to-review .mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: yellow;
+  }
+
+  .known .mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: green;
+  }
+}
