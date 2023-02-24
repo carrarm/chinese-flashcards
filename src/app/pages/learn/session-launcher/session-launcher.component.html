@@ -5,10 +5,20 @@
       Learn or review cards from all the collections
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content></mat-card-content>
+  <mat-card-content *ngIf="allCollectionStats">
+    <ng-container *ngTemplateOutlet="statistics; context: allCollectionStats" />
+  </mat-card-content>
   <mat-card-actions>
-    <button mat-button routerLink="all/learn">Learn</button>
-    <button mat-button>Review</button>
+    <button
+      mat-button
+      routerLink="all/learn"
+      [disabled]="!allCollectionStats?.numbers?.toLearn"
+    >
+      Learn
+    </button>
+    <button mat-button [disabled]="!allCollectionStats?.numbers?.toReview">
+      Review
+    </button>
   </mat-card-actions>
 </mat-card>
 
@@ -19,10 +29,37 @@
       {{ collection.description }}
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content
-    *ngIf="collection.percentStatistics"
-    class="statistic-section"
-  >
+  <mat-card-content *ngIf="collection.percentStatistics">
+    <ng-container
+      *ngTemplateOutlet="
+        statistics;
+        context: {
+          numbers: collection.statistics,
+          percents: collection.percentStatistics
+        }
+      "
+    />
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-button
+      (click)="learn(collection.id)"
+      [disabled]="!collection.statistics?.toLearn"
+    >
+      Learn
+    </button>
+    <button
+      mat-button
+      (click)="review(collection.id)"
+      [disabled]="!collection.statistics?.toReview"
+    >
+      Review
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #statistics let-numbers="numbers" let-percents="percents">
+  <div class="statistic-section">
     <div class="statistic">
       <div class="label">To learn</div>
       <div class="progress-spinner to-learn">
@@ -30,10 +67,10 @@
           color="primary"
           mode="determinate"
           [diameter]="50"
-          [value]="collection.percentStatistics.toLearn"
+          [value]="percents.toLearn"
         />
         <div class="inner-text">
-          {{ collection.statistics?.toLearn }}
+          {{ numbers.toLearn }}
         </div>
       </div>
     </div>
@@ -44,10 +81,10 @@
           color="primary"
           mode="determinate"
           [diameter]="50"
-          [value]="collection.percentStatistics.toReview"
+          [value]="percents.toReview"
         />
         <div class="inner-text">
-          {{ collection.statistics?.toReview }}
+          {{ numbers.toReview }}
         </div>
       </div>
     </div>
@@ -58,16 +95,12 @@
           color="primary"
           mode="determinate"
           [diameter]="50"
-          [value]="collection.percentStatistics.known"
+          [value]="percents.known"
         />
         <div class="inner-text">
-          {{ collection.statistics?.known }}
+          {{ numbers.known }}
         </div>
       </div>
     </div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button [routerLink]="[collection.id, 'learn']">Learn</button>
-    <button mat-button>Review</button>
-  </mat-card-actions>
-</mat-card>
+  </div>
+</ng-template>

@@ -5,7 +5,8 @@ import {
 } from '../model/card-collection.model';
 import { Database } from '../db/database.model';
 import { DatabaseService } from '../db/database.service';
-import { Card } from '../model/card.model';
+import { Card, CardModel } from '../model/card.model';
+import { Collection } from 'dexie';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +51,40 @@ export class CollectionService {
 
   deleteCollection(collection: number) {
     this.database.cardCollections.delete(collection);
+  }
+
+  /**
+   * Build the Dexie request to fetch unknown cards for a collection.
+   *
+   * @param collectionId Card collection id
+   * @returns Dexie `Collection<CardModel, number>`
+   */
+  getUnknownCardRequest(collectionId: number): Collection<CardModel, number> {
+    return this.database.cards.where({ collectionId, leitnerBox: 0 });
+  }
+
+  /**
+   * Build the Dexie request to fetch known cards for a collection.
+   *
+   * @param collectionId Card collection id
+   * @returns Dexie `Collection<CardModel, number>`
+   */
+  getKnownCardRequest(collectionId: number): Collection<CardModel, number> {
+    return this.database.cards
+      .where({ collectionId })
+      .and((card) => new Card(card).isKnown());
+  }
+
+  /**
+   * Build the Dexie request to fetch cards ready for review for a collection.
+   *
+   * @param collectionId Card collection id
+   * @returns Dexie `Collection<CardModel, number>`
+   */
+  getReviewCardRequest(collectionId: number): Collection<CardModel, number> {
+    return this.database.cards
+      .where({ collectionId })
+      .and((card) => new Card(card).needsReview());
   }
 
   private async loadCollectionCards(

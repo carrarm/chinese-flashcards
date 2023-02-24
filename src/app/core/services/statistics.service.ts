@@ -4,30 +4,32 @@ import { DatabaseService } from '../db/database.service';
 import { CardCollection } from '../model/card-collection.model';
 import { Card } from '../model/card.model';
 import { CollectionStats } from '../model/statistics.model';
+import { CollectionService } from './collection.service';
 
 @Injectable({ providedIn: 'root' })
 export class StatisticsService {
   private database: Database;
 
-  constructor(databaseService: DatabaseService) {
+  constructor(
+    private collectionService: CollectionService,
+    databaseService: DatabaseService
+  ) {
     this.database = databaseService.database;
   }
 
   async getCollectionReviewStats(
     collectionId: number
   ): Promise<CollectionStats> {
-    const toLearn = await this.database.cards
-      .where({ collectionId, leitnerBox: 0 })
+    const toLearn = await this.collectionService
+      .getUnknownCardRequest(collectionId)
       .count();
 
-    const known = await this.database.cards
-      .where({ collectionId })
-      .and((card) => new Card(card).isKnown())
+    const known = await this.collectionService
+      .getKnownCardRequest(collectionId)
       .count();
 
-    const toReview = await this.database.cards
-      .where({ collectionId })
-      .and((card) => new Card(card).needsReview())
+    const toReview = await this.collectionService
+      .getReviewCardRequest(collectionId)
       .count();
 
     return { toLearn, toReview, known };

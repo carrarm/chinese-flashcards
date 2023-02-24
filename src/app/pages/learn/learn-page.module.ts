@@ -5,9 +5,10 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SessionComponent } from './session/session.component';
 
 @NgModule({
-  declarations: [SessionLauncherComponent],
+  declarations: [SessionLauncherComponent, SessionComponent],
   imports: [
     CommonModule,
     MatButtonModule,

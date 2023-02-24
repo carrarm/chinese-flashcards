@@ -38,7 +38,7 @@ export class Database extends Dexie {
         characters: '马',
         collectionId: firstCollection,
         leitnerBox: 5,
-        lastSession: dayjs().toISOString(),
+        lastSession: dayjs().subtract(4, 'day').toISOString(),
       },
       {
         meanings: ['Goat'],
@@ -46,14 +46,15 @@ export class Database extends Dexie {
         characters: '羊',
         collectionId: firstCollection,
         leitnerBox: 2,
-        lastSession: dayjs().toISOString(),
+        lastSession: dayjs().subtract(10, 'day').toISOString(),
       },
       {
         meanings: ['Rooster'],
         pinyin: 'gōng jī',
         characters: '公鸡',
         collectionId: firstCollection,
-        leitnerBox: 0,
+        leitnerBox: 4,
+        lastSession: dayjs().subtract(10, 'day').toISOString(),
       },
       {
         meanings: ['Dog'],

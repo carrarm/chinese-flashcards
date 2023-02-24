@@ -28,14 +28,19 @@ export class CardCollection implements CardCollectionModel {
 
   setStatistics(stats: CollectionStats): void {
     this.statistics = stats;
-    this.percentStatistics = {
-      toLearn: this.cardPercentage(stats.toLearn),
-      toReview: this.cardPercentage(stats.toReview),
-      known: this.cardPercentage(stats.known),
+    this.percentStatistics = CardCollection.computePercentStats(stats);
+  }
+
+  static computePercentStats(stats: CollectionStats): CollectionStats {
+    const totalCards = stats.toLearn + stats.known + stats.toReview;
+    return {
+      toLearn: CardCollection.cardPercentage(stats.toLearn, totalCards),
+      toReview: CardCollection.cardPercentage(stats.toReview, totalCards),
+      known: CardCollection.cardPercentage(stats.known, totalCards),
     };
   }
 
-  private cardPercentage(value: number): number {
-    return (value * 100) / this.cards.length;
+  private static cardPercentage(value: number, totalCards: number): number {
+    return (value * 100) / totalCards;
   }
 }
