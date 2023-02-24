@@ -10,6 +10,7 @@ import { LearningSessionService } from 'src/app/core/services/learning-session.s
 })
 export class SessionComponent {
   public sessionCards: Card[] = [];
+  public isMatchingStep = true;
 
   constructor(learningSessionService: LearningSessionService, router: Router) {
     this.sessionCards = learningSessionService.currentSession.getValue();

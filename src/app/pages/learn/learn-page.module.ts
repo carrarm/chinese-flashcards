@@ -6,10 +6,19 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SessionComponent } from './session/session.component';
+import { SessionMatchingStepComponent } from './session/session-matching-step/session-matching-step.component';
+import { CardMeaningsPipe } from 'src/app/core/pipes/card-meanings.pipe';
+import { SessionFillingStepComponent } from './session/session-filling-step/session-filling-step.component';
 
 @NgModule({
-  declarations: [SessionLauncherComponent, SessionComponent],
+  declarations: [
+    SessionLauncherComponent,
+    SessionComponent,
+    SessionMatchingStepComponent,
+    SessionFillingStepComponent,
+  ],
   imports: [
+    CardMeaningsPipe,
     CommonModule,
     MatButtonModule,
     MatCardModule,

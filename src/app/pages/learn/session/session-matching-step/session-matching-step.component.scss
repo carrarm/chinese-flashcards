@@ -1,0 +1,45 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  height: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .card {
+    flex: 1;
+    max-height: 100px;
+    min-height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: #424242;
+    border: solid 1px #595959;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    &.selected {
+      border: solid 2px #c7c7c7;
+      background-color: #646464;
+    }
+
+    &.matched {
+      pointer-events: none;
+      background-color: #1c761c;
+    }
+
+    div:empty {
+      display: none;
+    }
+
+    .pinyin {
+      font-family: "Ubuntu Mono", Raleway;
+    }
+  }
+}

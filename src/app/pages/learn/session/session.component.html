@@ -1,1 +1,9 @@
-<p>session works! {{ sessionCards.length }}</p>
+<chf-session-matching-step
+  *ngIf="isMatchingStep; else fillingStep"
+  [cards]="sessionCards"
+  (completed)="isMatchingStep = false"
+/>
+
+<ng-template #fillingStep>
+  <chf-session-filling-step />
+</ng-template>
