@@ -2,8 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CollectionCardsComponent } from './pages/collection/collection-cards/collection-cards.component';
 import { CollectionListComponent } from './pages/collection/collection-list/collection-list.component';
+import { SessionLauncherComponent } from './pages/learn/session-launcher/session-launcher.component';
+import { SessionComponent } from './pages/learn/session/session.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 const routes: Routes = [
+  {
+    path: 'sessions',
+    component: SessionLauncherComponent,
+  },
+  {
+    path: 'sessions/active',
+    component: SessionComponent,
+  },
   {
     path: 'collections',
     component: CollectionListComponent,
@@ -12,6 +23,11 @@ const routes: Routes = [
     path: 'collections/:id',
     component: CollectionCardsComponent,
   },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+  },
+  { path: '', pathMatch: 'full', redirectTo: '/sessions' },
 ];
 
 @NgModule({

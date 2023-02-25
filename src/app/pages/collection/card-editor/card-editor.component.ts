@@ -28,7 +28,7 @@ export class CardEditorComponent {
   });
 
   private collectionId: number;
-  private cardId?: number;
+  private originalCard?: Card;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: { card?: Card; collection: number },
@@ -42,36 +42,23 @@ export class CardEditorComponent {
         chinese: data.card.characters,
       });
       this.creationMode = false;
-      this.cardId = data.card.id;
+      this.originalCard = data.card;
     }
     this.collectionId = data.collection;
-  }
-
-  writePinyinCharacter(character: string): void {
-    this.form.patchValue({
-      pinyin: (this.form.value.pinyin ?? '') + character,
-    });
-  }
-
-  removePinyinCharacter(): void {
-    const currentValue = this.form.value.pinyin;
-    if (currentValue?.length) {
-      this.form.patchValue({
-        pinyin: currentValue.substring(0, currentValue.length - 2),
-      });
-    }
   }
 
   async saveCard(): Promise<void> {
     const { meaning, chinese, pinyin } = this.form.value;
     if (meaning && (chinese || pinyin)) {
-      const card: Card = {
+      const card: Card = new Card({
         meanings: meaning.split(';').map((meaning) => meaning.trim()),
         pinyin: toOptional(pinyin),
         characters: toOptional(chinese),
         collectionId: this.collectionId,
-        id: this.cardId,
-      };
+        id: this.originalCard?.id,
+        leitnerBox: this.originalCard?.leitnerBox ?? 0,
+        lastSession: this.originalCard?.lastSession,
+      });
       const savePromise = this.creationMode
         ? this.cardService.createCard(card, this.collectionId)
         : this.cardService.updateCard(card);
@@ -86,8 +73,8 @@ export class CardEditorComponent {
   }
 
   async deleteCard(): Promise<void> {
-    if (this.cardId) {
-      await this.cardService.deleteCard(this.cardId);
+    if (this.originalCard?.id) {
+      await this.cardService.deleteCard(this.originalCard.id);
     }
     this.dialogRef.close();
   }

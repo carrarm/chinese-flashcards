@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Database } from '../model/database.model';
+import { Database } from './database.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,5 +17,9 @@ export class DatabaseService {
 
   exportAsFile(): void {
     // TODO: export as CSV file
+  }
+
+  clearDatabase(): void {
+    this.database.delete();
   }
 }

@@ -7,29 +7,11 @@
     </mat-form-field>
 
     <mat-form-field subscriptSizing="dynamic">
-      <mat-label>Pinyin</mat-label>
-      <input
-        class="pinyin-field"
-        matInput
-        formControlName="pinyin"
-        [readonly]="virtualKeyboardOpen"
-      />
-      <button
-        mat-icon-button
-        matSuffix
-        (click)="virtualKeyboardOpen = !virtualKeyboardOpen"
-      >
-        <mat-icon>keyboard</mat-icon>
-      </button>
-      <mat-hint *ngIf="virtualKeyboardOpen">
-        Close the virtual keyboard to edit this field
-      </mat-hint>
-    </mat-form-field>
-
-    <mat-form-field subscriptSizing="dynamic">
       <mat-label>Chinese characters</mat-label>
       <input matInput formControlName="chinese" />
     </mat-form-field>
+
+    <chf-pinyin-form-field formControlName="pinyin" />
   </form>
 
   <mat-checkbox
@@ -55,10 +37,3 @@
     <ng-template #saveAndCloseText>Save and close</ng-template>
   </button>
 </div>
-
-<chf-virtual-keyboard
-  *ngIf="virtualKeyboardOpen"
-  (typed)="writePinyinCharacter($event)"
-  (backspace)="removePinyinCharacter()"
-  (submit)="virtualKeyboardOpen = false"
-/>

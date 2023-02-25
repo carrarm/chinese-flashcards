@@ -1,0 +1,45 @@
+mat-form-field,
+chf-pinyin-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+mat-card {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.centered-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+}
+
+.chinese {
+  font-size: 1.2em;
+}
+
+.helper-text {
+  font-size: small;
+  color: #c5c5c5;
+}
+
+.bottom-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.floating-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  .passed {
+    color: #36d336;
+  }
+
+  .failed {
+    color: red;
+  }
+}

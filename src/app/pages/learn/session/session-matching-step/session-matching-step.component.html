@@ -1,0 +1,26 @@
+<div class="column">
+  <div
+    class="card"
+    *ngFor="let matchCard of leftColumnCards"
+    [class]="{
+      selected: matchCard === selectedLeftCard,
+      matched: matchCard.matched
+    }"
+    [innerHTML]="matchCard.card.meanings | cardMeanings"
+    (click)="selectLeftCard(matchCard)"
+  ></div>
+</div>
+<div class="column">
+  <div
+    class="card"
+    *ngFor="let matchCard of rightColumnCards"
+    [class]="{
+      selected: matchCard === selectedRightCard,
+      matched: matchCard.matched
+    }"
+    (click)="selectRightCard(matchCard)"
+  >
+    <div>{{ matchCard.card.characters }}</div>
+    <div class="pinyin">{{ matchCard.card.pinyin }}</div>
+  </div>
+</div>

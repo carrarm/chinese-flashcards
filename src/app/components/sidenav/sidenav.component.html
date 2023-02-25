@@ -1,5 +1,5 @@
 <div class="menu-group">
-  <div routerLink="/learn" routerLinkActive="active">
+  <div routerLink="/sessions" routerLinkActive="active">
     <mat-icon>school</mat-icon> Learn
   </div>
   <div routerLink="/collections" routerLinkActive="active">
@@ -8,16 +8,7 @@
 </div>
 
 <div class="menu-group">
-  <div *ngIf="isDarkMode; else lightModeSwitch" (click)="toggleMode()">
-    <mat-icon>dark_mode</mat-icon> Switch to light mode
-  </div>
   <div routerLink="/settings" routerLinkActive="active">
     <mat-icon>settings</mat-icon> Settings
   </div>
 </div>
-
-<ng-template #lightModeSwitch>
-  <div (click)="toggleMode()">
-    <mat-icon>light_mode</mat-icon> Switch to dark mode
-  </div>
-</ng-template>

@@ -8,6 +8,7 @@ import { debounceTime, never, Subject } from 'rxjs';
 import { Card } from 'src/app/core/model/card.model';
 import { CollectionService } from 'src/app/core/services/collection.service';
 import { NavigationService } from 'src/app/core/services/navigation.service';
+import { SettingsService } from 'src/app/core/services/settings.service';
 import { normalizeForComparison } from 'src/app/core/utils/general.utils';
 import { CardEditorComponent } from '../card-editor/card-editor.component';
 
@@ -26,6 +27,7 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit {
   public filter = '';
   public searchActive = false;
   public collectionName = 'Collection';
+  public pageSize = 20;
 
   private collectionId = 0;
 
@@ -33,7 +35,8 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private collectionService: CollectionService,
     private dialog: MatDialog,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private settingsService: SettingsService
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +44,10 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit {
       this.collectionId = +params['id'];
       this.loadCollectionCards();
     });
+
+    this.settingsService
+      .getSettings()
+      .then((settings) => (this.pageSize = settings.pageSize));
 
     this.initializeDataSource();
 
