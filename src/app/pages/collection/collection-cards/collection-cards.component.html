@@ -1,0 +1,61 @@
+<div class="page-header">
+  <button mat-icon-button routerLink="/collections">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </button>
+  <div class="filler"></div>
+  <button
+    mat-icon-button
+    (click)="toggleSearch()"
+    [class]="{ active: searchActive }"
+  >
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-icon-button (click)="openEditor()">
+    <mat-icon>library_add</mat-icon>
+  </button>
+</div>
+
+<mat-form-field appearance="outline" *ngIf="searchActive">
+  <mat-label>Find a card</mat-label>
+  <input
+    matInput
+    [(ngModel)]="filter"
+    (ngModelChange)="filter$.next($event)"
+    placeholder="Search by meaning or pinyin"
+  />
+</mat-form-field>
+
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="meanings">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      Meanings
+    </mat-header-cell>
+    <mat-cell class="meaning-column" *matCellDef="let card">
+      <span [innerHTML]="card.meanings | cardMeanings"></span>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="pinyin">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Pinyin</mat-header-cell>
+    <mat-cell class="pinyin-column" *matCellDef="let card">
+      {{ card.pinyin }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="characters">
+    <mat-header-cell class="character-column" *matHeaderCellDef>
+      Char.
+    </mat-header-cell>
+    <mat-cell class="character-column" *matCellDef="let card">{{
+      card.characters
+    }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: columns"
+    (click)="openEditor(row)"
+  ></mat-row>
+</mat-table>
+
+<mat-paginator [pageSize]="pageSize" hidePageSize showFirstLastButtons />

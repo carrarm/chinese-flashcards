@@ -1,0 +1,33 @@
+<chf-session-matching-step
+  *ngIf="isMatchingStep"
+  [cards]="sessionCards"
+  (completed)="isMatchingStep = false"
+/>
+
+<chf-session-filling-step
+  *ngIf="this.isFillingStep"
+  [cards]="sessionCards"
+  (completed)="sessionCompleted($event)"
+/>
+
+<div *ngIf="isSessionDone">
+  <p class="title">Session completed!</p>
+
+  <table>
+    <thead>
+      <th>Card</th>
+      <th>Next review</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let card of sessionResults">
+        <td>{{ card.characters ?? card.pinyin }}</td>
+        <td>{{ card.nextReview }} day(s)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button mat-flat-button routerLink="/sessions">
+    <mat-icon>arrow_back</mat-icon>
+    Go back to the collections
+  </button>
+</div>

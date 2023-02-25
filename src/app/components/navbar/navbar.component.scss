@@ -1,0 +1,26 @@
+.navbar {
+  background-color: black;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 0 10px;
+  gap: 1rem;
+
+  .title-group {
+    display: flex;
+    flex-direction: column;
+
+    .app-name {
+      font-size: large;
+    }
+
+    .page-title {
+      font-size: 0.9em;
+
+      &:empty {
+        display: none;
+      }
+    }
+  }
+}

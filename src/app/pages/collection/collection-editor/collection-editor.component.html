@@ -1,0 +1,34 @@
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Label</mat-label>
+      <input matInput formControlName="label" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" />
+    </mat-form-field>
+  </form>
+
+  <button
+    *ngIf="collectionId"
+    mat-stroked-button
+    color="warn"
+    (click)="deleteCollection()"
+  >
+    Delete collection
+  </button>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-flat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="form.invalid"
+    (click)="saveCollection()"
+  >
+    Save and close
+  </button>
+</div>

@@ -1,0 +1,9 @@
+<div class="navbar">
+  <button class="sidenav-toggle" mat-icon-button (click)="toggleMenu.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="title-group">
+    <span class="app-name">Chinese Flashcards</span>
+    <span class="page-title">{{ pageTitle$ | async }}</span>
+  </div>
+</div>

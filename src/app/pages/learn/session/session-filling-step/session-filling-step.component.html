@@ -1,0 +1,68 @@
+<ng-container *ngIf="currentCard">
+  <mat-card appearance="outlined">
+    <div
+      class="centered-card"
+      [innerHTML]="currentCard.card.meanings | cardMeanings"
+    ></div>
+  </mat-card>
+
+  <mat-card
+    *ngIf="cardRevealed; else cardForm"
+    appearance="outlined"
+    class="centered-card chinese"
+  >
+    <div class="floating-icon">
+      <mat-icon class="failed" *ngIf="isMistake; else successIcon">
+        remove_circle
+      </mat-icon>
+      <ng-template #successIcon>
+        <mat-icon class="passed">check_circle</mat-icon>
+      </ng-template>
+    </div>
+    <p>{{ currentCard.card.characters }}</p>
+    <span class="pinyin-font">{{ currentCard.card.pinyin }}</span>
+  </mat-card>
+
+  <ng-template #cardForm>
+    <mat-card appearance="outlined">
+      <mat-form-field
+        subscriptSizing="dynamic"
+        *ngIf="currentCard.card.characters"
+      >
+        <mat-label>Chinese characters</mat-label>
+        <input matInput [(ngModel)]="characterInput" />
+      </mat-form-field>
+
+      <ng-container *ngIf="learnPinyin">
+        <chf-pinyin-form-field
+          [(ngModel)]="pinyinInput"
+          *ngIf="currentCard.card.pinyin"
+        />
+
+        <p class="helper-text">
+          When the pinyin mode is enabled, you need to fill all of the fields
+          above to validate the card.
+        </p>
+      </ng-container>
+
+      <button mat-flat-button color="primary" (click)="checkResponse()">
+        Check
+      </button>
+    </mat-card>
+  </ng-template>
+
+  <div class="bottom-actions">
+    <button mat-flat-button [disabled]="cardRevealed" (click)="reveal()">
+      Reveal the card
+    </button>
+    <button
+      *ngIf="cardRevealed"
+      mat-flat-button
+      color="primary"
+      (click)="nextCard()"
+    >
+      Next card
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</ng-container>

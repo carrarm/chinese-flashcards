@@ -1,0 +1,51 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+
+  .filler {
+    flex: 1;
+  }
+
+  .active {
+    background-color: #5f7daf;
+  }
+}
+
+mat-table {
+  // max-height: 60vh;
+  // overflow-y: auto;
+
+  mat-cell {
+    font-size: 1.2em;
+  }
+
+  mat-header-cell {
+    font-weight: 600;
+    font-size: 0.9em;
+    background-color: #1c1c1c !important;
+  }
+
+  .character-column {
+    max-width: 60px;
+    padding: 0px;
+  }
+
+  .pinyin-column {
+    font-family: "Ubuntu Mono";
+  }
+
+  .meaning-column {
+    font-size: 0.9em;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-paginator {
+  position: sticky;
+  bottom: 0;
+}
