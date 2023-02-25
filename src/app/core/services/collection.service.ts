@@ -59,8 +59,11 @@ export class CollectionService {
    * @param collectionId Card collection id
    * @returns Dexie `Collection<CardModel, number>`
    */
-  getUnknownCardRequest(collectionId: number): Collection<CardModel, number> {
-    return this.database.cards.where({ collectionId, leitnerBox: 0 });
+  getUnknownCardRequest(collectionId?: number): Collection<CardModel, number> {
+    const request = collectionId
+      ? { collectionId, leitnerBox: 0 }
+      : { leitnerBox: 0 };
+    return this.database.cards.where(request);
   }
 
   /**
@@ -81,10 +84,16 @@ export class CollectionService {
    * @param collectionId Card collection id
    * @returns Dexie `Collection<CardModel, number>`
    */
-  getReviewCardRequest(collectionId: number): Collection<CardModel, number> {
-    return this.database.cards
-      .where({ collectionId })
-      .and((card) => new Card(card).needsReview());
+  getReviewCardRequest(collectionId?: number): Collection<CardModel, number> {
+    if (collectionId) {
+      return this.database.cards
+        .where({ collectionId })
+        .and((card) => new Card(card).needsReview());
+    } else {
+      return this.database.cards
+        .toCollection()
+        .and((card: CardModel) => new Card(card).needsReview());
+    }
   }
 
   private async loadCollectionCards(

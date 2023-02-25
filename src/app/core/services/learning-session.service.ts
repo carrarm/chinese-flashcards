@@ -22,7 +22,7 @@ export class LearningSessionService {
     this.database = databaseService.database;
   }
 
-  async createLearningSession(collection: number): Promise<Card[]> {
+  async createLearningSession(collection?: number): Promise<Card[]> {
     const cards = await this.collectionService
       .getUnknownCardRequest(collection)
       .limit(await this.getWordsPerSession())
@@ -31,7 +31,7 @@ export class LearningSessionService {
     return cards.map((card) => new Card(card));
   }
 
-  async createReviewSession(collection: number): Promise<Card[]> {
+  async createReviewSession(collection?: number): Promise<Card[]> {
     const cards = await this.collectionService
       .getReviewCardRequest(collection)
       .limit(await this.getWordsPerSession())

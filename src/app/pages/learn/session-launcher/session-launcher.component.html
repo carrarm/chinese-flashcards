@@ -11,12 +11,16 @@
   <mat-card-actions>
     <button
       mat-button
-      routerLink="all/learn"
       [disabled]="!allCollectionStats?.numbers?.toLearn"
+      (click)="learn()"
     >
       Learn
     </button>
-    <button mat-button [disabled]="!allCollectionStats?.numbers?.toReview">
+    <button
+      mat-button
+      [disabled]="!allCollectionStats?.numbers?.toReview"
+      (click)="review()"
+    >
       Review
     </button>
   </mat-card-actions>

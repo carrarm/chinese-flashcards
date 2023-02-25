@@ -16,7 +16,7 @@ export class Database extends Dexie {
     this.version(environment.dbVersion)
       .stores({
         cardCollections: '++id',
-        cards: '++id, collectionId',
+        cards: '++id, collectionId, leitnerBox',
         settings: '++id',
       })
       .upgrade(upgrades[environment.dbVersion]);

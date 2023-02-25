@@ -57,7 +57,7 @@ export class SessionLauncherComponent {
     });
   }
 
-  async learn(collection: number): Promise<void> {
+  async learn(collection?: number): Promise<void> {
     const cardsToLearn =
       await this.learningSessionService.createLearningSession(collection);
 
@@ -65,7 +65,7 @@ export class SessionLauncherComponent {
     this.router.navigateByUrl('/sessions/active');
   }
 
-  async review(collection: number): Promise<void> {
+  async review(collection?: number): Promise<void> {
     const cardsToReview = await this.learningSessionService.createReviewSession(
       collection
     );
