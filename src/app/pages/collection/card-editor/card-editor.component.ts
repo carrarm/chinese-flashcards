@@ -47,21 +47,6 @@ export class CardEditorComponent {
     this.collectionId = data.collection;
   }
 
-  writePinyinCharacter(character: string): void {
-    this.form.patchValue({
-      pinyin: (this.form.value.pinyin ?? '') + character,
-    });
-  }
-
-  removePinyinCharacter(): void {
-    const currentValue = this.form.value.pinyin;
-    if (currentValue?.length) {
-      this.form.patchValue({
-        pinyin: currentValue.substring(0, currentValue.length - 1),
-      });
-    }
-  }
-
   async saveCard(): Promise<void> {
     const { meaning, chinese, pinyin } = this.form.value;
     if (meaning && (chinese || pinyin)) {

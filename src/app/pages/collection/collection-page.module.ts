@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CollectionEditorComponent } from './collection-editor/collection-editor.component';
+import { PinyinFormFieldComponent } from 'src/app/components/pinyin-form-field/pinyin-form-field.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +41,9 @@ import { CollectionEditorComponent } from './collection-editor/collection-editor
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
+    PinyinFormFieldComponent,
     ReactiveFormsModule,
     RouterModule,
-    VirtualKeyboardComponent,
   ],
 })
 export class CollectionPageModule {}

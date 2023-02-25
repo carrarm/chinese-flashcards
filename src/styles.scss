@@ -9,6 +9,10 @@ body {
   font-family: Raleway, Roboto, "Helvetica Neue", sans-serif;
 }
 
+.pinyin-font {
+  font-family: "Ubuntu Mono";
+}
+
 chf-session-launcher {
   .to-learn .mat-mdc-progress-spinner {
     --mdc-circular-progress-active-indicator-color: red;

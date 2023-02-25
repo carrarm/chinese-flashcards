@@ -1,0 +1,27 @@
+<mat-form-field subscriptSizing="dynamic">
+  <mat-label>Pinyin</mat-label>
+  <input
+    class="pinyin-field"
+    matInput
+    [ngModel]="fieldValue"
+    (ngModelChange)="updateValue($event)"
+    [readonly]="virtualKeyboardOpen"
+  />
+  <button
+    mat-icon-button
+    matSuffix
+    (click)="virtualKeyboardOpen = !virtualKeyboardOpen"
+  >
+    <mat-icon>keyboard</mat-icon>
+  </button>
+  <mat-hint *ngIf="virtualKeyboardOpen">
+    Close the virtual keyboard to edit this field
+  </mat-hint>
+</mat-form-field>
+
+<chf-virtual-keyboard
+  *ngIf="virtualKeyboardOpen"
+  (typed)="writePinyinCharacter($event)"
+  (backspace)="removePinyinCharacter()"
+  (submit)="virtualKeyboardOpen = false"
+/>

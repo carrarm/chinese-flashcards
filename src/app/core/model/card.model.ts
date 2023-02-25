@@ -22,7 +22,7 @@ export class Card implements CardModel {
   pinyin?: string;
   characters?: string;
   collectionId = 0;
-  leitnerBox = 5;
+  leitnerBox = 0;
   lastSession?: string;
 
   constructor(data?: CardModel) {
@@ -41,6 +41,10 @@ export class Card implements CardModel {
       : dayjs(this.lastSession).add(boxReviewDelay[this.leitnerBox], 'day');
   }
 
+  nextReviewInDays(): number {
+    return boxReviewDelay[this.leitnerBox];
+  }
+
   isKnown(): boolean {
     return !this.isUnknown() && dayjs().isBefore(this.nextReview());
   }
@@ -51,5 +55,17 @@ export class Card implements CardModel {
       (!this.isUnknown() && dayjs().isSame(nextSession)) ||
       dayjs().isAfter(nextSession)
     );
+  }
+
+  moveNextBox(): void {
+    if (this.leitnerBox < boxReviewDelay.length - 1) {
+      this.leitnerBox++;
+    }
+  }
+
+  movePreviousBox(): void {
+    if (this.leitnerBox > 0) {
+      this.leitnerBox--;
+    }
   }
 }

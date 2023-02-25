@@ -14,7 +14,6 @@ interface MatchingCard {
 })
 export class SessionMatchingStepComponent implements OnInit {
   @Input() cards: Card[] = [];
-  @Input() pinyinEnabled = true;
   @Input() repeat = 1;
   @Output() completed = new EventEmitter<void>();
 
@@ -25,12 +24,9 @@ export class SessionMatchingStepComponent implements OnInit {
   public selectedRightCard?: MatchingCard;
 
   ngOnInit(): void {
-    const filteredCards = this.pinyinEnabled
-      ? [...this.cards]
-      : this.cards.filter((card) => card.characters);
     for (let i = 0; i <= this.repeat; i++) {
       this.matchingPages = this.matchingPages.concat(
-        this.buildStepPages(filteredCards)
+        this.buildStepPages(this.cards)
       );
     }
 

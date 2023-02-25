@@ -33,6 +33,10 @@ export class CardService {
     throw new Error(`Unable to update the card with id ${card.id}: ${error}`);
   }
 
+  async updateCards(cards: Card[]): Promise<unknown> {
+    return this.database.cards.bulkPut(cards);
+  }
+
   async deleteCard(card: Card | number): Promise<void> {
     const cardId = typeof card === 'number' ? card : card.id;
     if (cardId) {

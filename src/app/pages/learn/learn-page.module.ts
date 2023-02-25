@@ -9,6 +9,11 @@ import { SessionComponent } from './session/session.component';
 import { SessionMatchingStepComponent } from './session/session-matching-step/session-matching-step.component';
 import { CardMeaningsPipe } from 'src/app/core/pipes/card-meanings.pipe';
 import { SessionFillingStepComponent } from './session/session-filling-step/session-filling-step.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { PinyinFormFieldComponent } from 'src/app/components/pinyin-form-field/pinyin-form-field.component';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -20,9 +25,14 @@ import { SessionFillingStepComponent } from './session/session-filling-step/sess
   imports: [
     CardMeaningsPipe,
     CommonModule,
+    FormsModule,
     MatButtonModule,
     MatCardModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatProgressSpinnerModule,
+    PinyinFormFieldComponent,
     RouterModule,
   ],
 })
