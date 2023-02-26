@@ -13,8 +13,8 @@ import { SessionCard } from './session-card.model';
 })
 export class SessionComponent {
   public sessionCards: Card[] = [];
-  public isMatchingStep = false;
-  public isFillingStep = true;
+  public isMatchingStep = true;
+  public isFillingStep = false;
   public isSessionDone = false;
   public sessionResults: SessionCard[] = [];
 
