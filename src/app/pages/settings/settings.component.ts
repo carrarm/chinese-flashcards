@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DatabaseService } from 'src/app/core/db/database.service';
 import { Settings } from 'src/app/core/model/settings.model';
 import { NavigationService } from 'src/app/core/services/navigation.service';
 import { SettingsService } from 'src/app/core/services/settings.service';
@@ -33,7 +35,9 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     private navigationService: NavigationService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private databaseService: DatabaseService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -58,5 +62,11 @@ export class SettingsComponent implements OnInit {
         this.settingsService.updateSettings(this.settings);
       }
     });
+  }
+
+  deleteDatabase(): void {
+    this.databaseService
+      .clearDatabase()
+      .then(() => this.snackbar.open('Database deleted successfully', 'Close'));
   }
 }

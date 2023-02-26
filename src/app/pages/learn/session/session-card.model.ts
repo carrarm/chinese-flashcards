@@ -1,3 +1,4 @@
+import * as dayjs from 'dayjs';
 import { Card } from 'src/app/core/model/card.model';
 
 export class SessionCard {
@@ -49,5 +50,6 @@ export class SessionCard {
     } else if (this.mistakes > 1) {
       this.card.movePreviousBox();
     }
+    this.card.lastSession = dayjs().toISOString();
   }
 }

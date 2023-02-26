@@ -19,7 +19,7 @@ export class DatabaseService {
     // TODO: export as CSV file
   }
 
-  clearDatabase(): void {
-    this.database.delete();
+  clearDatabase(): Promise<unknown> {
+    return this.database.deleteAndRebuild();
   }
 }

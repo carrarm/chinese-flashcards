@@ -55,7 +55,9 @@
   </div>
 </form>
 
-<ng-container *ngIf="!isProductionEnv">
-  <hr />
-  <button mat-stroked-button color="warn">Delete database</button>
-</ng-container>
+<div class="setting-group" *ngIf="!isProductionEnv">
+  <div class="title">Development options</div>
+  <button mat-stroked-button color="warn" (click)="deleteDatabase()">
+    Delete database
+  </button>
+</div>

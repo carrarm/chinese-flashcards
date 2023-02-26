@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  dbVersion: 1,
+  dbVersion: 2,
 };
