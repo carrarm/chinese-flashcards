@@ -1,11 +1,12 @@
 {
   "name": "chinese-flashcards",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "author": "Carrm",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:staging": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

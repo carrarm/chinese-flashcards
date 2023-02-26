@@ -6,4 +6,5 @@ type DbUpgrades = {
 
 export const upgrades: DbUpgrades = {
   1: () => Promise.resolve(),
+  2: () => Promise.resolve(),
 };

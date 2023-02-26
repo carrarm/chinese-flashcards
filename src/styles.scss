@@ -9,20 +9,25 @@ body {
   font-family: Raleway, Roboto, "Helvetica Neue", sans-serif;
 }
 
+mat-card-actions {
+  border-top: solid 1px #4e4e4e;
+  margin-top: 1rem;
+}
+
 .pinyin-font {
   font-family: "Ubuntu Mono";
 }
 
 chf-session-launcher {
   .to-learn .mat-mdc-progress-spinner {
-    --mdc-circular-progress-active-indicator-color: red;
+    --mdc-circular-progress-active-indicator-color: #2fc595;
   }
 
   .to-review .mat-mdc-progress-spinner {
-    --mdc-circular-progress-active-indicator-color: yellow;
+    --mdc-circular-progress-active-indicator-color: #942ce3;
   }
 
   .known .mat-mdc-progress-spinner {
-    --mdc-circular-progress-active-indicator-color: green;
+    --mdc-circular-progress-active-indicator-color: #4d5bff;
   }
 }

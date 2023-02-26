@@ -6,6 +6,12 @@ import { CardModel } from '../model/card.model';
 import { SettingsModel } from '../model/settings.model';
 import { upgrades } from './database-upgrades';
 
+const schema = {
+  cardCollections: '++id, label',
+  cards: '++id, collectionId, leitnerBox, [collectionId+leitnerBox]',
+  settings: '++id',
+};
+
 export class Database extends Dexie {
   public cards!: Table<CardModel, number>;
   public cardCollections!: Table<CardCollectionModel, number>;
@@ -14,16 +20,18 @@ export class Database extends Dexie {
   constructor() {
     super('chinese-cards');
     this.version(environment.dbVersion)
-      .stores({
-        cardCollections: '++id',
-        cards: '++id, collectionId, leitnerBox',
-        settings: '++id',
-      })
+      .stores(schema)
       .upgrade(upgrades[environment.dbVersion]);
 
     if (!environment.production) {
       this.on('populate', () => this.populate());
     }
+  }
+
+  deleteAndRebuild(): Promise<unknown> {
+    this.delete();
+    this.version(environment.dbVersion).stores(schema);
+    return this.open();
   }
 
   private async populate() {

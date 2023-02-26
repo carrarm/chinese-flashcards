@@ -1,11 +1,11 @@
 <chf-session-matching-step
   *ngIf="isMatchingStep"
   [cards]="sessionCards"
-  (completed)="isMatchingStep = false"
+  (completed)="matchingCompleted()"
 />
 
 <chf-session-filling-step
-  *ngIf="this.isFillingStep"
+  *ngIf="isFillingStep"
   [cards]="sessionCards"
   (completed)="sessionCompleted($event)"
 />
