@@ -20,14 +20,14 @@ export class CollectionService {
 
   async getCollections(): Promise<CardCollection[]> {
     try {
-      return await this.database.cardCollections.toArray(
-        (collections: CardCollectionModel[]) => {
+      return await this.database.cardCollections
+        .orderBy('label')
+        .toArray((collections: CardCollectionModel[]) => {
           const filledCollectionPromises = collections.map((collection) =>
             this.loadCollectionCards(collection)
           );
           return Promise.all(filledCollectionPromises);
-        }
-      );
+        });
     } catch (error) {
       console.error('Unable to load card collections', error);
       return [];

@@ -7,8 +7,8 @@ import { SettingsModel } from '../model/settings.model';
 import { upgrades } from './database-upgrades';
 
 const schema = {
-  cardCollections: '++id',
-  cards: '++id, collectionId, leitnerBox',
+  cardCollections: '++id, label',
+  cards: '++id, collectionId, leitnerBox, [collectionId+leitnerBox]',
   settings: '++id',
 };
 

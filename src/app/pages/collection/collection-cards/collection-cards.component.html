@@ -25,7 +25,12 @@
   />
 </mat-form-field>
 
-<mat-table [dataSource]="dataSource" matSort>
+<mat-table
+  [dataSource]="dataSource"
+  matSort
+  matSortActive="meanings"
+  matSortDirection="asc"
+>
   <ng-container matColumnDef="meanings">
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       Meanings
