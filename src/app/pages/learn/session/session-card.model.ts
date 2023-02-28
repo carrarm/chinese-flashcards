@@ -28,7 +28,7 @@ export class SessionCard {
 
   getNumberOfRepetitions(): number {
     if (this.card.leitnerBox <= 2) {
-      return 5;
+      return 4;
     }
 
     if (this.card.leitnerBox <= 4) {
