@@ -47,10 +47,12 @@ export class SessionFillingStepComponent {
     let pinyinMatch = true;
     if (this.currentCard) {
       if (this.currentCard.characters) {
-        chineseMatch = this.currentCard.characters === this.characterInput;
+        chineseMatch =
+          this.currentCard.characters.trim() === this.characterInput?.trim();
       }
       if (this.currentCard.pinyin) {
-        pinyinMatch = this.currentCard.pinyin === this.pinyinInput;
+        pinyinMatch =
+          this.currentCard.pinyin.trim() === this.pinyinInput?.trim();
       }
       this.isMistake = !chineseMatch || !pinyinMatch;
       this.cardRevealed = true;
