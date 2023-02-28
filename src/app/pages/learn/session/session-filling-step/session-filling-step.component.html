@@ -6,22 +6,36 @@
     ></div>
   </mat-card>
 
-  <mat-card
-    *ngIf="cardRevealed; else cardForm"
-    appearance="outlined"
-    class="centered-card chinese"
-  >
-    <div class="floating-icon">
-      <mat-icon class="failed" *ngIf="isMistake; else successIcon">
-        cancel
-      </mat-icon>
-      <ng-template #successIcon>
-        <mat-icon class="passed">check_circle</mat-icon>
-      </ng-template>
-    </div>
-    <p>{{ currentCard.card.characters }}</p>
-    <span class="pinyin-font">{{ currentCard.card.pinyin }}</span>
-  </mat-card>
+  <ng-container *ngIf="cardRevealed; else cardForm">
+    <mat-card
+      *ngIf="pinyinInput || characterInput"
+      appearance="outlined"
+      class="centered-card chinese"
+    >
+      <div class="floating-icon">
+        <mat-icon class="failed" *ngIf="isMistake; else successIcon">
+          cancel
+        </mat-icon>
+        <ng-template #successIcon>
+          <mat-icon class="passed">check_circle</mat-icon>
+        </ng-template>
+      </div>
+      <p>{{ characterInput }}</p>
+      <span class="pinyin-font">{{ pinyinInput }}</span>
+    </mat-card>
+
+    <mat-card
+      *ngIf="isMistake"
+      appearance="outlined"
+      class="centered-card chinese"
+    >
+      <div class="floating-icon">
+        <mat-icon class="solution">assistant</mat-icon>
+      </div>
+      <p>{{ currentCard.card.characters }}</p>
+      <span class="pinyin-font">{{ currentCard.card.pinyin }}</span>
+    </mat-card>
+  </ng-container>
 
   <ng-template #cardForm>
     <mat-card appearance="outlined">
