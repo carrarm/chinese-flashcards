@@ -4,6 +4,10 @@
       class="centered-card"
       [innerHTML]="currentCard.card.meanings | cardMeanings"
     ></div>
+    <span class="card-rep-count">
+      {{ currentCard.currentRepetitions }} /
+      {{ currentCard.numberOfRepetitions }}
+    </span>
   </mat-card>
 
   <ng-container *ngIf="cardRevealed; else cardForm">
@@ -35,6 +39,36 @@
       <p>{{ currentCard.card.characters }}</p>
       <span class="pinyin-font">{{ currentCard.card.pinyin }}</span>
     </mat-card>
+
+    <div>
+      How did you find this card?
+      <div class="difficulty-levels">
+        <div
+          class="level hard"
+          [class]="{ active: currentCard.card.difficulty === 'hard' }"
+          (click)="changeDifficulty('hard')"
+        >
+          <mat-icon>thumb_down</mat-icon>
+          <span>Hard</span>
+        </div>
+        <div
+          class="level medium"
+          [class]="{ active: currentCard.card.difficulty === 'medium' }"
+          (click)="changeDifficulty('medium')"
+        >
+          <mat-icon>thumbs_up_down</mat-icon>
+          <span>OK</span>
+        </div>
+        <div
+          class="level easy"
+          [class]="{ active: currentCard.card.difficulty === 'easy' }"
+          (click)="changeDifficulty('easy')"
+        >
+          <mat-icon>thumb_up</mat-icon>
+          <span>Easy</span>
+        </div>
+      </div>
+    </div>
   </ng-container>
 
   <ng-template #cardForm>

@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Card } from 'src/app/core/model/card.model';
+import { Card, CardDifficultyLevel } from 'src/app/core/model/card.model';
 import { SettingsService } from 'src/app/core/services/settings.service';
 import {
   removeOnce,
+  removeTimes,
   shuffleArray,
   uniqueValues,
 } from 'src/app/core/utils/general.utils';
@@ -42,6 +43,10 @@ export class SessionFillingStepComponent {
     this.nextCard();
   }
 
+  changeDifficulty(difficulty: CardDifficultyLevel): void {
+    this.currentCard?.changeDifficulty(difficulty);
+  }
+
   checkResponse(): void {
     let chineseMatch = true;
     let pinyinMatch = true;
@@ -59,6 +64,8 @@ export class SessionFillingStepComponent {
 
       if (this.isMistake) {
         this.wrongAnswer();
+      } else {
+        this.currentCard.currentRepetitions++;
       }
     }
   }
@@ -70,6 +77,7 @@ export class SessionFillingStepComponent {
   }
 
   nextCard(): void {
+    this.updateSessionCards();
     const nextCard = this.session.shift();
     this.cardRevealed = false;
     this.characterInput = undefined;
@@ -93,7 +101,7 @@ export class SessionFillingStepComponent {
     let allCards: number[] = [];
     this.sessionCards.forEach((sessionCard: SessionCard) => {
       allCards = allCards.concat(
-        Array(sessionCard.getNumberOfRepetitions()).fill(sessionCard.id)
+        Array(sessionCard.numberOfRepetitions).fill(sessionCard.id)
       );
     });
 
@@ -102,6 +110,37 @@ export class SessionFillingStepComponent {
       const uniqueCards = uniqueValues(allCards);
       this.session.push(...shuffleArray(uniqueCards));
       removeOnce(allCards, uniqueCards);
+    }
+  }
+
+  private updateSessionCards(): void {
+    if (this.currentCard) {
+      const expectedRemaining =
+        this.currentCard.numberOfRepetitions -
+        this.currentCard.currentRepetitions;
+
+      if (expectedRemaining) {
+        const sessionCount = this.session.filter(
+          (card) => card === this.currentCard?.id
+        ).length;
+        if (sessionCount > expectedRemaining) {
+          this.session = removeTimes(
+            this.session,
+            this.currentCard.id,
+            sessionCount - expectedRemaining
+          );
+        } else {
+          this.session = shuffleArray(
+            this.session.concat(
+              Array(expectedRemaining - sessionCount).fill(this.currentCard.id)
+            )
+          );
+        }
+      } else {
+        this.session = this.session.filter(
+          (card) => card !== this.currentCard?.id
+        );
+      }
     }
   }
 }
