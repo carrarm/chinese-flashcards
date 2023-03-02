@@ -56,6 +56,13 @@
 </form>
 
 <div class="setting-group" *ngIf="!isProductionEnv">
+  <div class="title">Backup</div>
+  <button mat-stroked-button (click)="exportToJSON()">
+    Download backup file
+  </button>
+</div>
+
+<div class="setting-group" *ngIf="!isProductionEnv">
   <div class="title">Development options</div>
   <button mat-stroked-button color="warn" (click)="deleteDatabase()">
     Delete database

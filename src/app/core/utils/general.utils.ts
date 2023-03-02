@@ -34,3 +34,27 @@ export function removeOnce<T>(source: T[], toRemove: T[]): T[] {
   });
   return source;
 }
+
+/**
+ * Removes a certain number of occurrences of an element from an array.
+ *
+ * @param source Array of items
+ * @param toRemove Item to remove
+ * @param times Number of occurrences to remove
+ * @returns Source array without the removed occurrences
+ */
+export function removeTimes<T>(source: T[], toRemove: T, times: number): T[] {
+  let toRemoveCount = times;
+  while (toRemoveCount > 0 && source.length) {
+    const sourceIndex = source.findIndex(
+      (sourceValue) => sourceValue === toRemove
+    );
+    if (sourceIndex === -1) {
+      toRemoveCount = 0;
+    } else {
+      source.splice(sourceIndex, 1);
+      toRemoveCount--;
+    }
+  }
+  return source;
+}

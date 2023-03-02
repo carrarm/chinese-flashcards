@@ -1,9 +1,17 @@
 import * as dayjs from 'dayjs';
-import { Card } from 'src/app/core/model/card.model';
+import { Card, CardDifficultyLevel } from 'src/app/core/model/card.model';
+
+const EASY_REPS = 2;
+const MEDIUM_REPS = 3;
+const HARD_REPS = 4;
 
 export class SessionCard {
   card: Card;
   mistakes: number;
+  numberOfRepetitions = 0;
+  currentRepetitions = 0;
+  sessionResultIcon: 'trending_up' | 'trending_down' | 'trending_flat' =
+    'trending_flat';
 
   get id(): number {
     return this.card.id ?? 0;
@@ -24,32 +32,71 @@ export class SessionCard {
   constructor(card: Card) {
     this.card = card;
     this.mistakes = 0;
+    this.numberOfRepetitions = this.getNumberOfRepetitions();
   }
 
-  getNumberOfRepetitions(): number {
-    if (this.card.leitnerBox <= 2) {
-      return 5;
+  changeDifficulty(difficulty: CardDifficultyLevel): void {
+    if (this.card.difficulty === difficulty) {
+      this.card.difficulty = undefined;
+    } else {
+      this.card.difficulty = difficulty;
     }
-
-    if (this.card.leitnerBox <= 4) {
-      return 3;
+    this.numberOfRepetitions = this.getNumberOfRepetitions();
+    if (this.currentRepetitions > this.numberOfRepetitions) {
+      this.currentRepetitions = this.numberOfRepetitions;
     }
-
-    return 2;
   }
 
   /**
-   * Compute the new Leitner box based on the number of mistakes.
+   * Computes the new Leitner box based on the number of mistakes.
    * 0 mistake: move to the next box
    * 1 mistake: stay in the same box
    * 2+ mistakes: move to the previous box
    */
   endSession(): void {
     if (this.mistakes === 0) {
+      this.sessionResultIcon = 'trending_up';
       this.card.moveNextBox();
     } else if (this.mistakes > 1) {
+      this.sessionResultIcon = 'trending_down';
       this.card.movePreviousBox();
     }
     this.card.lastSession = dayjs().toISOString();
+  }
+
+  /**
+   * Gets the number of repetitions required to learn the card
+   * based on the difficulty (if set) or the Leitner box.
+   *
+   * @returns Number of repetitions
+   */
+  private getNumberOfRepetitions(): number {
+    switch (this.card.difficulty) {
+      case 'easy':
+        return EASY_REPS;
+      case 'medium':
+        return MEDIUM_REPS;
+      case 'hard':
+        return HARD_REPS;
+      default:
+        return this.getDefaultRepetitions();
+    }
+  }
+
+  /**
+   * Gets the number of repetitions based on the Leitner box.
+   *
+   * @returns  Number of repetitions
+   */
+  private getDefaultRepetitions(): number {
+    if (this.card.leitnerBox <= 2) {
+      return HARD_REPS;
+    }
+
+    if (this.card.leitnerBox <= 4) {
+      return MEDIUM_REPS;
+    }
+
+    return EASY_REPS;
   }
 }

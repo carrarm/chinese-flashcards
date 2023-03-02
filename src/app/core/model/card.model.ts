@@ -1,6 +1,8 @@
 import * as dayjs from 'dayjs';
 import { Dayjs } from 'dayjs';
 
+export type CardDifficultyLevel = 'easy' | 'medium' | 'hard';
+
 export interface CardModel {
   id?: number;
   meanings: string[];
@@ -9,6 +11,7 @@ export interface CardModel {
   collectionId: number;
   leitnerBox: number;
   lastSession?: string;
+  difficulty?: CardDifficultyLevel;
 }
 
 /**
@@ -24,6 +27,7 @@ export class Card implements CardModel {
   collectionId = 0;
   leitnerBox = 0;
   lastSession?: string;
+  difficulty?: CardDifficultyLevel;
 
   constructor(data?: CardModel) {
     if (data) {
