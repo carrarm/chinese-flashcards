@@ -69,4 +69,8 @@ export class SettingsComponent implements OnInit {
       .clearDatabase()
       .then(() => this.snackbar.open('Database deleted successfully', 'Close'));
   }
+
+  exportToJSON(): void {
+    this.databaseService.exportAsFile();
+  }
 }
