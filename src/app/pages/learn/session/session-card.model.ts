@@ -10,6 +10,8 @@ export class SessionCard {
   mistakes: number;
   numberOfRepetitions = 0;
   currentRepetitions = 0;
+  sessionResultIcon: 'trending_up' | 'trending_down' | 'trending_flat' =
+    'trending_flat';
 
   get id(): number {
     return this.card.id ?? 0;
@@ -53,8 +55,10 @@ export class SessionCard {
    */
   endSession(): void {
     if (this.mistakes === 0) {
+      this.sessionResultIcon = 'trending_up';
       this.card.moveNextBox();
     } else if (this.mistakes > 1) {
+      this.sessionResultIcon = 'trending_down';
       this.card.movePreviousBox();
     }
     this.card.lastSession = dayjs().toISOString();

@@ -16,12 +16,14 @@
   <table>
     <thead>
       <th>Card</th>
-      <th>Next review</th>
+      <th>Progress</th>
     </thead>
     <tbody>
       <tr *ngFor="let card of sessionResults">
         <td>{{ card.characters ?? card.pinyin }}</td>
-        <td>{{ card.nextReview }} day(s)</td>
+        <td>
+          <mat-icon>{{ card.sessionResultIcon }}</mat-icon>
+        </td>
       </tr>
     </tbody>
   </table>
