@@ -4,24 +4,72 @@
       class="centered-card"
       [innerHTML]="currentCard.card.meanings | cardMeanings"
     ></div>
+    <span class="card-rep-count">
+      {{ currentCard.currentRepetitions }} /
+      {{ currentCard.numberOfRepetitions }}
+    </span>
   </mat-card>
 
-  <mat-card
-    *ngIf="cardRevealed; else cardForm"
-    appearance="outlined"
-    class="centered-card chinese"
-  >
-    <div class="floating-icon">
-      <mat-icon class="failed" *ngIf="isMistake; else successIcon">
-        cancel
-      </mat-icon>
-      <ng-template #successIcon>
-        <mat-icon class="passed">check_circle</mat-icon>
-      </ng-template>
+  <ng-container *ngIf="cardRevealed; else cardForm">
+    <mat-card
+      *ngIf="pinyinInput || characterInput"
+      appearance="outlined"
+      class="centered-card chinese"
+    >
+      <div class="floating-icon">
+        <mat-icon class="failed" *ngIf="isMistake; else successIcon">
+          cancel
+        </mat-icon>
+        <ng-template #successIcon>
+          <mat-icon class="passed">check_circle</mat-icon>
+        </ng-template>
+      </div>
+      <p>{{ characterInput }}</p>
+      <span class="pinyin-font">{{ pinyinInput }}</span>
+    </mat-card>
+
+    <mat-card
+      *ngIf="isMistake"
+      appearance="outlined"
+      class="centered-card chinese"
+    >
+      <div class="floating-icon">
+        <mat-icon class="solution">assistant</mat-icon>
+      </div>
+      <p>{{ currentCard.card.characters }}</p>
+      <span class="pinyin-font">{{ currentCard.card.pinyin }}</span>
+    </mat-card>
+
+    <div>
+      How did you find this card?
+      <div class="difficulty-levels">
+        <div
+          class="level hard"
+          [class]="{ active: currentCard.card.difficulty === 'hard' }"
+          (click)="changeDifficulty('hard')"
+        >
+          <mat-icon>thumb_down</mat-icon>
+          <span>Hard</span>
+        </div>
+        <div
+          class="level medium"
+          [class]="{ active: currentCard.card.difficulty === 'medium' }"
+          (click)="changeDifficulty('medium')"
+        >
+          <mat-icon>thumbs_up_down</mat-icon>
+          <span>OK</span>
+        </div>
+        <div
+          class="level easy"
+          [class]="{ active: currentCard.card.difficulty === 'easy' }"
+          (click)="changeDifficulty('easy')"
+        >
+          <mat-icon>thumb_up</mat-icon>
+          <span>Easy</span>
+        </div>
+      </div>
     </div>
-    <p>{{ currentCard.card.characters }}</p>
-    <span class="pinyin-font">{{ currentCard.card.pinyin }}</span>
-  </mat-card>
+  </ng-container>
 
   <ng-template #cardForm>
     <mat-card appearance="outlined">
