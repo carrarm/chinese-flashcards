@@ -15,6 +15,7 @@ interface SettingsForm {
   pageSize: FormControl<number | null>;
   wordsPerSession: FormControl<number | null>;
   leitnerBoxes: FormControl<number | null>;
+  resetCardProgress: FormControl<boolean | null>;
 }
 
 @Component({
@@ -31,6 +32,7 @@ export class SettingsComponent implements OnInit {
     pageSize: new FormControl<number | null>(10),
     wordsPerSession: new FormControl<number | null>(10),
     leitnerBoxes: new FormControl<number | null>(5),
+    resetCardProgress: new FormControl<boolean | null>(true),
   });
   public pageOptions = [5, 10, 15, 20, 50, 100];
   public wordsOptions = [5, 10, 15];
@@ -54,6 +56,7 @@ export class SettingsComponent implements OnInit {
         leitnerBoxes: this.settings.leitnerBoxes,
         pageSize: this.settings.pageSize,
         wordsPerSession: this.settings.wordsPerSession,
+        resetCardProgress: this.settings.resetCardProgress,
       });
     });
     this.form.valueChanges.subscribe(() => {
@@ -64,6 +67,7 @@ export class SettingsComponent implements OnInit {
         this.settings.wordsPerSession = this.form.value.wordsPerSession ?? 10;
         this.settings.pageSize = this.form.value.pageSize ?? 10;
         this.settings.leitnerBoxes = this.form.value.leitnerBoxes ?? 5;
+        this.settings.resetCardProgress = this.form.value.resetCardProgress ?? true;
         this.settingsService.updateSettings(this.settings);
       }
     });

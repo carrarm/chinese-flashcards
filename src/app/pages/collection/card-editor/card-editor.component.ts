@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Card } from "src/app/core/model/card.model";
 import { CardService } from "src/app/core/services/card.service";
+import { SettingsService } from "src/app/core/services/settings.service";
 import { toOptional } from "src/app/core/utils/form.utils";
 
 interface CardForm {
@@ -26,6 +27,7 @@ export class CardEditorComponent {
     pinyin: new FormControl<string | null>(null),
     chinese: new FormControl<string | null>(null),
   });
+  public resetProgressActive = false;
 
   private collectionId: number;
   private originalCard?: Card;
@@ -33,7 +35,8 @@ export class CardEditorComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) data: { card?: Card; collection: number },
     public dialogRef: MatDialogRef<CardEditorComponent>,
-    private cardService: CardService
+    private cardService: CardService,
+    settingsService: SettingsService
   ) {
     if (data.card) {
       this.form.patchValue({
@@ -45,9 +48,14 @@ export class CardEditorComponent {
       this.originalCard = data.card;
     }
     this.collectionId = data.collection;
+    settingsService.getSettings().then((settings) => {
+      if (settings.resetCardProgress && !this.creationMode) {
+        this.trackChanges();
+      }
+    });
   }
 
-  async saveCard(): Promise<void> {
+  public async saveCard(): Promise<void> {
     const { meaning, chinese, pinyin } = this.form.value;
     if (meaning && (chinese || pinyin)) {
       const card: Card = new Card({
@@ -59,6 +67,12 @@ export class CardEditorComponent {
         leitnerBox: this.originalCard?.leitnerBox ?? 0,
         lastSession: this.originalCard?.lastSession,
       });
+
+      if (this.resetProgressActive) {
+        card.leitnerBox = 0;
+        card.lastSession = undefined;
+      }
+
       const savePromise = this.creationMode
         ? this.cardService.createCard(card, this.collectionId)
         : this.cardService.updateCard(card);
@@ -72,10 +86,18 @@ export class CardEditorComponent {
     }
   }
 
-  async deleteCard(): Promise<void> {
+  public async deleteCard(): Promise<void> {
     if (this.originalCard?.id) {
       await this.cardService.deleteCard(this.originalCard.id);
     }
     this.dialogRef.close();
+  }
+
+  private trackChanges(): void {
+    this.form.valueChanges.subscribe((formValues) => {
+      this.resetProgressActive =
+        formValues.chinese !== this.originalCard?.characters ||
+        formValues.pinyin !== this.originalCard?.pinyin;
+    });
   }
 }

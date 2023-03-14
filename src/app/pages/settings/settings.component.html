@@ -58,7 +58,17 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <div>Number of cards displayed at once in the table</div>
+      <div>Number of cards displayed at once in the table.</div>
+    </div>
+
+    <div class="field-with-ext-hint">
+      <mat-slide-toggle formControlName="resetCardProgress">
+        Reset progress when a card is updated
+      </mat-slide-toggle>
+      <div>
+        Automatically reset the card progress if the pinyin or characters fields are
+        updated.
+      </div>
     </div>
   </div>
 </form>

@@ -8,6 +8,7 @@ export interface SettingsModel {
   wordsPerSession: number;
   theme: AppTheme;
   leitnerBoxes: number;
+  resetCardProgress: boolean;
 }
 
 export class Settings implements SettingsModel {
@@ -18,6 +19,7 @@ export class Settings implements SettingsModel {
   public wordsPerSession = 10;
   public theme: AppTheme = "dark";
   public leitnerBoxes = 5;
+  public resetCardProgress = true;
 
   constructor(settings?: SettingsModel) {
     if (settings) {
@@ -28,10 +30,11 @@ export class Settings implements SettingsModel {
       this.wordsPerSession = settings.wordsPerSession;
       this.theme = settings.theme;
       this.leitnerBoxes = settings.leitnerBoxes;
+      this.resetCardProgress = settings.resetCardProgress;
     }
   }
 
-  isDarkModeActive(): boolean {
+  public isDarkModeActive(): boolean {
     return this.theme === "dark";
   }
 }
