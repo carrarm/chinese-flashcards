@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { downloadFile } from '../utils/file.utils';
-import { Database } from './database.model';
+import { Injectable } from "@angular/core";
+import { downloadFile } from "../utils/file.utils";
+import { Database } from "./database.model";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class DatabaseService {
   public readonly database = new Database();
@@ -27,7 +27,7 @@ export class DatabaseService {
     }));
 
     const backup = { settings, collections: collectionsBackup };
-    downloadFile('chinese-flashcards-backup.json', JSON.stringify(backup));
+    downloadFile("chinese-flashcards-backup.json", JSON.stringify(backup));
   }
 
   clearDatabase(): Promise<unknown> {

@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { CardCollection } from 'src/app/core/model/card-collection.model';
-import { CollectionService } from 'src/app/core/services/collection.service';
-import { NavigationService } from 'src/app/core/services/navigation.service';
-import { CollectionEditorComponent } from '../collection-editor/collection-editor.component';
+import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { CardCollection } from "src/app/core/model/card-collection.model";
+import { CollectionService } from "src/app/core/services/collection.service";
+import { NavigationService } from "src/app/core/services/navigation.service";
+import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
 
 @Component({
-  selector: 'chf-collection-list',
-  templateUrl: './collection-list.component.html',
-  styleUrls: ['./collection-list.component.scss'],
+  selector: "chf-collection-list",
+  templateUrl: "./collection-list.component.html",
+  styleUrls: ["./collection-list.component.scss"],
 })
 export class CollectionListComponent implements OnInit {
   public collections: CardCollection[] = [];
   public cardCountPlural = {
-    '=0': 'No card',
-    '=1': '1 card',
-    other: '# cards',
+    "=0": "No card",
+    "=1": "1 card",
+    other: "# cards",
   };
 
   constructor(
@@ -26,14 +26,14 @@ export class CollectionListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCollections();
-    this.navigationService.setTitle('Manage collections');
+    this.navigationService.setTitle("Manage collections");
   }
 
   openEditor(collection?: CardCollection): void {
     this.dialog
       .open(CollectionEditorComponent, {
         data: { collection },
-        panelClass: ['mat-app-background', 'dark-mode'],
+        panelClass: ["mat-app-background", "dark-mode"],
       })
       .afterClosed()
       .subscribe(() => this.loadCollections());

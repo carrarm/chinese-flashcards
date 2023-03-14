@@ -1,7 +1,7 @@
-import * as dayjs from 'dayjs';
-import { Dayjs } from 'dayjs';
+import * as dayjs from "dayjs";
+import { Dayjs } from "dayjs";
 
-export type CardDifficultyLevel = 'easy' | 'medium' | 'hard';
+export type CardDifficultyLevel = "easy" | "medium" | "hard";
 
 export interface CardModel {
   id?: number;
@@ -42,7 +42,7 @@ export class Card implements CardModel {
   nextReview(): Dayjs | undefined {
     return this.isUnknown()
       ? undefined
-      : dayjs(this.lastSession).add(boxReviewDelay[this.leitnerBox], 'day');
+      : dayjs(this.lastSession).add(boxReviewDelay[this.leitnerBox], "day");
   }
 
   nextReviewInDays(): number {
@@ -56,8 +56,7 @@ export class Card implements CardModel {
   needsReview(): boolean {
     const nextSession = this.nextReview();
     return (
-      (!this.isUnknown() && dayjs().isSame(nextSession)) ||
-      dayjs().isAfter(nextSession)
+      (!this.isUnknown() && dayjs().isSame(nextSession)) || dayjs().isAfter(nextSession)
     );
   }
 

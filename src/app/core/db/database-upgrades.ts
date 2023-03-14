@@ -1,4 +1,4 @@
-import { Transaction } from 'dexie';
+import { Transaction } from "dexie";
 
 type DbUpgrades = {
   [key: number]: (tx: Transaction) => Promise<unknown>;

@@ -26,13 +26,21 @@
     </mat-form-field>
 
     <div class="field-with-ext-hint">
-      <mat-slide-toggle formControlName="learnPinyin">
-        Learn pinyin
+      <mat-slide-toggle formControlName="learnPinyin">Learn pinyin</mat-slide-toggle>
+      <div>
+        If this option is disabled, the pinyin will still be shown to you next to the
+        character but you won't have to fill the pinyin field to learn the card. Cards
+        that only contain the pinyin will not be added to learning sessions.
+      </div>
+    </div>
+
+    <div class="field-with-ext-hint">
+      <mat-slide-toggle formControlName="enableReviewMatching">
+        Enable Matching mode for review sessions
       </mat-slide-toggle>
       <div>
-        If this option is disabled, the pinyin will still be shown to you next
-        to the character but you won't have to fill the pinyin field to learn
-        the card. Cards that only contain the pinyin will not be added to
+        If this option is disabled, you won't be asked to match cards with their
+        translation during review sessions. The Matching mode will still be available for
         learning sessions.
       </div>
     </div>
@@ -50,16 +58,24 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <div>Number of cards displayed at once in the table</div>
+      <div>Number of cards displayed at once in the table.</div>
+    </div>
+
+    <div class="field-with-ext-hint">
+      <mat-slide-toggle formControlName="resetCardProgress">
+        Reset progress when a card is updated
+      </mat-slide-toggle>
+      <div>
+        Automatically reset the card progress if the pinyin or characters fields are
+        updated.
+      </div>
     </div>
   </div>
 </form>
 
-<div class="setting-group" *ngIf="!isProductionEnv">
+<div class="setting-group">
   <div class="title">Backup</div>
-  <button mat-stroked-button (click)="exportToJSON()">
-    Download backup file
-  </button>
+  <button mat-stroked-button (click)="exportToJSON()">Download backup file</button>
 </div>
 
 <div class="setting-group" *ngIf="!isProductionEnv">

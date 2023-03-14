@@ -1,24 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CollectionListComponent } from './collection-list/collection-list.component';
-import { MatCardModule } from '@angular/material/card';
-import { CollectionCardsComponent } from './collection-cards/collection-cards.component';
-import { RouterModule } from '@angular/router';
-import { MatTableModule } from '@angular/material/table';
-import { CardMeaningsPipe } from 'src/app/core/pipes/card-meanings.pipe';
-import { CardEditorComponent } from './card-editor/card-editor.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { VirtualKeyboardComponent } from 'src/app/components/virtual-keyboard/virtual-keyboard.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { CollectionEditorComponent } from './collection-editor/collection-editor.component';
-import { PinyinFormFieldComponent } from 'src/app/components/pinyin-form-field/pinyin-form-field.component';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatSortModule } from "@angular/material/sort";
+import { MatTableModule } from "@angular/material/table";
+import { RouterModule } from "@angular/router";
+import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
+import { CardMeaningsPipe } from "src/app/core/pipes/card-meanings.pipe";
+import { CardEditorComponent } from "./card-editor/card-editor.component";
+import { CollectionCardsComponent } from "./collection-cards/collection-cards.component";
+import { CollectionEditorComponent } from "./collection-editor/collection-editor.component";
+import { CollectionListComponent } from "./collection-list/collection-list.component";
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { PinyinFormFieldComponent } from 'src/app/components/pinyin-form-field/p
     MatIconModule,
     MatInputModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
     MatSortModule,
     MatTableModule,
     PinyinFormFieldComponent,

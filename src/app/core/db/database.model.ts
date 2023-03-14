@@ -1,15 +1,15 @@
-import * as dayjs from 'dayjs';
-import Dexie, { Table } from 'dexie';
-import { environment } from 'src/environments/environment';
-import { CardCollectionModel } from '../model/card-collection.model';
-import { CardModel } from '../model/card.model';
-import { SettingsModel } from '../model/settings.model';
-import { upgrades } from './database-upgrades';
+import * as dayjs from "dayjs";
+import Dexie, { Table } from "dexie";
+import { environment } from "src/environments/environment";
+import { CardCollectionModel } from "../model/card-collection.model";
+import { CardModel } from "../model/card.model";
+import { SettingsModel } from "../model/settings.model";
+import { upgrades } from "./database-upgrades";
 
 const schema = {
-  cardCollections: '++id, label',
-  cards: '++id, collectionId, leitnerBox, [collectionId+leitnerBox]',
-  settings: '++id',
+  cardCollections: "++id, label",
+  cards: "++id, collectionId, leitnerBox, [collectionId+leitnerBox]",
+  settings: "++id",
 };
 
 export class Database extends Dexie {
@@ -18,13 +18,13 @@ export class Database extends Dexie {
   public settings!: Table<SettingsModel, number>;
 
   constructor() {
-    super('chinese-cards');
+    super("chinese-cards");
     this.version(environment.dbVersion)
       .stores(schema)
       .upgrade(upgrades[environment.dbVersion]);
 
     if (!environment.production) {
-      this.on('populate', () => this.populate());
+      this.on("populate", () => this.populate());
     }
   }
 
@@ -35,83 +35,83 @@ export class Database extends Dexie {
   }
 
   private async populate() {
-    console.log('Populating database with demo cards and collections');
+    console.info("Populating database with demo cards and collections");
     const firstCollection = await this.cardCollections.add({
-      label: 'Animals',
+      label: "Animals",
     });
     await this.cards.bulkAdd([
       {
-        meanings: ['Horse'],
-        pinyin: 'mǎ',
-        characters: '马',
+        meanings: ["Horse"],
+        pinyin: "mǎ",
+        characters: "马",
         collectionId: firstCollection,
         leitnerBox: 5,
-        lastSession: dayjs().subtract(4, 'day').toISOString(),
+        lastSession: dayjs().subtract(4, "day").toISOString(),
       },
       {
-        meanings: ['Goat'],
-        pinyin: 'yáng',
-        characters: '羊',
+        meanings: ["Goat"],
+        pinyin: "yáng",
+        characters: "羊",
         collectionId: firstCollection,
         leitnerBox: 2,
-        lastSession: dayjs().subtract(10, 'day').toISOString(),
+        lastSession: dayjs().subtract(10, "day").toISOString(),
       },
       {
-        meanings: ['Rooster'],
-        pinyin: 'gōng jī',
-        characters: '公鸡',
+        meanings: ["Rooster"],
+        pinyin: "gōng jī",
+        characters: "公鸡",
         collectionId: firstCollection,
         leitnerBox: 4,
-        lastSession: dayjs().subtract(10, 'day').toISOString(),
+        lastSession: dayjs().subtract(10, "day").toISOString(),
       },
       {
-        meanings: ['Dog'],
-        pinyin: 'gǒu',
-        characters: '狗',
+        meanings: ["Dog"],
+        pinyin: "gǒu",
+        characters: "狗",
         collectionId: firstCollection,
         leitnerBox: 0,
       },
     ]);
 
     const secondCollection = await this.cardCollections.add({
-      label: 'Numbers',
+      label: "Numbers",
     });
     await this.cards.bulkAdd([
       {
-        meanings: ['One', 'First'],
-        pinyin: 'yī',
-        characters: '一',
+        meanings: ["One", "First"],
+        pinyin: "yī",
+        characters: "一",
         collectionId: secondCollection,
         leitnerBox: 3,
         lastSession: dayjs().toISOString(),
       },
       {
-        meanings: ['Two'],
-        pinyin: 'èr',
-        characters: '二',
+        meanings: ["Two"],
+        pinyin: "èr",
+        characters: "二",
         collectionId: secondCollection,
         leitnerBox: 1,
         lastSession: dayjs().toISOString(),
       },
       {
-        meanings: ['Three'],
-        pinyin: 'sān',
-        characters: '三',
+        meanings: ["Three"],
+        pinyin: "sān",
+        characters: "三",
         collectionId: secondCollection,
         leitnerBox: 3,
         lastSession: dayjs().toISOString(),
       },
       {
-        meanings: ['Four'],
-        pinyin: 'sì',
-        characters: '四',
+        meanings: ["Four"],
+        pinyin: "sì",
+        characters: "四",
         collectionId: secondCollection,
         leitnerBox: 0,
       },
       {
-        meanings: ['Five'],
-        pinyin: 'wǔ',
-        characters: '五',
+        meanings: ["Five"],
+        pinyin: "wǔ",
+        characters: "五",
         collectionId: secondCollection,
         leitnerBox: 0,
       },

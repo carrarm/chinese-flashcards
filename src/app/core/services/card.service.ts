@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Card } from '../model/card.model';
-import { Database } from '../db/database.model';
-import { DatabaseService } from '../db/database.service';
+import { Injectable } from "@angular/core";
+import { Card } from "../model/card.model";
+import { Database } from "../db/database.model";
+import { DatabaseService } from "../db/database.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class CardService {
   private database: Database;
@@ -20,14 +20,13 @@ export class CardService {
   }
 
   async updateCard(card: Card): Promise<Card> {
-    let error = 'ID is undefined';
+    let error = "ID is undefined";
     if (card.id) {
       try {
         await this.database.cards.put(card);
         return this.getCard(card.id);
       } catch (err: unknown) {
-        error =
-          typeof err === 'string' ? err : 'An error occurred during the update';
+        error = typeof err === "string" ? err : "An error occurred during the update";
       }
     }
     throw new Error(`Unable to update the card with id ${card.id}: ${error}`);
@@ -38,7 +37,7 @@ export class CardService {
   }
 
   async deleteCard(card: Card | number): Promise<void> {
-    const cardId = typeof card === 'number' ? card : card.id;
+    const cardId = typeof card === "number" ? card : card.id;
     if (cardId) {
       return this.database.cards.delete(cardId);
     }

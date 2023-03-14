@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Database } from '../db/database.model';
-import { Settings } from '../model/settings.model';
-import { DatabaseService } from '../db/database.service';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { Database } from "../db/database.model";
+import { Settings } from "../model/settings.model";
+import { DatabaseService } from "../db/database.service";
 
-const THEME_STORAGE_KEY = 'THEME';
+const THEME_STORAGE_KEY = "THEME";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class SettingsService {
   private database: Database;
   private darkModeActive$ = new BehaviorSubject<boolean>(
-    (localStorage.getItem(THEME_STORAGE_KEY) ?? 'dark') === 'dark'
+    (localStorage.getItem(THEME_STORAGE_KEY) ?? "dark") === "dark"
   );
 
   constructor(databaseService: DatabaseService) {

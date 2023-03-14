@@ -1,32 +1,30 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Database } from '../db/database.model';
-import { DatabaseService } from '../db/database.service';
-import { Card } from '../model/card.model';
-import { CollectionService } from './collection.service';
-import { SettingsService } from './settings.service';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { Card } from "../model/card.model";
+import { CollectionService } from "./collection.service";
+import { SettingsService } from "./settings.service";
+
+type SessionType = "review" | "learn";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class LearningSessionService {
   public readonly currentSession = new BehaviorSubject<Card[]>([]);
-
-  private database: Database;
+  public readonly sessionType = new BehaviorSubject<SessionType>("learn");
 
   constructor(
     private collectionService: CollectionService,
-    private settingsService: SettingsService,
-    databaseService: DatabaseService
-  ) {
-    this.database = databaseService.database;
-  }
+    private settingsService: SettingsService
+  ) {}
 
   async createLearningSession(collection?: number): Promise<Card[]> {
     const cards = await this.collectionService
       .getUnknownCardRequest(collection)
       .limit(await this.getWordsPerSession())
       .toArray();
+
+    this.sessionType.next("learn");
 
     return cards.map((card) => new Card(card));
   }
@@ -36,9 +34,15 @@ export class LearningSessionService {
       .getReviewCardRequest(collection)
       .limit(await this.getWordsPerSession())
       .reverse()
-      .sortBy('leitnerBox');
+      .sortBy("leitnerBox");
+
+    this.sessionType.next("review");
 
     return cards.map((card) => new Card(card));
+  }
+
+  public isLearningSession(): boolean {
+    return this.sessionType.getValue() === "learn";
   }
 
   private getWordsPerSession(): Promise<number> {

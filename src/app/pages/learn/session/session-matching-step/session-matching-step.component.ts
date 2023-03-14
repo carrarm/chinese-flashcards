@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Card } from 'src/app/core/model/card.model';
-import { shuffleArray } from 'src/app/core/utils/general.utils';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Card } from "src/app/core/model/card.model";
+import { shuffleArray } from "src/app/core/utils/general.utils";
 
 interface MatchingCard {
   card: Card;
@@ -8,9 +8,9 @@ interface MatchingCard {
 }
 
 @Component({
-  selector: 'chf-session-matching-step',
-  templateUrl: './session-matching-step.component.html',
-  styleUrls: ['./session-matching-step.component.scss'],
+  selector: "chf-session-matching-step",
+  templateUrl: "./session-matching-step.component.html",
+  styleUrls: ["./session-matching-step.component.scss"],
 })
 export class SessionMatchingStepComponent implements OnInit {
   @Input() cards: Card[] = [];
@@ -25,9 +25,7 @@ export class SessionMatchingStepComponent implements OnInit {
 
   ngOnInit(): void {
     for (let i = 0; i <= this.repeat; i++) {
-      this.matchingPages = this.matchingPages.concat(
-        this.buildStepPages(this.cards)
-      );
+      this.matchingPages = this.matchingPages.concat(this.buildStepPages(this.cards));
     }
 
     this.learnNewPage();
@@ -85,9 +83,7 @@ export class SessionMatchingStepComponent implements OnInit {
   private learnNewPage(): void {
     if (this.matchingPages.length) {
       const page: Card[] = this.matchingPages.splice(0, 1)[0];
-      this.leftColumnCards = shuffleArray(
-        page.map((card) => ({ card, matched: false }))
-      );
+      this.leftColumnCards = shuffleArray(page.map((card) => ({ card, matched: false })));
       this.rightColumnCards = shuffleArray(
         page.map((card) => ({ card, matched: false }))
       );

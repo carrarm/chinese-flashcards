@@ -1,21 +1,21 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { QWERTY } from './keyboard-layout.model';
-import { MatIconModule } from '@angular/material/icon';
-import { getTones, hasTones } from './tones';
-import { MatRippleModule } from '@angular/material/core';
-import { LongPressDirective } from './long-press.directive';
 import {
   FlexibleConnectedPositionStrategyOrigin,
   OverlayModule,
-} from '@angular/cdk/overlay';
+} from "@angular/cdk/overlay";
+import { CommonModule } from "@angular/common";
+import { Component, EventEmitter, Output } from "@angular/core";
+import { MatRippleModule } from "@angular/material/core";
+import { MatIconModule } from "@angular/material/icon";
+import { QWERTY } from "./keyboard-layout.model";
+import { LongPressDirective } from "./long-press.directive";
+import { getTones, hasTones } from "./tones";
 
 const TONE_KEY_WIDTH_PX = 34; // Key width + gap with other keys
 const BASE_TONE_OVERLAY_OFFSET_X = -(TONE_KEY_WIDTH_PX * 1.5);
 const BASE_TONE_OVERLAY_OFFSET_Y = -TONE_KEY_WIDTH_PX * 2.5;
 
 @Component({
-  selector: 'chf-virtual-keyboard',
+  selector: "chf-virtual-keyboard",
   standalone: true,
   imports: [
     CommonModule,
@@ -24,13 +24,13 @@ const BASE_TONE_OVERLAY_OFFSET_Y = -TONE_KEY_WIDTH_PX * 2.5;
     MatRippleModule,
     OverlayModule,
   ],
-  templateUrl: './virtual-keyboard.component.html',
-  styleUrls: ['./virtual-keyboard.component.scss'],
+  templateUrl: "./virtual-keyboard.component.html",
+  styleUrls: ["./virtual-keyboard.component.scss"],
 })
 export class VirtualKeyboardComponent {
   @Output() typed = new EventEmitter<string>();
   @Output() backspace = new EventEmitter<void>();
-  @Output() submit = new EventEmitter<void>();
+  @Output() submitText = new EventEmitter<void>();
 
   public toneOverlayOffsetY = BASE_TONE_OVERLAY_OFFSET_Y;
   public toneOverlayOffsetX = BASE_TONE_OVERLAY_OFFSET_X;
@@ -48,9 +48,7 @@ export class VirtualKeyboardComponent {
    * @param character Character to emit
    */
   public writeCharacter(character: string, preserverCase = false): void {
-    this.typed.emit(
-      this.uppercaseEnabled ? character : character.toLowerCase()
-    );
+    this.typed.emit(this.uppercaseEnabled ? character : character.toLowerCase());
     if (!preserverCase) {
       this.uppercaseEnabled = false;
     }
@@ -73,16 +71,12 @@ export class VirtualKeyboardComponent {
       this.toneOverlayOffsetX = this.computeOffsetX(positionInColumn);
       this.toneOverlayOpen = true;
       this.toneOverlayOrigin = elementRef;
-      const letterCase = this.uppercaseEnabled ? 'UPPER' : 'LOWER';
+      const letterCase = this.uppercaseEnabled ? "UPPER" : "LOWER";
       this.toneKeys = getTones(letter, letterCase);
-      if (letter === 'U') {
+      if (letter === "U") {
         // Add ü variations with u tones to avoid adding another key
-        const rootLetter = this.uppercaseEnabled ? 'Ü' : 'ü';
-        this.toneKeys = [
-          ...this.toneKeys,
-          ...getTones('ü', letterCase),
-          rootLetter,
-        ];
+        const rootLetter = this.uppercaseEnabled ? "Ü" : "ü";
+        this.toneKeys = [...this.toneKeys, ...getTones("ü", letterCase), rootLetter];
       }
     }
   }

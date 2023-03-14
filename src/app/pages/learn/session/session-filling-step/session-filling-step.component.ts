@@ -1,20 +1,20 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Card, CardDifficultyLevel } from 'src/app/core/model/card.model';
-import { SettingsService } from 'src/app/core/services/settings.service';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Card, CardDifficultyLevel } from "src/app/core/model/card.model";
+import { SettingsService } from "src/app/core/services/settings.service";
 import {
   removeOnce,
   removeTimes,
   shuffleArray,
   uniqueValues,
-} from 'src/app/core/utils/general.utils';
-import { SessionCard } from '../session-card.model';
+} from "src/app/core/utils/general.utils";
+import { SessionCard } from "../session-card.model";
 
 @Component({
-  selector: 'chf-session-filling-step',
-  templateUrl: './session-filling-step.component.html',
-  styleUrls: ['./session-filling-step.component.scss'],
+  selector: "chf-session-filling-step",
+  templateUrl: "./session-filling-step.component.html",
+  styleUrls: ["./session-filling-step.component.scss"],
 })
-export class SessionFillingStepComponent {
+export class SessionFillingStepComponent implements OnInit {
   @Input() cards: Card[] = [];
   @Output() completed = new EventEmitter<SessionCard[]>();
 
@@ -52,12 +52,10 @@ export class SessionFillingStepComponent {
     let pinyinMatch = true;
     if (this.currentCard) {
       if (this.currentCard.characters) {
-        chineseMatch =
-          this.currentCard.characters.trim() === this.characterInput?.trim();
+        chineseMatch = this.currentCard.characters.trim() === this.characterInput?.trim();
       }
       if (this.currentCard.pinyin) {
-        pinyinMatch =
-          this.currentCard.pinyin.trim() === this.pinyinInput?.trim();
+        pinyinMatch = this.currentCard.pinyin.trim() === this.pinyinInput?.trim();
       }
       this.isMistake = !chineseMatch || !pinyinMatch;
       this.cardRevealed = true;
@@ -116,8 +114,7 @@ export class SessionFillingStepComponent {
   private updateSessionCards(): void {
     if (this.currentCard) {
       const expectedRemaining =
-        this.currentCard.numberOfRepetitions -
-        this.currentCard.currentRepetitions;
+        this.currentCard.numberOfRepetitions - this.currentCard.currentRepetitions;
 
       if (expectedRemaining) {
         const sessionCount = this.session.filter(
@@ -137,9 +134,7 @@ export class SessionFillingStepComponent {
           );
         }
       } else {
-        this.session = this.session.filter(
-          (card) => card !== this.currentCard?.id
-        );
+        this.session = this.session.filter((card) => card !== this.currentCard?.id);
       }
     }
   }

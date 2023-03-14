@@ -1,17 +1,19 @@
-import * as dayjs from 'dayjs';
-import { Card, CardDifficultyLevel } from 'src/app/core/model/card.model';
+import * as dayjs from "dayjs";
+import { Card, CardDifficultyLevel } from "src/app/core/model/card.model";
 
 const EASY_REPS = 2;
 const MEDIUM_REPS = 3;
 const HARD_REPS = 4;
+
+type SessionProgress = "up" | "down" | "flat";
 
 export class SessionCard {
   card: Card;
   mistakes: number;
   numberOfRepetitions = 0;
   currentRepetitions = 0;
-  sessionResultIcon: 'trending_up' | 'trending_down' | 'trending_flat' =
-    'trending_flat';
+  sessionResultIcon = "trending_flat";
+  sessionProgress: SessionProgress = "flat";
 
   get id(): number {
     return this.card.id ?? 0;
@@ -55,12 +57,14 @@ export class SessionCard {
    */
   endSession(): void {
     if (this.mistakes === 0) {
-      this.sessionResultIcon = 'trending_up';
+      this.sessionProgress = "up";
       this.card.moveNextBox();
     } else if (this.mistakes > 1) {
-      this.sessionResultIcon = 'trending_down';
+      this.sessionProgress = "down";
       this.card.movePreviousBox();
     }
+    // Use one of Material's trending_up/down/flat icons
+    this.sessionResultIcon = "trending_" + this.sessionProgress;
     this.card.lastSession = dayjs().toISOString();
   }
 
@@ -72,11 +76,11 @@ export class SessionCard {
    */
   private getNumberOfRepetitions(): number {
     switch (this.card.difficulty) {
-      case 'easy':
+      case "easy":
         return EASY_REPS;
-      case 'medium':
+      case "medium":
         return MEDIUM_REPS;
-      case 'hard':
+      case "hard":
         return HARD_REPS;
       default:
         return this.getDefaultRepetitions();
