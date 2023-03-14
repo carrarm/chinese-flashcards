@@ -1,17 +1,18 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CollectionPageModule } from './pages/collection/collection-page.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { SettingsModule } from './pages/settings/settings.module';
+import { CollectionPageModule } from './pages/collection/collection-page.module';
 import { LearnPageModule } from './pages/learn/learn-page.module';
+import { SettingsModule } from './pages/settings/settings.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { LearnPageModule } from './pages/learn/learn-page.module';
     BrowserAnimationsModule,
     CollectionPageModule,
     LearnPageModule,
+    HttpClientModule,
     MatSidenavModule,
     NavbarComponent,
     ServiceWorkerModule.register('ngsw-worker.js', {
