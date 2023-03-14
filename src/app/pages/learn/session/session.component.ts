@@ -4,6 +4,7 @@ import { Card } from "src/app/core/model/card.model";
 import { CardService } from "src/app/core/services/card.service";
 import { LearningSessionService } from "src/app/core/services/learning-session.service";
 import { NavigationService } from "src/app/core/services/navigation.service";
+import { SettingsService } from "src/app/core/services/settings.service";
 import { SessionCard } from "./session-card.model";
 
 @Component({
@@ -13,7 +14,7 @@ import { SessionCard } from "./session-card.model";
 })
 export class SessionComponent {
   public sessionCards: Card[] = [];
-  public isMatchingStep = true;
+  public isMatchingStep = false;
   public isFillingStep = false;
   public isSessionDone = false;
   public sessionResults: SessionCard[] = [];
@@ -21,6 +22,7 @@ export class SessionComponent {
   constructor(
     private cardService: CardService,
     learningSessionService: LearningSessionService,
+    settingsService: SettingsService,
     router: Router,
     navigationService: NavigationService
   ) {
@@ -29,6 +31,11 @@ export class SessionComponent {
     if (!this.sessionCards.length) {
       router.navigateByUrl("/sessions");
     }
+    settingsService.getSettings().then((settings) => {
+      this.isMatchingStep =
+        learningSessionService.isLearningSession() || settings.enableReviewMatching;
+      this.isFillingStep = !this.isMatchingStep;
+    });
   }
 
   matchingCompleted(): void {

@@ -14,6 +14,10 @@
     <chf-pinyin-form-field formControlName="pinyin" />
   </form>
 
+  <mat-slide-toggle *ngIf="!creationMode" [(ngModel)]="resetProgressActive">
+    Reset progress
+  </mat-slide-toggle>
+
   <mat-checkbox [(ngModel)]="keepEditorOpen" *ngIf="creationMode; else deleteButton">
     Add another card after this one
   </mat-checkbox>
