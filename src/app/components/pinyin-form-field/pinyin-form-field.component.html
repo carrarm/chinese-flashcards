@@ -19,5 +19,5 @@
   *ngIf="virtualKeyboardOpen"
   (typed)="writePinyinCharacter($event)"
   (backspace)="removePinyinCharacter()"
-  (submit)="virtualKeyboardOpen = false"
+  (submitText)="virtualKeyboardOpen = false"
 />

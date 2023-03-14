@@ -12,7 +12,7 @@ export class SessionCard {
   mistakes: number;
   numberOfRepetitions = 0;
   currentRepetitions = 0;
-  sessionResultIcon: string = "trending_flat";
+  sessionResultIcon = "trending_flat";
   sessionProgress: SessionProgress = "flat";
 
   get id(): number {

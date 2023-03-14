@@ -35,7 +35,7 @@ export class Database extends Dexie {
   }
 
   private async populate() {
-    console.log("Populating database with demo cards and collections");
+    console.info("Populating database with demo cards and collections");
     const firstCollection = await this.cardCollections.add({
       label: "Animals",
     });

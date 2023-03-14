@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Card, CardDifficultyLevel } from "src/app/core/model/card.model";
 import { SettingsService } from "src/app/core/services/settings.service";
 import {
@@ -14,7 +14,7 @@ import { SessionCard } from "../session-card.model";
   templateUrl: "./session-filling-step.component.html",
   styleUrls: ["./session-filling-step.component.scss"],
 })
-export class SessionFillingStepComponent {
+export class SessionFillingStepComponent implements OnInit {
   @Input() cards: Card[] = [];
   @Output() completed = new EventEmitter<SessionCard[]>();
 

@@ -4,7 +4,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute } from "@angular/router";
-import { debounceTime, never, Subject } from "rxjs";
+import { debounceTime, Subject } from "rxjs";
 import { Card } from "src/app/core/model/card.model";
 import { CollectionService } from "src/app/core/services/collection.service";
 import { NavigationService } from "src/app/core/services/navigation.service";

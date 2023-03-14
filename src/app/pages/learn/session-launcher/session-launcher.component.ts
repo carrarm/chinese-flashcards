@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CardCollection } from "src/app/core/model/card-collection.model";
 import { Settings } from "src/app/core/model/settings.model";
@@ -14,7 +14,7 @@ import { StatisticsService } from "src/app/core/services/statistics.service";
   templateUrl: "./session-launcher.component.html",
   styleUrls: ["./session-launcher.component.scss"],
 })
-export class SessionLauncherComponent {
+export class SessionLauncherComponent implements OnInit {
   public settings?: Settings;
   public collections: CardCollection[] = [];
   public allCollectionStats?: {

@@ -1,11 +1,11 @@
+import { NgIf } from "@angular/common";
 import { Component, forwardRef } from "@angular/core";
-import { CommonModule, NgIf } from "@angular/common";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { VirtualKeyboardComponent } from "../virtual-keyboard/virtual-keyboard.component";
-import { MatIconModule } from "@angular/material/icon";
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { VirtualKeyboardComponent } from "../virtual-keyboard/virtual-keyboard.component";
 
 const modules = [
   FormsModule,
@@ -16,6 +16,8 @@ const modules = [
   NgIf,
   VirtualKeyboardComponent,
 ];
+
+type PropagateFct = (_?: string) => void;
 
 @Component({
   selector: "chf-pinyin-form-field",
@@ -35,7 +37,9 @@ export class PinyinFormFieldComponent implements ControlValueAccessor {
   public virtualKeyboardOpen = false;
   public fieldValue?: string;
 
-  private propagateChange = (_?: string) => {};
+  private propagateChange: PropagateFct = () => {
+    // Do nothing
+  };
 
   writePinyinCharacter(character: string): void {
     this.updateValue((this.fieldValue ?? "") + character);
@@ -57,15 +61,15 @@ export class PinyinFormFieldComponent implements ControlValueAccessor {
     this.fieldValue = newValue;
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: PropagateFct): void {
     this.propagateChange = fn;
   }
 
-  registerOnTouched(_: any): void {
+  registerOnTouched(): void {
     // Do nothing
   }
 
-  setDisabledState?(_: boolean): void {
+  setDisabledState(): void {
     // Do nothing
   }
 }

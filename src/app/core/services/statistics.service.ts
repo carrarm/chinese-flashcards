@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Database } from "../db/database.model";
 import { DatabaseService } from "../db/database.service";
 import { CardCollection } from "../model/card-collection.model";
-import { Card } from "../model/card.model";
 import { CollectionStats } from "../model/statistics.model";
 import { CollectionService } from "./collection.service";
 

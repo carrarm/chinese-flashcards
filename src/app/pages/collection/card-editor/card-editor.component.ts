@@ -51,7 +51,7 @@ export class CardEditorComponent {
     const { meaning, chinese, pinyin } = this.form.value;
     if (meaning && (chinese || pinyin)) {
       const card: Card = new Card({
-        meanings: meaning.split(";").map((meaning) => meaning.trim()),
+        meanings: meaning.split(";").map((m) => m.trim()),
         pinyin: toOptional(pinyin),
         characters: toOptional(chinese),
         collectionId: this.collectionId,
