@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 const importedModules = [
   CommonModule,
@@ -20,4 +21,6 @@ const importedModules = [
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
 })
-export class SidenavComponent {}
+export class SidenavComponent {
+  public appVersion = environment.version;
+}

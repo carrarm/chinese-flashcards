@@ -1,5 +1,13 @@
 :host {
   height: 100%;
+  padding: 0.5rem 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-menu {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -21,4 +29,9 @@
       color: var(--accent-color);
     }
   }
+}
+
+.version {
+  font-size: small;
+  text-align: center;
 }
