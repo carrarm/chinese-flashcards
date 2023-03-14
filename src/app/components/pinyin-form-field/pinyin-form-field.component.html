@@ -7,11 +7,7 @@
     (ngModelChange)="updateValue($event)"
     [readonly]="virtualKeyboardOpen"
   />
-  <button
-    mat-icon-button
-    matSuffix
-    (click)="virtualKeyboardOpen = !virtualKeyboardOpen"
-  >
+  <button mat-icon-button matSuffix (click)="virtualKeyboardOpen = !virtualKeyboardOpen">
     <mat-icon>keyboard</mat-icon>
   </button>
   <mat-hint *ngIf="virtualKeyboardOpen">

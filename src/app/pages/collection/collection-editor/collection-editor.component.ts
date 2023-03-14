@@ -1,12 +1,12 @@
-import { Component, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import {
   CardCollection,
   CardCollectionModel,
-} from 'src/app/core/model/card-collection.model';
-import { CollectionService } from 'src/app/core/services/collection.service';
-import { toOptional } from 'src/app/core/utils/form.utils';
+} from "src/app/core/model/card-collection.model";
+import { CollectionService } from "src/app/core/services/collection.service";
+import { toOptional } from "src/app/core/utils/form.utils";
 
 interface CollectionForm {
   label: FormControl<string | null>;
@@ -14,9 +14,9 @@ interface CollectionForm {
 }
 
 @Component({
-  selector: 'chf-collection-editor',
-  templateUrl: './collection-editor.component.html',
-  styleUrls: ['./collection-editor.component.scss'],
+  selector: "chf-collection-editor",
+  templateUrl: "./collection-editor.component.html",
+  styleUrls: ["./collection-editor.component.scss"],
 })
 export class CollectionEditorComponent {
   public form = new FormGroup<CollectionForm>({

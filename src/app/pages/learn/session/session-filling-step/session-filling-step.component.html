@@ -1,6 +1,9 @@
 <ng-container *ngIf="currentCard">
   <mat-card appearance="outlined">
-    <div class="centered-card" [innerHTML]="currentCard.card.meanings | cardMeanings"></div>
+    <div
+      class="centered-card"
+      [innerHTML]="currentCard.card.meanings | cardMeanings"
+    ></div>
     <span class="card-rep-count">
       {{ currentCard.currentRepetitions }} /
       {{ currentCard.numberOfRepetitions }}
@@ -8,11 +11,13 @@
   </mat-card>
 
   <ng-container *ngIf="cardRevealed; else cardForm">
-    <mat-card *ngIf="pinyinInput || characterInput" appearance="outlined" class="centered-card chinese">
+    <mat-card
+      *ngIf="pinyinInput || characterInput"
+      appearance="outlined"
+      class="centered-card chinese"
+    >
       <div class="floating-icon">
-        <mat-icon class="failed" *ngIf="isMistake; else successIcon">
-          cancel
-        </mat-icon>
+        <mat-icon class="failed" *ngIf="isMistake; else successIcon"> cancel </mat-icon>
         <ng-template #successIcon>
           <mat-icon class="passed">check_circle</mat-icon>
         </ng-template>
@@ -32,18 +37,27 @@
     <div>
       How did you find this card?
       <div class="difficulty-levels">
-        <div class="level hard" [class]="{ active: currentCard.card.difficulty === 'hard' }"
-          (click)="changeDifficulty('hard')">
+        <div
+          class="level hard"
+          [class]="{ active: currentCard.card.difficulty === 'hard' }"
+          (click)="changeDifficulty('hard')"
+        >
           <mat-icon svgIcon="face-sob" />
           <span>Hard</span>
         </div>
-        <div class="level medium" [class]="{ active: currentCard.card.difficulty === 'medium' }"
-          (click)="changeDifficulty('medium')">
+        <div
+          class="level medium"
+          [class]="{ active: currentCard.card.difficulty === 'medium' }"
+          (click)="changeDifficulty('medium')"
+        >
           <mat-icon svgIcon="face-smile" />
           <span>OK</span>
         </div>
-        <div class="level easy" [class]="{ active: currentCard.card.difficulty === 'easy' }"
-          (click)="changeDifficulty('easy')">
+        <div
+          class="level easy"
+          [class]="{ active: currentCard.card.difficulty === 'easy' }"
+          (click)="changeDifficulty('easy')"
+        >
           <mat-icon svgIcon="face-laugh" />
           <span>Easy</span>
         </div>
@@ -59,17 +73,18 @@
       </mat-form-field>
 
       <ng-container *ngIf="learnPinyin">
-        <chf-pinyin-form-field [(ngModel)]="pinyinInput" *ngIf="currentCard.card.pinyin" />
+        <chf-pinyin-form-field
+          [(ngModel)]="pinyinInput"
+          *ngIf="currentCard.card.pinyin"
+        />
 
         <p class="helper-text">
-          When the pinyin mode is enabled, you need to fill all of the fields
-          above to validate the card.
+          When the pinyin mode is enabled, you need to fill all of the fields above to
+          validate the card.
         </p>
       </ng-container>
 
-      <button mat-flat-button color="primary" (click)="checkResponse()">
-        Check
-      </button>
+      <button mat-flat-button color="primary" (click)="checkResponse()">Check</button>
     </mat-card>
   </ng-template>
 

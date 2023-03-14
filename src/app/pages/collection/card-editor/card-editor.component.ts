@@ -1,9 +1,9 @@
-import { Component, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Card } from 'src/app/core/model/card.model';
-import { CardService } from 'src/app/core/services/card.service';
-import { toOptional } from 'src/app/core/utils/form.utils';
+import { Component, Inject } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Card } from "src/app/core/model/card.model";
+import { CardService } from "src/app/core/services/card.service";
+import { toOptional } from "src/app/core/utils/form.utils";
 
 interface CardForm {
   meaning: FormControl<string | null>;
@@ -12,9 +12,9 @@ interface CardForm {
 }
 
 @Component({
-  selector: 'chf-card-editor',
-  templateUrl: './card-editor.component.html',
-  styleUrls: ['./card-editor.component.scss'],
+  selector: "chf-card-editor",
+  templateUrl: "./card-editor.component.html",
+  styleUrls: ["./card-editor.component.scss"],
 })
 export class CardEditorComponent {
   public keepEditorOpen = false;
@@ -37,7 +37,7 @@ export class CardEditorComponent {
   ) {
     if (data.card) {
       this.form.patchValue({
-        meaning: data.card.meanings.join(' ; '),
+        meaning: data.card.meanings.join(" ; "),
         pinyin: data.card.pinyin,
         chinese: data.card.characters,
       });
@@ -51,7 +51,7 @@ export class CardEditorComponent {
     const { meaning, chinese, pinyin } = this.form.value;
     if (meaning && (chinese || pinyin)) {
       const card: Card = new Card({
-        meanings: meaning.split(';').map((meaning) => meaning.trim()),
+        meanings: meaning.split(";").map((meaning) => meaning.trim()),
         pinyin: toOptional(pinyin),
         characters: toOptional(chinese),
         collectionId: this.collectionId,

@@ -1,15 +1,11 @@
-import { Component, forwardRef } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { VirtualKeyboardComponent } from '../virtual-keyboard/virtual-keyboard.component';
-import { MatIconModule } from '@angular/material/icon';
-import {
-  ControlValueAccessor,
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-} from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
+import { Component, forwardRef } from "@angular/core";
+import { CommonModule, NgIf } from "@angular/common";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { VirtualKeyboardComponent } from "../virtual-keyboard/virtual-keyboard.component";
+import { MatIconModule } from "@angular/material/icon";
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
 
 const modules = [
   FormsModule,
@@ -22,11 +18,11 @@ const modules = [
 ];
 
 @Component({
-  selector: 'chf-pinyin-form-field',
+  selector: "chf-pinyin-form-field",
   standalone: true,
   imports: modules,
-  templateUrl: './pinyin-form-field.component.html',
-  styleUrls: ['./pinyin-form-field.component.scss'],
+  templateUrl: "./pinyin-form-field.component.html",
+  styleUrls: ["./pinyin-form-field.component.scss"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -42,7 +38,7 @@ export class PinyinFormFieldComponent implements ControlValueAccessor {
   private propagateChange = (_?: string) => {};
 
   writePinyinCharacter(character: string): void {
-    this.updateValue((this.fieldValue ?? '') + character);
+    this.updateValue((this.fieldValue ?? "") + character);
   }
 
   removePinyinCharacter(): void {

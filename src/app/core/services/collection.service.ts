@@ -1,15 +1,12 @@
-import { Injectable } from '@angular/core';
-import {
-  CardCollection,
-  CardCollectionModel,
-} from '../model/card-collection.model';
-import { Database } from '../db/database.model';
-import { DatabaseService } from '../db/database.service';
-import { Card, CardModel } from '../model/card.model';
-import { Collection } from 'dexie';
+import { Injectable } from "@angular/core";
+import { CardCollection, CardCollectionModel } from "../model/card-collection.model";
+import { Database } from "../db/database.model";
+import { DatabaseService } from "../db/database.service";
+import { Card, CardModel } from "../model/card.model";
+import { Collection } from "dexie";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class CollectionService {
   private database: Database;
@@ -21,7 +18,7 @@ export class CollectionService {
   async getCollections(): Promise<CardCollection[]> {
     try {
       return await this.database.cardCollections
-        .orderBy('label')
+        .orderBy("label")
         .toArray((collections: CardCollectionModel[]) => {
           const filledCollectionPromises = collections.map((collection) =>
             this.loadCollectionCards(collection)
@@ -29,16 +26,14 @@ export class CollectionService {
           return Promise.all(filledCollectionPromises);
         });
     } catch (error) {
-      console.error('Unable to load card collections', error);
+      console.error("Unable to load card collections", error);
       return [];
     }
   }
 
   async getCollection(id: number): Promise<CardCollection | undefined> {
     const cardCollection = await this.database.cardCollections.get(id);
-    return cardCollection
-      ? this.loadCollectionCards(cardCollection)
-      : undefined;
+    return cardCollection ? this.loadCollectionCards(cardCollection) : undefined;
   }
 
   createCollection(collection: CardCollectionModel): Promise<number> {
@@ -60,9 +55,7 @@ export class CollectionService {
    * @returns Dexie `Collection<CardModel, number>`
    */
   getUnknownCardRequest(collectionId?: number): Collection<CardModel, number> {
-    const request = collectionId
-      ? { collectionId, leitnerBox: 0 }
-      : { leitnerBox: 0 };
+    const request = collectionId ? { collectionId, leitnerBox: 0 } : { leitnerBox: 0 };
     return this.database.cards.where(request);
   }
 

@@ -1,4 +1,4 @@
-export type AppTheme = 'dark' | 'light';
+export type AppTheme = "dark" | "light";
 
 export interface SettingsModel {
   id?: number;
@@ -14,7 +14,7 @@ export class Settings implements SettingsModel {
   public learnPinyin = true;
   public pageSize = 10;
   public wordsPerSession = 10;
-  public theme: AppTheme = 'dark';
+  public theme: AppTheme = "dark";
   public leitnerBoxes = 5;
 
   constructor(settings?: SettingsModel) {
@@ -29,6 +29,6 @@ export class Settings implements SettingsModel {
   }
 
   isDarkModeActive(): boolean {
-    return this.theme === 'dark';
+    return this.theme === "dark";
   }
 }

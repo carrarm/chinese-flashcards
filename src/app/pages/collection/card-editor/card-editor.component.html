@@ -14,26 +14,19 @@
     <chf-pinyin-form-field formControlName="pinyin" />
   </form>
 
-  <mat-checkbox
-    [(ngModel)]="keepEditorOpen"
-    *ngIf="creationMode; else deleteButton"
-  >
+  <mat-checkbox [(ngModel)]="keepEditorOpen" *ngIf="creationMode; else deleteButton">
     Add another card after this one
   </mat-checkbox>
 
   <ng-template #deleteButton>
-    <button mat-stroked-button color="warn" (click)="deleteCard()">
-      Delete card
-    </button>
+    <button mat-stroked-button color="warn" (click)="deleteCard()">Delete card</button>
   </ng-template>
 </div>
 
 <div mat-dialog-actions>
   <button mat-flat-button mat-dialog-close cdkFocusInitial>Cancel</button>
   <button mat-flat-button color="primary" (click)="saveCard()">
-    <ng-container *ngIf="keepEditorOpen; else saveAndCloseText">
-      Save
-    </ng-container>
+    <ng-container *ngIf="keepEditorOpen; else saveAndCloseText"> Save </ng-container>
     <ng-template #saveAndCloseText>Save and close</ng-template>
   </button>
 </div>

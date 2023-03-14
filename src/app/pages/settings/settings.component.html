@@ -26,14 +26,11 @@
     </mat-form-field>
 
     <div class="field-with-ext-hint">
-      <mat-slide-toggle formControlName="learnPinyin">
-        Learn pinyin
-      </mat-slide-toggle>
+      <mat-slide-toggle formControlName="learnPinyin"> Learn pinyin </mat-slide-toggle>
       <div>
-        If this option is disabled, the pinyin will still be shown to you next
-        to the character but you won't have to fill the pinyin field to learn
-        the card. Cards that only contain the pinyin will not be added to
-        learning sessions.
+        If this option is disabled, the pinyin will still be shown to you next to the
+        character but you won't have to fill the pinyin field to learn the card. Cards
+        that only contain the pinyin will not be added to learning sessions.
       </div>
     </div>
   </div>
@@ -57,9 +54,7 @@
 
 <div class="setting-group">
   <div class="title">Backup</div>
-  <button mat-stroked-button (click)="exportToJSON()">
-    Download backup file
-  </button>
+  <button mat-stroked-button (click)="exportToJSON()">Download backup file</button>
 </div>
 
 <div class="setting-group" *ngIf="!isProductionEnv">

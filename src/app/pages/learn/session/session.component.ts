@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Card } from 'src/app/core/model/card.model';
-import { CardService } from 'src/app/core/services/card.service';
-import { LearningSessionService } from 'src/app/core/services/learning-session.service';
-import { NavigationService } from 'src/app/core/services/navigation.service';
-import { SessionCard } from './session-card.model';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { Card } from "src/app/core/model/card.model";
+import { CardService } from "src/app/core/services/card.service";
+import { LearningSessionService } from "src/app/core/services/learning-session.service";
+import { NavigationService } from "src/app/core/services/navigation.service";
+import { SessionCard } from "./session-card.model";
 
 @Component({
-  selector: 'chf-session',
-  templateUrl: './session.component.html',
-  styleUrls: ['./session.component.scss'],
+  selector: "chf-session",
+  templateUrl: "./session.component.html",
+  styleUrls: ["./session.component.scss"],
 })
 export class SessionComponent {
   public sessionCards: Card[] = [];
@@ -24,10 +24,10 @@ export class SessionComponent {
     router: Router,
     navigationService: NavigationService
   ) {
-    navigationService.setTitle('Learning session');
+    navigationService.setTitle("Learning session");
     this.sessionCards = learningSessionService.currentSession.getValue();
     if (!this.sessionCards.length) {
-      router.navigateByUrl('/sessions');
+      router.navigateByUrl("/sessions");
     }
   }
 

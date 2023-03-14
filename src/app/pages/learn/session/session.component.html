@@ -1,6 +1,14 @@
-<chf-session-matching-step *ngIf="isMatchingStep" [cards]="sessionCards" (completed)="matchingCompleted()" />
+<chf-session-matching-step
+  *ngIf="isMatchingStep"
+  [cards]="sessionCards"
+  (completed)="matchingCompleted()"
+/>
 
-<chf-session-filling-step *ngIf="isFillingStep" [cards]="sessionCards" (completed)="sessionCompleted($event)" />
+<chf-session-filling-step
+  *ngIf="isFillingStep"
+  [cards]="sessionCards"
+  (completed)="sessionCompleted($event)"
+/>
 
 <div *ngIf="isSessionDone">
   <p class="title">Session completed!</p>

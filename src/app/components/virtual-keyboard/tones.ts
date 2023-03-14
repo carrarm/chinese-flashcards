@@ -2,12 +2,12 @@
  * All the available tones for each letter.
  */
 const TONES: { [key: string]: string[] } = Object.freeze({
-  A: ['Ā', 'Á', 'Ǎ', 'À'],
-  E: ['Ē', 'É', 'Ě', 'È'],
-  I: ['Ī', 'Í', 'Ǐ', 'Ì'],
-  O: ['Ō', 'Ó', 'Ǒ', 'Ò'],
-  U: ['Ū', 'Ú', 'Ǔ', 'Ù'],
-  Ü: ['Ǖ', 'Ǘ', 'Ǚ', 'Ǜ'],
+  A: ["Ā", "Á", "Ǎ", "À"],
+  E: ["Ē", "É", "Ě", "È"],
+  I: ["Ī", "Í", "Ǐ", "Ì"],
+  O: ["Ō", "Ó", "Ǒ", "Ò"],
+  U: ["Ū", "Ú", "Ǔ", "Ù"],
+  Ü: ["Ǖ", "Ǘ", "Ǚ", "Ǜ"],
 });
 
 /**
@@ -17,12 +17,9 @@ const TONES: { [key: string]: string[] } = Object.freeze({
  * @param letterCase Whether the tones should be uppercase or lowercased
  * @returns Array of tones for the letter
  */
-export const getTones = (
-  letter: string,
-  letterCase: 'UPPER' | 'LOWER'
-): string[] => {
+export const getTones = (letter: string, letterCase: "UPPER" | "LOWER"): string[] => {
   let tones = TONES[letter.toUpperCase()] ?? [];
-  if (letterCase === 'LOWER') {
+  if (letterCase === "LOWER") {
     tones = tones.map((toneLetter) => toneLetter.toLowerCase());
   }
   return tones;

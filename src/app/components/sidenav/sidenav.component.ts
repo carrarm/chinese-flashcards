@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { RouterModule } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { RouterModule } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 const importedModules = [
   CommonModule,
@@ -15,11 +15,11 @@ const importedModules = [
 ];
 
 @Component({
-  selector: 'chf-sidenav',
+  selector: "chf-sidenav",
   standalone: true,
   imports: importedModules,
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss'],
+  templateUrl: "./sidenav.component.html",
+  styleUrls: ["./sidenav.component.scss"],
 })
 export class SidenavComponent {
   public appVersion = environment.version;
