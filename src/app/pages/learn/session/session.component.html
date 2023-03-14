@@ -21,7 +21,7 @@
     <tbody>
       <tr *ngFor="let card of sessionResults">
         <td>{{ card.characters ?? card.pinyin }}</td>
-        <td>
+        <td class="progress" [ngClass]="card.sessionProgress">
           <mat-icon>{{ card.sessionResultIcon }}</mat-icon>
         </td>
       </tr>

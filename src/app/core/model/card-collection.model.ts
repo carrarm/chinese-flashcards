@@ -1,5 +1,5 @@
-import { Card, CardModel } from './card.model';
-import { CollectionStats } from './statistics.model';
+import { Card, CardModel } from "./card.model";
+import { CollectionStats } from "./statistics.model";
 
 export interface CardCollectionModel {
   id?: number;

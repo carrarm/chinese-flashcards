@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Database } from '../db/database.model';
-import { DatabaseService } from '../db/database.service';
-import { Card } from '../model/card.model';
-import { CollectionService } from './collection.service';
-import { SettingsService } from './settings.service';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { Database } from "../db/database.model";
+import { DatabaseService } from "../db/database.service";
+import { Card } from "../model/card.model";
+import { CollectionService } from "./collection.service";
+import { SettingsService } from "./settings.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class LearningSessionService {
   public readonly currentSession = new BehaviorSubject<Card[]>([]);
@@ -36,7 +36,7 @@ export class LearningSessionService {
       .getReviewCardRequest(collection)
       .limit(await this.getWordsPerSession())
       .reverse()
-      .sortBy('leitnerBox');
+      .sortBy("leitnerBox");
 
     return cards.map((card) => new Card(card));
   }

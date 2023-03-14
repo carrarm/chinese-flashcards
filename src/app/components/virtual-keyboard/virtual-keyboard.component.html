@@ -19,9 +19,7 @@
       (click)="writeCharacter(key)"
     >
       <ng-container *ngIf="uppercaseEnabled">{{ key }}</ng-container>
-      <ng-container *ngIf="!uppercaseEnabled">{{
-        key | lowercase
-      }}</ng-container>
+      <ng-container *ngIf="!uppercaseEnabled">{{ key | lowercase }}</ng-container>
     </div>
     <div class="keyboard-key" *ngIf="isLast" (click)="backspace.emit()">
       <mat-icon>backspace</mat-icon>
@@ -29,10 +27,8 @@
   </div>
   <div class="keyboard-row">
     <div class="keyboard-key plain">?123</div>
-    <div class="keyboard-key plain space" (click)="writeCharacter(' ', true)">
-      Space
-    </div>
-    <div class="keyboard-key plain validate" (click)="submit.emit()">
+    <div class="keyboard-key plain space" (click)="writeCharacter(' ', true)">Space</div>
+    <div class="keyboard-key plain validate" (click)="submitText.emit()">
       <mat-icon>done</mat-icon>
     </div>
   </div>

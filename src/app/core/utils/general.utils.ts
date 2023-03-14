@@ -2,8 +2,8 @@ export const normalizeForComparison = (text: string): string =>
   text
     ? text
         .toLowerCase()
-        .normalize('NFD')
-        .replace(/\p{Diacritic}/gu, '')
+        .normalize("NFD")
+        .replace(/\p{Diacritic}/gu, "")
     : text;
 
 export function shuffleArray<T>(arr: T[]): T[] {
@@ -25,9 +25,7 @@ export function uniqueValues<T>(arr: T[]): T[] {
 
 export function removeOnce<T>(source: T[], toRemove: T[]): T[] {
   toRemove.forEach((value) => {
-    const sourceIndex = source.findIndex(
-      (sourceValue) => sourceValue === value
-    );
+    const sourceIndex = source.findIndex((sourceValue) => sourceValue === value);
     if (sourceIndex !== -1) {
       source.splice(sourceIndex, 1);
     }
@@ -46,9 +44,7 @@ export function removeOnce<T>(source: T[], toRemove: T[]): T[] {
 export function removeTimes<T>(source: T[], toRemove: T, times: number): T[] {
   let toRemoveCount = times;
   while (toRemoveCount > 0 && source.length) {
-    const sourceIndex = source.findIndex(
-      (sourceValue) => sourceValue === toRemove
-    );
+    const sourceIndex = source.findIndex((sourceValue) => sourceValue === toRemove);
     if (sourceIndex === -1) {
       toRemoveCount = 0;
     } else {

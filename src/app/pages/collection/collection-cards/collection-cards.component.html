@@ -3,11 +3,7 @@
     <mat-icon>arrow_back_ios</mat-icon>
   </button>
   <div class="filler"></div>
-  <button
-    mat-icon-button
-    (click)="toggleSearch()"
-    [class]="{ active: searchActive }"
-  >
+  <button mat-icon-button (click)="toggleSearch()" [class]="{ active: searchActive }">
     <mat-icon>search</mat-icon>
   </button>
   <button mat-icon-button (click)="openEditor()">
@@ -32,9 +28,7 @@
   matSortDirection="asc"
 >
   <ng-container matColumnDef="meanings">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>
-      Meanings
-    </mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Meanings </mat-header-cell>
     <mat-cell class="meaning-column" *matCellDef="let card">
       <span [innerHTML]="card.meanings | cardMeanings"></span>
     </mat-cell>
@@ -48,19 +42,14 @@
   </ng-container>
 
   <ng-container matColumnDef="characters">
-    <mat-header-cell class="character-column" *matHeaderCellDef>
-      Char.
-    </mat-header-cell>
+    <mat-header-cell class="character-column" *matHeaderCellDef> Char. </mat-header-cell>
     <mat-cell class="character-column" *matCellDef="let card">{{
       card.characters
     }}</mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
-  <mat-row
-    *matRowDef="let row; columns: columns"
-    (click)="openEditor(row)"
-  ></mat-row>
+  <mat-row *matRowDef="let row; columns: columns" (click)="openEditor(row)"></mat-row>
 </mat-table>
 
 <mat-paginator [pageSize]="pageSize" hidePageSize showFirstLastButtons />

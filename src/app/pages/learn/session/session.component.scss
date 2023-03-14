@@ -24,4 +24,14 @@ table {
     padding: 0.5rem;
     text-align: center;
   }
+
+  .progress {
+    &.up {
+      color: #36d336;
+    }
+
+    &.down {
+      color: red;
+    }
+  }
 }

@@ -1,7 +1,4 @@
-<div
-  class="app-container mat-app-background"
-  [class]="{ 'dark-mode': isDarkMode }"
->
+<div class="app-container mat-app-background" [class]="{ 'dark-mode': isDarkMode }">
   <chf-navbar (toggleMenu)="drawer.toggle()" />
   <mat-drawer-container hasBackdrop>
     <mat-drawer #drawer mode="over">
