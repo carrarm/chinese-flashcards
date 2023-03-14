@@ -2,6 +2,7 @@ export type AppTheme = "dark" | "light";
 
 export interface SettingsModel {
   id?: number;
+  enableReviewMatching: boolean;
   learnPinyin: boolean;
   pageSize: number;
   wordsPerSession: number;
@@ -11,6 +12,7 @@ export interface SettingsModel {
 
 export class Settings implements SettingsModel {
   public id?: number;
+  public enableReviewMatching = false;
   public learnPinyin = true;
   public pageSize = 10;
   public wordsPerSession = 10;
@@ -20,6 +22,7 @@ export class Settings implements SettingsModel {
   constructor(settings?: SettingsModel) {
     if (settings) {
       this.id = settings.id;
+      this.enableReviewMatching = settings.enableReviewMatching;
       this.learnPinyin = settings.learnPinyin;
       this.pageSize = settings.pageSize;
       this.wordsPerSession = settings.wordsPerSession;

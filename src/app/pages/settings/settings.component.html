@@ -26,11 +26,22 @@
     </mat-form-field>
 
     <div class="field-with-ext-hint">
-      <mat-slide-toggle formControlName="learnPinyin"> Learn pinyin </mat-slide-toggle>
+      <mat-slide-toggle formControlName="learnPinyin">Learn pinyin</mat-slide-toggle>
       <div>
         If this option is disabled, the pinyin will still be shown to you next to the
         character but you won't have to fill the pinyin field to learn the card. Cards
         that only contain the pinyin will not be added to learning sessions.
+      </div>
+    </div>
+
+    <div class="field-with-ext-hint">
+      <mat-slide-toggle formControlName="enableReviewMatching">
+        Enable Matching mode for review sessions
+      </mat-slide-toggle>
+      <div>
+        If this option is disabled, you won't be asked to match cards with their
+        translation during review sessions. The Matching mode will still be available for
+        learning sessions.
       </div>
     </div>
   </div>
