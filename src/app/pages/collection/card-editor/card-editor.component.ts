@@ -110,11 +110,10 @@ export class CardEditorComponent implements OnInit {
   private trackDuplicates(): void {
     this.form.valueChanges.subscribe(async (formValues) => {
       this.cardDuplicate = undefined;
-      const { pinyin, chinese } = formValues;
-      if (pinyin || chinese) {
+      const { meaning } = formValues;
+      if (meaning) {
         this.cardDuplicate = await this.cardService.findCard({
-          pinyin,
-          characters: chinese,
+          meanings: meaning.split(";").map((m) => m.trim()),
         });
       }
     });

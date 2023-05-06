@@ -1,16 +1,56 @@
 import { Optional } from "../types";
 
+/**
+ * Sets a text to lowercase and removes diacritics.
+ *
+ * @param text Text to normalize
+ * @returns Formatted text
+ */
 export const normalizeForComparison = (text: string): string =>
   text
-    ? text
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/\p{Diacritic}/gu, "")
-    : text;
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
 
+/**
+ * Compares two strings, ignoring their case.
+ *
+ * @param str1 First string
+ * @param str2 Second string
+ * @returns Whether the strings contain the same text
+ */
 export const areEqual = (str1: Optional<string>, str2: Optional<string>): boolean =>
   !!str1 && !!str2 && str1.toLowerCase().trim() === str2.toLowerCase().trim();
 
+/**
+ * Checks if one of the strings is contained in the other. The comparison is
+ * made on the normalized value of each string.
+ *
+ * @param str1 First string
+ * @param str2 Second string
+ * @returns Whether one of them is a substring
+ */
+export const areSubstrings = (
+  str1: Optional<string>,
+  str2: Optional<string>
+): boolean => {
+  if (!str1 || !str2) {
+    return false;
+  }
+
+  const normalizedStr1 = normalizeForComparison(str1);
+  const normalizedStr2 = normalizeForComparison(str2);
+  return (
+    normalizedStr1.includes(normalizedStr2) || normalizedStr2.includes(normalizedStr1)
+  );
+};
+
+/**
+ * Shuffles an array. The original array is not modified.
+ *
+ * @param arr Array to shuffle
+ * @returns A new array with shuffled elements
+ */
 export function shuffleArray<T>(arr: T[]): T[] {
   return arr
     .map((element) => ({ element, sortValue: Math.random() }))
@@ -18,6 +58,13 @@ export function shuffleArray<T>(arr: T[]): T[] {
     .map(({ element }) => element);
 }
 
+/**
+ * Filters the array to keep only one occurrence of each element. The original
+ * array is not modified.
+ *
+ * @param arr Array to filter
+ * @returns New array without duplicates
+ */
 export function uniqueValues<T>(arr: T[]): T[] {
   const unique: T[] = [];
   arr.forEach((value) => {
@@ -28,6 +75,14 @@ export function uniqueValues<T>(arr: T[]): T[] {
   return unique;
 }
 
+/**
+ * Removes the first occurrence of a set of items. This function will modify
+ * the source array.
+ *
+ * @param source Array of items
+ * @param toRemove Items to remove
+ * @returns Source array without the removed occurrences
+ */
 export function removeOnce<T>(source: T[], toRemove: T[]): T[] {
   toRemove.forEach((value) => {
     const sourceIndex = source.findIndex((sourceValue) => sourceValue === value);
@@ -39,7 +94,8 @@ export function removeOnce<T>(source: T[], toRemove: T[]): T[] {
 }
 
 /**
- * Removes a certain number of occurrences of an element from an array.
+ * Removes a certain number of occurrences of an item from an array. This
+ * function will modify the source array.
  *
  * @param source Array of items
  * @param toRemove Item to remove

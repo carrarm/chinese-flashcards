@@ -23,7 +23,11 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
-    "typeRoots": ["node_modules/@angular/material", "node_modules/@angular"]
+    "typeRoots": [
+      "node_modules/@angular/material",
+      "node_modules/@angular",
+      "node_modules/@types"
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

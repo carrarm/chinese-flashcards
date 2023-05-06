@@ -14,6 +14,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { RouterModule } from "@angular/router";
 import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
+import { JoinPipe } from "@core/pipes/join.pipe";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
 import { CardEditorComponent } from "./card-editor/card-editor.component";
 import { CollectionCardsComponent } from "./collection-cards/collection-cards.component";
@@ -31,6 +32,7 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     CardMeaningsPipe,
     CommonModule,
     FormsModule,
+    JoinPipe,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
