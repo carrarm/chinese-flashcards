@@ -4,12 +4,12 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute } from "@angular/router";
-import { debounceTime, Subject } from "rxjs";
-import { Card } from "src/app/core/model/card.model";
-import { CollectionService } from "src/app/core/services/collection.service";
-import { NavigationService } from "src/app/core/services/navigation.service";
-import { SettingsService } from "src/app/core/services/settings.service";
-import { normalizeForComparison } from "src/app/core/utils/general.utils";
+import { Card } from "@core/model/card.model";
+import { CollectionService } from "@core/services/collection.service";
+import { NavigationService } from "@core/services/navigation.service";
+import { SettingsService } from "@core/services/settings.service";
+import { normalizeForComparison } from "@core/utils/general.utils";
+import { Subject, debounceTime } from "rxjs";
 import { CardEditorComponent } from "../card-editor/card-editor.component";
 
 @Component({

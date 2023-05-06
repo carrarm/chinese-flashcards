@@ -1,7 +1,9 @@
+import { Indexable } from "@core/types";
+
 /**
  * All the available tones for each letter.
  */
-const TONES: { [key: string]: string[] } = Object.freeze({
+const TONES: Indexable<string[]> = Object.freeze({
   A: ["Ā", "Á", "Ǎ", "À"],
   E: ["Ē", "É", "Ě", "È"],
   I: ["Ī", "Í", "Ǐ", "Ì"],

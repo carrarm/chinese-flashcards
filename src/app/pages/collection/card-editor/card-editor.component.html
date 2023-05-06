@@ -14,6 +14,22 @@
     <chf-pinyin-form-field formControlName="pinyin" />
   </form>
 
+  <div *ngIf="cardDuplicate" class="duplicate-warning">
+    A card with this meaning already exists:
+    <div class="duplicate-card-wrapper">
+      <div>
+        <span>Meanings</span>
+        {{ cardDuplicate.meanings | join : " ; " }}
+      </div>
+      <div *ngIf="cardDuplicate.characters">
+        <span>Characters</span> {{ cardDuplicate.characters }}
+      </div>
+      <div *ngIf="cardDuplicate.pinyin">
+        <span>Pinyin</span> {{ cardDuplicate.pinyin }}
+      </div>
+    </div>
+  </div>
+
   <mat-slide-toggle *ngIf="!creationMode" [(ngModel)]="resetProgressActive">
     Reset progress
   </mat-slide-toggle>

@@ -1,10 +1,10 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { Card } from "src/app/core/model/card.model";
-import { CardService } from "src/app/core/services/card.service";
-import { LearningSessionService } from "src/app/core/services/learning-session.service";
-import { NavigationService } from "src/app/core/services/navigation.service";
-import { SettingsService } from "src/app/core/services/settings.service";
+import { Card } from "@core/model/card.model";
+import { CardService } from "@core/services/card.service";
+import { LearningSessionService } from "@core/services/learning-session.service";
+import { NavigationService } from "@core/services/navigation.service";
+import { SettingsService } from "@core/services/settings.service";
 import { SessionCard } from "./session-card.model";
 
 @Component({

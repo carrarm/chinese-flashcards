@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Card, CardDifficultyLevel } from "src/app/core/model/card.model";
-import { SettingsService } from "src/app/core/services/settings.service";
+import { Card, CardDifficultyLevel } from "@core/model/card.model";
+import { SettingsService } from "@core/services/settings.service";
 import {
   removeOnce,
   removeTimes,
   shuffleArray,
   uniqueValues,
-} from "src/app/core/utils/general.utils";
+} from "@core/utils/general.utils";
 import { SessionCard } from "../session-card.model";
 
 @Component({
