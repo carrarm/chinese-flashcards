@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Card } from "src/app/core/model/card.model";
-import { shuffleArray } from "src/app/core/utils/general.utils";
+import { Card } from "@core/model/card.model";
+import { shuffleArray } from "@core/utils/general.utils";
 
 interface MatchingCard {
   card: Card;

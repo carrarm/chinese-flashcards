@@ -1,12 +1,9 @@
 import { Component, Inject } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import {
-  CardCollection,
-  CardCollectionModel,
-} from "src/app/core/model/card-collection.model";
-import { CollectionService } from "src/app/core/services/collection.service";
-import { toOptional } from "src/app/core/utils/form.utils";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { CardCollection, CardCollectionModel } from "@core/model/card-collection.model";
+import { CollectionService } from "@core/services/collection.service";
+import { toOptional } from "@core/utils/form.utils";
 
 interface CollectionForm {
   label: FormControl<string | null>;

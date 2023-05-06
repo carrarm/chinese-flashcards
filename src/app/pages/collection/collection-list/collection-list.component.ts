@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { CardCollection } from "src/app/core/model/card-collection.model";
-import { CollectionService } from "src/app/core/services/collection.service";
-import { NavigationService } from "src/app/core/services/navigation.service";
+import { CardCollection } from "@core/model/card-collection.model";
+import { CollectionService } from "@core/services/collection.service";
+import { NavigationService } from "@core/services/navigation.service";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
 
 @Component({

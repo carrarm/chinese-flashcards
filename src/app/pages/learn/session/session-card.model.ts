@@ -1,5 +1,5 @@
+import { Card, CardDifficultyLevel } from "@core/model/card.model";
 import * as dayjs from "dayjs";
-import { Card, CardDifficultyLevel } from "src/app/core/model/card.model";
 
 const EASY_REPS = 2;
 const MEDIUM_REPS = 3;

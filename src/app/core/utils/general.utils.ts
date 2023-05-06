@@ -1,3 +1,5 @@
+import { Optional } from "../types";
+
 export const normalizeForComparison = (text: string): string =>
   text
     ? text
@@ -5,6 +7,9 @@ export const normalizeForComparison = (text: string): string =>
         .normalize("NFD")
         .replace(/\p{Diacritic}/gu, "")
     : text;
+
+export const areEqual = (str1: Optional<string>, str2: Optional<string>): boolean =>
+  !!str1 && !!str2 && str1.toLowerCase().trim() === str2.toLowerCase().trim();
 
 export function shuffleArray<T>(arr: T[]): T[] {
   return arr

@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { NavigationService } from "src/app/core/services/navigation.service";
+import { NavigationService } from "@core/services/navigation.service";
 
 const importedModules = [CommonModule, MatButtonModule, MatIconModule];
 
