@@ -6,6 +6,7 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { MatSidenavModule } from "@angular/material/sidenav";
 
 import { HttpClientModule } from "@angular/common/http";
+import { NgCircleProgressModule } from "ng-circle-progress";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
@@ -21,10 +22,11 @@ import { SettingsModule } from "./pages/settings/settings.module";
     BrowserModule,
     BrowserAnimationsModule,
     CollectionPageModule,
-    LearnPageModule,
     HttpClientModule,
+    LearnPageModule,
     MatSidenavModule,
     NavbarComponent,
+    NgCircleProgressModule.forRoot(),
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

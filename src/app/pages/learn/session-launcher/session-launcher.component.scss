@@ -1,43 +1,28 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   padding-bottom: 1rem;
 }
 
-mat-card {
-  margin-top: 1rem;
-}
-
-$circleDiameter: 50px;
 .statistic-section {
   margin-top: 1rem;
   display: flex;
   justify-content: space-evenly;
+  font-size: small;
 
-  .statistic {
-    font-size: small;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .label {
-      margin-bottom: 0.5em;
-    }
+  .to-learn {
+    --chf-progress-outer-stroke: #01b15b;
+    --chf-progress-inner-stroke: #01b15b7b;
   }
-}
 
-.progress-spinner {
-  position: relative;
+  .to-review {
+    --chf-progress-outer-stroke: #9524ff;
+    --chf-progress-inner-stroke: #9524ff7b;
+  }
 
-  .inner-text {
-    width: $circleDiameter;
-    height: $circleDiameter;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: -2px;
-    left: 0px;
-    font-weight: 500;
-    font-size: 18px;
+  .known {
+    --chf-progress-outer-stroke: #289dd7;
+    --chf-progress-inner-stroke: #289dd77b;
   }
 }

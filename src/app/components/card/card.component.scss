@@ -1,0 +1,20 @@
+$roundedRadius: 10px;
+$sharpRadius: 2px;
+$verticalGap: 1rem;
+
+:host {
+  display: block;
+  background-color: var(--card-bg-color, #2d3132);
+  border-radius: $roundedRadius $sharpRadius $roundedRadius $sharpRadius;
+  padding: 1rem 1.2rem;
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-bottom: $verticalGap;
+}
+
+.subtitle {
+  color: #7f7f7f;
+}

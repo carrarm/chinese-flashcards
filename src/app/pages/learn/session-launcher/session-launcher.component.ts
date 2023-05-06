@@ -16,7 +16,7 @@ import { StatisticsService } from "@core/services/statistics.service";
 })
 export class SessionLauncherComponent implements OnInit {
   public settings?: Settings;
-  public collections: CardCollection[] = [];
+  public collections: Partial<CardCollection>[] = [];
   public allCollectionStats?: {
     numbers: CollectionStats;
     percents: CollectionStats;
@@ -52,6 +52,12 @@ export class SessionLauncherComponent implements OnInit {
         numbers: numberStats,
         percents: CardCollection.computePercentStats(numberStats),
       };
+      this.collections.unshift({
+        label: "All collections",
+        description: "Learn or review cards from all the collections",
+        statistics: this.allCollectionStats.numbers,
+        percentStatistics: this.allCollectionStats.percents,
+      });
     });
   }
 
