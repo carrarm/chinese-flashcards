@@ -1,0 +1,9 @@
+<div
+  class="tab"
+  *ngFor="let tab of tabs"
+  [routerLink]="tab.route"
+  routerLinkActive="active"
+>
+  <fa-icon [icon]="tab.icon" size="lg" />
+  <div>{{ tab.label }}</div>
+</div>

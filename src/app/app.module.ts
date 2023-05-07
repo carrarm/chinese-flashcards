@@ -3,14 +3,12 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServiceWorkerModule } from "@angular/service-worker";
 
-import { MatSidenavModule } from "@angular/material/sidenav";
-
 import { HttpClientModule } from "@angular/common/http";
 import { NgCircleProgressModule } from "ng-circle-progress";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { SidenavComponent } from "./components/sidenav/sidenav.component";
+import { TabBarComponent } from "./components/tab-bar/tab-bar.component";
 import { CollectionPageModule } from "./pages/collection/collection-page.module";
 import { LearnPageModule } from "./pages/learn/learn-page.module";
 import { SettingsModule } from "./pages/settings/settings.module";
@@ -24,7 +22,6 @@ import { SettingsModule } from "./pages/settings/settings.module";
     CollectionPageModule,
     HttpClientModule,
     LearnPageModule,
-    MatSidenavModule,
     NavbarComponent,
     NgCircleProgressModule.forRoot(),
     ServiceWorkerModule.register("ngsw-worker.js", {
@@ -34,7 +31,7 @@ import { SettingsModule } from "./pages/settings/settings.module";
       registrationStrategy: "registerWhenStable:30000",
     }),
     SettingsModule,
-    SidenavComponent,
+    TabBarComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
