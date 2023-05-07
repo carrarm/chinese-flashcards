@@ -3,6 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { CardCollection } from "@core/model/card-collection.model";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
+import { faAdd, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
 
 @Component({
@@ -11,6 +12,10 @@ import { CollectionEditorComponent } from "../collection-editor/collection-edito
   styleUrls: ["./collection-list.component.scss"],
 })
 export class CollectionListComponent implements OnInit {
+  public icons = {
+    add: faAdd,
+    goTo: faChevronRight,
+  };
   public collections: CardCollection[] = [];
   public cardCountPlural = {
     "=0": "No card",
@@ -27,13 +32,14 @@ export class CollectionListComponent implements OnInit {
   ngOnInit(): void {
     this.loadCollections();
     this.navigationService.setTitle("Manage collections");
+    this.navigationService.resetNavbarText();
   }
 
   openEditor(collection?: CardCollection): void {
     this.dialog
       .open(CollectionEditorComponent, {
         data: { collection },
-        panelClass: ["mat-app-background", "dark-mode"],
+        panelClass: [],
       })
       .afterClosed()
       .subscribe(() => this.loadCollections());

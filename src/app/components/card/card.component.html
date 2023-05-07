@@ -1,11 +1,16 @@
-<div class="title">
-  <ng-content select="[card-title]" />
+<div class="header">
+  <div class="title">
+    <ng-content select="[card-title]" />
+  </div>
+  <div class="header-end hide-empty">
+    <ng-content select="[card-header-end]" />
+  </div>
 </div>
 
-<div class="subtitle">
+<div class="subtitle hide-empty">
   <ng-content select="[card-subtitle]" />
 </div>
 
-<div>
+<div class="hide-empty">
   <ng-content select="[card-content]" />
 </div>

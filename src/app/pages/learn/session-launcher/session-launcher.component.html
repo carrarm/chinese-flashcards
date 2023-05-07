@@ -1,6 +1,6 @@
 <chf-card *ngFor="let collection of collections">
   <div card-title>{{ collection.label }}</div>
-  <div card-subtitle>{{ collection.description }}</div>
+  <div card-subtitle *ngIf="collection.description">{{ collection.description }}</div>
   <div card-content *ngIf="collection.percentStatistics">
     <ng-container
       *ngTemplateOutlet="

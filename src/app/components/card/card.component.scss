@@ -1,21 +1,33 @@
 $roundedRadius: 10px;
 $sharpRadius: 2px;
-$verticalGap: 1rem;
 
 :host {
-  display: block;
+  display: flex;
   background-color: var(--card-bg-color, #2d3132);
   border-radius: $roundedRadius $sharpRadius $roundedRadius $sharpRadius;
   padding: 1rem 1.2rem;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.title {
-  font-size: 1.2em;
-  font-weight: 500;
-  margin-bottom: $verticalGap;
+.header {
+  display: flex;
+
+  .title {
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+
+  .header-end {
+    flex: 1;
+  }
 }
 
 .subtitle {
   color: #7f7f7f;
   font-size: small;
+}
+
+.hide-empty:empty {
+  display: none;
 }

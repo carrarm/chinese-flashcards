@@ -15,6 +15,9 @@ import { MatTableModule } from "@angular/material/table";
 import { RouterModule } from "@angular/router";
 import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { JoinPipe } from "@core/pipes/join.pipe";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { ButtonComponent } from "src/app/components/button/button.component";
+import { CardComponent } from "src/app/components/card/card.component";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
 import { CardEditorComponent } from "./card-editor/card-editor.component";
 import { CollectionCardsComponent } from "./collection-cards/collection-cards.component";
@@ -29,8 +32,11 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     CollectionEditorComponent,
   ],
   imports: [
+    ButtonComponent,
+    CardComponent,
     CardMeaningsPipe,
     CommonModule,
+    FontAwesomeModule,
     FormsModule,
     JoinPipe,
     MatButtonModule,

@@ -5,11 +5,21 @@
   padding-bottom: 1rem;
 }
 
-mat-card-header {
-  margin-bottom: 1rem;
+chf-button {
+  align-self: center;
+  margin-bottom: 0.5rem;
 }
 
-mat-card-title {
-  font-size: large;
-  font-weight: 500;
+div[card-header-end] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .card-count {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: small;
+    padding: 0.3em 0.8em;
+    border-radius: 5px;
+    margin-right: 1.5rem;
+  }
 }

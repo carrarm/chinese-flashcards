@@ -5,7 +5,7 @@
   padding-bottom: 1rem;
 }
 
-$learnColor: #01b15b;
+$learnColor: #559d00;
 $reviewColor: #9524ff;
 $knownColor: #289dd7;
 
@@ -25,7 +25,7 @@ $knownColor: #289dd7;
 
   .to-learn {
     --chf-progress-outer-stroke: #{$learnColor};
-    --chf-progress-inner-stroke: #01b15b7b;
+    --chf-progress-inner-stroke: #559d007b;
   }
 
   .to-review {
