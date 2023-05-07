@@ -33,6 +33,8 @@ export class SessionLauncherComponent implements OnInit {
 
   ngOnInit(): void {
     this.navigationService.setTitle("Start a session");
+    this.navigationService.resetNavbarText();
+
     this.settingsService.getSettings().then((settings) => (this.settings = settings));
     this.collectionService.getCollections().then(async (collections) => {
       this.collections = await this.statisticsService.getCollectionsReviewStats(

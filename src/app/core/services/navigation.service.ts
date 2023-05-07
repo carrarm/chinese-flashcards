@@ -1,21 +1,29 @@
 import { Injectable } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject } from "rxjs";
+
+export type NavbarType = "main" | "description";
 
 @Injectable({
   providedIn: "root",
 })
 export class NavigationService {
-  private readonly pageTitle = new BehaviorSubject<string | null>(null);
+  public static readonly APP_NAME = "Chinese Flashcards";
+  public readonly navbarType = new BehaviorSubject<NavbarType>("main");
+  public readonly navbarText = new BehaviorSubject<string>("");
 
   constructor(private titleService: Title) {}
 
   setTitle(title: string): void {
-    this.titleService.setTitle("Chinese Flashcards | " + title);
-    this.pageTitle.next(title);
+    this.titleService.setTitle(NavigationService.APP_NAME + " | " + title);
   }
 
-  getTitle(): Observable<string | null> {
-    return this.pageTitle.asObservable();
+  resetNavbarText(): void {
+    this.setNavbarText(NavigationService.APP_NAME, "main");
+  }
+
+  setNavbarText(text: string, type: NavbarType): void {
+    this.navbarType.next(type);
+    this.navbarText.next(text);
   }
 }
