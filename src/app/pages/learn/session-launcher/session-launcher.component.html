@@ -11,23 +11,23 @@
         }
       "
     />
-  </div>
-  <div>
-    <!-- TODO Buttons-->
-    <button
-      mat-button
-      (click)="learn(collection.id)"
-      [disabled]="!collection.statistics?.toLearn"
-    >
-      Learn
-    </button>
-    <button
-      mat-button
-      (click)="review(collection.id)"
-      [disabled]="!collection.statistics?.toReview"
-    >
-      Review
-    </button>
+
+    <div class="card-actions">
+      <chf-button
+        class="learn-button"
+        [disabled]="!collection.statistics?.toLearn"
+        (click)="learn(collection.id)"
+      >
+        Learn
+      </chf-button>
+      <chf-button
+        class="review-button"
+        [disabled]="!collection.statistics?.toReview"
+        (click)="review(collection.id)"
+      >
+        Review
+      </chf-button>
+    </div>
   </div>
 </chf-card>
 

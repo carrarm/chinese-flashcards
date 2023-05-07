@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { RouterModule } from "@angular/router";
 import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { NgCircleProgressModule } from "ng-circle-progress";
+import { ButtonComponent } from "src/app/components/button/button.component";
 import { CardComponent } from "src/app/components/card/card.component";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
 import { CardProgressIndicatorComponent } from "../shared/components/card-progress-indicator/card-progress-indicator.component";
@@ -26,6 +27,7 @@ import { SessionComponent } from "./session/session.component";
     SessionFillingStepComponent,
   ],
   imports: [
+    ButtonComponent,
     CardComponent,
     CardMeaningsPipe,
     CardProgressIndicatorComponent,

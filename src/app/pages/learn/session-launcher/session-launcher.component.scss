@@ -5,6 +5,18 @@
   padding-bottom: 1rem;
 }
 
+$learnColor: #01b15b;
+$reviewColor: #9524ff;
+$knownColor: #289dd7;
+
+.learn-button {
+  --chf-button-bg: #{$learnColor};
+}
+
+.review-button {
+  --chf-button-bg: #{$reviewColor};
+}
+
 .statistic-section {
   margin-top: 1rem;
   display: flex;
@@ -12,17 +24,23 @@
   font-size: small;
 
   .to-learn {
-    --chf-progress-outer-stroke: #01b15b;
+    --chf-progress-outer-stroke: #{$learnColor};
     --chf-progress-inner-stroke: #01b15b7b;
   }
 
   .to-review {
-    --chf-progress-outer-stroke: #9524ff;
+    --chf-progress-outer-stroke: #{$reviewColor};
     --chf-progress-inner-stroke: #9524ff7b;
   }
 
   .known {
-    --chf-progress-outer-stroke: #289dd7;
+    --chf-progress-outer-stroke: #{$knownColor};
     --chf-progress-inner-stroke: #289dd77b;
   }
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
 }
