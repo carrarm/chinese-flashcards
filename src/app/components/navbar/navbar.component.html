@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" *ngIf="navbarVisible$ | async">
   <img src="assets/chinese-flashcards-logo.svg" />
   <div [class]="navbarType$ | async">
     {{ navbarText$ | async }}

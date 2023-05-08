@@ -1,0 +1,23 @@
+table {
+  border: none;
+  border-collapse: collapse;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+thead {
+  background-color: black;
+}
+
+tbody {
+  background-color: #232729;
+  font-size: 0.85em;
+}
+
+th {
+  padding: 0.7rem 1rem;
+}
+td {
+  padding: 0.5rem 1rem;
+}

@@ -17,9 +17,11 @@ const importedModules = [CommonModule, MatButtonModule, MatIconModule];
 export class NavbarComponent {
   public navbarType$: Observable<NavbarType> = of();
   public navbarText$: Observable<string> = of();
+  public navbarVisible$: Observable<boolean> = of();
 
   constructor(navigation: NavigationService) {
     this.navbarType$ = navigation.navbarType.asObservable();
     this.navbarText$ = navigation.navbarText.asObservable();
+    this.navbarVisible$ = navigation.navbarVisible.asObservable();
   }
 }

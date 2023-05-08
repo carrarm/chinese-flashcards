@@ -1,27 +1,33 @@
 <div class="page-header">
-  <button mat-icon-button routerLink="/collections">
-    <mat-icon>arrow_back_ios</mat-icon>
-  </button>
+  <fa-icon [icon]="icons.goBack" routerLink="/collections" />
+  <div class="collection-name">{{ collection?.label }}</div>
   <div class="filler"></div>
-  <button mat-icon-button (click)="toggleSearch()" [class]="{ active: searchActive }">
+  <div class="card-count">
+    {{ collection?.cards?.length | i18nPlural : cardCountPlural }}
+  </div>
+  <!-- <button mat-icon-button (click)="toggleSearch()" [class]="{ active: searchActive }">
     <mat-icon>search</mat-icon>
   </button>
   <button mat-icon-button (click)="openEditor()">
     <mat-icon>library_add</mat-icon>
-  </button>
+  </button> -->
 </div>
 
-<mat-form-field appearance="outline" *ngIf="searchActive">
+<!-- TODO: Search field -->
+
+<chf-data-table [columns]="columns" [rows]="tableRows" />
+
+<!-- <mat-form-field appearance="outline">
   <mat-label>Find a card</mat-label>
   <input
     matInput
     [(ngModel)]="filter"
     (ngModelChange)="filter$.next($event)"
-    placeholder="Search by meaning or pinyin"
+    placeholder="Search a card"
   />
-</mat-form-field>
+</mat-form-field> -->
 
-<mat-table
+<!-- <mat-table
   [dataSource]="dataSource"
   matSort
   matSortActive="meanings"
@@ -52,4 +58,4 @@
   <mat-row *matRowDef="let row; columns: columns" (click)="openEditor(row)"></mat-row>
 </mat-table>
 
-<mat-paginator [pageSize]="pageSize" hidePageSize showFirstLastButtons />
+<mat-paginator [pageSize]="pageSize" hidePageSize showFirstLastButtons /> -->

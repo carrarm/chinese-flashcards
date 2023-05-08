@@ -11,6 +11,7 @@ export class NavigationService {
   public static readonly APP_NAME = "Chinese Flashcards";
   public readonly navbarType = new BehaviorSubject<NavbarType>("main");
   public readonly navbarText = new BehaviorSubject<string>("");
+  public readonly navbarVisible = new BehaviorSubject<boolean>(true);
 
   constructor(private titleService: Title) {}
 

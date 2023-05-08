@@ -1,16 +1,31 @@
 .page-header {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
   align-items: center;
   margin-bottom: 0.5rem;
+  padding-bottom: 0.7em;
+  border-bottom: solid 1px #343434;
+
+  .collection-name {
+    font-family: var(--font-title);
+    font-size: large;
+    font-weight: 500;
+  }
 
   .filler {
     flex: 1;
   }
 
-  .active {
-    background-color: #5f7daf;
+  .card-count {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: small;
+    padding: 0.3em 0.8em;
+    border-radius: 5px;
   }
+}
+
+::ng-deep .pinyin-column {
+  font-family: "Ubuntu Mono";
 }
 
 mat-table {
