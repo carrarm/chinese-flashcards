@@ -5,6 +5,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatDividerModule } from "@angular/material/divider";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
@@ -18,7 +19,6 @@ import { JoinPipe } from "@core/pipes/join.pipe";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ButtonComponent } from "src/app/components/button/button.component";
 import { CardComponent } from "src/app/components/card/card.component";
-import { DataTableModule } from "src/app/components/data-table/data-table.module";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
 import { CardEditorComponent } from "./card-editor/card-editor.component";
 import { CollectionCardsComponent } from "./collection-cards/collection-cards.component";
@@ -37,7 +37,6 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     CardComponent,
     CardMeaningsPipe,
     CommonModule,
-    DataTableModule,
     FontAwesomeModule,
     FormsModule,
     JoinPipe,
@@ -45,6 +44,7 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     MatCardModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatDividerModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -56,6 +56,5 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     ReactiveFormsModule,
     RouterModule,
   ],
-  providers: [CardMeaningsPipe],
 })
 export class CollectionPageModule {}

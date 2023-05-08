@@ -1,23 +1,13 @@
 <div class="page-header">
   <fa-icon [icon]="icons.goBack" routerLink="/collections" />
-  <div class="collection-name">{{ collection?.label }}</div>
+  <div class="collection-name">{{ collectionName }}</div>
   <div class="filler"></div>
   <div class="card-count">
-    {{ collection?.cards?.length | i18nPlural : cardCountPlural }}
+    {{ dataSource.data.length | i18nPlural : cardCountPlural }}
   </div>
-  <!-- <button mat-icon-button (click)="toggleSearch()" [class]="{ active: searchActive }">
-    <mat-icon>search</mat-icon>
-  </button>
-  <button mat-icon-button (click)="openEditor()">
-    <mat-icon>library_add</mat-icon>
-  </button> -->
 </div>
 
-<!-- TODO: Search field -->
-
-<chf-data-table [columns]="columns" [rows]="tableRows" />
-
-<!-- <mat-form-field appearance="outline">
+<mat-form-field appearance="outline">
   <mat-label>Find a card</mat-label>
   <input
     matInput
@@ -25,37 +15,48 @@
     (ngModelChange)="filter$.next($event)"
     placeholder="Search a card"
   />
-</mat-form-field> -->
+  <div matSuffix class="search-icon-wrapper">
+    <ng-container *ngIf="filter.length">
+      <fa-icon [icon]="icons.clear" (click)="clearSearchBar()" />
+      <mat-divider vertical />
+    </ng-container>
+    <fa-icon [icon]="icons.search" />
+  </div>
+</mat-form-field>
 
-<!-- <mat-table
-  [dataSource]="dataSource"
-  matSort
-  matSortActive="meanings"
-  matSortDirection="asc"
->
-  <ng-container matColumnDef="meanings">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Meanings </mat-header-cell>
-    <mat-cell class="meaning-column" *matCellDef="let card">
-      <span [innerHTML]="card.meanings | cardMeanings"></span>
-    </mat-cell>
-  </ng-container>
+<div class="table-wrapper">
+  <mat-table
+    [dataSource]="dataSource"
+    matSort
+    matSortActive="meanings"
+    matSortDirection="asc"
+  >
+    <ng-container matColumnDef="meanings">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Meanings </mat-header-cell>
+      <mat-cell class="meaning-column" *matCellDef="let card">
+        <span [innerHTML]="card.meanings | cardMeanings"></span>
+      </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="pinyin">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Pinyin</mat-header-cell>
-    <mat-cell class="pinyin-column" *matCellDef="let card">
-      {{ card.pinyin }}
-    </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="pinyin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Pinyin</mat-header-cell>
+      <mat-cell class="pinyin-column" *matCellDef="let card">
+        {{ card.pinyin }}
+      </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="characters">
-    <mat-header-cell class="character-column" *matHeaderCellDef> Char. </mat-header-cell>
-    <mat-cell class="character-column" *matCellDef="let card">{{
-      card.characters
-    }}</mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="characters">
+      <mat-header-cell class="character-column" *matHeaderCellDef>
+        Char.
+      </mat-header-cell>
+      <mat-cell class="character-column" *matCellDef="let card">{{
+        card.characters
+      }}</mat-cell>
+    </ng-container>
 
-  <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: columns" (click)="openEditor(row)"></mat-row>
-</mat-table>
+    <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns" (click)="openEditor(row)"></mat-row>
+  </mat-table>
 
-<mat-paginator [pageSize]="pageSize" hidePageSize showFirstLastButtons /> -->
+  <mat-paginator [pageSize]="pageSize" hidePageSize showFirstLastButtons />
+</div>

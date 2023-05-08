@@ -11,7 +11,40 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$chinese-flashcards-primary: mat.define-palette(mat.$indigo-palette);
+$greenPalette: (
+  50: #e1f0eb,
+  100: #b5dace,
+  200: #83c1ae,
+  300: #51a88d,
+  400: #2c9574,
+  500: #07825c,
+  600: #067a54,
+  700: #056f4a,
+  800: #046541,
+  900: #025230,
+  A100: #85ffc2,
+  A200: #52ffa8,
+  A400: #1fff8f,
+  A700: #05ff82,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$chinese-flashcards-primary: mat.define-palette($greenPalette);
 $chinese-flashcards-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -19,7 +52,7 @@ $chinese-flashcards-warn: mat.define-palette(mat.$red-palette);
 
 // Typography applied to all components
 $chinese-flashcards-typography: mat.define-typography-config(
-  $font-family: "Raleway",
+  $font-family: "Lato",
 );
 
 // Create the theme object. A theme consists of configurations for individual
@@ -49,15 +82,11 @@ $chinese-flashcards-dark-theme: mat.define-dark-theme(
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($chinese-flashcards-theme);
-
-.dark-mode {
-  @include mat.all-component-colors($chinese-flashcards-dark-theme);
-}
+@include mat.all-component-themes($chinese-flashcards-dark-theme);
 
 :root {
   --primary-color: #07825c;
-  --accent-color: #e91e63;
+  --accent-color: #82062b;
   --default-color: gray;
   --app-bg-color: #171b1e;
   --app-fg-color: white;
@@ -69,4 +98,21 @@ body {
   background-color: var(--app-bg-color);
   color: var(--app-fg-color);
   font-family: var(--font-content);
+}
+
+// Material overrides
+.mat-mdc-table {
+  background-color: #232729;
+
+  mat-header-cell {
+    background-color: black !important;
+  }
+}
+
+.mat-mdc-paginator {
+  background-color: black;
+}
+
+.mat-mdc-floating-label {
+  color: white !important;
 }

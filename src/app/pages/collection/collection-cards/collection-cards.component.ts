@@ -1,15 +1,20 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute } from "@angular/router";
-import { CardCollection } from "@core/model/card-collection.model";
 import { Card } from "@core/model/card.model";
-import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { Subject } from "rxjs";
-import { TableColumn, TableRow } from "src/app/components/data-table/data-table.types";
+import { normalizeForComparison } from "@core/utils/general.utils";
+import {
+  faChevronLeft,
+  faClose,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
+import { Subject, debounceTime } from "rxjs";
 import { CardEditorComponent } from "../card-editor/card-editor.component";
 
 @Component({
@@ -17,27 +22,22 @@ import { CardEditorComponent } from "../card-editor/card-editor.component";
   templateUrl: "./collection-cards.component.html",
   styleUrls: ["./collection-cards.component.scss"],
 })
-export class CollectionCardsComponent implements OnInit, OnDestroy {
+export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild(MatSort) sort?: MatSort;
+  @ViewChild(MatPaginator) paginator?: MatPaginator;
+
   public icons = {
     goBack: faChevronLeft,
+    search: faMagnifyingGlass,
+    clear: faClose,
   };
 
-  public columns: TableColumn<Card>[] = [
-    {
-      label: "Meanings",
-      fieldName: "meanings",
-      displayFunction: (row) => this.cardMeaningsPipe.transform(row.data.meanings),
-    },
-    { label: "Pinyin", fieldName: "pinyin", cssClass: "pinyin-column" },
-    { label: "Chinese", fieldName: "characters" },
-  ];
-  public tableRows: TableRow<Card>[] = [];
-
+  public columns = ["meanings", "pinyin", "characters"];
+  public dataSource = new MatTableDataSource<Card>();
   public filter$ = new Subject<string | null>();
   public filter = "";
   public searchActive = false;
   public collectionName = "Collection";
-  public collection?: CardCollection;
   public pageSize = 20;
   public cardCountPlural = {
     "=0": "0 card",
@@ -52,8 +52,7 @@ export class CollectionCardsComponent implements OnInit, OnDestroy {
     private collectionService: CollectionService,
     private dialog: MatDialog,
     private navigationService: NavigationService,
-    private settingsService: SettingsService,
-    private cardMeaningsPipe: CardMeaningsPipe
+    private settingsService: SettingsService
   ) {}
 
   ngOnInit(): void {
@@ -67,9 +66,16 @@ export class CollectionCardsComponent implements OnInit, OnDestroy {
       .getSettings()
       .then((settings) => (this.pageSize = settings.pageSize));
 
-    // this.filter$
-    //   .pipe(debounceTime(250))
-    //   .subscribe(() => (this.dataSource.filter = this.filter));
+    this.initializeDataSource();
+
+    this.filter$
+      .pipe(debounceTime(250))
+      .subscribe(() => (this.dataSource.filter = this.filter));
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort ?? null;
+    this.dataSource.paginator = this.paginator ?? null;
   }
 
   ngOnDestroy(): void {
@@ -94,45 +100,42 @@ export class CollectionCardsComponent implements OnInit, OnDestroy {
     }
   }
 
+  clearSearchBar(): void {
+    this.filter = "";
+    this.filter$.next(null);
+  }
+
   private loadCollectionCards(): void {
     this.collectionService.getCollection(this.collectionId).then((collection) => {
       if (collection) {
-        this.collection = collection;
         this.collectionName = collection.label;
         this.navigationService.setTitle("Manage collections - " + this.collectionName);
-        this.updateRows(collection.cards);
+        this.dataSource.data = collection.cards;
       }
     });
   }
 
-  private updateRows(collection: Card[]): void {
-    this.tableRows = collection.map((card) => {
-      const row: TableRow<Card> = { data: card };
-      Object.keys(card).forEach((key) => {
-        const cardKey = key as keyof Card;
-        row[key] = card[cardKey];
-      });
-      return row;
-    });
-    // this.dataSource.filterPredicate = (card: Card, filter: string) => {
-    //   const normalizedFilter = normalizeForComparison(filter);
-    //   const normalizedContent: string[] = card.meanings.map((meaning) =>
-    //     normalizeForComparison(meaning)
-    //   );
-    // if (card.pinyin) {
-    //     normalizedContent.push(normalizeForComparison(card.pinyin));
-    //   }
-    //   return normalizedContent.some((content) => content.includes(normalizedFilter));
-    // };
-    // this.dataSource.sortingDataAccessor = (data: Card, sortHeaderId: string): string => {
-    //   const columnData = data[sortHeaderId as keyof Card];
-    //   if (Array.isArray(columnData)) {
-    //     return columnData[0].toLocaleLowerCase();
-    //   }
-    //   if (typeof columnData === "string") {
-    //     return columnData.toLocaleLowerCase();
-    //   }
-    //   throw "Unhandled data type: only meanings and pinyin column should be sorted";
-    // };
+  private initializeDataSource(): void {
+    this.dataSource.filterPredicate = (card: Card, filter: string) => {
+      const normalizedFilter = normalizeForComparison(filter);
+      const normalizedContent: string[] = card.meanings.map((meaning) =>
+        normalizeForComparison(meaning)
+      );
+      if (card.pinyin) {
+        normalizedContent.push(normalizeForComparison(card.pinyin));
+      }
+      return normalizedContent.some((content) => content.includes(normalizedFilter));
+    };
+
+    this.dataSource.sortingDataAccessor = (data: Card, sortHeaderId: string): string => {
+      const columnData = data[sortHeaderId as keyof Card];
+      if (Array.isArray(columnData)) {
+        return columnData[0].toLocaleLowerCase();
+      }
+      if (typeof columnData === "string") {
+        return columnData.toLocaleLowerCase();
+      }
+      throw "Unhandled data type: only meanings and pinyin column should be sorted";
+    };
   }
 }
