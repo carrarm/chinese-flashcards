@@ -4,6 +4,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServiceWorkerModule } from "@angular/service-worker";
 
 import { HttpClientModule } from "@angular/common/http";
+import {
+  NgxFormControlMessages,
+  NgxFormControlMessagesModule,
+} from "@varrmcault/ngx-form-control-messages";
 import { NgCircleProgressModule } from "ng-circle-progress";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -12,6 +16,10 @@ import { TabBarComponent } from "./components/tab-bar/tab-bar.component";
 import { CollectionPageModule } from "./pages/collection/collection-page.module";
 import { LearnPageModule } from "./pages/learn/learn-page.module";
 import { SettingsModule } from "./pages/settings/settings.module";
+
+const defaultErrorMessages: NgxFormControlMessages = {
+  required: "Field required",
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +32,7 @@ import { SettingsModule } from "./pages/settings/settings.module";
     LearnPageModule,
     NavbarComponent,
     NgCircleProgressModule.forRoot(),
+    NgxFormControlMessagesModule.forRoot(defaultErrorMessages),
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

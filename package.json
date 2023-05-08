@@ -28,6 +28,7 @@
     "@fortawesome/angular-fontawesome": "^0.12.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@varrmcault/ngx-form-control-messages": "^1.0.3",
     "dayjs": "^1.11.7",
     "dexie": "^3.2.3",
     "ng-circle-progress": "^1.7.1",

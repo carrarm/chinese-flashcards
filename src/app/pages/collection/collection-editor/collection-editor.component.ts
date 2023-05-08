@@ -47,8 +47,10 @@ export class CollectionEditorComponent {
       } else {
         await this.collectionService.createCollection(collection);
       }
+      this.dialogRef.close();
+    } else {
+      this.form.markAllAsTouched();
     }
-    this.dialogRef.close();
   }
 
   async deleteCollection(): Promise<void> {

@@ -1,12 +1,15 @@
 <div mat-dialog-content>
   <form [formGroup]="form">
-    <mat-form-field>
+    <mat-form-field hideRequiredMarker>
       <mat-label>Label</mat-label>
       <input matInput formControlName="label" />
+      <mat-error>
+        <ngx-form-control-messages [field]="form.controls.label" />
+      </mat-error>
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Description</mat-label>
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>Description (optional)</mat-label>
       <input matInput formControlName="description" />
     </mat-form-field>
   </form>
@@ -22,13 +25,6 @@
 </div>
 
 <div mat-dialog-actions>
-  <button mat-flat-button mat-dialog-close cdkFocusInitial>Cancel</button>
-  <button
-    mat-flat-button
-    color="primary"
-    [disabled]="form.invalid"
-    (click)="saveCollection()"
-  >
-    Save and close
-  </button>
+  <chf-button mat-dialog-close cdkFocusInitial>Cancel</chf-button>
+  <chf-button type="primary" (click)="saveCollection()">Save</chf-button>
 </div>
