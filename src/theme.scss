@@ -88,10 +88,16 @@ $chinese-flashcards-dark-theme: mat.define-dark-theme(
   --primary-color: #07825c;
   --accent-color: #82062b;
   --default-color: gray;
+  --error-color: #b60a0a;
   --app-bg-color: #171b1e;
   --app-fg-color: white;
   --font-title: Quicksand, sans-serif;
   --font-content: Lato, sans-serif;
+
+  // Components
+  --dialog-bg: #2d3132;
+  --field-bg: #272a2b;
+  --field-label-fg: #898989;
 }
 
 body {
@@ -114,9 +120,23 @@ body {
 }
 
 .mat-mdc-floating-label {
-  color: white !important;
+  color: var(--field-label-fg) !important;
 }
 
-.mat-mdc-dialog-container .mdc-dialog__surface {
-  background-color: #2d3132 !important;
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: var(--dialog-bg);
+
+  .mdc-dialog__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 1px #484848;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-left: 0px;
+  }
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: var(--field-bg);
 }

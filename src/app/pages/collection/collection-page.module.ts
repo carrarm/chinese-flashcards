@@ -20,6 +20,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { NgxFormControlMessagesModule } from "@varrmcault/ngx-form-control-messages";
 import { ButtonComponent } from "src/app/components/button/button.component";
 import { CardComponent } from "src/app/components/card/card.component";
+import { InlineConfirmDialogComponent } from "src/app/components/inline-confirm-dialog/inline-confirm-dialog.component";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
 import { CardEditorComponent } from "./card-editor/card-editor.component";
 import { CollectionCardsComponent } from "./collection-cards/collection-cards.component";
@@ -40,6 +41,7 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     CommonModule,
     FontAwesomeModule,
     FormsModule,
+    InlineConfirmDialogComponent,
     JoinPipe,
     MatButtonModule,
     MatCardModule,

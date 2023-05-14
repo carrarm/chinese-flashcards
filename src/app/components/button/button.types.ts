@@ -1,1 +1,1 @@
-export type ButtonType = "primary" | "default";
+export type ButtonType = "primary" | "error" | "default";

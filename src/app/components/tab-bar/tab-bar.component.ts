@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { faBook, faCirclePlay, faGear } from "@fortawesome/free-solid-svg-icons";
+import { ActionTab, RouterTab, TabBarService } from "./tab-bar.service";
 
 @Component({
   selector: "chf-tab-bar",
@@ -12,9 +12,18 @@ import { faBook, faCirclePlay, faGear } from "@fortawesome/free-solid-svg-icons"
   styleUrls: ["./tab-bar.component.scss"],
 })
 export class TabBarComponent {
-  public tabs = [
-    { icon: faCirclePlay, label: "Start session", route: "/sessions" },
-    { icon: faBook, label: "Browser cards", route: "/collections" },
-    { icon: faGear, label: "Settings", route: "/settings" },
-  ];
+  public actions: ActionTab[] = [];
+  public routes: RouterTab[] = [];
+
+  constructor(tabBarService: TabBarService) {
+    tabBarService.tabs.asObservable().subscribe((tabBar) => {
+      if (tabBar.type === "action") {
+        this.actions = tabBar.tabs;
+        this.routes = [];
+      } else {
+        this.routes = tabBar.tabs;
+        this.actions = [];
+      }
+    });
+  }
 }

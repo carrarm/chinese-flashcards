@@ -1,6 +1,6 @@
 <div class="page-header">
   <fa-icon [icon]="icons.goBack" routerLink="/collections" />
-  <div class="collection-name">{{ collectionName }}</div>
+  <div class="collection-name">{{ collection?.label }}</div>
   <div class="filler"></div>
   <div class="card-count">
     {{ dataSource.data.length | i18nPlural : cardCountPlural }}

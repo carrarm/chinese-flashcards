@@ -8,6 +8,7 @@ import { LearningSessionService } from "@core/services/learning-session.service"
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { StatisticsService } from "@core/services/statistics.service";
+import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 
 @Component({
   selector: "chf-session-launcher",
@@ -24,6 +25,7 @@ export class SessionLauncherComponent implements OnInit {
 
   constructor(
     private navigationService: NavigationService,
+    private tabBarService: TabBarService,
     private settingsService: SettingsService,
     private collectionService: CollectionService,
     private statisticsService: StatisticsService,
@@ -34,6 +36,7 @@ export class SessionLauncherComponent implements OnInit {
   ngOnInit(): void {
     this.navigationService.setTitle("Start a session");
     this.navigationService.resetNavbarText();
+    this.tabBarService.resetTabBar();
 
     this.settingsService.getSettings().then((settings) => (this.settings = settings));
     this.collectionService.getCollections().then(async (collections) => {

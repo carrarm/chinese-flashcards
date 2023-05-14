@@ -4,18 +4,23 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute } from "@angular/router";
+import { CardCollection } from "@core/model/card-collection.model";
 import { Card } from "@core/model/card.model";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { normalizeForComparison } from "@core/utils/general.utils";
 import {
+  faAdd,
   faChevronLeft,
   faClose,
+  faEdit,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Subject, debounceTime } from "rxjs";
+import { ActionTab, TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { CardEditorComponent } from "../card-editor/card-editor.component";
+import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
 
 @Component({
   selector: "chf-collection-cards",
@@ -37,7 +42,7 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   public filter$ = new Subject<string | null>();
   public filter = "";
   public searchActive = false;
-  public collectionName = "Collection";
+  public collection?: CardCollection;
   public pageSize = 20;
   public cardCountPlural = {
     "=0": "0 card",
@@ -46,10 +51,25 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   };
 
   private collectionId = 0;
+  private readonly tabBarActions: ActionTab[] = [
+    {
+      label: "Edit collection",
+      icon: faEdit,
+      action: () => this.openCategoryEditor(),
+    },
+    {
+      label: "New card",
+      icon: faAdd,
+      action: () => {
+        /* TODO */
+      },
+    },
+  ];
 
   constructor(
     private route: ActivatedRoute,
     private collectionService: CollectionService,
+    private tabBarService: TabBarService,
     private dialog: MatDialog,
     private navigationService: NavigationService,
     private settingsService: SettingsService
@@ -60,6 +80,7 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
       this.collectionId = +params["id"];
       this.loadCollectionCards();
       this.navigationService.navbarVisible.next(false);
+      this.tabBarService.setActions(this.tabBarActions);
     });
 
     this.settingsService
@@ -86,7 +107,7 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     this.dialog
       .open(CardEditorComponent, {
         data: { card, collection: this.collectionId },
-        panelClass: ["mat-app-background", "dark-mode"],
+        panelClass: ["mat-app-background"],
       })
       .afterClosed()
       .subscribe(() => this.loadCollectionCards());
@@ -108,8 +129,8 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   private loadCollectionCards(): void {
     this.collectionService.getCollection(this.collectionId).then((collection) => {
       if (collection) {
-        this.collectionName = collection.label;
-        this.navigationService.setTitle("Manage collections - " + this.collectionName);
+        this.collection = collection;
+        this.navigationService.setTitle("Manage collections - " + collection.label);
         this.dataSource.data = collection.cards;
       }
     });
@@ -137,5 +158,19 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
       }
       throw "Unhandled data type: only meanings and pinyin column should be sorted";
     };
+  }
+
+  private openCategoryEditor(): void {
+    this.dialog
+      .open(CollectionEditorComponent, {
+        data: { collection: this.collection },
+        panelClass: [],
+      })
+      .afterClosed()
+      .subscribe(() =>
+        this.collectionService
+          .getCollection(this.collectionId)
+          .then((refreshedCollection) => (this.collection = refreshedCollection))
+      );
   }
 }

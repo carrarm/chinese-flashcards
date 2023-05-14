@@ -4,6 +4,7 @@ import { CardCollection } from "@core/model/card-collection.model";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { faAdd, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
 
 @Component({
@@ -26,6 +27,7 @@ export class CollectionListComponent implements OnInit {
   constructor(
     private collectionService: CollectionService,
     private navigationService: NavigationService,
+    private tabBarService: TabBarService,
     private dialog: MatDialog
   ) {}
 
@@ -33,6 +35,7 @@ export class CollectionListComponent implements OnInit {
     this.loadCollections();
     this.navigationService.setTitle("Manage collections");
     this.navigationService.resetNavbarText();
+    this.tabBarService.resetTabBar();
   }
 
   openEditor(collection?: CardCollection): void {

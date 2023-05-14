@@ -1,9 +1,18 @@
-<div
-  class="tab"
-  *ngFor="let tab of tabs"
-  [routerLink]="tab.route"
-  routerLinkActive="active"
->
-  <fa-icon [icon]="tab.icon" size="lg" />
-  <div>{{ tab.label }}</div>
-</div>
+<ng-container *ngIf="actions.length; else routerTabBar">
+  <div class="tab active" *ngFor="let tab of actions" (click)="tab.action()">
+    <fa-icon [icon]="tab.icon" size="lg" />
+    <div>{{ tab.label }}</div>
+  </div>
+</ng-container>
+
+<ng-template #routerTabBar>
+  <div
+    class="tab"
+    *ngFor="let tab of routes"
+    [routerLink]="tab.route"
+    routerLinkActive="active"
+  >
+    <fa-icon [icon]="tab.icon" size="lg" />
+    <div>{{ tab.label }}</div>
+  </div>
+</ng-template>
