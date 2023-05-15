@@ -60,9 +60,7 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     {
       label: "New card",
       icon: faAdd,
-      action: () => {
-        /* TODO */
-      },
+      action: () => this.openCardEditor(),
     },
   ];
 

@@ -42,7 +42,7 @@
     Add another card after this one
   </mat-checkbox>
 
-  <p class="reset-warning">
+  <p class="reset-warning" *ngIf="!creationMode">
     Changing the characters or pinyin fields will automatically reset the progress.
   </p>
 </div>

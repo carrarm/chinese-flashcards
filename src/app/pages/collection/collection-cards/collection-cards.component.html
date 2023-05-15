@@ -49,9 +49,9 @@
       <mat-header-cell class="character-column" *matHeaderCellDef>
         Char.
       </mat-header-cell>
-      <mat-cell class="character-column" *matCellDef="let card">{{
-        card.characters
-      }}</mat-cell>
+      <mat-cell class="character-column" *matCellDef="let card">
+        {{ card.characters }}
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="columns; sticky: true" />
