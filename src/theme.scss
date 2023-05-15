@@ -127,13 +127,15 @@ body {
   --mdc-dialog-container-color: var(--dialog-bg);
 
   .mdc-dialog__title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     border-bottom: solid 1px #484848;
     margin-bottom: 1rem;
     padding-top: 0.5rem;
-    padding-left: 0px;
+    display: flex;
+    align-items: center;
+
+    & > div:first-child {
+      flex: 1;
+    }
   }
 }
 

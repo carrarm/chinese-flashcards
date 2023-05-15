@@ -5,7 +5,12 @@ import {
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Output } from "@angular/core";
 import { MatRippleModule } from "@angular/material/core";
-import { MatIconModule } from "@angular/material/icon";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import {
+  faArrowUpFromBracket,
+  faCheck,
+  faDeleteLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import { QWERTY } from "./keyboard-layout.model";
 import { LongPressDirective } from "./long-press.directive";
 import { getTones, hasTones } from "./tones";
@@ -19,8 +24,8 @@ const BASE_TONE_OVERLAY_OFFSET_Y = -TONE_KEY_WIDTH_PX * 2.5;
   standalone: true,
   imports: [
     CommonModule,
+    FontAwesomeModule,
     LongPressDirective,
-    MatIconModule,
     MatRippleModule,
     OverlayModule,
   ],
@@ -40,6 +45,11 @@ export class VirtualKeyboardComponent {
   public toneOverlayOpen = false;
   public toneOverlayOrigin?: FlexibleConnectedPositionStrategyOrigin;
   public toneKeys: string[] = [];
+  public icons = {
+    uppercase: faArrowUpFromBracket,
+    backspace: faDeleteLeft,
+    done: faCheck,
+  };
 
   /**
    * Select a character to write. This method is used for both the standard keyboard

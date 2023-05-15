@@ -8,7 +8,7 @@
     [readonly]="virtualKeyboardOpen"
   />
   <button mat-icon-button matSuffix (click)="virtualKeyboardOpen = !virtualKeyboardOpen">
-    <mat-icon>keyboard</mat-icon>
+    <fa-icon [icon]="keyboardIcon" />
   </button>
   <mat-hint *ngIf="virtualKeyboardOpen">
     Close the virtual keyboard to edit this field

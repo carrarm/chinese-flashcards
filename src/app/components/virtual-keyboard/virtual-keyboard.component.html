@@ -6,7 +6,7 @@
       (click)="uppercaseEnabled = !uppercaseEnabled"
       [class]="{ active: uppercaseEnabled }"
     >
-      <mat-icon>arrow_upward</mat-icon>
+      <fa-icon [icon]="icons.uppercase" />
     </div>
     <div
       #letterKeyRef
@@ -22,14 +22,14 @@
       <ng-container *ngIf="!uppercaseEnabled">{{ key | lowercase }}</ng-container>
     </div>
     <div class="keyboard-key" *ngIf="isLast" (click)="backspace.emit()">
-      <mat-icon>backspace</mat-icon>
+      <fa-icon [icon]="icons.backspace" />
     </div>
   </div>
   <div class="keyboard-row">
     <div class="keyboard-key plain">?123</div>
     <div class="keyboard-key plain space" (click)="writeCharacter(' ', true)">Space</div>
     <div class="keyboard-key plain validate" (click)="submitText.emit()">
-      <mat-icon>done</mat-icon>
+      <fa-icon [icon]="icons.done" />
     </div>
   </div>
 </div>

@@ -103,11 +103,10 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     this.navigationService.navbarVisible.next(true);
   }
 
-  openEditor(card?: Card): void {
+  openCardEditor(card?: Card): void {
     this.dialog
       .open(CardEditorComponent, {
         data: { card, collection: this.collectionId },
-        panelClass: ["mat-app-background"],
       })
       .afterClosed()
       .subscribe(() => this.loadCollectionCards());
@@ -164,7 +163,6 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     this.dialog
       .open(CollectionEditorComponent, {
         data: { collection: this.collection },
-        panelClass: [],
       })
       .afterClosed()
       .subscribe(() =>

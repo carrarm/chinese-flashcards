@@ -32,7 +32,7 @@
     matSortDirection="asc"
   >
     <ng-container matColumnDef="meanings">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Meanings </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Meanings</mat-header-cell>
       <mat-cell class="meaning-column" *matCellDef="let card">
         <span [innerHTML]="card.meanings | cardMeanings"></span>
       </mat-cell>
@@ -54,8 +54,8 @@
       }}</mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columns" (click)="openEditor(row)"></mat-row>
+    <mat-header-row *matHeaderRowDef="columns; sticky: true" />
+    <mat-row *matRowDef="let row; columns: columns" (click)="openCardEditor(row)" />
   </mat-table>
 
   <mat-paginator [pageSize]="pageSize" hidePageSize showFirstLastButtons />
