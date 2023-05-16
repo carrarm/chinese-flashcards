@@ -63,7 +63,7 @@ export class CardService {
     return cardModel ? new Card(cardModel) : undefined;
   }
 
-  private async getCard(id: number): Promise<Card> {
+  async getCard(id: number): Promise<Card> {
     const card = await this.database.cards.get(id);
     if (!card) {
       throw new Error(`Card with id ${id} does not exist`);

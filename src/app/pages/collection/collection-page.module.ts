@@ -22,10 +22,13 @@ import { ButtonComponent } from "src/app/components/button/button.component";
 import { CardComponent } from "src/app/components/card/card.component";
 import { InlineConfirmDialogComponent } from "src/app/components/inline-confirm-dialog/inline-confirm-dialog.component";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
+import { CardDifficultyComponent } from "../shared/components/card-difficulty/card-difficulty.component";
 import { CardEditorComponent } from "./card-editor/card-editor.component";
+import { CardViewerComponent } from "./card-viewer/card-viewer.component";
 import { CollectionCardsComponent } from "./collection-cards/collection-cards.component";
 import { CollectionEditorComponent } from "./collection-editor/collection-editor.component";
 import { CollectionListComponent } from "./collection-list/collection-list.component";
+import { CardProgressBarComponent } from './card-viewer/card-progress-bar/card-progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +36,13 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     CollectionCardsComponent,
     CardEditorComponent,
     CollectionEditorComponent,
+    CardViewerComponent,
+    CardProgressBarComponent,
   ],
   imports: [
     ButtonComponent,
     CardComponent,
+    CardDifficultyComponent,
     CardMeaningsPipe,
     CommonModule,
     FontAwesomeModule,

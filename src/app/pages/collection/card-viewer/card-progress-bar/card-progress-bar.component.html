@@ -1,0 +1,5 @@
+<div class="card-progress-track">
+  <div *ngFor="let step of steps" class="step">
+    <div *ngIf="step === card.leitnerBox" class="current-step"></div>
+  </div>
+</div>

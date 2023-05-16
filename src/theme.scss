@@ -93,6 +93,7 @@ $chinese-flashcards-dark-theme: mat.define-dark-theme(
   --app-fg-color: white;
   --font-title: Quicksand, sans-serif;
   --font-content: Lato, sans-serif;
+  --font-pinyin: "Ubuntu Mono", Lato, sans-serif;
 
   // Components
   --dialog-bg: #2d3132;
@@ -132,6 +133,8 @@ body {
     padding-top: 0.5rem;
     display: flex;
     align-items: center;
+
+    --mdc-dialog-subhead-font: var(--font-title);
 
     & > div:first-child {
       flex: 1;

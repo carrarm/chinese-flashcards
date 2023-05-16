@@ -20,6 +20,7 @@ import {
 import { Subject, debounceTime } from "rxjs";
 import { ActionTab, TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { CardEditorComponent } from "../card-editor/card-editor.component";
+import { CardViewerComponent } from "../card-viewer/card-viewer.component";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
 
 @Component({
@@ -104,6 +105,15 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   openCardEditor(card?: Card): void {
     this.dialog
       .open(CardEditorComponent, {
+        data: { card, collection: this.collectionId },
+      })
+      .afterClosed()
+      .subscribe(() => this.loadCollectionCards());
+  }
+
+  openCardViewer(card: Card): void {
+    this.dialog
+      .open(CardViewerComponent, {
         data: { card, collection: this.collectionId },
       })
       .afterClosed()

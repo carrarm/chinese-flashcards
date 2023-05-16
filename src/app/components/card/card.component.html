@@ -1,5 +1,5 @@
-<div class="header">
-  <div class="title">
+<div class="header" *ngIf="!coerced['noHeader']">
+  <div class="title hide-empty">
     <ng-content select="[card-title]" />
   </div>
   <div class="header-end hide-empty">

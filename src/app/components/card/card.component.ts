@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { BooleanInput } from "@angular/cdk/coercion";
+import { CommonModule } from "@angular/common";
+import { Component, Input, OnInit } from "@angular/core";
+import { CoercionComponent } from "@core/coercion-component";
 
 @Component({
-  selector: 'chf-card',
+  selector: "chf-card",
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  templateUrl: "./card.component.html",
+  styleUrls: ["./card.component.scss"],
 })
-export class CardComponent {
+export class CardComponent extends CoercionComponent implements OnInit {
+  @Input() noHeader: BooleanInput = false;
 
+  ngOnInit(): void {
+    this.coerceAll(["noHeader"]);
+  }
 }

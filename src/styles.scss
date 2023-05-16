@@ -15,7 +15,7 @@ mat-card-actions {
 }
 
 .pinyin-font {
-  font-family: "Ubuntu Mono";
+  font-family: var(--font-pinyin);
 }
 
 chf-session-launcher {

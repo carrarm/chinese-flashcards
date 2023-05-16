@@ -1,0 +1,26 @@
+<div class="difficulty-levels">
+  <div
+    class="level hard"
+    [class]="{ active: difficulty === 'hard' }"
+    (click)="difficultyChange.emit('hard')"
+  >
+    <fa-icon [icon]="icons.hard" size="3x" />
+    <span>Hard</span>
+  </div>
+  <div
+    class="level medium"
+    [class]="{ active: difficulty === 'medium' }"
+    (click)="difficultyChange.emit('medium')"
+  >
+    <fa-icon [icon]="icons.medium" size="3x" />
+    <span>OK</span>
+  </div>
+  <div
+    class="level easy"
+    [class]="{ active: difficulty === 'easy' }"
+    (click)="difficultyChange.emit('easy')"
+  >
+    <fa-icon [icon]="icons.easy" size="3x" />
+    <span>Easy</span>
+  </div>
+</div>
