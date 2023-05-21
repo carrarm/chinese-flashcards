@@ -1,13 +1,17 @@
 $roundedRadius: 10px;
 $sharpRadius: 2px;
 
-:host {
+.container {
   display: flex;
+  flex-direction: column;
   background-color: var(--card-bg-color, #2d3132);
   border-radius: $roundedRadius $sharpRadius $roundedRadius $sharpRadius;
   padding: 1rem 1.2rem;
-  flex-direction: column;
   gap: 0.5rem;
+
+  &.reversed {
+    border-radius: $sharpRadius $roundedRadius $sharpRadius $roundedRadius;
+  }
 }
 
 .header {
@@ -26,6 +30,13 @@ $sharpRadius: 2px;
 .subtitle {
   color: #7f7f7f;
   font-size: small;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .hide-empty:empty {

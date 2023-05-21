@@ -31,6 +31,10 @@ export class SessionCard {
     return this.card.nextReviewInDays();
   }
 
+  get isCompleted(): boolean {
+    return this.currentRepetitions >= this.numberOfRepetitions;
+  }
+
   constructor(card: Card) {
     this.card = card;
     this.mistakes = 0;

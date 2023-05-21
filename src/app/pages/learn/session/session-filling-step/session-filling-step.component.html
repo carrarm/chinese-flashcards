@@ -1,100 +1,80 @@
 <ng-container *ngIf="currentCard">
-  <mat-card appearance="outlined">
-    <div
-      class="centered-card"
-      [innerHTML]="currentCard.card.meanings | cardMeanings"
-    ></div>
-    <span class="card-rep-count">
-      {{ currentCard.currentRepetitions }} /
-      {{ currentCard.numberOfRepetitions }}
-    </span>
-  </mat-card>
+  <chf-card>
+    <div card-content class="translation centered-card">
+      <span [innerHTML]="currentCard.card.meanings | cardMeanings"></span>
+      <span class="card-done-text" *ngIf="currentCard.isCompleted">
+        Card completed for this session!
+      </span>
+    </div>
+  </chf-card>
 
   <ng-container *ngIf="cardRevealed; else cardForm">
-    <mat-card
-      *ngIf="pinyinInput || characterInput"
-      appearance="outlined"
-      class="centered-card chinese"
-    >
-      <div class="floating-icon">
-        <mat-icon class="failed" *ngIf="isMistake; else successIcon"> cancel </mat-icon>
-        <ng-template #successIcon>
-          <mat-icon class="passed">check_circle</mat-icon>
-        </ng-template>
+    <chf-card *ngIf="pinyinInput || characterInput">
+      <div card-content class="centered-card chinese">
+        <div class="floating-icon">
+          <fa-icon
+            [icon]="icons.failed"
+            size="lg"
+            class="failed"
+            *ngIf="isMistake; else successIcon"
+          />
+          <ng-template #successIcon>
+            <fa-icon [icon]="icons.success" size="lg" class="passed" />
+          </ng-template>
+        </div>
+        <span>{{ characterInput }}</span>
+        <span class="pinyin-font">{{ pinyinInput }}</span>
       </div>
-      <p>{{ characterInput }}</p>
-      <span class="pinyin-font">{{ pinyinInput }}</span>
-    </mat-card>
+    </chf-card>
 
-    <mat-card *ngIf="isMistake" appearance="outlined" class="centered-card chinese">
-      <div class="floating-icon">
-        <mat-icon class="solution">assistant</mat-icon>
+    <chf-card *ngIf="isMistake">
+      <div card-content class="centered-card chinese">
+        <div class="floating-icon">
+          <fa-icon [icon]="icons.success" size="lg" class="solution" />
+        </div>
+        <span>{{ currentCard.card.characters }}</span>
+        <span class="pinyin-font">{{ currentCard.card.pinyin }}</span>
       </div>
-      <p>{{ currentCard.card.characters }}</p>
-      <span class="pinyin-font">{{ currentCard.card.pinyin }}</span>
-    </mat-card>
+    </chf-card>
 
     <div>
       How did you find this card?
-      <div class="difficulty-levels">
-        <div
-          class="level hard"
-          [class]="{ active: currentCard.card.difficulty === 'hard' }"
-          (click)="changeDifficulty('hard')"
-        >
-          <mat-icon svgIcon="face-sob" />
-          <span>Hard</span>
-        </div>
-        <div
-          class="level medium"
-          [class]="{ active: currentCard.card.difficulty === 'medium' }"
-          (click)="changeDifficulty('medium')"
-        >
-          <mat-icon svgIcon="face-smile" />
-          <span>OK</span>
-        </div>
-        <div
-          class="level easy"
-          [class]="{ active: currentCard.card.difficulty === 'easy' }"
-          (click)="changeDifficulty('easy')"
-        >
-          <mat-icon svgIcon="face-laugh" />
-          <span>Easy</span>
-        </div>
-      </div>
+      <chf-card-difficulty
+        [difficulty]="currentCard.card.difficulty"
+        (difficultyChange)="changeDifficulty($event)"
+      />
     </div>
   </ng-container>
 
   <ng-template #cardForm>
-    <mat-card appearance="outlined">
-      <mat-form-field subscriptSizing="dynamic" *ngIf="currentCard.card.characters">
-        <mat-label>Chinese characters</mat-label>
-        <input matInput [(ngModel)]="characterInput" />
-      </mat-form-field>
+    <chf-card reversedCorners>
+      <div card-content>
+        <mat-form-field subscriptSizing="dynamic" *ngIf="currentCard.card.characters">
+          <mat-label>Chinese characters</mat-label>
+          <input matInput [(ngModel)]="characterInput" />
+        </mat-form-field>
 
-      <ng-container *ngIf="learnPinyin">
-        <chf-pinyin-form-field
-          [(ngModel)]="pinyinInput"
-          *ngIf="currentCard.card.pinyin"
-        />
-
-        <p class="helper-text">
-          When the pinyin mode is enabled, you need to fill all of the fields above to
-          validate the card.
-        </p>
-      </ng-container>
-
-      <button mat-flat-button color="primary" (click)="checkResponse()">Check</button>
-    </mat-card>
+        <ng-container *ngIf="learnPinyin">
+          <chf-pinyin-form-field
+            [(ngModel)]="pinyinInput"
+            *ngIf="currentCard.card.pinyin"
+          />
+        </ng-container>
+      </div>
+      <div card-actions>
+        <chf-button type="primary" (click)="checkResponse()">
+          <fa-icon [icon]="icons.check" />
+          Check
+        </chf-button>
+      </div>
+    </chf-card>
   </ng-template>
 
-  <div class="bottom-actions">
-    <button mat-flat-button [disabled]="cardRevealed" (click)="reveal()">
-      Reveal the card
-    </button>
-    <button *ngIf="cardRevealed" mat-flat-button color="primary" (click)="nextCard()">
+  <div class="bottom-actions" [ngClass]="{ centered: cardRevealed }">
+    <chf-button *ngIf="!cardRevealed" (click)="reveal()">Reveal the card</chf-button>
+    <chf-button *ngIf="cardRevealed" type="primary" (click)="nextCard()">
+      <fa-icon [icon]="icons.next" />
       Next card
-      <mat-icon>arrow_forward</mat-icon>
-    </button>
+    </chf-button>
   </div>
 </ng-container>

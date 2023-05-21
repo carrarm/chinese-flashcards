@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .difficulty-levels {
   display: flex;
   font-size: small;
@@ -14,10 +18,12 @@
 
     fa-icon {
       color: gray;
+      margin-bottom: 0.5rem;
     }
 
     &.active {
       border-color: var(--card-level-color);
+      color: white;
 
       fa-icon {
         color: var(--card-level-color, gray);

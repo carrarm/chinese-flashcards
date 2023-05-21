@@ -2,7 +2,7 @@
   background-color: var(--app-bg-color);
   color: var(--app-fg-color);
   font-family: var(--font-title);
-  padding: 0.6rem 0;
+  padding: 0.6rem 0.7rem;
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -21,4 +21,6 @@
 
 .description {
   color: gray;
+  font-size: 0.9rem;
+  font-family: var(--font-content);
 }

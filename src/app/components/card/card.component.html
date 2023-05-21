@@ -1,16 +1,22 @@
-<div class="header" *ngIf="!coerced['noHeader']">
-  <div class="title hide-empty">
-    <ng-content select="[card-title]" />
+<div class="container" [ngClass]="{ reversed: coerced['reversedCorners'] }">
+  <div class="header" *ngIf="!coerced['noHeader']">
+    <div class="title hide-empty">
+      <ng-content select="[card-title]" />
+    </div>
+    <div class="header-end hide-empty">
+      <ng-content select="[card-header-end]" />
+    </div>
   </div>
-  <div class="header-end hide-empty">
-    <ng-content select="[card-header-end]" />
+
+  <div class="subtitle hide-empty">
+    <ng-content select="[card-subtitle]" />
   </div>
-</div>
 
-<div class="subtitle hide-empty">
-  <ng-content select="[card-subtitle]" />
-</div>
+  <div class="hide-empty">
+    <ng-content select="[card-content]" />
+  </div>
 
-<div class="hide-empty">
-  <ng-content select="[card-content]" />
+  <div class="actions hide-empty">
+    <ng-content select="[card-actions]" />
+  </div>
 </div>

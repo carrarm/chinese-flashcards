@@ -12,8 +12,9 @@ import { CoercionComponent } from "@core/coercion-component";
 })
 export class CardComponent extends CoercionComponent implements OnInit {
   @Input() noHeader: BooleanInput = false;
+  @Input() reversedCorners: BooleanInput = false;
 
   ngOnInit(): void {
-    this.coerceAll(["noHeader"]);
+    this.coerceAll(["noHeader", "reversedCorners"]);
   }
 }
