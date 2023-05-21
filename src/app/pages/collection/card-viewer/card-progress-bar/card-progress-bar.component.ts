@@ -13,10 +13,12 @@ export class CardProgressBarComponent implements OnInit {
   constructor(private settings: SettingsService) {}
 
   public steps: number[] = [];
+  public currentStepPercent = 0;
 
   ngOnInit(): void {
     this.settings.getSettings().then((settings) => {
       this.steps = Array.from({ length: settings.leitnerBoxes }, (_, key) => key);
+      this.currentStepPercent = ((this.card.leitnerBox + 1) * 100) / this.steps.length;
     });
   }
 }

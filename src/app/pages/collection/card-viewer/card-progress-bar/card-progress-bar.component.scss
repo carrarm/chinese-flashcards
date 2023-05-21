@@ -3,16 +3,13 @@
   margin: 0.5rem 0;
 }
 
+$roundedRadius: 20px;
+
 .card-progress-track {
   height: 1rem;
   width: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(85, 157, 0, 1) 0%,
-    rgba(149, 36, 255, 1) 51%,
-    rgba(40, 151, 207, 1) 100%
-  );
-  border-radius: 20px;
+  background-color: #1c1c1c;
+  border-radius: $roundedRadius;
   display: flex;
 }
 
@@ -21,12 +18,25 @@
   height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  &:first-child {
+    border-top-left-radius: $roundedRadius;
+    border-bottom-left-radius: $roundedRadius;
+  }
+
+  &:last-child {
+    border-top-right-radius: $roundedRadius;
+    border-bottom-right-radius: $roundedRadius;
+  }
+
+  &.completed {
+    background-color: #979797;
+  }
 }
 
 .current-step {
-  height: 1.5rem;
-  margin-top: -0.25rem;
-  width: 3px;
-  background-color: white;
-  border-radius: 20px;
+  color: black;
+  font-size: x-small;
+  font-weight: 600;
 }
