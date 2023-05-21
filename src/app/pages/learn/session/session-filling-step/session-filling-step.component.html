@@ -37,13 +37,11 @@
       </div>
     </chf-card>
 
-    <div>
-      How did you find this card?
-      <chf-card-difficulty
-        [difficulty]="currentCard.card.difficulty"
-        (difficultyChange)="changeDifficulty($event)"
-      />
-    </div>
+    <p>How did you find this card?</p>
+    <chf-card-difficulty
+      [difficulty]="currentCard.card.difficulty"
+      (difficultyChange)="changeDifficulty($event)"
+    />
   </ng-container>
 
   <ng-template #cardForm>

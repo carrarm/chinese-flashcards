@@ -13,6 +13,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { NgCircleProgressModule } from "ng-circle-progress";
 import { ButtonComponent } from "src/app/components/button/button.component";
 import { CardComponent } from "src/app/components/card/card.component";
+import { ConfirmDialogComponent } from "src/app/components/dialog/confirm-dialog/confirm-dialog.component";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
 import { CardDifficultyComponent } from "../shared/components/card-difficulty/card-difficulty.component";
 import { CardProgressIndicatorComponent } from "../shared/components/card-progress-indicator/card-progress-indicator.component";
@@ -35,6 +36,7 @@ import { SessionComponent } from "./session/session.component";
     CardMeaningsPipe,
     CardProgressIndicatorComponent,
     CommonModule,
+    ConfirmDialogComponent,
     FontAwesomeModule,
     FormsModule,
     MatButtonModule,

@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { ButtonComponent } from "../button/button.component";
-import { ButtonType } from "../button/button.types";
+import { ButtonComponent } from "../../button/button.component";
+import { ButtonType } from "../../button/button.types";
 
 @Component({
   selector: "chf-inline-confirm-dialog",
