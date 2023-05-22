@@ -1,4 +1,10 @@
 import { Card, CardDifficultyLevel } from "@core/model/card.model";
+import {
+  IconDefinition,
+  faArrowRight,
+  faArrowTrendDown,
+  faArrowTrendUp,
+} from "@fortawesome/free-solid-svg-icons";
 import * as dayjs from "dayjs";
 
 const EASY_REPS = 2;
@@ -12,7 +18,7 @@ export class SessionCard {
   mistakes: number;
   numberOfRepetitions = 0;
   currentRepetitions = 0;
-  sessionResultIcon = "trending_flat";
+  sessionResultIcon: IconDefinition = faArrowRight;
   sessionProgress: SessionProgress = "flat";
 
   get id(): number {
@@ -63,12 +69,12 @@ export class SessionCard {
     if (this.mistakes === 0) {
       this.sessionProgress = "up";
       this.card.moveNextBox();
+      this.sessionResultIcon = faArrowTrendUp;
     } else if (this.mistakes > 1) {
       this.sessionProgress = "down";
       this.card.movePreviousBox();
+      this.sessionResultIcon = faArrowTrendDown;
     }
-    // Use one of Material's trending_up/down/flat icons
-    this.sessionResultIcon = "trending_" + this.sessionProgress;
     this.card.lastSession = dayjs().toISOString();
   }
 

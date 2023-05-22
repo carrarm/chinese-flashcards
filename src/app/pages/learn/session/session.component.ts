@@ -7,7 +7,7 @@ import { CardService } from "@core/services/card.service";
 import { LearningSessionService } from "@core/services/learning-session.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
-import { faCircleStop } from "@fortawesome/free-solid-svg-icons";
+import { faCircleStop, faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
 import { Observable, map, of } from "rxjs";
 import { ConfirmDialogComponent } from "src/app/components/dialog/confirm-dialog/confirm-dialog.component";
 import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
@@ -30,11 +30,11 @@ export class SessionComponent implements PendingChangesComponent {
   constructor(
     private cardService: CardService,
     private dialog: MatDialog,
-    router: Router,
+    private router: Router,
+    private tabBarService: TabBarService,
+    private navigationService: NavigationService,
     learningSessionService: LearningSessionService,
-    settingsService: SettingsService,
-    navigationService: NavigationService,
-    tabBarService: TabBarService
+    settingsService: SettingsService
   ) {
     navigationService.setTitle("Learning session");
     this.sessionCards = learningSessionService.currentSession.getValue();
@@ -57,7 +57,7 @@ export class SessionComponent implements PendingChangesComponent {
   }
 
   canDeactivate(): Observable<boolean> {
-    return this.invalidSession
+    return this.invalidSession || this.isSessionDone
       ? of(true)
       : this.dialog
           .open(ConfirmDialogComponent, {
@@ -89,5 +89,13 @@ export class SessionComponent implements PendingChangesComponent {
       toUpdate.push(sessionCard.card);
     });
     this.cardService.updateCards(toUpdate);
+    this.tabBarService.setActions([
+      {
+        icon: faFlagCheckered,
+        label: "End session",
+        action: () => this.router.navigateByUrl("/sessions"),
+      },
+    ]);
+    this.navigationService.setNavbarText("Session completed!", "main");
   }
 }

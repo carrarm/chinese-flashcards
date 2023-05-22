@@ -11,25 +11,12 @@
 />
 
 <div *ngIf="isSessionDone">
-  <p class="title">Session completed!</p>
-
-  <table>
-    <thead>
-      <th>Card</th>
-      <th>Progress</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let card of sessionResults">
-        <td>{{ card.characters ?? card.pinyin }}</td>
-        <td class="progress" [ngClass]="card.sessionProgress">
-          <mat-icon>{{ card.sessionResultIcon }}</mat-icon>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <button mat-flat-button routerLink="/sessions">
-    <mat-icon>arrow_back</mat-icon>
-    Go back to the collections
-  </button>
+  <div *ngFor="let card of sessionResults" class="card-result-row">
+    <div>
+      {{ card.characters ?? card.pinyin }}
+    </div>
+    <div class="progress" [ngClass]="card.sessionProgress">
+      <fa-icon [icon]="card.sessionResultIcon" size="lg" />
+    </div>
+  </div>
 </div>
