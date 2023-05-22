@@ -30,16 +30,15 @@
   padding: 0 1rem;
 }
 
+$navbarHeight: 60px;
+$headerHeight: 160px;
 .table-wrapper {
   border-radius: 7px;
-  overflow: hidden;
+  overflow-x: auto;
+  height: calc(100vh - $headerHeight - $navbarHeight);
 }
 
 mat-table {
-  mat-cell {
-    font-size: 1.2em;
-  }
-
   mat-header-cell {
     font-weight: 600;
     font-size: 0.9em;

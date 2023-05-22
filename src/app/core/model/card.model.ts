@@ -71,4 +71,16 @@ export class Card implements CardModel {
       this.leitnerBox--;
     }
   }
+
+  reset(): void {
+    this.leitnerBox = 0;
+    this.lastSession = undefined;
+    this.difficulty = undefined;
+  }
+
+  clone(): Card {
+    const clone = new Card(this);
+    clone.meanings = [...clone.meanings];
+    return clone;
+  }
 }

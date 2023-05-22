@@ -24,6 +24,7 @@ export class CardViewerComponent {
   };
   public card: Card;
   public isDeleteConfirm = false;
+  public isResetConfirm = false;
   public isEditActive = false;
 
   private collectionId: number;
@@ -57,5 +58,13 @@ export class CardViewerComponent {
   public async deleteCard(): Promise<void> {
     await this.cardService.deleteCard(this.card);
     this.dialogRef.close();
+  }
+
+  public async resetProgress(): Promise<void> {
+    let updatedCard = this.card.clone();
+    updatedCard.reset();
+    updatedCard = await this.cardService.updateCard(updatedCard);
+    this.card = updatedCard;
+    this.isResetConfirm = false;
   }
 }
