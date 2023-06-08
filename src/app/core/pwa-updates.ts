@@ -8,16 +8,18 @@ export const checkForUpdates = (
   return (): Promise<void> =>
     new Promise((resolve) => {
       swUpdate.checkForUpdate();
-      swUpdate.versionUpdates.subscribe(() => {
-        snackbar
-          .open("A new version is available", "Reload now", {
-            verticalPosition: "top",
-            duration: 5000,
-          })
-          .onAction()
-          .subscribe(() => {
-            window.location.reload();
-          });
+      swUpdate.versionUpdates.subscribe((event) => {
+        if (event.type === "VERSION_READY") {
+          snackbar
+            .open("A new version is available", "Reload now", {
+              verticalPosition: "top",
+              duration: 5000,
+            })
+            .onAction()
+            .subscribe(() => {
+              window.location.reload();
+            });
+        }
       });
 
       resolve();
