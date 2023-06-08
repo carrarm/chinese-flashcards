@@ -1,9 +1,11 @@
-import { isDevMode, NgModule } from "@angular/core";
+import { APP_INITIALIZER, isDevMode, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ServiceWorkerModule } from "@angular/service-worker";
+import { ServiceWorkerModule, SwUpdate } from "@angular/service-worker";
 
 import { HttpClientModule } from "@angular/common/http";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { checkForUpdates } from "@core/pwa-updates";
 import {
   NgxFormControlMessages,
   NgxFormControlMessagesModule,
@@ -42,7 +44,14 @@ const defaultErrorMessages: NgxFormControlMessages = {
     SettingsModule,
     TabBarComponent,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: checkForUpdates,
+      multi: true,
+      deps: [SwUpdate, MatSnackBar],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
