@@ -1,0 +1,76 @@
+<div [hidden]="isDeleteConfirm || isEditActive || isResetConfirm">
+  <div mat-dialog-title>
+    <div>Card</div>
+    <chf-button mat-dialog-close>
+      <fa-icon [icon]="icons.close" />
+      Close
+    </chf-button>
+  </div>
+
+  <div mat-dialog-content>
+    <div>
+      <chf-card noHeader>
+        <div card-content>
+          <div [innerHTML]="card.meanings | cardMeanings"></div>
+          <mat-divider />
+          <div class="characters">{{ card.characters }}</div>
+          <div class="pinyin-font">{{ card.pinyin }}</div>
+        </div>
+      </chf-card>
+      <div class="card-actions">
+        <chf-button type="error" (click)="isDeleteConfirm = true">
+          <fa-icon [icon]="icons.delete" />
+          Delete
+        </chf-button>
+        <chf-button type="primary" (click)="editCard()">
+          <fa-icon [icon]="icons.edit" />
+          Edit
+        </chf-button>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-title">Card difficulty</div>
+      <chf-card-difficulty [difficulty]="card.difficulty" />
+    </div>
+
+    <div>
+      <div class="section-title">Learning progress</div>
+      <div class="learning-progress">
+        <chf-card-progress-bar [card]="card" />
+        <chf-button (click)="isResetConfirm = true">
+          <fa-icon [icon]="icons.reset" />
+          Reset progress
+        </chf-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-content *ngIf="isDeleteConfirm">
+  <chf-inline-confirm-dialog
+    cancelText="I changed my mind"
+    confirmText="Yes, delete it"
+    confirmType="error"
+    (cancelled)="isDeleteConfirm = false"
+    (confirmed)="deleteCard()"
+  >
+    <span title>Delete the card?</span>
+    <span detail>
+      This is a permanent action. You will not be able to restore the card.
+    </span>
+  </chf-inline-confirm-dialog>
+</div>
+
+<div mat-dialog-content *ngIf="isResetConfirm">
+  <chf-inline-confirm-dialog
+    cancelText="I changed my mind"
+    confirmText="Yes, reset"
+    confirmType="primary"
+    (cancelled)="isResetConfirm = false"
+    (confirmed)="resetProgress()"
+  >
+    <span title>Reset card progress?</span>
+    <span detail> The card will reset to its first learning stage. </span>
+  </chf-inline-confirm-dialog>
+</div>

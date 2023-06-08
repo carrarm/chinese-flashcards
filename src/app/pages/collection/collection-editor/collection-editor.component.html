@@ -1,34 +1,57 @@
-<div mat-dialog-content>
-  <form [formGroup]="form">
-    <mat-form-field>
-      <mat-label>Label</mat-label>
-      <input matInput formControlName="label" />
-    </mat-form-field>
+<div class="dialog-content" [hidden]="isDeleteConfirm">
+  <div mat-dialog-title>
+    <div>{{ texts.title }}</div>
+    <chf-button mat-dialog-close cdkFocusInitial>
+      <fa-icon [icon]="icons.cancel" />
+      Cancel
+    </chf-button>
+  </div>
 
-    <mat-form-field>
-      <mat-label>Description</mat-label>
-      <input matInput formControlName="description" />
-    </mat-form-field>
-  </form>
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <mat-form-field hideRequiredMarker>
+        <mat-label>Label</mat-label>
+        <input matInput formControlName="label" />
+        <mat-error>
+          <ngx-form-control-messages [field]="form.controls.label" />
+        </mat-error>
+      </mat-form-field>
 
-  <button
-    *ngIf="collectionId"
-    mat-stroked-button
-    color="warn"
-    (click)="deleteCollection()"
-  >
-    Delete collection
-  </button>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Description (optional)</mat-label>
+        <input matInput formControlName="description" />
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <chf-button type="primary" (click)="saveCollection()">
+      <fa-icon [icon]="icons.save" />
+      {{ texts.save }}
+    </chf-button>
+
+    <ng-container *ngIf="collectionId">
+      <mat-divider />
+      <chf-button type="error" (click)="isDeleteConfirm = true">
+        <fa-icon [icon]="icons.delete" />
+        Delete collection
+      </chf-button>
+    </ng-container>
+  </div>
 </div>
 
-<div mat-dialog-actions>
-  <button mat-flat-button mat-dialog-close cdkFocusInitial>Cancel</button>
-  <button
-    mat-flat-button
-    color="primary"
-    [disabled]="form.invalid"
-    (click)="saveCollection()"
+<div mat-dialog-content *ngIf="isDeleteConfirm">
+  <chf-inline-confirm-dialog
+    cancelText="I changed my mind"
+    confirmText="Yes, delete everything"
+    confirmType="error"
+    (cancelled)="isDeleteConfirm = false"
+    (confirmed)="deleteCollection()"
   >
-    Save and close
-  </button>
+    <span title>Delete the collection and all its cards?</span>
+    <span detail>
+      This is a permanent action. You will not be able to restore the collection or its
+      card.
+    </span>
+  </chf-inline-confirm-dialog>
 </div>

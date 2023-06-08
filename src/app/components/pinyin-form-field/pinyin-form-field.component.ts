@@ -3,15 +3,16 @@ import { Component, forwardRef } from "@angular/core";
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { faKeyboard } from "@fortawesome/free-solid-svg-icons";
 import { VirtualKeyboardComponent } from "../virtual-keyboard/virtual-keyboard.component";
 
 const modules = [
+  FontAwesomeModule,
   FormsModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatIconModule,
   MatInputModule,
   NgIf,
   VirtualKeyboardComponent,
@@ -36,6 +37,7 @@ type PropagateFct = (_?: string) => void;
 export class PinyinFormFieldComponent implements ControlValueAccessor {
   public virtualKeyboardOpen = false;
   public fieldValue?: string;
+  public keyboardIcon = faKeyboard;
 
   private propagateChange: PropagateFct = () => {
     // Do nothing

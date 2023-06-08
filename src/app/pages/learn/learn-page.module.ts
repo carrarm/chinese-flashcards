@@ -9,7 +9,14 @@ import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { RouterModule } from "@angular/router";
 import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { NgCircleProgressModule } from "ng-circle-progress";
+import { ButtonComponent } from "src/app/components/button/button.component";
+import { CardComponent } from "src/app/components/card/card.component";
+import { ConfirmDialogComponent } from "src/app/components/dialog/confirm-dialog/confirm-dialog.component";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
+import { CardDifficultyComponent } from "../shared/components/card-difficulty/card-difficulty.component";
+import { CardProgressIndicatorComponent } from "../shared/components/card-progress-indicator/card-progress-indicator.component";
 import { SessionLauncherComponent } from "./session-launcher/session-launcher.component";
 import { SessionFillingStepComponent } from "./session/session-filling-step/session-filling-step.component";
 import { SessionMatchingStepComponent } from "./session/session-matching-step/session-matching-step.component";
@@ -23,8 +30,14 @@ import { SessionComponent } from "./session/session.component";
     SessionFillingStepComponent,
   ],
   imports: [
+    ButtonComponent,
+    CardComponent,
+    CardDifficultyComponent,
     CardMeaningsPipe,
+    CardProgressIndicatorComponent,
     CommonModule,
+    ConfirmDialogComponent,
+    FontAwesomeModule,
     FormsModule,
     MatButtonModule,
     MatCardModule,
@@ -32,6 +45,7 @@ import { SessionComponent } from "./session/session.component";
     MatInputModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
+    NgCircleProgressModule,
     PinyinFormFieldComponent,
     RouterModule,
   ],

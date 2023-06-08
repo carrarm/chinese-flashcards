@@ -1,0 +1,12 @@
+<div mat-dialog-content>
+  <chf-inline-confirm-dialog
+    [confirmText]="config.confirmText"
+    [cancelText]="config.cancelText"
+    [confirmType]="config.confirmType"
+    (confirmed)="dialogRef.close(true)"
+    (cancelled)="dialogRef.close(false)"
+  >
+    <div title>{{ config.title }}</div>
+    <div detail>{{ config.message }}</div>
+  </chf-inline-confirm-dialog>
+</div>

@@ -30,3 +30,12 @@ mat-slide-toggle {
     }
   }
 }
+
+.reset-warning {
+  font-size: small;
+  color: #e98100;
+}
+
+div[mat-dialog-actions] {
+  justify-content: center;
+}

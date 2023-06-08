@@ -50,7 +50,7 @@ export class CardService {
     pinyin?: Optional<string>;
     characters?: Optional<string>;
   }): Promise<Card | undefined> {
-    const card = await this.database.cards
+    const cardModel = await this.database.cards
       .filter(
         (card) =>
           search.meanings?.some((meaning) =>
@@ -60,10 +60,10 @@ export class CardService {
           areEqual(search.characters, card.characters)
       )
       .first();
-    return card ? new Card(card) : undefined;
+    return cardModel ? new Card(cardModel) : undefined;
   }
 
-  private async getCard(id: number): Promise<Card> {
+  async getCard(id: number): Promise<Card> {
     const card = await this.database.cards.get(id);
     if (!card) {
       throw new Error(`Card with id ${id} does not exist`);

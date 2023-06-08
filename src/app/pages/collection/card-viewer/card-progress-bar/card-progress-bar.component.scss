@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+$roundedRadius: 20px;
+
+.card-progress-track {
+  height: 1rem;
+  width: 100%;
+  background-color: #1c1c1c;
+  border-radius: $roundedRadius;
+  display: flex;
+}
+
+.step {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:first-child {
+    border-top-left-radius: $roundedRadius;
+    border-bottom-left-radius: $roundedRadius;
+  }
+
+  &:last-child {
+    border-top-right-radius: $roundedRadius;
+    border-bottom-right-radius: $roundedRadius;
+  }
+
+  &.completed {
+    background-color: #979797;
+  }
+}
+
+.current-step {
+  color: black;
+  font-size: x-small;
+  font-weight: 600;
+}

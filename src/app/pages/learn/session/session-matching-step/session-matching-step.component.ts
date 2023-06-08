@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Card } from "@core/model/card.model";
+import { NavigationService } from "@core/services/navigation.service";
 import { shuffleArray } from "@core/utils/general.utils";
 
 interface MatchingCard {
@@ -22,6 +23,13 @@ export class SessionMatchingStepComponent implements OnInit {
   public rightColumnCards: MatchingCard[] = [];
   public selectedLeftCard?: MatchingCard;
   public selectedRightCard?: MatchingCard;
+
+  constructor(navigationService: NavigationService) {
+    navigationService.setNavbarText(
+      "Match cards on the left with their translation on the right",
+      "description"
+    );
+  }
 
   ngOnInit(): void {
     for (let i = 0; i <= this.repeat; i++) {

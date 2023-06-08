@@ -5,6 +5,7 @@ import { Card } from "@core/model/card.model";
 import { CardService } from "@core/services/card.service";
 import { SettingsService } from "@core/services/settings.service";
 import { toOptional } from "@core/utils/form.utils";
+import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
 
 interface CardForm {
   meaning: FormControl<string | null>;
@@ -28,10 +29,18 @@ export class CardEditorComponent implements OnInit {
     pinyin: new FormControl<string | null>(null),
     chinese: new FormControl<string | null>(null),
   });
-  public resetProgressActive = false;
+  public icons = {
+    cancel: faClose,
+    save: faCheck,
+  };
+  public texts = {
+    title: "New card",
+    save: "Create card",
+  };
 
   private collectionId: number;
   private originalCard?: Card;
+  private resetRequired = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: { card?: Card; collection: number },
@@ -47,6 +56,7 @@ export class CardEditorComponent implements OnInit {
       });
       this.creationMode = false;
       this.originalCard = data.card;
+      this.texts = { title: "Edit card", save: "Update card" };
     }
     this.collectionId = data.collection;
   }
@@ -74,7 +84,7 @@ export class CardEditorComponent implements OnInit {
         lastSession: this.originalCard?.lastSession,
       });
 
-      if (this.resetProgressActive) {
+      if (this.resetRequired) {
         card.leitnerBox = 0;
         card.lastSession = undefined;
       }
@@ -92,16 +102,9 @@ export class CardEditorComponent implements OnInit {
     }
   }
 
-  public async deleteCard(): Promise<void> {
-    if (this.originalCard?.id) {
-      await this.cardService.deleteCard(this.originalCard.id);
-    }
-    this.dialogRef.close();
-  }
-
   private trackChanges(): void {
     this.form.valueChanges.subscribe((formValues) => {
-      this.resetProgressActive =
+      this.resetRequired =
         formValues.chinese !== this.originalCard?.characters ||
         formValues.pinyin !== this.originalCard?.pinyin;
     });

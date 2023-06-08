@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+
+.difficulty-levels {
+  display: flex;
+  font-size: small;
+  justify-content: space-evenly;
+
+  .level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    width: 55px;
+    color: gray;
+
+    fa-icon {
+      color: gray;
+      margin-bottom: 0.5rem;
+    }
+
+    &.active {
+      border-color: var(--card-level-color);
+      color: white;
+
+      fa-icon {
+        color: var(--card-level-color, gray);
+      }
+    }
+  }
+
+  .hard {
+    --card-level-color: #cb2020;
+  }
+
+  .medium {
+    --card-level-color: #3ab19d;
+  }
+
+  .easy {
+    --card-level-color: #00b100;
+  }
+}
