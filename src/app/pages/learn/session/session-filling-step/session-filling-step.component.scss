@@ -1,12 +1,20 @@
+:host {
+  text-align: center;
+}
+
 mat-form-field,
 chf-pinyin-form-field {
   width: 100%;
   margin-bottom: 1rem;
 }
 
-mat-card {
+chf-card {
   padding: 1rem;
   margin-bottom: 1rem;
+
+  div[card-content] {
+    position: relative;
+  }
 }
 
 .card-rep-count {
@@ -17,9 +25,26 @@ mat-card {
 
 .centered-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
   min-height: 50px;
+
+  span:empty {
+    display: none;
+  }
+}
+
+.translation {
+  font-size: large;
+  font-weight: 600;
+
+  .card-done-text {
+    font-size: 0.8rem;
+    color: #afafaf;
+    font-weight: normal;
+  }
 }
 
 .chinese {
@@ -32,8 +57,16 @@ mat-card {
 }
 
 .bottom-actions {
+  margin-top: 1.5rem;
   display: flex;
-  justify-content: space-between;
+
+  &.centered {
+    justify-content: center;
+  }
+}
+
+chf-card-difficulty {
+  margin: 1rem 0;
 }
 
 .floating-icon {
@@ -42,58 +75,14 @@ mat-card {
   top: 10px;
 
   .passed {
-    color: #36d336;
+    color: #2ebd00;
   }
 
   .failed {
-    color: red;
+    color: #e70000;
   }
 
   .solution {
-    color: #ffd04d;
-  }
-}
-
-.difficulty-levels {
-  display: flex;
-  font-size: small;
-  justify-content: space-evenly;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-
-  .level {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: solid 1px gray;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 7px;
-    width: 55px;
-
-    mat-icon {
-      color: gray;
-      margin-bottom: 3px;
-    }
-
-    &.active {
-      border-color: var(--card-level-color);
-
-      mat-icon {
-        color: var(--card-level-color, gray);
-      }
-    }
-  }
-
-  .hard {
-    --card-level-color: #cb2020;
-  }
-
-  .medium {
-    --card-level-color: #3ab19d;
-  }
-
-  .easy {
-    --card-level-color: #00b100;
+    color: #ff9100;
   }
 }

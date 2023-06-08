@@ -1,73 +1,48 @@
 <form [formGroup]="form">
   <div class="setting-group">
-    <div class="title">General</div>
-
-    <mat-slide-toggle formControlName="darkTheme">Dark mode</mat-slide-toggle>
-  </div>
-
-  <div class="setting-group">
     <div class="title">Learning sessions</div>
 
-    <mat-form-field>
-      <mat-label>Review known words after...</mat-label>
-      <mat-select formControlName="leitnerBoxes">
-        <mat-option [value]="5">1 week</mat-option>
-        <mat-option [value]="6">2 weeks</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Words per session</mat-label>
-      <mat-select formControlName="wordsPerSession">
-        <mat-option *ngFor="let words of wordsOptions" [value]="words">
-          {{ words }} words
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <div class="field-with-ext-hint">
-      <mat-slide-toggle formControlName="learnPinyin">Learn pinyin</mat-slide-toggle>
-      <div>
-        If this option is disabled, the pinyin will still be shown to you next to the
-        character but you won't have to fill the pinyin field to learn the card. Cards
-        that only contain the pinyin will not be added to learning sessions.
+    <div class="setting">
+      <div class="label">Words per session</div>
+      <div class="field">
+        <mat-form-field subscriptSizing="dynamic">
+          <mat-select formControlName="wordsPerSession">
+            <mat-option *ngFor="let words of wordsOptions" [value]="words">
+              {{ words }} words
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
 
-    <div class="field-with-ext-hint">
-      <mat-slide-toggle formControlName="enableReviewMatching">
-        Enable Matching mode for review sessions
-      </mat-slide-toggle>
-      <div>
-        If this option is disabled, you won't be asked to match cards with their
-        translation during review sessions. The Matching mode will still be available for
-        learning sessions.
+    <div class="setting">
+      <div class="label">Enable "Matching mode" for review sessions</div>
+      <div class="field">
+        <chf-slide-toggle formControlName="enableReviewMatching" />
       </div>
     </div>
   </div>
 
   <div class="setting-group">
-    <div class="title">Collections</div>
+    <div class="title">Card collections</div>
 
-    <div class="field-with-ext-hint">
-      <mat-form-field subscriptSizing="dynamic">
-        <mat-label>Cards per page</mat-label>
-        <mat-select formControlName="pageSize">
-          <mat-option *ngFor="let size of pageOptions" [value]="size">
-            {{ size }} cards
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div>Number of cards displayed at once in the table.</div>
+    <div class="setting">
+      <div class="label">Cards per page</div>
+      <div class="field">
+        <mat-form-field subscriptSizing="dynamic">
+          <mat-select formControlName="pageSize">
+            <mat-option *ngFor="let size of pageOptions" [value]="size">
+              {{ size }} cards
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="field-with-ext-hint">
-      <mat-slide-toggle formControlName="resetCardProgress">
-        Reset progress when a card is updated
-      </mat-slide-toggle>
-      <div>
-        Automatically reset the card progress if the pinyin or characters fields are
-        updated.
+    <div class="setting">
+      <div class="label">Reset progress when a card is updated</div>
+      <div class="field">
+        <chf-slide-toggle formControlName="resetCardProgress" />
       </div>
     </div>
   </div>
@@ -75,12 +50,18 @@
 
 <div class="setting-group">
   <div class="title">Backup</div>
-  <button mat-stroked-button (click)="exportToJSON()">Download backup file</button>
+  <chf-button (click)="exportToJSON()">Download a backup file</chf-button>
 </div>
 
 <div class="setting-group" *ngIf="!isProductionEnv">
   <div class="title">Development options</div>
-  <button mat-stroked-button color="warn" (click)="deleteDatabase()">
-    Delete database
-  </button>
+  <chf-button type="error" (click)="deleteDatabase()">Delete database</chf-button>
+</div>
+
+<div class="setting-group">
+  <div class="title">About</div>
+  <div class="about-info">
+    <div>App version: {{ appVersion }}</div>
+    <div>License: {{ appLicense }}</div>
+  </div>
 </div>

@@ -1,0 +1,11 @@
+<div class="card-progress-track">
+  <div
+    *ngFor="let step of steps"
+    class="step"
+    [ngClass]="{ completed: card.leitnerBox >= step }"
+  >
+    <div *ngIf="step === card.leitnerBox" class="current-step">
+      {{ currentStepPercent }} %
+    </div>
+  </div>
+</div>

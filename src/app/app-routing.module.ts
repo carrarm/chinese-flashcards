@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { PendingChangesGuard } from "@core/guards/pending-changes.guard";
 import { CollectionCardsComponent } from "./pages/collection/collection-cards/collection-cards.component";
 import { CollectionListComponent } from "./pages/collection/collection-list/collection-list.component";
 import { SessionLauncherComponent } from "./pages/learn/session-launcher/session-launcher.component";
@@ -14,6 +15,7 @@ const routes: Routes = [
   {
     path: "sessions/active",
     component: SessionComponent,
+    canDeactivate: [PendingChangesGuard],
   },
   {
     path: "collections",

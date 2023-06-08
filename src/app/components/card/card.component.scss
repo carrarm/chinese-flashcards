@@ -1,0 +1,50 @@
+$roundedRadius: 10px;
+$sharpRadius: 2px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg-color, #2d3132);
+  border-top-left-radius: var(--card-top-left-radius, $roundedRadius);
+  border-top-right-radius: var(--card-top-right-radius, $sharpRadius);
+  border-bottom-right-radius: var(--card-bottom-right-radius, $roundedRadius);
+  border-bottom-left-radius: var(--card-bottom-left-radius, $sharpRadius);
+  padding: 1rem 1.2rem;
+  gap: 0.5rem;
+
+  &.reversed {
+    border-top-left-radius: var(--card-top-left-radius, $sharpRadius);
+    border-top-right-radius: var(--card-top-right-radius, $roundedRadius);
+    border-bottom-right-radius: var(--card-bottom-right-radius, $sharpRadius);
+    border-bottom-left-radius: var(--card-bottom-left-radius, $roundedRadius);
+  }
+}
+
+.header {
+  display: flex;
+
+  .title {
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+
+  .header-end {
+    flex: 1;
+  }
+}
+
+.subtitle {
+  color: #7f7f7f;
+  font-size: small;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hide-empty:empty {
+  display: none;
+}

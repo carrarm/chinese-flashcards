@@ -1,16 +1,21 @@
-.app-container {
+:host {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
+}
+
+.app-container {
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
-}
-
-mat-drawer-container {
-  flex: 1;
-}
-
-.main-content {
-  padding: 0.5rem 1rem;
-  height: 100%;
+  padding: 1rem;
   box-sizing: border-box;
+}
+
+chf-tab-bar {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
 }

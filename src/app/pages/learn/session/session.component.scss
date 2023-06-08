@@ -4,24 +4,13 @@
   box-sizing: border-box;
 }
 
-.title {
-  font-size: x-large;
-  font-weight: 300;
-  text-align: center;
-}
-
-table {
+.card-result-row {
   width: 100%;
-  margin: 1.5rem 0;
+  display: flex;
+  justify-content: space-evenly;
 
-  th {
-    font-weight: 500;
-  }
-
-  th,
-  td {
-    width: 50%;
-    padding: 0.5rem;
+  div {
+    width: 30vw;
     text-align: center;
   }
 

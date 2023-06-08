@@ -1,13 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { CardCollection } from "src/app/core/model/card-collection.model";
-import { Settings } from "src/app/core/model/settings.model";
-import { CollectionStats } from "src/app/core/model/statistics.model";
-import { CollectionService } from "src/app/core/services/collection.service";
-import { LearningSessionService } from "src/app/core/services/learning-session.service";
-import { NavigationService } from "src/app/core/services/navigation.service";
-import { SettingsService } from "src/app/core/services/settings.service";
-import { StatisticsService } from "src/app/core/services/statistics.service";
+import { CardCollection } from "@core/model/card-collection.model";
+import { Settings } from "@core/model/settings.model";
+import { CollectionStats } from "@core/model/statistics.model";
+import { CollectionService } from "@core/services/collection.service";
+import { LearningSessionService } from "@core/services/learning-session.service";
+import { NavigationService } from "@core/services/navigation.service";
+import { SettingsService } from "@core/services/settings.service";
+import { StatisticsService } from "@core/services/statistics.service";
+import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 
 @Component({
   selector: "chf-session-launcher",
@@ -16,7 +17,7 @@ import { StatisticsService } from "src/app/core/services/statistics.service";
 })
 export class SessionLauncherComponent implements OnInit {
   public settings?: Settings;
-  public collections: CardCollection[] = [];
+  public collections: Partial<CardCollection>[] = [];
   public allCollectionStats?: {
     numbers: CollectionStats;
     percents: CollectionStats;
@@ -24,6 +25,7 @@ export class SessionLauncherComponent implements OnInit {
 
   constructor(
     private navigationService: NavigationService,
+    private tabBarService: TabBarService,
     private settingsService: SettingsService,
     private collectionService: CollectionService,
     private statisticsService: StatisticsService,
@@ -33,6 +35,9 @@ export class SessionLauncherComponent implements OnInit {
 
   ngOnInit(): void {
     this.navigationService.setTitle("Start a session");
+    this.navigationService.resetNavbarText();
+    this.tabBarService.resetTabBar();
+
     this.settingsService.getSettings().then((settings) => (this.settings = settings));
     this.collectionService.getCollections().then(async (collections) => {
       this.collections = await this.statisticsService.getCollectionsReviewStats(
@@ -52,6 +57,12 @@ export class SessionLauncherComponent implements OnInit {
         numbers: numberStats,
         percents: CardCollection.computePercentStats(numberStats),
       };
+      this.collections.unshift({
+        label: "All collections",
+        description: "Learn or review cards from all the collections",
+        statistics: this.allCollectionStats.numbers,
+        percentStatistics: this.allCollectionStats.percents,
+      });
     });
   }
 

@@ -6,7 +6,7 @@ body {
 }
 body {
   margin: 0;
-  font-family: Raleway, Roboto, "Helvetica Neue", sans-serif;
+  // font-family: Raleway, Roboto, "Helvetica Neue", sans-serif;
 }
 
 mat-card-actions {
@@ -15,7 +15,7 @@ mat-card-actions {
 }
 
 .pinyin-font {
-  font-family: "Ubuntu Mono";
+  font-family: var(--font-pinyin);
 }
 
 chf-session-launcher {

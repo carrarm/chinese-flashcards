@@ -1,30 +1,47 @@
 .page-header {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
   align-items: center;
   margin-bottom: 0.5rem;
+  padding-bottom: 0.7em;
+  border-bottom: solid 1px #343434;
+
+  .collection-name {
+    font-family: var(--font-title);
+    font-size: large;
+    font-weight: 500;
+  }
 
   .filler {
     flex: 1;
   }
 
-  .active {
-    background-color: #5f7daf;
+  .card-count {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: small;
+    padding: 0.3em 0.8em;
+    border-radius: 5px;
   }
 }
 
+.search-icon-wrapper {
+  display: flex;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+$navbarHeight: 60px;
+$headerHeight: 160px;
+.table-wrapper {
+  border-radius: 7px;
+  overflow-x: auto;
+  height: calc(100vh - $headerHeight - $navbarHeight);
+}
+
 mat-table {
-  // max-height: 60vh;
-  // overflow-y: auto;
-
-  mat-cell {
-    font-size: 1.2em;
-  }
-
   mat-header-cell {
     font-weight: 600;
     font-size: 0.9em;
-    background-color: #1c1c1c !important;
   }
 
   .character-column {

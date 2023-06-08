@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Output } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { NavigationService } from "src/app/core/services/navigation.service";
+import { NavbarType, NavigationService } from "@core/services/navigation.service";
+import { Observable, of } from "rxjs";
 
 const importedModules = [CommonModule, MatButtonModule, MatIconModule];
 
@@ -14,9 +15,13 @@ const importedModules = [CommonModule, MatButtonModule, MatIconModule];
   styleUrls: ["./navbar.component.scss"],
 })
 export class NavbarComponent {
-  @Output() toggleMenu = new EventEmitter<void>();
+  public navbarType$: Observable<NavbarType> = of();
+  public navbarText$: Observable<string> = of();
+  public navbarVisible$: Observable<boolean> = of();
 
-  public pageTitle$ = this.navigation.getTitle();
-
-  constructor(private navigation: NavigationService) {}
+  constructor(navigation: NavigationService) {
+    this.navbarType$ = navigation.navbarType.asObservable();
+    this.navbarText$ = navigation.navbarText.asObservable();
+    this.navbarVisible$ = navigation.navbarVisible.asObservable();
+  }
 }

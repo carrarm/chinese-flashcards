@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { DatabaseService } from "src/app/core/db/database.service";
-import { Settings } from "src/app/core/model/settings.model";
-import { NavigationService } from "src/app/core/services/navigation.service";
-import { SettingsService } from "src/app/core/services/settings.service";
+import { DatabaseService } from "@core/db/database.service";
+import { Settings } from "@core/model/settings.model";
+import { NavigationService } from "@core/services/navigation.service";
+import { SettingsService } from "@core/services/settings.service";
 import { environment } from "src/environments/environment";
 
 // TODO: clean forms (remove unnecessary typings, use non-nullable fields)
@@ -37,6 +37,8 @@ export class SettingsComponent implements OnInit {
   public pageOptions = [5, 10, 15, 20, 50, 100];
   public wordsOptions = [5, 10, 15];
   public isProductionEnv = environment.production;
+  public appVersion = environment.version;
+  public appLicense = environment.license;
 
   constructor(
     private navigationService: NavigationService,

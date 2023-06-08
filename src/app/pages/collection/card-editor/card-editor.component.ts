@@ -1,10 +1,11 @@
-import { Component, Inject } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { Card } from "src/app/core/model/card.model";
-import { CardService } from "src/app/core/services/card.service";
-import { SettingsService } from "src/app/core/services/settings.service";
-import { toOptional } from "src/app/core/utils/form.utils";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { Card } from "@core/model/card.model";
+import { CardService } from "@core/services/card.service";
+import { SettingsService } from "@core/services/settings.service";
+import { toOptional } from "@core/utils/form.utils";
+import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
 
 interface CardForm {
   meaning: FormControl<string | null>;
@@ -17,26 +18,35 @@ interface CardForm {
   templateUrl: "./card-editor.component.html",
   styleUrls: ["./card-editor.component.scss"],
 })
-export class CardEditorComponent {
+export class CardEditorComponent implements OnInit {
   public keepEditorOpen = false;
   public virtualKeyboardOpen = false;
   public creationMode = true;
+  public cardDuplicate?: Card;
 
   public form = new FormGroup<CardForm>({
     meaning: new FormControl<string | null>(null, Validators.required),
     pinyin: new FormControl<string | null>(null),
     chinese: new FormControl<string | null>(null),
   });
-  public resetProgressActive = false;
+  public icons = {
+    cancel: faClose,
+    save: faCheck,
+  };
+  public texts = {
+    title: "New card",
+    save: "Create card",
+  };
 
   private collectionId: number;
   private originalCard?: Card;
+  private resetRequired = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: { card?: Card; collection: number },
     public dialogRef: MatDialogRef<CardEditorComponent>,
     private cardService: CardService,
-    settingsService: SettingsService
+    private settingsService: SettingsService
   ) {
     if (data.card) {
       this.form.patchValue({
@@ -46,10 +56,16 @@ export class CardEditorComponent {
       });
       this.creationMode = false;
       this.originalCard = data.card;
+      this.texts = { title: "Edit card", save: "Update card" };
     }
     this.collectionId = data.collection;
-    settingsService.getSettings().then((settings) => {
-      if (settings.resetCardProgress && !this.creationMode) {
+  }
+
+  ngOnInit(): void {
+    this.settingsService.getSettings().then((settings) => {
+      if (this.creationMode) {
+        this.trackDuplicates();
+      } else if (settings.resetCardProgress) {
         this.trackChanges();
       }
     });
@@ -68,7 +84,7 @@ export class CardEditorComponent {
         lastSession: this.originalCard?.lastSession,
       });
 
-      if (this.resetProgressActive) {
+      if (this.resetRequired) {
         card.leitnerBox = 0;
         card.lastSession = undefined;
       }
@@ -86,18 +102,23 @@ export class CardEditorComponent {
     }
   }
 
-  public async deleteCard(): Promise<void> {
-    if (this.originalCard?.id) {
-      await this.cardService.deleteCard(this.originalCard.id);
-    }
-    this.dialogRef.close();
-  }
-
   private trackChanges(): void {
     this.form.valueChanges.subscribe((formValues) => {
-      this.resetProgressActive =
+      this.resetRequired =
         formValues.chinese !== this.originalCard?.characters ||
         formValues.pinyin !== this.originalCard?.pinyin;
+    });
+  }
+
+  private trackDuplicates(): void {
+    this.form.valueChanges.subscribe(async (formValues) => {
+      this.cardDuplicate = undefined;
+      const { meaning } = formValues;
+      if (meaning) {
+        this.cardDuplicate = await this.cardService.findCard({
+          meanings: meaning.split(";").map((m) => m.trim()),
+        });
+      }
     });
   }
 }

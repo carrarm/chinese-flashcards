@@ -1,26 +1,27 @@
 .navbar {
-  background-color: #ad1515;
-  min-height: 60px;
+  background-color: var(--app-bg-color);
+  color: var(--app-fg-color);
+  font-family: var(--font-title);
+  padding: 0.6rem 0.7rem;
   display: flex;
-  align-items: center;
-  color: white;
-  padding: 0 10px;
   gap: 1rem;
+  align-items: center;
+  justify-content: center;
 
-  .title-group {
-    display: flex;
-    flex-direction: column;
-
-    .app-name {
-      font-size: large;
-    }
-
-    .page-title {
-      font-size: 0.9em;
-
-      &:empty {
-        display: none;
-      }
-    }
+  img {
+    height: 50px;
   }
+}
+
+.main {
+  font-size: x-large;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.description {
+  color: gray;
+  font-size: 0.9rem;
+  font-family: var(--font-content);
+  text-align: center;
 }

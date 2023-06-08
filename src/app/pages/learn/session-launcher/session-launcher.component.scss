@@ -1,43 +1,46 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   padding-bottom: 1rem;
 }
 
-mat-card {
-  margin-top: 1rem;
+$learnColor: #559d00;
+$reviewColor: #9524ff;
+$knownColor: #289dd7;
+
+.learn-button {
+  --chf-button-bg: #{$learnColor};
 }
 
-$circleDiameter: 50px;
+.review-button {
+  --chf-button-bg: #{$reviewColor};
+}
+
 .statistic-section {
   margin-top: 1rem;
   display: flex;
   justify-content: space-evenly;
+  font-size: small;
 
-  .statistic {
-    font-size: small;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .to-learn {
+    --chf-progress-outer-stroke: #{$learnColor};
+    --chf-progress-inner-stroke: #559d007b;
+  }
 
-    .label {
-      margin-bottom: 0.5em;
-    }
+  .to-review {
+    --chf-progress-outer-stroke: #{$reviewColor};
+    --chf-progress-inner-stroke: #9524ff7b;
+  }
+
+  .known {
+    --chf-progress-outer-stroke: #{$knownColor};
+    --chf-progress-inner-stroke: #289dd77b;
   }
 }
 
-.progress-spinner {
-  position: relative;
-
-  .inner-text {
-    width: $circleDiameter;
-    height: $circleDiameter;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: -2px;
-    left: 0px;
-    font-weight: 500;
-    font-size: 18px;
-  }
+.card-actions {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
 }

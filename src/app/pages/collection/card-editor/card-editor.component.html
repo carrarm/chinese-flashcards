@@ -1,3 +1,11 @@
+<div mat-dialog-title>
+  <div>{{ texts.title }}</div>
+  <chf-button mat-dialog-close>
+    <fa-icon [icon]="icons.cancel" />
+    Cancel
+  </chf-button>
+</div>
+
 <div mat-dialog-content>
   <form [formGroup]="form">
     <mat-form-field subscriptSizing="dynamic">
@@ -14,23 +22,34 @@
     <chf-pinyin-form-field formControlName="pinyin" />
   </form>
 
-  <mat-slide-toggle *ngIf="!creationMode" [(ngModel)]="resetProgressActive">
-    Reset progress
-  </mat-slide-toggle>
+  <div *ngIf="cardDuplicate" class="duplicate-warning">
+    A card with this meaning already exists:
+    <div class="duplicate-card-wrapper">
+      <div>
+        <span>Meanings</span>
+        {{ cardDuplicate.meanings | join : " ; " }}
+      </div>
+      <div *ngIf="cardDuplicate.characters">
+        <span>Characters</span> {{ cardDuplicate.characters }}
+      </div>
+      <div *ngIf="cardDuplicate.pinyin">
+        <span>Pinyin</span> {{ cardDuplicate.pinyin }}
+      </div>
+    </div>
+  </div>
 
-  <mat-checkbox [(ngModel)]="keepEditorOpen" *ngIf="creationMode; else deleteButton">
+  <mat-checkbox [(ngModel)]="keepEditorOpen" *ngIf="creationMode">
     Add another card after this one
   </mat-checkbox>
 
-  <ng-template #deleteButton>
-    <button mat-stroked-button color="warn" (click)="deleteCard()">Delete card</button>
-  </ng-template>
+  <p class="reset-warning" *ngIf="!creationMode">
+    Changing the characters or pinyin fields will automatically reset the progress.
+  </p>
 </div>
 
 <div mat-dialog-actions>
-  <button mat-flat-button mat-dialog-close cdkFocusInitial>Cancel</button>
-  <button mat-flat-button color="primary" (click)="saveCard()">
-    <ng-container *ngIf="keepEditorOpen; else saveAndCloseText"> Save </ng-container>
-    <ng-template #saveAndCloseText>Save and close</ng-template>
-  </button>
+  <chf-button type="primary" (click)="saveCard()">
+    <fa-icon [icon]="icons.save" />
+    {{ texts.save }}
+  </chf-button>
 </div>

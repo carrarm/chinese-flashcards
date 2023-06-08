@@ -1,18 +1,27 @@
-import { isDevMode, NgModule } from "@angular/core";
+import { APP_INITIALIZER, isDevMode, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { ServiceWorkerModule } from "@angular/service-worker";
-
-import { MatSidenavModule } from "@angular/material/sidenav";
+import { ServiceWorkerModule, SwUpdate } from "@angular/service-worker";
 
 import { HttpClientModule } from "@angular/common/http";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { checkForUpdates } from "@core/pwa-updates";
+import {
+  NgxFormControlMessages,
+  NgxFormControlMessagesModule,
+} from "@varrmcault/ngx-form-control-messages";
+import { NgCircleProgressModule } from "ng-circle-progress";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { SidenavComponent } from "./components/sidenav/sidenav.component";
+import { TabBarComponent } from "./components/tab-bar/tab-bar.component";
 import { CollectionPageModule } from "./pages/collection/collection-page.module";
 import { LearnPageModule } from "./pages/learn/learn-page.module";
 import { SettingsModule } from "./pages/settings/settings.module";
+
+const defaultErrorMessages: NgxFormControlMessages = {
+  required: "Field required",
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,10 +30,11 @@ import { SettingsModule } from "./pages/settings/settings.module";
     BrowserModule,
     BrowserAnimationsModule,
     CollectionPageModule,
-    LearnPageModule,
     HttpClientModule,
-    MatSidenavModule,
+    LearnPageModule,
     NavbarComponent,
+    NgCircleProgressModule.forRoot(),
+    NgxFormControlMessagesModule.forRoot(defaultErrorMessages),
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
@@ -32,9 +42,16 @@ import { SettingsModule } from "./pages/settings/settings.module";
       registrationStrategy: "registerWhenStable:30000",
     }),
     SettingsModule,
-    SidenavComponent,
+    TabBarComponent,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: checkForUpdates,
+      multi: true,
+      deps: [SwUpdate, MatSnackBar],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

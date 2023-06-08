@@ -1,0 +1,7 @@
+<button
+  [class]="type"
+  [ngClass]="{ cta: coerced['callToAction'], disabled: coerced['disabled'] }"
+  [disabled]="coerced['disabled']"
+>
+  <ng-content />
+</button>

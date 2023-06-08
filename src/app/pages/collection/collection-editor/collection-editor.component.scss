@@ -1,0 +1,15 @@
+mat-form-field {
+  width: 100%;
+}
+
+div[mat-dialog-actions] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+
+  mat-divider {
+    width: 80%;
+  }
+}

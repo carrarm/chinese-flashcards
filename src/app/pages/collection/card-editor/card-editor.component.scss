@@ -7,3 +7,35 @@ chf-pinyin-form-field {
 mat-slide-toggle {
   margin-bottom: 1rem;
 }
+
+.duplicate-warning {
+  background-color: #181818;
+  font-size: small;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+
+  .duplicate-card-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    div {
+      display: flex;
+      gap: 1rem;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.reset-warning {
+  font-size: small;
+  color: #e98100;
+}
+
+div[mat-dialog-actions] {
+  justify-content: center;
+}

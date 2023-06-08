@@ -1,12 +1,19 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Card, CardDifficultyLevel } from "src/app/core/model/card.model";
-import { SettingsService } from "src/app/core/services/settings.service";
+import { Card, CardDifficultyLevel } from "@core/model/card.model";
+import { NavigationService } from "@core/services/navigation.service";
+import { SettingsService } from "@core/services/settings.service";
 import {
   removeOnce,
   removeTimes,
   shuffleArray,
   uniqueValues,
-} from "src/app/core/utils/general.utils";
+} from "@core/utils/general.utils";
+import {
+  faArrowRight,
+  faCheckCircle,
+  faCheckToSlot,
+  faCircleXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { SessionCard } from "../session-card.model";
 
 @Component({
@@ -18,6 +25,13 @@ export class SessionFillingStepComponent implements OnInit {
   @Input() cards: Card[] = [];
   @Output() completed = new EventEmitter<SessionCard[]>();
 
+  public readonly icons = {
+    check: faCheckToSlot,
+    next: faArrowRight,
+    success: faCheckCircle,
+    failed: faCircleXmark,
+  };
+
   public sessionCards = new Map<number, SessionCard>();
   public session: number[] = [];
   public currentCard?: SessionCard;
@@ -27,13 +41,17 @@ export class SessionFillingStepComponent implements OnInit {
   public cardRevealed = false;
   public isMistake = false;
 
-  constructor(settingsService: SettingsService) {
+  constructor(settingsService: SettingsService, navigationService: NavigationService) {
     settingsService
       .getSettings()
       .then((settings) => (this.learnPinyin = settings.learnPinyin));
+    navigationService.navbarType.next("description");
+    navigationService.navbarText.next(
+      "Translate the card by filling in both the characters and the pinyin transcription"
+    );
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.cards.forEach((card) => {
       const sessionCard = new SessionCard(card);
       this.sessionCards.set(sessionCard.id, sessionCard);
@@ -43,11 +61,11 @@ export class SessionFillingStepComponent implements OnInit {
     this.nextCard();
   }
 
-  changeDifficulty(difficulty: CardDifficultyLevel): void {
+  public changeDifficulty(difficulty: CardDifficultyLevel): void {
     this.currentCard?.changeDifficulty(difficulty);
   }
 
-  checkResponse(): void {
+  public checkResponse(): void {
     let chineseMatch = true;
     let pinyinMatch = true;
     if (this.currentCard) {
@@ -68,13 +86,13 @@ export class SessionFillingStepComponent implements OnInit {
     }
   }
 
-  reveal(): void {
+  public reveal(): void {
     this.cardRevealed = true;
     this.isMistake = true;
     this.wrongAnswer();
   }
 
-  nextCard(): void {
+  public nextCard(): void {
     this.updateSessionCards();
     const nextCard = this.session.shift();
     this.cardRevealed = false;
