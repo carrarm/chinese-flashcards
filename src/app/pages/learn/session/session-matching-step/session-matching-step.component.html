@@ -21,8 +21,9 @@
     }"
     (click)="selectRightCard(matchCard)"
   >
-    <div card-content class="pinyin-font">
-      {{ matchCard.card.pinyin }}
+    <div card-content class="pinyin-font chinese-translation">
+      <span>{{ matchCard.card.characters }}</span>
+      <span>{{ matchCard.card.pinyin }}</span>
     </div>
   </chf-card>
 </div>
