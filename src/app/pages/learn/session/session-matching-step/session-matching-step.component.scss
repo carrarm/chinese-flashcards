@@ -42,4 +42,13 @@
       display: none;
     }
   }
+
+  .chinese-translation {
+    display: flex;
+    flex-direction: column;
+
+    span:empty {
+      display: none;
+    }
+  }
 }
