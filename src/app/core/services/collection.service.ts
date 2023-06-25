@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { CardCollection, CardCollectionModel } from "../model/card-collection.model";
+import { Collection } from "dexie";
 import { Database } from "../db/database.model";
 import { DatabaseService } from "../db/database.service";
+import { CardCollection, CardCollectionModel } from "../model/card-collection.model";
 import { Card, CardModel } from "../model/card.model";
-import { Collection } from "dexie";
 
 @Injectable({
   providedIn: "root",
