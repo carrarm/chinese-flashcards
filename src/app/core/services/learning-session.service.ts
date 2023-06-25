@@ -30,15 +30,18 @@ export class LearningSessionService {
   }
 
   async createReviewSession(collection?: number): Promise<Card[]> {
+    const settings = await this.settingsService.getSettings();
     const cards = await this.collectionService
       .getReviewCardRequest(collection)
-      .limit(await this.getWordsPerSession())
-      .reverse()
       .sortBy("leitnerBox");
+
+    if (settings.cardSelectionType === "oldest") {
+      cards.reverse();
+    }
 
     this.sessionType.next("review");
 
-    return cards.map((card) => new Card(card));
+    return cards.slice(0, settings.wordsPerSession).map((card) => new Card(card));
   }
 
   public isLearningSession(): boolean {

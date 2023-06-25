@@ -21,6 +21,18 @@
         <chf-slide-toggle formControlName="enableReviewMatching" />
       </div>
     </div>
+
+    <div class="setting">
+      <div class="label">Card selection</div>
+      <div class="field">
+        <mat-form-field subscriptSizing="dynamic">
+          <mat-select formControlName="cardSelectionType">
+            <mat-option value="newest">Newest first</mat-option>
+            <mat-option value="oldest">Oldest first</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
   </div>
 
   <div class="setting-group">
