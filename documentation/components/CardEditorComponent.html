@@ -1,0 +1,1145 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>chinese-flashcards documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">chinese-flashcards documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CardEditorComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/collection/card-editor/card-editor.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>chf-card-editor</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./card-editor.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./card-editor.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#cardDuplicate" >cardDuplicate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#collectionId" >collectionId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#creationMode" >creationMode</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialogRef" >dialogRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#icons" >icons</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#keepEditorOpen" >keepEditorOpen</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#originalCard" >originalCard</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resetRequired" >resetRequired</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#texts" >texts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#virtualKeyboardOpen" >virtualKeyboardOpen</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#saveCard" >saveCard</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#trackChanges" >trackChanges</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#trackDuplicates" >trackDuplicates</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(data: literal type, dialogRef: <a href="../classes/Card.html" target="_self">MatDialogRef&lt;CardEditorComponent&gt;</a>, cardService: <a href="../injectables/CardService.html" target="_self">CardService</a>, settingsService: <a href="../injectables/SettingsService.html" target="_self">SettingsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>data</td>
+                                                  
+                                                        <td>
+                                                                    <code>literal type</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialogRef</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/Card.html" target="_self" >MatDialogRef&lt;CardEditorComponent&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cardService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CardService.html" target="_self" >CardService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>settingsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SettingsService.html" target="_self" >SettingsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveCard"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span class="modifier">Async</span>
+                        <span ><b>saveCard</b></span>
+                        <a href="#saveCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>saveCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackChanges"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>trackChanges</b></span>
+                        <a href="#trackChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>trackChanges()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trackDuplicates"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>trackDuplicates</b></span>
+                        <a href="#trackDuplicates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>trackDuplicates()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:113</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cardDuplicate"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>cardDuplicate</b></span>
+                        <a href="#cardDuplicate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Card.html" target="_self" >Card</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="collectionId"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>collectionId</b></span>
+                        <a href="#collectionId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="creationMode"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>creationMode</b></span>
+                        <a href="#creationMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialogRef"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialogRef</b></span>
+                        <a href="#dialogRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Card.html" target="_self" >MatDialogRef&lt;CardEditorComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup&lt;CardForm&gt;({
+    meaning: new FormControl&lt;string | null&gt;(null, Validators.required),
+    pinyin: new FormControl&lt;string | null&gt;(null),
+    chinese: new FormControl&lt;string | null&gt;(null),
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="icons"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>icons</b></span>
+                        <a href="#icons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    cancel: faClose,
+    save: faCheck,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="keepEditorOpen"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>keepEditorOpen</b></span>
+                        <a href="#keepEditorOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="originalCard"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>originalCard</b></span>
+                        <a href="#originalCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Card.html" target="_self" >Card</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetRequired"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resetRequired</b></span>
+                        <a href="#resetRequired"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="texts"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>texts</b></span>
+                        <a href="#texts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    title: &quot;New card&quot;,
+    save: &quot;Create card&quot;,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="virtualKeyboardOpen"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>virtualKeyboardOpen</b></span>
+                        <a href="#virtualKeyboardOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/collection/card-editor/card-editor.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject, OnInit } from &quot;@angular/core&quot;;
+import { FormControl, FormGroup, Validators } from &quot;@angular/forms&quot;;
+import { MAT_DIALOG_DATA, MatDialogRef } from &quot;@angular/material/dialog&quot;;
+import { Card } from &quot;@core/model/card.model&quot;;
+import { CardService } from &quot;@core/services/card.service&quot;;
+import { SettingsService } from &quot;@core/services/settings.service&quot;;
+import { toOptional } from &quot;@core/utils/form.utils&quot;;
+import { faCheck, faClose } from &quot;@fortawesome/free-solid-svg-icons&quot;;
+
+interface CardForm {
+  meaning: FormControl&lt;string | null&gt;;
+  pinyin: FormControl&lt;string | null&gt;;
+  chinese: FormControl&lt;string | null&gt;;
+}
+
+@Component({
+  selector: &quot;chf-card-editor&quot;,
+  templateUrl: &quot;./card-editor.component.html&quot;,
+  styleUrls: [&quot;./card-editor.component.scss&quot;],
+})
+export class CardEditorComponent implements OnInit {
+  public keepEditorOpen &#x3D; false;
+  public virtualKeyboardOpen &#x3D; false;
+  public creationMode &#x3D; true;
+  public cardDuplicate?: Card;
+
+  public form &#x3D; new FormGroup&lt;CardForm&gt;({
+    meaning: new FormControl&lt;string | null&gt;(null, Validators.required),
+    pinyin: new FormControl&lt;string | null&gt;(null),
+    chinese: new FormControl&lt;string | null&gt;(null),
+  });
+  public icons &#x3D; {
+    cancel: faClose,
+    save: faCheck,
+  };
+  public texts &#x3D; {
+    title: &quot;New card&quot;,
+    save: &quot;Create card&quot;,
+  };
+
+  private collectionId: number;
+  private originalCard?: Card;
+  private resetRequired &#x3D; false;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data: { card?: Card; collection: number },
+    public dialogRef: MatDialogRef&lt;CardEditorComponent&gt;,
+    private cardService: CardService,
+    private settingsService: SettingsService
+  ) {
+    if (data.card) {
+      this.form.patchValue({
+        meaning: data.card.meanings.join(&quot; ; &quot;),
+        pinyin: data.card.pinyin,
+        chinese: data.card.characters,
+      });
+      this.creationMode &#x3D; false;
+      this.originalCard &#x3D; data.card;
+      this.texts &#x3D; { title: &quot;Edit card&quot;, save: &quot;Update card&quot; };
+    }
+    this.collectionId &#x3D; data.collection;
+  }
+
+  ngOnInit(): void {
+    this.settingsService.getSettings().then((settings) &#x3D;&gt; {
+      if (this.creationMode) {
+        this.trackDuplicates();
+      } else if (settings.resetCardProgress) {
+        this.trackChanges();
+      }
+    });
+  }
+
+  public async saveCard(): Promise&lt;void&gt; {
+    const { meaning, chinese, pinyin } &#x3D; this.form.value;
+    if (meaning &amp;&amp; (chinese || pinyin)) {
+      const card: Card &#x3D; new Card({
+        meanings: meaning.split(&quot;;&quot;).map((m) &#x3D;&gt; m.trim()),
+        pinyin: toOptional(pinyin),
+        characters: toOptional(chinese),
+        collectionId: this.collectionId,
+        id: this.originalCard?.id,
+        leitnerBox: this.originalCard?.leitnerBox ?? 0,
+        lastSession: this.originalCard?.lastSession,
+      });
+
+      if (this.resetRequired) {
+        card.leitnerBox &#x3D; 0;
+        card.lastSession &#x3D; undefined;
+      }
+
+      const savePromise &#x3D; this.creationMode
+        ? this.cardService.createCard(card, this.collectionId)
+        : this.cardService.updateCard(card);
+
+      await savePromise;
+      if (this.keepEditorOpen) {
+        this.form.reset();
+      } else {
+        this.dialogRef.close();
+      }
+    }
+  }
+
+  private trackChanges(): void {
+    this.form.valueChanges.subscribe((formValues) &#x3D;&gt; {
+      this.resetRequired &#x3D;
+        formValues.chinese !&#x3D;&#x3D; this.originalCard?.characters ||
+        formValues.pinyin !&#x3D;&#x3D; this.originalCard?.pinyin;
+    });
+  }
+
+  private trackDuplicates(): void {
+    this.form.valueChanges.subscribe(async (formValues) &#x3D;&gt; {
+      this.cardDuplicate &#x3D; undefined;
+      const { meaning } &#x3D; formValues;
+      if (meaning) {
+        this.cardDuplicate &#x3D; await this.cardService.findCard({
+          meanings: meaning.split(&quot;;&quot;).map((m) &#x3D;&gt; m.trim()),
+        });
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div mat-dialog-title&gt;
+  &lt;div&gt;{{ texts.title }}&lt;/div&gt;
+  &lt;chf-button mat-dialog-close&gt;
+    &lt;fa-icon [icon]&#x3D;&quot;icons.cancel&quot; /&gt;
+    Cancel
+  &lt;/chf-button&gt;
+&lt;/div&gt;
+
+&lt;div mat-dialog-content&gt;
+  &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
+    &lt;mat-form-field subscriptSizing&#x3D;&quot;dynamic&quot;&gt;
+      &lt;mat-label&gt;Meanings&lt;/mat-label&gt;
+      &lt;input matInput formControlName&#x3D;&quot;meaning&quot; /&gt;
+      &lt;mat-hint&gt;Separate meanings with « ; » &lt;/mat-hint&gt;
+    &lt;/mat-form-field&gt;
+
+    &lt;mat-form-field subscriptSizing&#x3D;&quot;dynamic&quot;&gt;
+      &lt;mat-label&gt;Chinese characters&lt;/mat-label&gt;
+      &lt;input matInput formControlName&#x3D;&quot;chinese&quot; /&gt;
+    &lt;/mat-form-field&gt;
+
+    &lt;chf-pinyin-form-field formControlName&#x3D;&quot;pinyin&quot; /&gt;
+  &lt;/form&gt;
+
+  &lt;div *ngIf&#x3D;&quot;cardDuplicate&quot; class&#x3D;&quot;duplicate-warning&quot;&gt;
+    A card with this meaning already exists:
+    &lt;div class&#x3D;&quot;duplicate-card-wrapper&quot;&gt;
+      &lt;div&gt;
+        &lt;span&gt;Meanings&lt;/span&gt;
+        {{ cardDuplicate.meanings | join : &quot; ; &quot; }}
+      &lt;/div&gt;
+      &lt;div *ngIf&#x3D;&quot;cardDuplicate.characters&quot;&gt;
+        &lt;span&gt;Characters&lt;/span&gt; {{ cardDuplicate.characters }}
+      &lt;/div&gt;
+      &lt;div *ngIf&#x3D;&quot;cardDuplicate.pinyin&quot;&gt;
+        &lt;span&gt;Pinyin&lt;/span&gt; {{ cardDuplicate.pinyin }}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;mat-checkbox [(ngModel)]&#x3D;&quot;keepEditorOpen&quot; *ngIf&#x3D;&quot;creationMode&quot;&gt;
+    Add another card after this one
+  &lt;/mat-checkbox&gt;
+
+  &lt;p class&#x3D;&quot;reset-warning&quot; *ngIf&#x3D;&quot;!creationMode&quot;&gt;
+    Changing the characters or pinyin fields will automatically reset the progress.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div mat-dialog-actions&gt;
+  &lt;chf-button type&#x3D;&quot;primary&quot; (click)&#x3D;&quot;saveCard()&quot;&gt;
+    &lt;fa-icon [icon]&#x3D;&quot;icons.save&quot; /&gt;
+    {{ texts.save }}
+  &lt;/chf-button&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./card-editor.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">mat-form-field,
+chf-pinyin-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+mat-slide-toggle {
+  margin-bottom: 1rem;
+}
+
+.duplicate-warning {
+  background-color: #181818;
+  font-size: small;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+
+  .duplicate-card-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    div {
+      display: flex;
+      gap: 1rem;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.reset-warning {
+  font-size: small;
+  color: #e98100;
+}
+
+div[mat-dialog-actions] {
+  justify-content: center;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div mat-dialog-title>  <div>{{ texts.title }}</div>  <chf-button mat-dialog-close>    <fa-icon [icon]="icons.cancel" />    Cancel  </chf-button></div><div mat-dialog-content>  <form [formGroup]="form">    <mat-form-field subscriptSizing="dynamic">      <mat-label>Meanings</mat-label>      <input matInput formControlName="meaning" />      <mat-hint>Separate meanings with « ; » </mat-hint>    </mat-form-field>    <mat-form-field subscriptSizing="dynamic">      <mat-label>Chinese characters</mat-label>      <input matInput formControlName="chinese" />    </mat-form-field>    <chf-pinyin-form-field formControlName="pinyin" />  </form>  <div *ngIf="cardDuplicate" class="duplicate-warning">    A card with this meaning already exists:    <div class="duplicate-card-wrapper">      <div>        <span>Meanings</span>        {{ cardDuplicate.meanings | join : " ; " }}      </div>      <div *ngIf="cardDuplicate.characters">        <span>Characters</span> {{ cardDuplicate.characters }}      </div>      <div *ngIf="cardDuplicate.pinyin">        <span>Pinyin</span> {{ cardDuplicate.pinyin }}      </div>    </div>  </div>  <mat-checkbox [(ngModel)]="keepEditorOpen" *ngIf="creationMode">    Add another card after this one  </mat-checkbox>  <p class="reset-warning" *ngIf="!creationMode">    Changing the characters or pinyin fields will automatically reset the progress.  </p></div><div mat-dialog-actions>  <chf-button type="primary" (click)="saveCard()">    <fa-icon [icon]="icons.save" />    {{ texts.save }}  </chf-button></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'chf-root'},{'name': 'ButtonComponent', 'selector': 'chf-button'},{'name': 'CardComponent', 'selector': 'chf-card'},{'name': 'CardDifficultyComponent', 'selector': 'chf-card-difficulty'},{'name': 'CardEditorComponent', 'selector': 'chf-card-editor'},{'name': 'CardProgressBarComponent', 'selector': 'chf-card-progress-bar'},{'name': 'CardProgressIndicatorComponent', 'selector': 'chf-card-progress-indicator'},{'name': 'CardViewerComponent', 'selector': 'chf-card-viewer'},{'name': 'CollectionCardsComponent', 'selector': 'chf-collection-cards'},{'name': 'CollectionEditorComponent', 'selector': 'chf-collection-editor'},{'name': 'CollectionListComponent', 'selector': 'chf-collection-list'},{'name': 'ConfirmDialogComponent', 'selector': 'chf-confirm-dialog'},{'name': 'InlineConfirmDialogComponent', 'selector': 'chf-inline-confirm-dialog'},{'name': 'NavbarComponent', 'selector': 'chf-navbar'},{'name': 'PinyinFormFieldComponent', 'selector': 'chf-pinyin-form-field'},{'name': 'SessionComponent', 'selector': 'chf-session'},{'name': 'SessionFillingStepComponent', 'selector': 'chf-session-filling-step'},{'name': 'SessionLauncherComponent', 'selector': 'chf-session-launcher'},{'name': 'SessionMatchingStepComponent', 'selector': 'chf-session-matching-step'},{'name': 'SettingsComponent', 'selector': 'chf-settings'},{'name': 'SidenavComponent', 'selector': 'chf-sidenav'},{'name': 'SlideToggleComponent', 'selector': 'chf-slide-toggle'},{'name': 'TabBarComponent', 'selector': 'chf-tab-bar'},{'name': 'VirtualKeyboardComponent', 'selector': 'chf-virtual-keyboard'}];
+    var DIRECTIVES = [{'name': 'LongPressDirective', 'selector': '[chfLongPress]'}];
+    var ACTUAL_COMPONENT = {'name': 'CardEditorComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CardEditorComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
