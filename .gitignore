@@ -21,8 +21,6 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/extensions.json
 .history/*
 
 # Miscellaneous
