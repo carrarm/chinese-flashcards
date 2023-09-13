@@ -1,0 +1,924 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>chinese-flashcards documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">chinese-flashcards documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SessionComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/learn/session/session.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="../interfaces/PendingChangesComponent.html" target="_self" >PendingChangesComponent</a></code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>chf-session</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./session.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./session.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#invalidSession" >invalidSession</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isFillingStep" >isFillingStep</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isMatchingStep" >isMatchingStep</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isSessionDone" >isSessionDone</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sessionCards" >sessionCards</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sessionResults" >sessionResults</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#canDeactivate" >canDeactivate</a>
+                            </li>
+                            <li>
+                                <a href="#matchingCompleted" >matchingCompleted</a>
+                            </li>
+                            <li>
+                                <a href="#sessionCompleted" >sessionCompleted</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cardService: <a href="../injectables/CardService.html" target="_self">CardService</a>, dialog: MatDialog, router: Router, tabBarService: <a href="../injectables/TabBarService.html" target="_self">TabBarService</a>, navigationService: <a href="../injectables/NavigationService.html" target="_self">NavigationService</a>, learningSessionService: <a href="../injectables/LearningSessionService.html" target="_self">LearningSessionService</a>, settingsService: <a href="../injectables/SettingsService.html" target="_self">SettingsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/learn/session/session.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cardService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CardService.html" target="_self" >CardService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>tabBarService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TabBarService.html" target="_self" >TabBarService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navigationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NavigationService.html" target="_self" >NavigationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>learningSessionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LearningSessionService.html" target="_self" >LearningSessionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>settingsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SettingsService.html" target="_self" >SettingsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="canDeactivate"></a>
+                    <span class="name">
+                        <span ><b>canDeactivate</b></span>
+                        <a href="#canDeactivate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>canDeactivate()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/pages/learn/session/session.component.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="matchingCompleted"></a>
+                    <span class="name">
+                        <span ><b>matchingCompleted</b></span>
+                        <a href="#matchingCompleted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>matchingCompleted()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/app/pages/learn/session/session.component.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sessionCompleted"></a>
+                    <span class="name">
+                        <span ><b>sessionCompleted</b></span>
+                        <a href="#sessionCompleted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sessionCompleted(cards: SessionCard[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/pages/learn/session/session.component.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cards</td>
+                                    <td>
+                                            <code>SessionCard[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="invalidSession"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>invalidSession</b></span>
+                        <a href="#invalidSession"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/learn/session/session.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isFillingStep"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>isFillingStep</b></span>
+                        <a href="#isFillingStep"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/learn/session/session.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isMatchingStep"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>isMatchingStep</b></span>
+                        <a href="#isMatchingStep"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/learn/session/session.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSessionDone"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>isSessionDone</b></span>
+                        <a href="#isSessionDone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/learn/session/session.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sessionCards"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sessionCards</b></span>
+                        <a href="#sessionCards"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Card.html" target="_self" >Card[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/learn/session/session.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sessionResults"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sessionResults</b></span>
+                        <a href="#sessionResults"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>SessionCard[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/learn/session/session.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &quot;@angular/core&quot;;
+import { MatDialog } from &quot;@angular/material/dialog&quot;;
+import { Router } from &quot;@angular/router&quot;;
+import { PendingChangesComponent } from &quot;@core/guards/pending-changes.guard&quot;;
+import { Card } from &quot;@core/model/card.model&quot;;
+import { CardService } from &quot;@core/services/card.service&quot;;
+import { LearningSessionService } from &quot;@core/services/learning-session.service&quot;;
+import { NavigationService } from &quot;@core/services/navigation.service&quot;;
+import { SettingsService } from &quot;@core/services/settings.service&quot;;
+import { faCircleStop, faFlagCheckered } from &quot;@fortawesome/free-solid-svg-icons&quot;;
+import { Observable, map, of } from &quot;rxjs&quot;;
+import { ConfirmDialogComponent } from &quot;src/app/components/dialog/confirm-dialog/confirm-dialog.component&quot;;
+import { TabBarService } from &quot;src/app/components/tab-bar/tab-bar.service&quot;;
+import { SessionCard } from &quot;./session-card.model&quot;;
+
+@Component({
+  selector: &quot;chf-session&quot;,
+  templateUrl: &quot;./session.component.html&quot;,
+  styleUrls: [&quot;./session.component.scss&quot;],
+})
+export class SessionComponent implements PendingChangesComponent {
+  public sessionCards: Card[] &#x3D; [];
+  public isMatchingStep &#x3D; false;
+  public isFillingStep &#x3D; false;
+  public isSessionDone &#x3D; false;
+  public sessionResults: SessionCard[] &#x3D; [];
+
+  private invalidSession &#x3D; false;
+
+  constructor(
+    private cardService: CardService,
+    private dialog: MatDialog,
+    private router: Router,
+    private tabBarService: TabBarService,
+    private navigationService: NavigationService,
+    learningSessionService: LearningSessionService,
+    settingsService: SettingsService
+  ) {
+    navigationService.setTitle(&quot;Learning session&quot;);
+    this.sessionCards &#x3D; learningSessionService.currentSession.getValue();
+    if (!this.sessionCards.length) {
+      this.invalidSession &#x3D; true;
+      router.navigateByUrl(&quot;/sessions&quot;);
+    }
+    settingsService.getSettings().then((settings) &#x3D;&gt; {
+      this.isMatchingStep &#x3D;
+        learningSessionService.isLearningSession() || settings.enableReviewMatching;
+      this.isFillingStep &#x3D; !this.isMatchingStep;
+    });
+    tabBarService.setActions([
+      {
+        icon: faCircleStop,
+        label: &quot;Cancel session&quot;,
+        action: () &#x3D;&gt; router.navigateByUrl(&quot;/sessions&quot;),
+      },
+    ]);
+  }
+
+  canDeactivate(): Observable&lt;boolean&gt; {
+    return this.invalidSession || this.isSessionDone
+      ? of(true)
+      : this.dialog
+          .open(ConfirmDialogComponent, {
+            data: {
+              confirmType: &quot;primary&quot;,
+              confirmText: &quot;Yes, stop this session&quot;,
+              cancelText: &quot;I changed my mind&quot;,
+              title: &quot;Cancel the session&quot;,
+              message: &quot;You will lose any progress made during the session.&quot;,
+            },
+          })
+          .afterClosed()
+          // Need to use a pipe because &quot;undefined&quot; does not prevent the route change
+          .pipe(map((confirmed) &#x3D;&gt; !!confirmed));
+  }
+
+  matchingCompleted(): void {
+    this.isMatchingStep &#x3D; false;
+    this.isFillingStep &#x3D; true;
+  }
+
+  sessionCompleted(cards: SessionCard[]): void {
+    this.isFillingStep &#x3D; false;
+    this.isSessionDone &#x3D; true;
+    this.sessionResults &#x3D; cards;
+    const toUpdate: Card[] &#x3D; [];
+    cards.forEach((sessionCard) &#x3D;&gt; {
+      sessionCard.endSession();
+      toUpdate.push(sessionCard.card);
+    });
+    this.cardService.updateCards(toUpdate);
+    this.tabBarService.setActions([
+      {
+        icon: faFlagCheckered,
+        label: &quot;End session&quot;,
+        action: () &#x3D;&gt; this.router.navigateByUrl(&quot;/sessions&quot;),
+      },
+    ]);
+    this.navigationService.setNavbarText(&quot;Session completed!&quot;, &quot;main&quot;);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;chf-session-matching-step
+  *ngIf&#x3D;&quot;isMatchingStep&quot;
+  [cards]&#x3D;&quot;sessionCards&quot;
+  (completed)&#x3D;&quot;matchingCompleted()&quot;
+/&gt;
+
+&lt;chf-session-filling-step
+  *ngIf&#x3D;&quot;isFillingStep&quot;
+  [cards]&#x3D;&quot;sessionCards&quot;
+  (completed)&#x3D;&quot;sessionCompleted($event)&quot;
+/&gt;
+
+&lt;div *ngIf&#x3D;&quot;isSessionDone&quot;&gt;
+  &lt;div *ngFor&#x3D;&quot;let card of sessionResults&quot; class&#x3D;&quot;card-result-row&quot;&gt;
+    &lt;div&gt;
+      {{ card.characters ?? card.pinyin }}
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;progress&quot; [ngClass]&#x3D;&quot;card.sessionProgress&quot;&gt;
+      &lt;fa-icon [icon]&#x3D;&quot;card.sessionResultIcon&quot; size&#x3D;&quot;lg&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./session.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.card-result-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: 35px;
+
+  div {
+    width: 30vw;
+    text-align: center;
+  }
+
+  .progress {
+    &amp;.up {
+      color: #36d336;
+    }
+
+    &amp;.down {
+      color: red;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><chf-session-matching-step  *ngIf="isMatchingStep"  [cards]="sessionCards"  (completed)="matchingCompleted()"/><chf-session-filling-step  *ngIf="isFillingStep"  [cards]="sessionCards"  (completed)="sessionCompleted($event)"/><div *ngIf="isSessionDone">  <div *ngFor="let card of sessionResults" class="card-result-row">    <div>      {{ card.characters ?? card.pinyin }}    </div>    <div class="progress" [ngClass]="card.sessionProgress">      <fa-icon [icon]="card.sessionResultIcon" size="lg" />    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'chf-root'},{'name': 'ButtonComponent', 'selector': 'chf-button'},{'name': 'CardComponent', 'selector': 'chf-card'},{'name': 'CardDifficultyComponent', 'selector': 'chf-card-difficulty'},{'name': 'CardEditorComponent', 'selector': 'chf-card-editor'},{'name': 'CardProgressBarComponent', 'selector': 'chf-card-progress-bar'},{'name': 'CardProgressIndicatorComponent', 'selector': 'chf-card-progress-indicator'},{'name': 'CardViewerComponent', 'selector': 'chf-card-viewer'},{'name': 'CollectionCardsComponent', 'selector': 'chf-collection-cards'},{'name': 'CollectionEditorComponent', 'selector': 'chf-collection-editor'},{'name': 'CollectionListComponent', 'selector': 'chf-collection-list'},{'name': 'ConfirmDialogComponent', 'selector': 'chf-confirm-dialog'},{'name': 'InlineConfirmDialogComponent', 'selector': 'chf-inline-confirm-dialog'},{'name': 'NavbarComponent', 'selector': 'chf-navbar'},{'name': 'PinyinFormFieldComponent', 'selector': 'chf-pinyin-form-field'},{'name': 'SessionComponent', 'selector': 'chf-session'},{'name': 'SessionFillingStepComponent', 'selector': 'chf-session-filling-step'},{'name': 'SessionLauncherComponent', 'selector': 'chf-session-launcher'},{'name': 'SessionMatchingStepComponent', 'selector': 'chf-session-matching-step'},{'name': 'SettingsComponent', 'selector': 'chf-settings'},{'name': 'SidenavComponent', 'selector': 'chf-sidenav'},{'name': 'SlideToggleComponent', 'selector': 'chf-slide-toggle'},{'name': 'TabBarComponent', 'selector': 'chf-tab-bar'},{'name': 'VirtualKeyboardComponent', 'selector': 'chf-virtual-keyboard'}];
+    var DIRECTIVES = [{'name': 'LongPressDirective', 'selector': '[chfLongPress]'}];
+    var ACTUAL_COMPONENT = {'name': 'SessionComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SessionComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
