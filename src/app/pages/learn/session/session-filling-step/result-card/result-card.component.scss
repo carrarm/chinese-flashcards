@@ -42,3 +42,13 @@ chf-card {
 .chinese {
   font-size: 1.2em;
 }
+
+.diff-character {
+  &.success {
+    color: #00c300;
+  }
+
+  &.error {
+    color: red;
+  }
+}
