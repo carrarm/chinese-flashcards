@@ -18,6 +18,7 @@ import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/p
 import { CardDifficultyComponent } from "../shared/components/card-difficulty/card-difficulty.component";
 import { CardProgressIndicatorComponent } from "../shared/components/card-progress-indicator/card-progress-indicator.component";
 import { SessionLauncherComponent } from "./session-launcher/session-launcher.component";
+import { ResultCardComponent } from "./session/session-filling-step/result-card/result-card.component";
 import { SessionFillingStepComponent } from "./session/session-filling-step/session-filling-step.component";
 import { SessionMatchingStepComponent } from "./session/session-matching-step/session-matching-step.component";
 import { SessionComponent } from "./session/session.component";
@@ -28,6 +29,7 @@ import { SessionComponent } from "./session/session.component";
     SessionComponent,
     SessionMatchingStepComponent,
     SessionFillingStepComponent,
+    ResultCardComponent,
   ],
   imports: [
     ButtonComponent,
@@ -41,9 +43,9 @@ import { SessionComponent } from "./session/session.component";
     FormsModule,
     MatButtonModule,
     MatCardModule,
+    MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatFormFieldModule,
     MatProgressSpinnerModule,
     NgCircleProgressModule,
     PinyinFormFieldComponent,
