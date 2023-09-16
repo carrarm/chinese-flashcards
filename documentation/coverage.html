@@ -8,26 +8,674 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	   <link rel="stylesheet" href="./styles/style.css">
-        <link rel="stylesheet" href="./styles/dark.css">
+	    <link rel="stylesheet" href="./styles/style.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
             <a href="./" class="navbar-brand">chinese-flashcards documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="./">chinese-flashcards documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="./" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="./overview.html" 
+                                         href="./overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <span class="fa fa-archive"></span>
+                            <span>Modules</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            ></span>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="modules/CollectionPageModule.html" >CollectionPageModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="modules/LearnPageModule.html" >LearnPageModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="modules/SettingsModule.html" >SettingsModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-components-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="components/AppComponent.html" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/ButtonComponent.html" >ButtonComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/CardComponent.html" >CardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/CardDifficultyComponent.html" >CardDifficultyComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/CardEditorComponent.html" >CardEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/CardViewerComponent.html" >CardViewerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/CollectionCardsComponent.html" >CollectionCardsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/CollectionEditorComponent.html" >CollectionEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/CollectionListComponent.html" >CollectionListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/NavbarComponent.html" >NavbarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/PinyinFormFieldComponent.html" >PinyinFormFieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/ResultCardComponent.html" >ResultCardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/SessionComponent.html" >SessionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/SessionFillingStepComponent.html" >SessionFillingStepComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/SessionLauncherComponent.html" >SessionLauncherComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/SessionMatchingStepComponent.html" >SessionMatchingStepComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/SettingsComponent.html" >SettingsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/SidenavComponent.html" >SidenavComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/SlideToggleComponent.html" >SlideToggleComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/TabBarComponent.html" >TabBarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="components/VirtualKeyboardComponent.html" >VirtualKeyboardComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-directives-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="directives/LongPressDirective.html" >LongPressDirective</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="classes/Card.html" >Card</a>
+                                </li>
+                                <li class="link">
+                                    <a href="classes/CardCollection.html" >CardCollection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="classes/CoercionComponent.html" >CoercionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="classes/ControlValueAccessorComponent.html" >ControlValueAccessorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="classes/Database.html" >Database</a>
+                                </li>
+                                <li class="link">
+                                    <a href="classes/SessionCard.html" >SessionCard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="classes/Settings.html" >Settings</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-injectables-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="injectables/CardService.html" >CardService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/CollectionService.html" >CollectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/DatabaseService.html" >DatabaseService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/LearningSessionService.html" >LearningSessionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/NavigationService.html" >NavigationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/SettingsService.html" >SettingsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/StatisticsService.html" >StatisticsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/TabBarService.html" >TabBarService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="interfaces/CardCollectionModel.html" >CardCollectionModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/CardForm.html" >CardForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/CardModel.html" >CardModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/CollectionForm.html" >CollectionForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/CollectionStats.html" >CollectionStats</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/ConfirmDialogConfig.html" >ConfirmDialogConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/DiffCharacter.html" >DiffCharacter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/MatchingCard.html" >MatchingCard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/PendingChangesComponent.html" >PendingChangesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/SettingsForm.html" >SettingsForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/SettingsModel.html" >SettingsModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="interfaces/TypedContent.html" >TypedContent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-pipes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="pipes/CardMeaningsPipe.html" >CardMeaningsPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="pipes/JoinPipe.html" >JoinPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./coverage.html"  class="active" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                        <img src=".//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
         </div>
 
         <div class="container-fluid main">
            <div class="row main">
                <div class="hidden-xs menu">
-                   <compodoc-menu mode="normal"></compodoc-menu>
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="./">chinese-flashcards documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="./" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="./overview.html" 
+                                                href="./overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <span class="fa fa-archive"></span>
+                                   <span>Modules</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   ></span>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="modules/CollectionPageModule.html" >CollectionPageModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="modules/LearnPageModule.html" >LearnPageModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="modules/SettingsModule.html" >SettingsModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#components-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="components/AppComponent.html" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/ButtonComponent.html" >ButtonComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/CardComponent.html" >CardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/CardDifficultyComponent.html" >CardDifficultyComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/CardEditorComponent.html" >CardEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/CardViewerComponent.html" >CardViewerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/CollectionCardsComponent.html" >CollectionCardsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/CollectionEditorComponent.html" >CollectionEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/CollectionListComponent.html" >CollectionListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/NavbarComponent.html" >NavbarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/PinyinFormFieldComponent.html" >PinyinFormFieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/ResultCardComponent.html" >ResultCardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/SessionComponent.html" >SessionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/SessionFillingStepComponent.html" >SessionFillingStepComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/SessionLauncherComponent.html" >SessionLauncherComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/SessionMatchingStepComponent.html" >SessionMatchingStepComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/SettingsComponent.html" >SettingsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/SidenavComponent.html" >SidenavComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/SlideToggleComponent.html" >SlideToggleComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/TabBarComponent.html" >TabBarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="components/VirtualKeyboardComponent.html" >VirtualKeyboardComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#directives-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="directives/LongPressDirective.html" >LongPressDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="classes/Card.html" >Card</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="classes/CardCollection.html" >CardCollection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="classes/CoercionComponent.html" >CoercionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="classes/ControlValueAccessorComponent.html" >ControlValueAccessorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="classes/Database.html" >Database</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="classes/SessionCard.html" >SessionCard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="classes/Settings.html" >Settings</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#injectables-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="injectables/CardService.html" >CardService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="injectables/CollectionService.html" >CollectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="injectables/DatabaseService.html" >DatabaseService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="injectables/LearningSessionService.html" >LearningSessionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="injectables/NavigationService.html" >NavigationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="injectables/SettingsService.html" >SettingsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="injectables/StatisticsService.html" >StatisticsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="injectables/TabBarService.html" >TabBarService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="interfaces/CardCollectionModel.html" >CardCollectionModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/CardForm.html" >CardForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/CardModel.html" >CardModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/CollectionForm.html" >CollectionForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/CollectionStats.html" >CollectionStats</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/ConfirmDialogConfig.html" >ConfirmDialogConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/DiffCharacter.html" >DiffCharacter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/MatchingCard.html" >MatchingCard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/PendingChangesComponent.html" >PendingChangesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/SettingsForm.html" >SettingsForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/SettingsModel.html" >SettingsModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="interfaces/TypedContent.html" >TypedContent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#pipes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="pipes/CardMeaningsPipe.html" >CardMeaningsPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="pipes/JoinPipe.html" >JoinPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./coverage.html"  class="active" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                               <img src=".//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
                </div>
-               <!-- START CONTENT -->
                <div class="content coverage">
                    <div class="content-data">
 
@@ -40,1061 +688,837 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Documentation coverage</li>
+  <li>Documentation coverage</li> 
 </ol>
 
-<div>
-    <img src="./images/coverage-badge-documentation.svg">
+<div class="coverage-badge">
+    <span>Project</span>
+    <span class="count low">6%</span>
 </div>
 
-<table class="table table-bordered coverage" id="coverage-table">
+<table class="table table-bordered coverage">
     <thead class="coverage-header">
         <tr>
             <th>File</th>
             <th>Type</th>
             <th>Identifier</th>
-            <th style="text-align:right" class="statements" data-sort-default>Statements</th>
+            <th style="text-align:right">Statements</th>
         </tr>
     </thead>
     <tbody>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
                 <a href="./components/AppComponent.html">src/app/app.component.ts</a>
             </td>
-            <td>component</td>
-            <td>AppComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/6)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#defaultErrorMessages">src/app/app.module.ts</a>
+                component
             </td>
-            <td>variable</td>
-            <td>defaultErrorMessages</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./components/ButtonComponent.html">src/app/components/button/button.component.ts</a>
+                AppComponent
             </td>
-            <td>component</td>
-            <td>ButtonComponent</td>
-            <td align="right" data-sort="25">
-                <span class="coverage-percent">25 %</span>
-                <span class="coverage-count">(2/8)</span>
-            </td>
-        </tr>
-        <tr class="medium">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/CardComponent.html">src/app/components/card/card.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>CardComponent</td>
-            <td align="right" data-sort="28">
-                <span class="coverage-percent">28 %</span>
-                <span class="coverage-count">(2/7)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/ConfirmDialogComponent.html">src/app/components/dialog/confirm-dialog/confirm-dialog.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>ConfirmDialogComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/4)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/ConfirmDialogConfig.html">src/app/components/dialog/confirm-dialog/confirm-dialog.component.ts</a>
-            </td>
-            <td>interface</td>
-            <td>ConfirmDialogConfig</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/6)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/InlineConfirmDialogComponent.html">src/app/components/dialog/inline-confirm-dialog/inline-confirm-dialog.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>InlineConfirmDialogComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/6)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/NavbarComponent.html">src/app/components/navbar/navbar.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>NavbarComponent</td>
-            <td align="right" data-sort="0">
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#importedModules">src/app/components/navbar/navbar.component.ts</a>
+                <a href="./components/ButtonComponent.html">src/app/components/button/button.component.ts</a>
             </td>
-            <td>variable</td>
-            <td>importedModules</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./components/PinyinFormFieldComponent.html">src/app/components/pinyin-form-field/pinyin-form-field.component.ts</a>
+                component
             </td>
-            <td>component</td>
-            <td>PinyinFormFieldComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/12)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#modules">src/app/components/pinyin-form-field/pinyin-form-field.component.ts</a>
+                ButtonComponent
             </td>
-            <td>variable</td>
-            <td>modules</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/SidenavComponent.html">src/app/components/sidenav/sidenav.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>SidenavComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/2)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#importedModules">src/app/components/sidenav/sidenav.component.ts</a>
-            </td>
-            <td>variable</td>
-            <td>importedModules</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/SlideToggleComponent.html">src/app/components/slide-toggle/slide-toggle.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>SlideToggleComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/8)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/TabBarComponent.html">src/app/components/tab-bar/tab-bar.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>TabBarComponent</td>
-            <td align="right" data-sort="0">
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/4)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
+                <a href="./components/CardComponent.html">src/app/components/card/card.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                CardComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
+                <a href="./components/ConfirmDialogComponent.html">src/app/components/dialog/confirm-dialog/confirm-dialog.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                ConfirmDialogComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">66 %</span>
+                <span class="coverage-count">(2/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./interfaces/ConfirmDialogConfig.html">src/app/components/dialog/confirm-dialog/confirm-dialog.component.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                ConfirmDialogConfig
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/InlineConfirmDialogComponent.html">src/app/components/dialog/inline-confirm-dialog/inline-confirm-dialog.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                InlineConfirmDialogComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/NavbarComponent.html">src/app/components/navbar/navbar.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                NavbarComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/PinyinFormFieldComponent.html">src/app/components/pinyin-form-field/pinyin-form-field.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                PinyinFormFieldComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/SidenavComponent.html">src/app/components/sidenav/sidenav.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                SidenavComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/SlideToggleComponent.html">src/app/components/slide-toggle/slide-toggle.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                SlideToggleComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/TabBarComponent.html">src/app/components/tab-bar/tab-bar.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                TabBarComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
                 <a href="./injectables/TabBarService.html">src/app/components/tab-bar/tab-bar.service.ts</a>
             </td>
-            <td>injectable</td>
-            <td>TabBarService</td>
-            <td align="right" data-sort="0">
+            <td>
+                injectable
+            </td>
+            <td>
+                TabBarService
+            </td>
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/6)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#AZERTY">src/app/components/virtual-keyboard/keyboard-layout.model.ts</a>
-            </td>
-            <td>variable</td>
-            <td>AZERTY</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#QWERTY">src/app/components/virtual-keyboard/keyboard-layout.model.ts</a>
-            </td>
-            <td>variable</td>
-            <td>QWERTY</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./directives/LongPressDirective.html">src/app/components/virtual-keyboard/long-press.directive.ts</a>
-            </td>
-            <td>directive</td>
-            <td>LongPressDirective</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/6)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#getTones">src/app/components/virtual-keyboard/tones.ts</a>
-            </td>
-            <td>variable</td>
-            <td>getTones</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#hasTones">src/app/components/virtual-keyboard/tones.ts</a>
-            </td>
-            <td>variable</td>
-            <td>hasTones</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#TONES">src/app/components/virtual-keyboard/tones.ts</a>
-            </td>
-            <td>variable</td>
-            <td>TONES</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/VirtualKeyboardComponent.html">src/app/components/virtual-keyboard/virtual-keyboard.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>VirtualKeyboardComponent</td>
-            <td align="right" data-sort="20">
-                <span class="coverage-percent">20 %</span>
-                <span class="coverage-count">(3/15)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#BASE_TONE_OVERLAY_OFFSET_X">src/app/components/virtual-keyboard/virtual-keyboard.component.ts</a>
-            </td>
-            <td>variable</td>
-            <td>BASE_TONE_OVERLAY_OFFSET_X</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#BASE_TONE_OVERLAY_OFFSET_Y">src/app/components/virtual-keyboard/virtual-keyboard.component.ts</a>
-            </td>
-            <td>variable</td>
-            <td>BASE_TONE_OVERLAY_OFFSET_Y</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#TONE_KEY_WIDTH_PX">src/app/components/virtual-keyboard/virtual-keyboard.component.ts</a>
-            </td>
-            <td>variable</td>
-            <td>TONE_KEY_WIDTH_PX</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
+                <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
         <tr class="medium">
             <td>
-                <!-- miscellaneous -->
+                <a href="./components/VirtualKeyboardComponent.html">src/app/components/virtual-keyboard/virtual-keyboard.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                VirtualKeyboardComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">40 %</span>
+                <span class="coverage-count">(6/15)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
                 <a href="./classes/CoercionComponent.html">src/app/core/coercion-component.ts</a>
             </td>
-            <td>class</td>
-            <td>CoercionComponent</td>
-            <td align="right" data-sort="50">
-                <span class="coverage-percent">50 %</span>
-                <span class="coverage-count">(2/4)</span>
+            <td>
+                classe
+            </td>
+            <td>
+                CoercionComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">66 %</span>
+                <span class="coverage-count">(2/3)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
                 <a href="./classes/ControlValueAccessorComponent.html">src/app/core/control-value-accessor-component.ts</a>
             </td>
-            <td>class</td>
-            <td>ControlValueAccessorComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/8)</span>
+            <td>
+                classe
+            </td>
+            <td>
+                ControlValueAccessorComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">25 %</span>
+                <span class="coverage-count">(1/4)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#upgrades">src/app/core/db/database-upgrades.ts</a>
-            </td>
-            <td>variable</td>
-            <td>upgrades</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
                 <a href="./classes/Database.html">src/app/core/db/database.model.ts</a>
             </td>
-            <td>class</td>
-            <td>Database</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/7)</span>
+            <td>
+                classe
+            </td>
+            <td>
+                Database
+            </td>
+            <td align="right">
+                <span class="coverage-percent">12 %</span>
+                <span class="coverage-count">(1/8)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#schema">src/app/core/db/database.model.ts</a>
-            </td>
-            <td>variable</td>
-            <td>schema</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
                 <a href="./injectables/DatabaseService.html">src/app/core/db/database.service.ts</a>
             </td>
-            <td>injectable</td>
-            <td>DatabaseService</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/6)</span>
+            <td>
+                injectable
+            </td>
+            <td>
+                DatabaseService
+            </td>
+            <td align="right">
+                <span class="coverage-percent">25 %</span>
+                <span class="coverage-count">(1/4)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
                 <a href="./interfaces/PendingChangesComponent.html">src/app/core/guards/pending-changes.guard.ts</a>
             </td>
-            <td>interface</td>
-            <td>PendingChangesComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/2)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#PendingChangesGuard">src/app/core/guards/pending-changes.guard.ts</a>
+                interface
             </td>
-            <td>variable</td>
-            <td>PendingChangesGuard</td>
-            <td align="right" data-sort="0">
+            <td>
+                PendingChangesComponent
+            </td>
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/1)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
                 <a href="./classes/CardCollection.html">src/app/core/model/card-collection.model.ts</a>
             </td>
-            <td>class</td>
-            <td>CardCollection</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/12)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/CardCollectionModel.html">src/app/core/model/card-collection.model.ts</a>
+                classe
             </td>
-            <td>interface</td>
-            <td>CardCollectionModel</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/4)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./classes/Card.html">src/app/core/model/card.model.ts</a>
+                CardCollection
             </td>
-            <td>class</td>
-            <td>Card</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/19)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/CardModel.html">src/app/core/model/card.model.ts</a>
-            </td>
-            <td>interface</td>
-            <td>CardModel</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/9)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#boxReviewDelay">src/app/core/model/card.model.ts</a>
-            </td>
-            <td>variable</td>
-            <td>boxReviewDelay</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./classes/Settings.html">src/app/core/model/settings.model.ts</a>
-            </td>
-            <td>class</td>
-            <td>Settings</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/12)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/SettingsModel.html">src/app/core/model/settings.model.ts</a>
-            </td>
-            <td>interface</td>
-            <td>SettingsModel</td>
-            <td align="right" data-sort="0">
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/10)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/CollectionStats.html">src/app/core/model/statistics.model.ts</a>
+                <a href="./interfaces/CardCollectionModel.html">src/app/core/model/card-collection.model.ts</a>
             </td>
-            <td>interface</td>
-            <td>CollectionStats</td>
-            <td align="right" data-sort="0">
+            <td>
+                interface
+            </td>
+            <td>
+                CardCollectionModel
+            </td>
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/4)</span>
+                <span class="coverage-count">(0/3)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./pipes/CardMeaningsPipe.html">src/app/core/pipes/card-meanings.pipe.ts</a>
+                <a href="./classes/Card.html">src/app/core/model/card.model.ts</a>
             </td>
-            <td>pipe</td>
-            <td>CardMeaningsPipe</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./pipes/JoinPipe.html">src/app/core/pipes/join.pipe.ts</a>
+                classe
             </td>
-            <td>pipe</td>
-            <td>JoinPipe</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#checkForUpdates">src/app/core/pwa-updates.ts</a>
+                Card
             </td>
-            <td>variable</td>
-            <td>checkForUpdates</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./injectables/CardService.html">src/app/core/services/card.service.ts</a>
-            </td>
-            <td>injectable</td>
-            <td>CardService</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/9)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./injectables/CollectionService.html">src/app/core/services/collection.service.ts</a>
-            </td>
-            <td>injectable</td>
-            <td>CollectionService</td>
-            <td align="right" data-sort="25">
-                <span class="coverage-percent">25 %</span>
-                <span class="coverage-count">(3/12)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./injectables/LearningSessionService.html">src/app/core/services/learning-session.service.ts</a>
-            </td>
-            <td>injectable</td>
-            <td>LearningSessionService</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/8)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./injectables/NavigationService.html">src/app/core/services/navigation.service.ts</a>
-            </td>
-            <td>injectable</td>
-            <td>NavigationService</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/9)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./injectables/SettingsService.html">src/app/core/services/settings.service.ts</a>
-            </td>
-            <td>injectable</td>
-            <td>SettingsService</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/7)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#THEME_STORAGE_KEY">src/app/core/services/settings.service.ts</a>
-            </td>
-            <td>variable</td>
-            <td>THEME_STORAGE_KEY</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./injectables/StatisticsService.html">src/app/core/services/statistics.service.ts</a>
-            </td>
-            <td>injectable</td>
-            <td>StatisticsService</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/5)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#downloadFile">src/app/core/utils/file.utils.ts</a>
-            </td>
-            <td>variable</td>
-            <td>downloadFile</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#toOptional">src/app/core/utils/form.utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>toOptional</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#removeOnce">src/app/core/utils/general.utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>removeOnce</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#removeTimes">src/app/core/utils/general.utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>removeTimes</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#shuffleArray">src/app/core/utils/general.utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>shuffleArray</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/functions.html#uniqueValues">src/app/core/utils/general.utils.ts</a>
-            </td>
-            <td>function</td>
-            <td>uniqueValues</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#areEqual">src/app/core/utils/general.utils.ts</a>
-            </td>
-            <td>variable</td>
-            <td>areEqual</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#areSubstrings">src/app/core/utils/general.utils.ts</a>
-            </td>
-            <td>variable</td>
-            <td>areSubstrings</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="very-good">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#normalizeForComparison">src/app/core/utils/general.utils.ts</a>
-            </td>
-            <td>variable</td>
-            <td>normalizeForComparison</td>
-            <td align="right" data-sort="100">
-                <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(1/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/CardEditorComponent.html">src/app/pages/collection/card-editor/card-editor.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>CardEditorComponent</td>
-            <td align="right" data-sort="0">
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/17)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/CardForm.html">src/app/pages/collection/card-editor/card-editor.component.ts</a>
+                <a href="./interfaces/CardModel.html">src/app/core/model/card.model.ts</a>
             </td>
-            <td>interface</td>
-            <td>CardForm</td>
-            <td align="right" data-sort="0">
+            <td>
+                interface
+            </td>
+            <td>
+                CardModel
+            </td>
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/4)</span>
+                <span class="coverage-count">(0/8)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./components/CardProgressBarComponent.html">src/app/pages/collection/card-viewer/card-progress-bar/card-progress-bar.component.ts</a>
+                <a href="./classes/Settings.html">src/app/core/model/settings.model.ts</a>
             </td>
-            <td>component</td>
-            <td>CardProgressBarComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/5)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./components/CardViewerComponent.html">src/app/pages/collection/card-viewer/card-viewer.component.ts</a>
+                classe
             </td>
-            <td>component</td>
-            <td>CardViewerComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/12)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./components/CollectionCardsComponent.html">src/app/pages/collection/collection-cards/collection-cards.component.ts</a>
+                Settings
             </td>
-            <td>component</td>
-            <td>CollectionCardsComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/25)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/CollectionEditorComponent.html">src/app/pages/collection/collection-editor/collection-editor.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>CollectionEditorComponent</td>
-            <td align="right" data-sort="0">
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/10)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/CollectionForm.html">src/app/pages/collection/collection-editor/collection-editor.component.ts</a>
+                <a href="./interfaces/SettingsModel.html">src/app/core/model/settings.model.ts</a>
             </td>
-            <td>interface</td>
-            <td>CollectionForm</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/3)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./components/CollectionListComponent.html">src/app/pages/collection/collection-list/collection-list.component.ts</a>
+                interface
             </td>
-            <td>component</td>
-            <td>CollectionListComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/8)</span>
-            </td>
-        </tr>
-        <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./components/SessionLauncherComponent.html">src/app/pages/learn/session-launcher/session-launcher.component.ts</a>
+                SettingsModel
             </td>
-            <td>component</td>
-            <td>SessionLauncherComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/8)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./classes/SessionCard.html">src/app/pages/learn/session/session-card.model.ts</a>
-            </td>
-            <td>class</td>
-            <td>SessionCard</td>
-            <td align="right" data-sort="25">
-                <span class="coverage-percent">25 %</span>
-                <span class="coverage-count">(3/12)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#EASY_REPS">src/app/pages/learn/session/session-card.model.ts</a>
-            </td>
-            <td>variable</td>
-            <td>EASY_REPS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#HARD_REPS">src/app/pages/learn/session/session-card.model.ts</a>
-            </td>
-            <td>variable</td>
-            <td>HARD_REPS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#MEDIUM_REPS">src/app/pages/learn/session/session-card.model.ts</a>
-            </td>
-            <td>variable</td>
-            <td>MEDIUM_REPS</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/SessionFillingStepComponent.html">src/app/pages/learn/session/session-filling-step/session-filling-step.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>SessionFillingStepComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/21)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/SessionMatchingStepComponent.html">src/app/pages/learn/session/session-matching-step/session-matching-step.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>SessionMatchingStepComponent</td>
-            <td align="right" data-sort="18">
-                <span class="coverage-percent">18 %</span>
-                <span class="coverage-count">(3/16)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/MatchingCard.html">src/app/pages/learn/session/session-matching-step/session-matching-step.component.ts</a>
-            </td>
-            <td>interface</td>
-            <td>MatchingCard</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/3)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/SessionComponent.html">src/app/pages/learn/session/session.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>SessionComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/11)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./components/SettingsComponent.html">src/app/pages/settings/settings.component.ts</a>
-            </td>
-            <td>component</td>
-            <td>SettingsComponent</td>
-            <td align="right" data-sort="0">
-                <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/12)</span>
-            </td>
-        </tr>
-        <tr class="low">
-            <td>
-                <!-- miscellaneous -->
-                <a href="./interfaces/SettingsForm.html">src/app/pages/settings/settings.component.ts</a>
-            </td>
-            <td>interface</td>
-            <td>SettingsForm</td>
-            <td align="right" data-sort="0">
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/9)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./components/CardDifficultyComponent.html">src/app/pages/shared/components/card-difficulty/card-difficulty.component.ts</a>
+                <a href="./interfaces/CollectionStats.html">src/app/core/model/statistics.model.ts</a>
             </td>
-            <td>component</td>
-            <td>CardDifficultyComponent</td>
-            <td align="right" data-sort="0">
+            <td>
+                interface
+            </td>
+            <td>
+                CollectionStats
+            </td>
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/4)</span>
+                <span class="coverage-count">(0/3)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./components/CardProgressIndicatorComponent.html">src/app/pages/shared/components/card-progress-indicator/card-progress-indicator.component.ts</a>
+                <a href="./pipes/CardMeaningsPipe.html">src/app/core/pipes/card-meanings.pipe.ts</a>
             </td>
-            <td>component</td>
-            <td>CardProgressIndicatorComponent</td>
-            <td align="right" data-sort="0">
+            <td>
+                pipe
+            </td>
+            <td>
+                CardMeaningsPipe
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./pipes/JoinPipe.html">src/app/core/pipes/join.pipe.ts</a>
+            </td>
+            <td>
+                pipe
+            </td>
+            <td>
+                JoinPipe
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./injectables/CardService.html">src/app/core/services/card.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                CardService
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <a href="./injectables/CollectionService.html">src/app/core/services/collection.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                CollectionService
+            </td>
+            <td align="right">
+                <span class="coverage-percent">30 %</span>
+                <span class="coverage-count">(3/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./injectables/LearningSessionService.html">src/app/core/services/learning-session.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                LearningSessionService
+            </td>
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
                 <span class="coverage-count">(0/6)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#environment">src/environments/environment.development.ts</a>
+                <a href="./injectables/NavigationService.html">src/app/core/services/navigation.service.ts</a>
             </td>
-            <td>variable</td>
-            <td>environment</td>
-            <td align="right" data-sort="0">
+            <td>
+                injectable
+            </td>
+            <td>
+                NavigationService
+            </td>
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
+                <span class="coverage-count">(0/7)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#environment">src/environments/environment.production.ts</a>
+                <a href="./injectables/SettingsService.html">src/app/core/services/settings.service.ts</a>
             </td>
-            <td>variable</td>
-            <td>environment</td>
-            <td align="right" data-sort="0">
+            <td>
+                injectable
+            </td>
+            <td>
+                SettingsService
+            </td>
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
+                <span class="coverage-count">(0/5)</span>
             </td>
         </tr>
         <tr class="low">
             <td>
-                <!-- miscellaneous -->
-                <a href="./miscellaneous/variables.html#environment">src/environments/environment.ts</a>
+                <a href="./injectables/StatisticsService.html">src/app/core/services/statistics.service.ts</a>
             </td>
-            <td>variable</td>
-            <td>environment</td>
-            <td align="right" data-sort="0">
+            <td>
+                injectable
+            </td>
+            <td>
+                StatisticsService
+            </td>
+            <td align="right">
                 <span class="coverage-percent">0 %</span>
-                <span class="coverage-count">(0/1)</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/CardEditorComponent.html">src/app/pages/collection/card-editor/card-editor.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                CardEditorComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">6 %</span>
+                <span class="coverage-count">(1/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./interfaces/CardForm.html">src/app/pages/collection/card-editor/card-editor.component.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                CardForm
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/CardProgressBarComponent.html">src/app/pages/collection/card-viewer/card-progress-bar/card-progress-bar.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                CardProgressBarComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/CardViewerComponent.html">src/app/pages/collection/card-viewer/card-viewer.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                CardViewerComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">9 %</span>
+                <span class="coverage-count">(1/11)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/CollectionCardsComponent.html">src/app/pages/collection/collection-cards/collection-cards.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                CollectionCardsComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/21)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/CollectionEditorComponent.html">src/app/pages/collection/collection-editor/collection-editor.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                CollectionEditorComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">11 %</span>
+                <span class="coverage-count">(1/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./interfaces/CollectionForm.html">src/app/pages/collection/collection-editor/collection-editor.component.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                CollectionForm
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/CollectionListComponent.html">src/app/pages/collection/collection-list/collection-list.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                CollectionListComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/SessionLauncherComponent.html">src/app/pages/learn/session-launcher/session-launcher.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                SessionLauncherComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./classes/SessionCard.html">src/app/pages/learn/session/session-card.model.ts</a>
+            </td>
+            <td>
+                classe
+            </td>
+            <td>
+                SessionCard
+            </td>
+            <td align="right">
+                <span class="coverage-percent">20 %</span>
+                <span class="coverage-count">(3/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/ResultCardComponent.html">src/app/pages/learn/session/session-filling-step/result-card/result-card.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                ResultCardComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">11 %</span>
+                <span class="coverage-count">(1/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./interfaces/DiffCharacter.html">src/app/pages/learn/session/session-filling-step/result-card/result-card.component.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                DiffCharacter
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./interfaces/TypedContent.html">src/app/pages/learn/session/session-filling-step/result-card/result-card.component.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                TypedContent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/SessionFillingStepComponent.html">src/app/pages/learn/session/session-filling-step/session-filling-step.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                SessionFillingStepComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/19)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/SessionMatchingStepComponent.html">src/app/pages/learn/session/session-matching-step/session-matching-step.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                SessionMatchingStepComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">21 %</span>
+                <span class="coverage-count">(3/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./interfaces/MatchingCard.html">src/app/pages/learn/session/session-matching-step/session-matching-step.component.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                MatchingCard
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/SessionComponent.html">src/app/pages/learn/session/session.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                SessionComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/SettingsComponent.html">src/app/pages/settings/settings.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                SettingsComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./interfaces/SettingsForm.html">src/app/pages/settings/settings.component.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                SettingsForm
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/CardDifficultyComponent.html">src/app/pages/shared/components/card-difficulty/card-difficulty.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                CardDifficultyComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/CardProgressIndicatorComponent.html">src/app/pages/shared/components/card-progress-indicator/card-progress-indicator.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                CardProgressIndicatorComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
             </td>
         </tr>
     </tbody>
 </table>
-
-<script src="js/libs/tablesort.min.js"></script>
-<script src="js/libs/tablesort.number.min.js"></script>
-<script>
-    new Tablesort(document.getElementById('coverage-table'));
-</script>
 
                    </div><div class="search-results">
     <div class="has-results">
@@ -1106,31 +1530,8 @@
     </div>
 </div>
 </div>
-               <!-- END CONTENT -->
            </div>
        </div>
-
-          <label class="dark-mode-switch">
-               <input type="checkbox">
-               <span class="slider">
-                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                    </svg>
-               </span>
-          </label>
-
-       <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'coverage';
-            var COMPODOC_CURRENT_PAGE_URL = 'coverage.html';
-            var MAX_SEARCH_RESULTS = 15;
-       </script>
-
-       <script src="./js/libs/custom-elements.min.js"></script>
-       <script src="./js/libs/lit-html.js"></script>
-
-       <script src="./js/menu-wc.js" defer></script>
-       <script nomodule src="./js/menu-wc_es5.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 
@@ -1141,17 +1542,20 @@
 
        <script src="./js/compodoc.js"></script>
 
-       <script src="./js/tabs.js"></script>
-       <script src="./js/menu.js"></script>
-       <script src="./js/libs/clipboard.min.js"></script>
-       <script src="./js/libs/prism.js"></script>
-       <script src="./js/sourceCode.js"></script>
-          <script src="./js/search/search.js"></script>
-          <script src="./js/search/lunr.min.js"></script>
-          <script src="./js/search/search-lunr.js"></script>
-          <script src="./js/search/search_index.js"></script>
-       <script src="./js/lazy-load-graphs.js"></script>
+       <script src="./js/search/search.js"></script>
+       <script src="./js/search/lunr.min.js"></script>
+       <script src="./js/search/search-lunr.js"></script>
 
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/highlight.pack.js"></script>
+       <script src="./js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="./js/search/search_index.js"></script>
+       <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            });
+       </script>
 
     </body>
 </html>

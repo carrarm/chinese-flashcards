@@ -8,64 +8,695 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css">
+	    <link rel="stylesheet" href="../styles/style.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
             <a href="../" class="navbar-brand">chinese-flashcards documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../">chinese-flashcards documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <span class="fa fa-archive"></span>
+                            <span>Modules</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            ></span>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CollectionPageModule.html" >CollectionPageModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/LearnPageModule.html" >LearnPageModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/SettingsModule.html" >SettingsModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-components-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AppComponent.html" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ButtonComponent.html" >ButtonComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardComponent.html" >CardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardDifficultyComponent.html" >CardDifficultyComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardEditorComponent.html" >CardEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardViewerComponent.html"  class="active" >CardViewerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CollectionCardsComponent.html" >CollectionCardsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CollectionEditorComponent.html" >CollectionEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CollectionListComponent.html" >CollectionListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/NavbarComponent.html" >NavbarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PinyinFormFieldComponent.html" >PinyinFormFieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ResultCardComponent.html" >ResultCardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionComponent.html" >SessionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionFillingStepComponent.html" >SessionFillingStepComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionLauncherComponent.html" >SessionLauncherComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionMatchingStepComponent.html" >SessionMatchingStepComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SidenavComponent.html" >SidenavComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SlideToggleComponent.html" >SlideToggleComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/TabBarComponent.html" >TabBarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/VirtualKeyboardComponent.html" >VirtualKeyboardComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-directives-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="../directives/LongPressDirective.html" >LongPressDirective</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/Card.html" >Card</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CardCollection.html" >CardCollection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CoercionComponent.html" >CoercionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/ControlValueAccessorComponent.html" >ControlValueAccessorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Database.html" >Database</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SessionCard.html" >SessionCard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Settings.html" >Settings</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-injectables-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/CardService.html" >CardService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CollectionService.html" >CollectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/DatabaseService.html" >DatabaseService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LearningSessionService.html" >LearningSessionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/NavigationService.html" >NavigationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SettingsService.html" >SettingsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StatisticsService.html" >StatisticsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TabBarService.html" >TabBarService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/CardCollectionModel.html" >CardCollectionModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CardForm.html" >CardForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CardModel.html" >CardModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CollectionForm.html" >CollectionForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CollectionStats.html" >CollectionStats</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ConfirmDialogConfig.html" >ConfirmDialogConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DiffCharacter.html" >DiffCharacter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/MatchingCard.html" >MatchingCard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PendingChangesComponent.html" >PendingChangesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SettingsForm.html" >SettingsForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SettingsModel.html" >SettingsModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/TypedContent.html" >TypedContent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-pipes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/CardMeaningsPipe.html" >CardMeaningsPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/JoinPipe.html" >JoinPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
         </div>
 
         <div class="container-fluid main">
            <div class="row main">
                <div class="hidden-xs menu">
-                   <compodoc-menu mode="normal"></compodoc-menu>
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../">chinese-flashcards documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <span class="fa fa-archive"></span>
+                                   <span>Modules</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   ></span>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CollectionPageModule.html" >CollectionPageModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/LearnPageModule.html" >LearnPageModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SettingsModule.html" >SettingsModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#components-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AppComponent.html" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ButtonComponent.html" >ButtonComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardComponent.html" >CardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardDifficultyComponent.html" >CardDifficultyComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardEditorComponent.html" >CardEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardViewerComponent.html"  class="active" >CardViewerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CollectionCardsComponent.html" >CollectionCardsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CollectionEditorComponent.html" >CollectionEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CollectionListComponent.html" >CollectionListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/NavbarComponent.html" >NavbarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PinyinFormFieldComponent.html" >PinyinFormFieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ResultCardComponent.html" >ResultCardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionComponent.html" >SessionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionFillingStepComponent.html" >SessionFillingStepComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionLauncherComponent.html" >SessionLauncherComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionMatchingStepComponent.html" >SessionMatchingStepComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SidenavComponent.html" >SidenavComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SlideToggleComponent.html" >SlideToggleComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/TabBarComponent.html" >TabBarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/VirtualKeyboardComponent.html" >VirtualKeyboardComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#directives-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="../directives/LongPressDirective.html" >LongPressDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/Card.html" >Card</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CardCollection.html" >CardCollection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CoercionComponent.html" >CoercionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ControlValueAccessorComponent.html" >ControlValueAccessorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Database.html" >Database</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SessionCard.html" >SessionCard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Settings.html" >Settings</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#injectables-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/CardService.html" >CardService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CollectionService.html" >CollectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/DatabaseService.html" >DatabaseService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LearningSessionService.html" >LearningSessionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/NavigationService.html" >NavigationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SettingsService.html" >SettingsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StatisticsService.html" >StatisticsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TabBarService.html" >TabBarService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/CardCollectionModel.html" >CardCollectionModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CardForm.html" >CardForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CardModel.html" >CardModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CollectionForm.html" >CollectionForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CollectionStats.html" >CollectionStats</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ConfirmDialogConfig.html" >ConfirmDialogConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DiffCharacter.html" >DiffCharacter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/MatchingCard.html" >MatchingCard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PendingChangesComponent.html" >PendingChangesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SettingsForm.html" >SettingsForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SettingsModel.html" >SettingsModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/TypedContent.html" >TypedContent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#pipes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/CardMeaningsPipe.html" >CardMeaningsPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/JoinPipe.html" >JoinPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
                </div>
-               <!-- START CONTENT -->
                <div class="content component">
                    <div class="content-data">
 
 
-
-
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Components</li>
-  <li class="breadcrumb-item"
-  >
-  CardViewerComponent</li>
+  <li>Components</li>
+  <li>CardViewerComponent</li>
 </ol>
 
-<ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-            <a href="#info" class="nav-link active"
-                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
-        </li>
-        <li class="nav-item">
-            <a href="#source" class="nav-link"
-                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
-        </li>
-        <li class="nav-item">
-            <a href="#templateData" class="nav-link"
-                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
-        </li>
-        <li class="nav-item">
-            <a href="#styleData" class="nav-link"
-                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li class="nav-item">
-            <a href="#tree" class="nav-link"
-                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
-        </li>
-</ul>
 
-<div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+        </li>
+        <li>
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="infos"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -74,12 +705,9 @@
 
 
 
-
-
-
-<section data-compodoc="block-metadata">
+<section>
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover metadata">
+    <table class="table table-sm table-hover">
         <tbody>
 
 
@@ -98,531 +726,250 @@
                 <td class="col-md-9"><code>chf-card-viewer</code></td>
             </tr>
 
-
-
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./card-viewer.component.scss</code></td>
+                <td class="col-md-9"><code>card-viewer.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./card-viewer.component.html</code></td>
+                <td class="col-md-9"><code>card-viewer.component.html</code></td>
             </tr>
 
 
-
-
-
-
-
-
         </tbody>
     </table>
 </section>
 
-    <section data-compodoc="block-index">
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#card" >card</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#collectionId" >collectionId</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#dialogRef" >dialogRef</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#icons" >icons</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#isDeleteConfirm" >isDeleteConfirm</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#isEditActive" >isEditActive</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#isResetConfirm" >isResetConfirm</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#deleteCard" >deleteCard</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#editCard" >editCard</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#resetProgress" >resetProgress</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(data: { card: any; collection: number; }, dialogRef: any, cardService: any, dialog: MatDialog)</code>
+                        </td>
+                    </tr>
+    
+                </tbody>
+            </table>
+    </section>
 
+    <section>
+        <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> editCard</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>editCard()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> deleteCard</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>deleteCard()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>any</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> resetProgress</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>resetProgress()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>any</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
-
-        </tbody>
-    </table>
-</section>
-
-    <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(data: literal type, dialogRef: <a href="../classes/Card.html" target="_self">MatDialogRef&lt;CardViewerComponent&gt;</a>, cardService: <a href="../injectables/CardService.html" target="_self">CardService</a>, dialog: MatDialog)</code>
-                    </td>
-                </tr>
+    <section>
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> card</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>card:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> collectionId</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>collectionId:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> dialogRef</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>dialogRef:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> icons</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>icons:     <code>{ close: IconDefinition; edit: IconDefinition; delete: IconDefinition; reset: IconDefinition; }</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> isDeleteConfirm</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>isDeleteConfirm:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:30</a></div>
+                                <i>Default value: </i><code>false</code>
                             </td>
                         </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>data</td>
-                                                  
-                                                        <td>
-                                                                    <code>literal type</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>dialogRef</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../classes/Card.html" target="_self" >MatDialogRef&lt;CardViewerComponent&gt;</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>cardService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/CardService.html" target="_self" >CardService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>dialog</td>
-                                                  
-                                                        <td>
-                                                                    <code>MatDialog</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
-
-
-
-
-
-    <section data-compodoc="block-methods">
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="deleteCard"></a>
-                    <span class="name">
-                        <span class="modifier">Public</span>
-                        <span class="modifier">Async</span>
-                        <span ><b>deleteCard</b></span>
-                        <a href="#deleteCard"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>deleteCard()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:58</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="editCard"></a>
-                    <span class="name">
-                        <span class="modifier">Public</span>
-                        <span ><b>editCard</b></span>
-                        <a href="#editCard"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>editCard()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:42</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="resetProgress"></a>
-                    <span class="name">
-                        <span class="modifier">Public</span>
-                        <span class="modifier">Async</span>
-                        <span ><b>resetProgress</b></span>
-                        <a href="#resetProgress"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>resetProgress()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:63</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-    <section data-compodoc="block-properties">
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="card"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>card</b></span>
-                        <a href="#card"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Card.html" target="_self" >Card</a></code>
-
-                    </td>
-                </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:25</a></div>
+                            <b><span class="modifier">Public</span> isEditActive</b>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="collectionId"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                        <span ><b>collectionId</b></span>
-                        <a href="#collectionId"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:30</a></div>
+                            <span class="modifier-icon fa fa-circle"></span><code>isEditActive:     <code>boolean</code>
+    </bcode>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="dialogRef"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>dialogRef</b></span>
-                        <a href="#dialogRef"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Card.html" target="_self" >MatDialogRef&lt;CardViewerComponent&gt;</a></code>
-
-                    </td>
-                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:34</a></div>
+                            <b><span class="modifier">Public</span> isResetConfirm</b>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="icons"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>icons</b></span>
-                        <a href="#icons"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{
-    close: faClose,
-    edit: faEdit,
-    delete: faTrash,
-    reset: faRotateLeft,
-  }</code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:19</a></div>
+                            <span class="modifier-icon fa fa-circle"></span><code>isResetConfirm:     <code>boolean</code>
+    </bcode>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isDeleteConfirm"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>isDeleteConfirm</b></span>
-                        <a href="#isDeleteConfirm"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:26</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isEditActive"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>isEditActive</b></span>
-                        <a href="#isEditActive"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:28</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isResetConfirm"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>isResetConfirm</b></span>
-                        <a href="#isResetConfirm"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/collection/card-viewer/card-viewer.component.ts:27</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-</section>
-
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+    </section>
 </div>
-
-
-    <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject } from &quot;@angular/core&quot;;
+        <div class="tab-pane fade tab-source-code" id="source">
+            <pre><code class="hljs javascript">import { Component, Inject } from &quot;@angular/core&quot;;
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from &quot;@angular/material/dialog&quot;;
 import { Card } from &quot;@core/model/card.model&quot;;
 import { CardService } from &quot;@core/services/card.service&quot;;
@@ -693,185 +1040,8 @@ export class CardViewerComponent {
   }
 }
 </code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div [hidden]&#x3D;&quot;isDeleteConfirm || isEditActive || isResetConfirm&quot;&gt;
-  &lt;div mat-dialog-title&gt;
-    &lt;div&gt;Card&lt;/div&gt;
-    &lt;chf-button mat-dialog-close&gt;
-      &lt;fa-icon [icon]&#x3D;&quot;icons.close&quot; /&gt;
-      Close
-    &lt;/chf-button&gt;
-  &lt;/div&gt;
-
-  &lt;div mat-dialog-content&gt;
-    &lt;div&gt;
-      &lt;chf-card noHeader&gt;
-        &lt;div card-content&gt;
-          &lt;div [innerHTML]&#x3D;&quot;card.meanings | cardMeanings&quot;&gt;&lt;/div&gt;
-          &lt;mat-divider /&gt;
-          &lt;div class&#x3D;&quot;characters&quot;&gt;{{ card.characters }}&lt;/div&gt;
-          &lt;div class&#x3D;&quot;pinyin-font&quot;&gt;{{ card.pinyin }}&lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/chf-card&gt;
-      &lt;div class&#x3D;&quot;card-actions&quot;&gt;
-        &lt;chf-button type&#x3D;&quot;error&quot; (click)&#x3D;&quot;isDeleteConfirm &#x3D; true&quot;&gt;
-          &lt;fa-icon [icon]&#x3D;&quot;icons.delete&quot; /&gt;
-          Delete
-        &lt;/chf-button&gt;
-        &lt;chf-button type&#x3D;&quot;primary&quot; (click)&#x3D;&quot;editCard()&quot;&gt;
-          &lt;fa-icon [icon]&#x3D;&quot;icons.edit&quot; /&gt;
-          Edit
-        &lt;/chf-button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div&gt;
-      &lt;div class&#x3D;&quot;section-title&quot;&gt;Card difficulty&lt;/div&gt;
-      &lt;chf-card-difficulty [difficulty]&#x3D;&quot;card.difficulty&quot; /&gt;
-    &lt;/div&gt;
-
-    &lt;div&gt;
-      &lt;div class&#x3D;&quot;section-title&quot;&gt;Learning progress&lt;/div&gt;
-      &lt;div class&#x3D;&quot;learning-progress&quot;&gt;
-        &lt;chf-card-progress-bar [card]&#x3D;&quot;card&quot; /&gt;
-        &lt;chf-button (click)&#x3D;&quot;isResetConfirm &#x3D; true&quot;&gt;
-          &lt;fa-icon [icon]&#x3D;&quot;icons.reset&quot; /&gt;
-          Reset progress
-        &lt;/chf-button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div mat-dialog-content *ngIf&#x3D;&quot;isDeleteConfirm&quot;&gt;
-  &lt;chf-inline-confirm-dialog
-    cancelText&#x3D;&quot;I changed my mind&quot;
-    confirmText&#x3D;&quot;Yes, delete it&quot;
-    confirmType&#x3D;&quot;error&quot;
-    (cancelled)&#x3D;&quot;isDeleteConfirm &#x3D; false&quot;
-    (confirmed)&#x3D;&quot;deleteCard()&quot;
-  &gt;
-    &lt;span title&gt;Delete the card?&lt;/span&gt;
-    &lt;span detail&gt;
-      This is a permanent action. You will not be able to restore the card.
-    &lt;/span&gt;
-  &lt;/chf-inline-confirm-dialog&gt;
-&lt;/div&gt;
-
-&lt;div mat-dialog-content *ngIf&#x3D;&quot;isResetConfirm&quot;&gt;
-  &lt;chf-inline-confirm-dialog
-    cancelText&#x3D;&quot;I changed my mind&quot;
-    confirmText&#x3D;&quot;Yes, reset&quot;
-    confirmType&#x3D;&quot;primary&quot;
-    (cancelled)&#x3D;&quot;isResetConfirm &#x3D; false&quot;
-    (confirmed)&#x3D;&quot;resetProgress()&quot;
-  &gt;
-    &lt;span title&gt;Reset card progress?&lt;/span&gt;
-    &lt;span detail&gt; The card will reset to its first learning stage. &lt;/span&gt;
-  &lt;/chf-inline-confirm-dialog&gt;
-&lt;/div&gt;
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="styleData">
-                <p class="comment">
-                    <code>./card-viewer.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">div[mat-dialog-content] {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-chf-card {
-  --card-bg-color: #1c1c1c;
-  width: 60vw;
-  max-width: 80%;
-  margin-bottom: 1rem;
-
-  div[card-content] {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-
-    mat-divider {
-      width: 70%;
-    }
-  }
-}
-
-.characters {
-  font-size: large;
-}
-
-.card-actions {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 1rem;
-}
-
-.section-title {
-  padding-bottom: 0.2rem;
-  border-bottom: solid 1px #6c6c6c;
-  font-family: var(--font-title);
-  margin-bottom: 0.5rem;
-}
-
-.learning-progress {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-
-  chf-card-progress-bar {
-    width: 100%;
-  }
-}
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
-            </div>
         </div>
     </div>
-
-    
-</div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div><div [hidden]="isDeleteConfirm || isEditActive || isResetConfirm">  <div mat-dialog-title>    <div>Card</div>    <chf-button mat-dialog-close>      <fa-icon [icon]="icons.close" />      Close    </chf-button>  </div>  <div mat-dialog-content>    <div>      <chf-card noHeader>        <div card-content>          <div [innerHTML]="card.meanings | cardMeanings"></div>          <mat-divider />          <div class="characters">{{ card.characters }}</div>          <div class="pinyin-font">{{ card.pinyin }}</div>        </div>      </chf-card>      <div class="card-actions">        <chf-button type="error" (click)="isDeleteConfirm = true">          <fa-icon [icon]="icons.delete" />          Delete        </chf-button>        <chf-button type="primary" (click)="editCard()">          <fa-icon [icon]="icons.edit" />          Edit        </chf-button>      </div>    </div>    <div>      <div class="section-title">Card difficulty</div>      <chf-card-difficulty [difficulty]="card.difficulty" />    </div>    <div>      <div class="section-title">Learning progress</div>      <div class="learning-progress">        <chf-card-progress-bar [card]="card" />        <chf-button (click)="isResetConfirm = true">          <fa-icon [icon]="icons.reset" />          Reset progress        </chf-button>      </div>    </div>  </div></div><div mat-dialog-content *ngIf="isDeleteConfirm">  <chf-inline-confirm-dialog    cancelText="I changed my mind"    confirmText="Yes, delete it"    confirmType="error"    (cancelled)="isDeleteConfirm = false"    (confirmed)="deleteCard()"  >    <span title>Delete the card?</span>    <span detail>      This is a permanent action. You will not be able to restore the card.    </span>  </chf-inline-confirm-dialog></div><div mat-dialog-content *ngIf="isResetConfirm">  <chf-inline-confirm-dialog    cancelText="I changed my mind"    confirmText="Yes, reset"    confirmType="primary"    (cancelled)="isResetConfirm = false"    (confirmed)="resetProgress()"  >    <span title>Reset card progress?</span>    <span detail> The card will reset to its first learning stage. </span>  </chf-inline-confirm-dialog></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'chf-root'},{'name': 'ButtonComponent', 'selector': 'chf-button'},{'name': 'CardComponent', 'selector': 'chf-card'},{'name': 'CardDifficultyComponent', 'selector': 'chf-card-difficulty'},{'name': 'CardEditorComponent', 'selector': 'chf-card-editor'},{'name': 'CardProgressBarComponent', 'selector': 'chf-card-progress-bar'},{'name': 'CardProgressIndicatorComponent', 'selector': 'chf-card-progress-indicator'},{'name': 'CardViewerComponent', 'selector': 'chf-card-viewer'},{'name': 'CollectionCardsComponent', 'selector': 'chf-collection-cards'},{'name': 'CollectionEditorComponent', 'selector': 'chf-collection-editor'},{'name': 'CollectionListComponent', 'selector': 'chf-collection-list'},{'name': 'ConfirmDialogComponent', 'selector': 'chf-confirm-dialog'},{'name': 'InlineConfirmDialogComponent', 'selector': 'chf-inline-confirm-dialog'},{'name': 'NavbarComponent', 'selector': 'chf-navbar'},{'name': 'PinyinFormFieldComponent', 'selector': 'chf-pinyin-form-field'},{'name': 'SessionComponent', 'selector': 'chf-session'},{'name': 'SessionFillingStepComponent', 'selector': 'chf-session-filling-step'},{'name': 'SessionLauncherComponent', 'selector': 'chf-session-launcher'},{'name': 'SessionMatchingStepComponent', 'selector': 'chf-session-matching-step'},{'name': 'SettingsComponent', 'selector': 'chf-settings'},{'name': 'SidenavComponent', 'selector': 'chf-sidenav'},{'name': 'SlideToggleComponent', 'selector': 'chf-slide-toggle'},{'name': 'TabBarComponent', 'selector': 'chf-tab-bar'},{'name': 'VirtualKeyboardComponent', 'selector': 'chf-virtual-keyboard'}];
-    var DIRECTIVES = [{'name': 'LongPressDirective', 'selector': '[chfLongPress]'}];
-    var ACTUAL_COMPONENT = {'name': 'CardViewerComponent'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
-
-
-
-
 
 
 
@@ -892,31 +1062,8 @@ chf-card {
     </div>
 </div>
 </div>
-               <!-- END CONTENT -->
            </div>
        </div>
-
-          <label class="dark-mode-switch">
-               <input type="checkbox">
-               <span class="slider">
-                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                    </svg>
-               </span>
-          </label>
-
-       <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'CardViewerComponent.html';
-            var MAX_SEARCH_RESULTS = 15;
-       </script>
-
-       <script src="../js/libs/custom-elements.min.js"></script>
-       <script src="../js/libs/lit-html.js"></script>
-
-       <script src="../js/menu-wc.js" defer></script>
-       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
@@ -927,17 +1074,20 @@ chf-card {
 
        <script src="../js/compodoc.js"></script>
 
-       <script src="../js/tabs.js"></script>
-       <script src="../js/menu.js"></script>
-       <script src="../js/libs/clipboard.min.js"></script>
-       <script src="../js/libs/prism.js"></script>
-       <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
-       <script src="../js/lazy-load-graphs.js"></script>
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
 
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/highlight.pack.js"></script>
+       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/search/search_index.js"></script>
+       <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            });
+       </script>
 
     </body>
 </html>

@@ -8,184 +8,687 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css">
+	    <link rel="stylesheet" href="../styles/style.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
             <a href="../" class="navbar-brand">chinese-flashcards documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../">chinese-flashcards documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <span class="fa fa-archive"></span>
+                            <span>Modules</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            ></span>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AppModule.html"  class="active" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CollectionPageModule.html" >CollectionPageModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/LearnPageModule.html" >LearnPageModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/SettingsModule.html" >SettingsModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-components-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AppComponent.html" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ButtonComponent.html" >ButtonComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardComponent.html" >CardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardDifficultyComponent.html" >CardDifficultyComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardEditorComponent.html" >CardEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardViewerComponent.html" >CardViewerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CollectionCardsComponent.html" >CollectionCardsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CollectionEditorComponent.html" >CollectionEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CollectionListComponent.html" >CollectionListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/NavbarComponent.html" >NavbarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PinyinFormFieldComponent.html" >PinyinFormFieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ResultCardComponent.html" >ResultCardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionComponent.html" >SessionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionFillingStepComponent.html" >SessionFillingStepComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionLauncherComponent.html" >SessionLauncherComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionMatchingStepComponent.html" >SessionMatchingStepComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SidenavComponent.html" >SidenavComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SlideToggleComponent.html" >SlideToggleComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/TabBarComponent.html" >TabBarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/VirtualKeyboardComponent.html" >VirtualKeyboardComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-directives-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="../directives/LongPressDirective.html" >LongPressDirective</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/Card.html" >Card</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CardCollection.html" >CardCollection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CoercionComponent.html" >CoercionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/ControlValueAccessorComponent.html" >ControlValueAccessorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Database.html" >Database</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SessionCard.html" >SessionCard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Settings.html" >Settings</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-injectables-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/CardService.html" >CardService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CollectionService.html" >CollectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/DatabaseService.html" >DatabaseService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LearningSessionService.html" >LearningSessionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/NavigationService.html" >NavigationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SettingsService.html" >SettingsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StatisticsService.html" >StatisticsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TabBarService.html" >TabBarService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/CardCollectionModel.html" >CardCollectionModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CardForm.html" >CardForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CardModel.html" >CardModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CollectionForm.html" >CollectionForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CollectionStats.html" >CollectionStats</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ConfirmDialogConfig.html" >ConfirmDialogConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DiffCharacter.html" >DiffCharacter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/MatchingCard.html" >MatchingCard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PendingChangesComponent.html" >PendingChangesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SettingsForm.html" >SettingsForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SettingsModel.html" >SettingsModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/TypedContent.html" >TypedContent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-pipes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/CardMeaningsPipe.html" >CardMeaningsPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/JoinPipe.html" >JoinPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
         </div>
 
         <div class="container-fluid main">
            <div class="row main">
                <div class="hidden-xs menu">
-                   <compodoc-menu mode="normal"></compodoc-menu>
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../">chinese-flashcards documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <span class="fa fa-archive"></span>
+                                   <span>Modules</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   ></span>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AppModule.html"  class="active" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CollectionPageModule.html" >CollectionPageModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/LearnPageModule.html" >LearnPageModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SettingsModule.html" >SettingsModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#components-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AppComponent.html" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ButtonComponent.html" >ButtonComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardComponent.html" >CardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardDifficultyComponent.html" >CardDifficultyComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardEditorComponent.html" >CardEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardViewerComponent.html" >CardViewerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CollectionCardsComponent.html" >CollectionCardsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CollectionEditorComponent.html" >CollectionEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CollectionListComponent.html" >CollectionListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/NavbarComponent.html" >NavbarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PinyinFormFieldComponent.html" >PinyinFormFieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ResultCardComponent.html" >ResultCardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionComponent.html" >SessionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionFillingStepComponent.html" >SessionFillingStepComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionLauncherComponent.html" >SessionLauncherComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionMatchingStepComponent.html" >SessionMatchingStepComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SidenavComponent.html" >SidenavComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SlideToggleComponent.html" >SlideToggleComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/TabBarComponent.html" >TabBarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/VirtualKeyboardComponent.html" >VirtualKeyboardComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#directives-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="../directives/LongPressDirective.html" >LongPressDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/Card.html" >Card</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CardCollection.html" >CardCollection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CoercionComponent.html" >CoercionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ControlValueAccessorComponent.html" >ControlValueAccessorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Database.html" >Database</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SessionCard.html" >SessionCard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Settings.html" >Settings</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#injectables-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/CardService.html" >CardService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CollectionService.html" >CollectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/DatabaseService.html" >DatabaseService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LearningSessionService.html" >LearningSessionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/NavigationService.html" >NavigationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SettingsService.html" >SettingsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StatisticsService.html" >StatisticsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TabBarService.html" >TabBarService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/CardCollectionModel.html" >CardCollectionModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CardForm.html" >CardForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CardModel.html" >CardModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CollectionForm.html" >CollectionForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CollectionStats.html" >CollectionStats</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ConfirmDialogConfig.html" >ConfirmDialogConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DiffCharacter.html" >DiffCharacter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/MatchingCard.html" >MatchingCard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PendingChangesComponent.html" >PendingChangesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SettingsForm.html" >SettingsForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SettingsModel.html" >SettingsModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/TypedContent.html" >TypedContent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#pipes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/CardMeaningsPipe.html" >CardMeaningsPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/JoinPipe.html" >JoinPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
                </div>
-               <!-- START CONTENT -->
                <div class="content module">
                    <div class="content-data">
 
-
-
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Modules</li>
-    <li class="breadcrumb-item" >AppModule</li>
+  <li>Modules</li>
+  <li>AppModule</li>
 </ol>
 
-<div class="text-center module-graph-container">
-    <div id="module-graph-svg">
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.47.0 (20210316.0004)
- -->
-<!-- Title: dependencies Pages: 1 -->
-<svg width="1020pt" height="284pt"
- viewBox="0.00 0.00 1020.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
-<title>dependencies</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 1016,-280 1016,4 -4,4"/>
-<text text-anchor="start" x="485.01" y="-42.4" font-family="Times-12" font-weight="bold" font-size="14.00">Legend</text>
-<polygon fill="#ffffb3" stroke="transparent" points="272,-10 272,-30 292,-30 292,-10 272,-10"/>
-<text text-anchor="start" x="295.63" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Declarations</text>
-<polygon fill="#8dd3c7" stroke="transparent" points="385,-10 385,-30 405,-30 405,-10 385,-10"/>
-<text text-anchor="start" x="408.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Module</text>
-<polygon fill="#80b1d3" stroke="transparent" points="471,-10 471,-30 491,-30 491,-10 471,-10"/>
-<text text-anchor="start" x="494.78" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Bootstrap</text>
-<polygon fill="#fdb462" stroke="transparent" points="568,-10 568,-30 588,-30 588,-10 568,-10"/>
-<text text-anchor="start" x="591.67" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Providers</text>
-<polygon fill="#fb8072" stroke="transparent" points="664,-10 664,-30 684,-30 684,-10 664,-10"/>
-<text text-anchor="start" x="687.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Exports</text>
-<g id="clust1" class="cluster">
-<title>cluster_AppModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 1004,-268 1004,-70 8,-70"/>
-</g>
-<g id="clust6" class="cluster">
-<title>cluster_AppModule_bootstrap</title>
-<polygon fill="none" stroke="black" points="427,-208 427,-260 551,-260 551,-208 427,-208"/>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_AppModule_declarations</title>
-<polygon fill="none" stroke="black" points="874,-78 874,-130 996,-130 996,-78 874,-78"/>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_AppModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 866,-130 866,-78 16,-78"/>
-</g>
-<!-- AppComponent -->
-<g id="node1" class="node">
-<title>AppComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="987.94,-122 882.06,-122 882.06,-86 987.94,-86 987.94,-122"/>
-<text text-anchor="middle" x="935" y="-99.8" font-family="Times,serif" font-size="14.00">AppComponent</text>
-</g>
-<!-- AppModule -->
-<g id="node2" class="node">
-<title>AppModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="530.66,-187 527.66,-191 506.66,-191 503.66,-187 447.34,-187 447.34,-151 530.66,-151 530.66,-187"/>
-<text text-anchor="middle" x="489" y="-164.8" font-family="Times,serif" font-size="14.00">AppModule</text>
-</g>
-<!-- AppComponent&#45;&gt;AppModule -->
-<g id="edge1" class="edge">
-<title>AppComponent&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M935,-122.29C935,-144.21 935,-178 935,-178 935,-178 540.96,-178 540.96,-178"/>
-<polygon fill="black" stroke="black" points="540.96,-174.5 530.96,-178 540.96,-181.5 540.96,-174.5"/>
-</g>
-<!-- AppComponent  -->
-<g id="node9" class="node">
-<title>AppComponent </title>
-<polygon fill="#80b1d3" stroke="black" points="543.44,-252 434.56,-252 434.56,-216 543.44,-216 543.44,-252"/>
-<text text-anchor="middle" x="489" y="-229.8" font-family="Times,serif" font-size="14.00">AppComponent </text>
-</g>
-<!-- AppModule&#45;&gt;AppComponent  -->
-<g id="edge8" class="edge">
-<title>AppModule&#45;&gt;AppComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M489,-187.11C489,-187.11 489,-205.99 489,-205.99"/>
-<polygon fill="black" stroke="black" points="485.5,-205.99 489,-215.99 492.5,-205.99 485.5,-205.99"/>
-</g>
-<!-- AppRoutingModule -->
-<g id="node3" class="node">
-<title>AppRoutingModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="858.27,-122 855.27,-126 834.27,-126 831.27,-122 729.73,-122 729.73,-86 858.27,-86 858.27,-122"/>
-<text text-anchor="middle" x="794" y="-99.8" font-family="Times,serif" font-size="14.00">AppRoutingModule</text>
-</g>
-<!-- AppRoutingModule&#45;&gt;AppModule -->
-<g id="edge2" class="edge">
-<title>AppRoutingModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M794,-122.11C794,-141.34 794,-169 794,-169 794,-169 540.77,-169 540.77,-169"/>
-<polygon fill="black" stroke="black" points="540.77,-165.5 530.77,-169 540.77,-172.5 540.77,-165.5"/>
-</g>
-<!-- CollectionPageModule -->
-<g id="node4" class="node">
-<title>CollectionPageModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="711.59,-122 708.59,-126 687.59,-126 684.59,-122 566.41,-122 566.41,-86 711.59,-86 711.59,-122"/>
-<text text-anchor="middle" x="639" y="-99.8" font-family="Times,serif" font-size="14.00">CollectionPageModule</text>
-</g>
-<!-- CollectionPageModule&#45;&gt;AppModule -->
-<g id="edge3" class="edge">
-<title>CollectionPageModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M639,-122.03C639,-138.4 639,-160 639,-160 639,-160 540.78,-160 540.78,-160"/>
-<polygon fill="black" stroke="black" points="540.78,-156.5 530.78,-160 540.78,-163.5 540.78,-156.5"/>
-</g>
-<!-- LearnPageModule -->
-<g id="node5" class="node">
-<title>LearnPageModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="548.9,-122 545.9,-126 524.9,-126 521.9,-122 429.1,-122 429.1,-86 548.9,-86 548.9,-122"/>
-<text text-anchor="middle" x="489" y="-99.8" font-family="Times,serif" font-size="14.00">LearnPageModule</text>
-</g>
-<!-- LearnPageModule&#45;&gt;AppModule -->
-<g id="edge4" class="edge">
-<title>LearnPageModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M489,-122.11C489,-122.11 489,-140.99 489,-140.99"/>
-<polygon fill="black" stroke="black" points="485.5,-140.99 489,-150.99 492.5,-140.99 485.5,-140.99"/>
-</g>
-<!-- NavbarComponent -->
-<g id="node6" class="node">
-<title>NavbarComponent</title>
-<polygon fill="#8dd3c7" stroke="black" points="411.03,-122 408.03,-126 387.03,-126 384.03,-122 288.97,-122 288.97,-86 411.03,-86 411.03,-122"/>
-<text text-anchor="middle" x="350" y="-99.8" font-family="Times,serif" font-size="14.00">NavbarComponent</text>
-</g>
-<!-- NavbarComponent&#45;&gt;AppModule -->
-<g id="edge5" class="edge">
-<title>NavbarComponent&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M350,-122.03C350,-138.4 350,-160 350,-160 350,-160 437.3,-160 437.3,-160"/>
-<polygon fill="black" stroke="black" points="437.3,-163.5 447.3,-160 437.3,-156.5 437.3,-163.5"/>
-</g>
-<!-- SettingsModule -->
-<g id="node7" class="node">
-<title>SettingsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="270.16,-122 267.16,-126 246.16,-126 243.16,-122 165.84,-122 165.84,-86 270.16,-86 270.16,-122"/>
-<text text-anchor="middle" x="218" y="-99.8" font-family="Times,serif" font-size="14.00">SettingsModule</text>
-</g>
-<!-- SettingsModule&#45;&gt;AppModule -->
-<g id="edge6" class="edge">
-<title>SettingsModule&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M218,-122.11C218,-141.34 218,-169 218,-169 218,-169 437.25,-169 437.25,-169"/>
-<polygon fill="black" stroke="black" points="437.25,-172.5 447.25,-169 437.25,-165.5 437.25,-172.5"/>
-</g>
-<!-- TabBarComponent -->
-<g id="node8" class="node">
-<title>TabBarComponent</title>
-<polygon fill="#8dd3c7" stroke="black" points="147.81,-122 144.81,-126 123.81,-126 120.81,-122 24.19,-122 24.19,-86 147.81,-86 147.81,-122"/>
-<text text-anchor="middle" x="86" y="-99.8" font-family="Times,serif" font-size="14.00">TabBarComponent</text>
-</g>
-<!-- TabBarComponent&#45;&gt;AppModule -->
-<g id="edge7" class="edge">
-<title>TabBarComponent&#45;&gt;AppModule</title>
-<path fill="none" stroke="black" d="M86,-122.29C86,-144.21 86,-178 86,-178 86,-178 437.01,-178 437.01,-178"/>
-<polygon fill="black" stroke="black" points="437.01,-181.5 447.01,-178 437.01,-174.5 437.01,-181.5"/>
-</g>
-</g>
-</svg>
-
-    </div>
-    <i id="fullscreen" class="icon ion-ios-resize module-graph-fullscreen-btn" aria-hidden="true"></i>
-    <div class="btn-group size-buttons">
+<div class="text-center">
+    <object id="demo-svg" type="image/svg+xml" data="../modules/AppModule/dependencies.svg" style="width: 100%; height: 250px;">
+            Your browser does not support SVG
+    </object>
+    <div class="btn-group">
         <button id="zoom-in" class="btn btn-default btn-sm">Zoom in</button>
         <button id="reset" class="btn btn-default btn-sm">Reset</button>
         <button id="zoom-out" class="btn btn-default btn-sm">Zoom out</button>
@@ -195,23 +698,16 @@
 <script src="../js/svg-pan-zoom.controls.js"></script>
 
 <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-        <a href="#info" 
-            class="nav-link"
-            class="nav-link active"
-            role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
     </li>
-    <li class="nav-item">
-        <a href="#source" 
-            class="nav-link"
-            
-            role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
     </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
-
+    <div class="tab-pane fade active in" id="infos">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -220,63 +716,49 @@
         </p>
 
 
-
-
-
         <div class="container-fluid module">
             <div class="row">
                 <div class="col-sm-3">
-                    <h3>Declarations<a href="https://angular.io/api/core/NgModule#declarations" target="_blank" rel="noopener noreferrer"
-                            title="Official documentation about module declarations"><span class="icon ion-ios-information-circle-outline"></span></a></h3>
+                    <h3>Declarations<a href="https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html#!#declarations-anchor" target="_blank"><span class="fa fa-info-circle"></span></a></h3>
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="../components/AppComponent.html">AppComponent</a>
-                        </li>
+                            <li class="list-group-item">
+                                <a href="../components/AppComponent.html">AppComponent</a>
+                            </li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" rel="noopener noreferrer"
-                            title="Official documentation about module imports"><span
-                                class="icon ion-ios-information-circle-outline"></a></h3>
+                    <h3>Imports<a href="https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html#!#imports-anchor" target="_blank"><span class="fa fa-info-circle"></a></h3>
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="../modules/AppRoutingModule.html">AppRoutingModule</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../modules/CollectionPageModule.html">CollectionPageModule</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../modules/LearnPageModule.html">LearnPageModule</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../modules/NavbarComponent.html">NavbarComponent</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../modules/SettingsModule.html">SettingsModule</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="../modules/TabBarComponent.html">TabBarComponent</a>
-                        </li>
+                            <li class="list-group-item">
+                                    <a href="../modules/CollectionPageModule.html" >CollectionPageModule</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="../modules/LearnPageModule.html" >LearnPageModule</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="../modules/NavbarComponent.html" >NavbarComponent</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="../modules/SettingsModule.html" >SettingsModule</a>
+                            </li>
+                            <li class="list-group-item">
+                                    <a href="../modules/TabBarComponent.html" >TabBarComponent</a>
+                            </li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
-                    <h3>Bootstrap<a href="https://angular.io/api/core/NgModule#bootstrap" target="_blank" rel="noopener noreferrer"
-                            title="Official documentation about module bootstrap"><span class="icon ion-ios-information-circle-outline"></a></h3>
+                    <h3>Bootstrap<a href="https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html#!#bootstrap-anchor" target="_blank"><span class="fa fa-info-circle"></a></h3>
                     <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="../components/AppComponent.html">AppComponent</a>
-                        </li>
+                            <li class="list-group-item">
+                                <a href="../components/AppComponent.html" >AppComponent</a>
+                            </li>
                     </ul>
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
-    <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { APP_INITIALIZER, isDevMode, NgModule } from &quot;@angular/core&quot;;
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">import { APP_INITIALIZER, isDevMode, NgModule } from &quot;@angular/core&quot;;
 import { BrowserModule } from &quot;@angular/platform-browser&quot;;
 import { BrowserAnimationsModule } from &quot;@angular/platform-browser/animations&quot;;
 import { ServiceWorkerModule, SwUpdate } from &quot;@angular/service-worker&quot;;
@@ -346,13 +828,6 @@ export class AppModule {}
 
 
 
-
-
-
-
-
-
-
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
@@ -363,31 +838,8 @@ export class AppModule {}
     </div>
 </div>
 </div>
-               <!-- END CONTENT -->
            </div>
        </div>
-
-          <label class="dark-mode-switch">
-               <input type="checkbox">
-               <span class="slider">
-                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                    </svg>
-               </span>
-          </label>
-
-       <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'AppModule.html';
-            var MAX_SEARCH_RESULTS = 15;
-       </script>
-
-       <script src="../js/libs/custom-elements.min.js"></script>
-       <script src="../js/libs/lit-html.js"></script>
-
-       <script src="../js/menu-wc.js" defer></script>
-       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
@@ -398,17 +850,20 @@ export class AppModule {}
 
        <script src="../js/compodoc.js"></script>
 
-       <script src="../js/tabs.js"></script>
-       <script src="../js/menu.js"></script>
-       <script src="../js/libs/clipboard.min.js"></script>
-       <script src="../js/libs/prism.js"></script>
-       <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
-       <script src="../js/lazy-load-graphs.js"></script>
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
 
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/highlight.pack.js"></script>
+       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/search/search_index.js"></script>
+       <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            });
+       </script>
 
     </body>
 </html>

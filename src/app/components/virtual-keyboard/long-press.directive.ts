@@ -1,6 +1,10 @@
 import { Directive, ElementRef, EventEmitter, OnDestroy, Output } from "@angular/core";
-import { filter, fromEvent, map, merge, of, Subscription, switchMap, timer } from "rxjs";
+import { Subscription, filter, fromEvent, map, merge, of, switchMap, timer } from "rxjs";
 
+/**
+ * Use this directive to detect long press events (at least 500ms) on any
+ * HTML element.
+ */
 @Directive({
   selector: "[chfLongPress]",
   standalone: true,

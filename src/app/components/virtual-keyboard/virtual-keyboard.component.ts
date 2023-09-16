@@ -33,8 +33,13 @@ const BASE_TONE_OVERLAY_OFFSET_Y = -TONE_KEY_WIDTH_PX * 2.5;
   styleUrls: ["./virtual-keyboard.component.scss"],
 })
 export class VirtualKeyboardComponent {
+  /** A character has been typed */
   @Output() typed = new EventEmitter<string>();
+
+  /** Backspace key pressed */
   @Output() backspace = new EventEmitter<void>();
+
+  /** Keyboard's "Submit" button pressed */
   @Output() submitText = new EventEmitter<void>();
 
   public toneOverlayOffsetY = BASE_TONE_OVERLAY_OFFSET_Y;
