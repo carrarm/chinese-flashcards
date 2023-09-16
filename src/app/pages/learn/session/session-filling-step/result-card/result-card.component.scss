@@ -1,0 +1,54 @@
+:host {
+  display: block;
+}
+
+chf-card {
+  div[card-content] {
+    position: relative;
+  }
+}
+
+.centered-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 50px;
+
+  span:empty {
+    display: none;
+  }
+}
+
+.floating-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  .passed {
+    color: #2ebd00;
+  }
+
+  .failed {
+    color: #e70000;
+  }
+
+  .solution {
+    color: #ff9100;
+  }
+}
+
+.chinese {
+  font-size: 1.2em;
+}
+
+.diff-character {
+  &.success {
+    color: #00c300;
+  }
+
+  &.error {
+    color: red;
+  }
+}
