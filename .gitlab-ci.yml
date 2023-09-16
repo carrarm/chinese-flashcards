@@ -1,0 +1,29 @@
+image: node:18.17.1
+
+stages:
+  - build
+  - test
+
+cache:
+  key:
+    prefix: 'frontend'
+    files:
+      - 'package-lock.json'
+  paths:
+    - 'node_modules'
+
+build-frontend:
+  stage: build
+  before_script:
+    - 'npm ci'
+  script:
+    - 'npm run build'
+  artifacts:
+    name: 'frontend-${CI_COMMIT_SHORT_SHA}'
+    paths:
+      - 'dist'
+
+lint:
+  stage: test
+  script:
+    - 'npm run lint'
