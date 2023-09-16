@@ -40,9 +40,8 @@ export class SessionLauncherComponent implements OnInit {
 
     this.settingsService.getSettings().then((settings) => (this.settings = settings));
     this.collectionService.getCollections().then(async (collections) => {
-      this.collections = await this.statisticsService.getCollectionsReviewStats(
-        collections
-      );
+      this.collections =
+        await this.statisticsService.getCollectionsReviewStats(collections);
       const numberStats: CollectionStats = {
         toLearn: 0,
         toReview: 0,
@@ -67,18 +66,16 @@ export class SessionLauncherComponent implements OnInit {
   }
 
   async learn(collection?: number): Promise<void> {
-    const cardsToLearn = await this.learningSessionService.createLearningSession(
-      collection
-    );
+    const cardsToLearn =
+      await this.learningSessionService.createLearningSession(collection);
 
     this.learningSessionService.currentSession.next(cardsToLearn);
     this.router.navigateByUrl("/sessions/active");
   }
 
   async review(collection?: number): Promise<void> {
-    const cardsToReview = await this.learningSessionService.createReviewSession(
-      collection
-    );
+    const cardsToReview =
+      await this.learningSessionService.createReviewSession(collection);
 
     this.learningSessionService.currentSession.next(cardsToReview);
     this.router.navigateByUrl("/sessions/active");
