@@ -1,6 +1,9 @@
 import { BooleanInput, coerceBooleanProperty } from "@angular/cdk/coercion";
 import { Indexable } from "./types";
 
+/**
+ * This class adds coercion support for boolean `@Input`s.
+ */
 export class CoercionComponent {
   public coerced: Indexable<boolean> = {};
 

@@ -8,64 +8,695 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css">
+	    <link rel="stylesheet" href="../styles/style.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
             <a href="../" class="navbar-brand">chinese-flashcards documentation</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../">chinese-flashcards documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="./modules.html" >
+                            <span class="fa fa-archive"></span>
+                            <span>Modules</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            ></span>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/CollectionPageModule.html" >CollectionPageModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/LearnPageModule.html" >LearnPageModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/SettingsModule.html" >SettingsModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-components-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AppComponent.html" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ButtonComponent.html" >ButtonComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardComponent.html" >CardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardDifficultyComponent.html" >CardDifficultyComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardEditorComponent.html" >CardEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CardViewerComponent.html" >CardViewerComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CollectionCardsComponent.html" >CollectionCardsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CollectionEditorComponent.html" >CollectionEditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/CollectionListComponent.html" >CollectionListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/NavbarComponent.html" >NavbarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PinyinFormFieldComponent.html" >PinyinFormFieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ResultCardComponent.html" >ResultCardComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionComponent.html" >SessionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionFillingStepComponent.html" >SessionFillingStepComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionLauncherComponent.html" >SessionLauncherComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SessionMatchingStepComponent.html" >SessionMatchingStepComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SidenavComponent.html" >SidenavComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SlideToggleComponent.html" >SlideToggleComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/TabBarComponent.html" >TabBarComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/VirtualKeyboardComponent.html"  class="active" >VirtualKeyboardComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-directives-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="../directives/LongPressDirective.html" >LongPressDirective</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/Card.html" >Card</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CardCollection.html" >CardCollection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/CoercionComponent.html" >CoercionComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/ControlValueAccessorComponent.html" >ControlValueAccessorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Database.html" >Database</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/SessionCard.html" >SessionCard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Settings.html" >Settings</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-injectables-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/CardService.html" >CardService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/CollectionService.html" >CollectionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/DatabaseService.html" >DatabaseService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/LearningSessionService.html" >LearningSessionService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/NavigationService.html" >NavigationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SettingsService.html" >SettingsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/StatisticsService.html" >StatisticsService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TabBarService.html" >TabBarService</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/CardCollectionModel.html" >CardCollectionModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CardForm.html" >CardForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CardModel.html" >CardModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CollectionForm.html" >CollectionForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/CollectionStats.html" >CollectionStats</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ConfirmDialogConfig.html" >ConfirmDialogConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DiffCharacter.html" >DiffCharacter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/MatchingCard.html" >MatchingCard</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PendingChangesComponent.html" >PendingChangesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SettingsForm.html" >SettingsForm</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/SettingsModel.html" >SettingsModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/TypedContent.html" >TypedContent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-pipes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/CardMeaningsPipe.html" >CardMeaningsPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/JoinPipe.html" >JoinPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
         </div>
 
         <div class="container-fluid main">
            <div class="row main">
                <div class="hidden-xs menu">
-                   <compodoc-menu mode="normal"></compodoc-menu>
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../">chinese-flashcards documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="./modules.html" >
+                                   <span class="fa fa-archive"></span>
+                                   <span>Modules</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   ></span>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/CollectionPageModule.html" >CollectionPageModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/LearnPageModule.html" >LearnPageModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SettingsModule.html" >SettingsModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#components-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AppComponent.html" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ButtonComponent.html" >ButtonComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardComponent.html" >CardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardDifficultyComponent.html" >CardDifficultyComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardEditorComponent.html" >CardEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CardViewerComponent.html" >CardViewerComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CollectionCardsComponent.html" >CollectionCardsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CollectionEditorComponent.html" >CollectionEditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/CollectionListComponent.html" >CollectionListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/NavbarComponent.html" >NavbarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PinyinFormFieldComponent.html" >PinyinFormFieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ResultCardComponent.html" >ResultCardComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionComponent.html" >SessionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionFillingStepComponent.html" >SessionFillingStepComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionLauncherComponent.html" >SessionLauncherComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SessionMatchingStepComponent.html" >SessionMatchingStepComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SettingsComponent.html" >SettingsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SidenavComponent.html" >SidenavComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SlideToggleComponent.html" >SlideToggleComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/TabBarComponent.html" >TabBarComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/VirtualKeyboardComponent.html"  class="active" >VirtualKeyboardComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#directives-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="../directives/LongPressDirective.html" >LongPressDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/Card.html" >Card</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CardCollection.html" >CardCollection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/CoercionComponent.html" >CoercionComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ControlValueAccessorComponent.html" >ControlValueAccessorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Database.html" >Database</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/SessionCard.html" >SessionCard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Settings.html" >Settings</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#injectables-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/CardService.html" >CardService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/CollectionService.html" >CollectionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/DatabaseService.html" >DatabaseService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/LearningSessionService.html" >LearningSessionService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/NavigationService.html" >NavigationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SettingsService.html" >SettingsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/StatisticsService.html" >StatisticsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TabBarService.html" >TabBarService</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/CardCollectionModel.html" >CardCollectionModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CardForm.html" >CardForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CardModel.html" >CardModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CollectionForm.html" >CollectionForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/CollectionStats.html" >CollectionStats</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ConfirmDialogConfig.html" >ConfirmDialogConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DiffCharacter.html" >DiffCharacter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/MatchingCard.html" >MatchingCard</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PendingChangesComponent.html" >PendingChangesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SettingsForm.html" >SettingsForm</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/SettingsModel.html" >SettingsModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/TypedContent.html" >TypedContent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#pipes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/CardMeaningsPipe.html" >CardMeaningsPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/JoinPipe.html" >JoinPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
                </div>
-               <!-- START CONTENT -->
                <div class="content component">
                    <div class="content-data">
 
 
-
-
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Components</li>
-  <li class="breadcrumb-item"
-  >
-  VirtualKeyboardComponent</li>
+  <li>Components</li>
+  <li>VirtualKeyboardComponent</li>
 </ol>
 
-<ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-            <a href="#info" class="nav-link active"
-                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
-        </li>
-        <li class="nav-item">
-            <a href="#source" class="nav-link"
-                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
-        </li>
-        <li class="nav-item">
-            <a href="#templateData" class="nav-link"
-                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
-        </li>
-        <li class="nav-item">
-            <a href="#styleData" class="nav-link"
-                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li class="nav-item">
-            <a href="#tree" class="nav-link"
-                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
-        </li>
-</ul>
 
-<div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+        </li>
+        <li>
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="infos"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -74,12 +705,9 @@
 
 
 
-
-
-
-<section data-compodoc="block-metadata">
+<section>
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover metadata">
+    <table class="table table-sm table-hover">
         <tbody>
 
 
@@ -99,748 +727,385 @@
             </tr>
 
             <tr>
-                <td class="col-md-3">Standalone</td>
-                <td class="col-md-9"><code>true</code></td>
-            </tr>
-
-            <tr>
-                <td class="col-md-3">imports</td>
-                <td class="col-md-9">
-                            <code>CommonModule</code>
-                            <code>FontAwesomeModule</code>
-                                <code><a href="../directives/LongPressDirective.html" target="_self" >LongPressDirective</a></code>
-                            <code>MatRippleModule</code>
-                            <code>OverlayModule</code>
-                </td>
-            </tr>
-
-            <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./virtual-keyboard.component.scss</code></td>
+                <td class="col-md-9"><code>virtual-keyboard.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./virtual-keyboard.component.html</code></td>
+                <td class="col-md-9"><code>virtual-keyboard.component.html</code></td>
             </tr>
 
 
-
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section data-compodoc="block-index">
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#icons" >icons</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#layout" >layout</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#toneKeys" >toneKeys</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#toneOverlayOffsetX" >toneOverlayOffsetX</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#toneOverlayOffsetY" >toneOverlayOffsetY</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#toneOverlayOpen" >toneOverlayOpen</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Optional</span>
-                                <a href="#toneOverlayOrigin" >toneOverlayOrigin</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#uppercaseEnabled" >uppercaseEnabled</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#computeOffsetX" >computeOffsetX</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#openTones" >openTones</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#writeCharacter" >writeCharacter</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Outputs</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#backspace" >backspace</a>
-                            </li>
-                            <li>
-                                <a href="#submitText" >submitText</a>
-                            </li>
-                            <li>
-                                <a href="#typed" >typed</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-
-
         </tbody>
     </table>
 </section>
 
 
+    <section>
+        <h3 id="outputs">Outputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>backspace</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Backspace key pressed </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
 
-    <section data-compodoc="block-outputs">
-    <h3 id="outputs">Outputs</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="backspace"></a>
-                        <b>backspace</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>EventEmitter</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>submitText</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Keyboard&#39;s &quot;Submit&quot; button pressed </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
 
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:37</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="submitText"></a>
-                        <b>submitText</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>EventEmitter</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>typed</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>A character has been typed </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="https://angular.io/docs/ts/latest/api/core/index/EventEmitter-class.html" target="_blank" >EventEmitter</a></code>
 
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:38</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="typed"></a>
-                        <b>typed</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>EventEmitter</code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:36</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-</section>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
 
-    <section data-compodoc="block-methods">
+    <section>
+        <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> writeCharacter</b>
+                        </td>
+                    </tr>
     
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="computeOffsetX"></a>
-                    <span class="name">
-                        <span class="modifier">Private</span>
-                        <span ><b>computeOffsetX</b></span>
-                        <a href="#computeOffsetX"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>computeOffsetX(positionInColumn: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:102</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Compute the overlay offset based on the position of the key in the row.
-The two leftmost and the two rightmost keys shouldn&#39;t try and display a centered
-overlay as it would go offscreen.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>positionInColumn</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>Key index in the row</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>Adjusted offset in px</p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="openTones"></a>
-                    <span class="name">
-                        <span class="modifier">Public</span>
-                        <span ><b>openTones</b></span>
-                        <a href="#openTones"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>openTones(letter: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, positionInColumn: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, elementRef: HTMLElement)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:75</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Open the tone overlay to select an accentuated letter.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>letter</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>The letter to accentuate</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>positionInColumn</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>Index of the letter in the row</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>elementRef</td>
-                                    <td>
-                                            <code>HTMLElement</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>Reference to the HTML container of the letter</p>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="writeCharacter"></a>
-                    <span class="name">
-                        <span class="modifier">Public</span>
-                        <span ><b>writeCharacter</b></span>
-                        <a href="#writeCharacter"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>writeCharacter(character: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, preserverCase)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:60</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Select a character to write. This method is used for both the standard keyboard
-and the tone overlay.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>character</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                    </td>
-
-                                    <td>
-                                        <p>Character to emit</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>preserverCase</td>
-                                    <td>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>false</code>
-                                    </td>
-
-                                    <td>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-    <section data-compodoc="block-properties">
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>writeCharacter(character: string, preserverCase: boolean)</code>
+                        </td>
+                    </tr>
     
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="icons"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>icons</b></span>
-                        <a href="#icons"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{
-    uppercase: faArrowUpFromBracket,
-    backspace: faDeleteLeft,
-    done: faCheck,
-  }</code>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:48</a></div>
+                                <div class="io-description"><p>Select a character to write. This method is used for both the standard keyboard<br>and the tone overlay.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>character</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>Character to emit</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="layout"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>layout</b></span>
-                        <a href="#layout"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>QWERTY</code>
-                    </td>
-                </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:43</a></div>
+                            <b><span class="modifier">Public</span> openTones</b>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="toneKeys"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>toneKeys</b></span>
-                        <a href="#toneKeys"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>string[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[]</code>
-                    </td>
-                </tr>
+    
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:47</a></div>
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>openTones(letter: string, positionInColumn: number, elementRef: HTMLElement)</code>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="toneOverlayOffsetX"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>toneOverlayOffsetX</b></span>
-                        <a href="#toneOverlayOffsetX"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>BASE_TONE_OVERLAY_OFFSET_X</code>
-                    </td>
-                </tr>
+    
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:41</a></div>
+                                <div class="io-description"><p>Open the tone overlay to select an accentuated letter.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>letter</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>The letter to accentuate</p>
+    
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>positionInColumn</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>Index of the letter in the row</p>
+    
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <b>elementRef</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>Reference to the HTML container of the letter</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="toneOverlayOffsetY"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>toneOverlayOffsetY</b></span>
-                        <a href="#toneOverlayOffsetY"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>BASE_TONE_OVERLAY_OFFSET_Y</code>
-                    </td>
-                </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:40</a></div>
+                            <b><span class="modifier">Private</span> computeOffsetX</b>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="toneOverlayOpen"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>toneOverlayOpen</b></span>
-                        <a href="#toneOverlayOpen"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
+    
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:45</a></div>
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            <code>computeOffsetX(positionInColumn: number)</code>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="toneOverlayOrigin"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Optional</span>
-                        <span ><b>toneOverlayOrigin</b></span>
-                        <a href="#toneOverlayOrigin"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>FlexibleConnectedPositionStrategyOrigin</code>
-
-                    </td>
-                </tr>
+    
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:46</a></div>
+                                <div class="io-description"><p>Compute the overlay offset based on the position of the key in the row.<br>The two leftmost and the two rightmost keys shouldn&#39;t try and display a centered<br>overlay as it would go offscreen.</p>
+    </div>
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <ul class="jsdoc-params">
+                                                <li>
+                                                    <div>
+                                                        <b>positionInColumn</b>
+                                                    </div>
+                                                    <div>
+                                                        <p>Key index in the row</p>
+    
+                                                    </div>
+                                                </li>
+                                        </ul>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>number</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        <p>Adjusted offset in px</p>
+    
+                                    </div>
                         </td>
                     </tr>
+                </tbody>
+            </table>
+    </section>
 
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="uppercaseEnabled"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>uppercaseEnabled</b></span>
-                        <a href="#uppercaseEnabled"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
+    <section>
+        <h3 id="inputs">Properties</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/virtual-keyboard/virtual-keyboard.component.ts:44</a></div>
+                            <b><span class="modifier">Public</span> icons</b>
                         </td>
                     </tr>
-
-
-        </tbody>
-    </table>
-</section>
-
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>icons:     <code>{ uppercase: IconDefinition; backspace: IconDefinition; done: IconDefinition; }</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> layout</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>layout:     <code>string[][]</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>QWERTY</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> toneKeys</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>toneKeys:     <code>string[]</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> toneOverlayOffsetX</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>toneOverlayOffsetX:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>BASE_TONE_OVERLAY_OFFSET_X</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> toneOverlayOffsetY</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>toneOverlayOffsetY:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>BASE_TONE_OVERLAY_OFFSET_Y</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> toneOverlayOpen</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>toneOverlayOpen:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> toneOverlayOrigin</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>toneOverlayOrigin:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> uppercaseEnabled</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>uppercaseEnabled:     <code>boolean</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>false</code>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+    </section>
 </div>
-
-
-    <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+        <div class="tab-pane fade tab-source-code" id="source">
+            <pre><code class="hljs javascript">import {
   FlexibleConnectedPositionStrategyOrigin,
   OverlayModule,
 } from &quot;@angular/cdk/overlay&quot;;
@@ -875,8 +1140,13 @@ const BASE_TONE_OVERLAY_OFFSET_Y &#x3D; -TONE_KEY_WIDTH_PX * 2.5;
   styleUrls: [&quot;./virtual-keyboard.component.scss&quot;],
 })
 export class VirtualKeyboardComponent {
+  /** A character has been typed */
   @Output() typed &#x3D; new EventEmitter&lt;string&gt;();
+
+  /** Backspace key pressed */
   @Output() backspace &#x3D; new EventEmitter&lt;void&gt;();
+
+  /** Keyboard&#x27;s &quot;Submit&quot; button pressed */
   @Output() submitText &#x3D; new EventEmitter&lt;void&gt;();
 
   public toneOverlayOffsetY &#x3D; BASE_TONE_OVERLAY_OFFSET_Y;
@@ -952,209 +1222,8 @@ export class VirtualKeyboardComponent {
   }
 }
 </code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;main-keyboard&quot;&gt;
-  &lt;div class&#x3D;&quot;keyboard-row&quot; *ngFor&#x3D;&quot;let row of layout; let isLast &#x3D; last&quot;&gt;
-    &lt;div
-      class&#x3D;&quot;keyboard-key&quot;
-      *ngIf&#x3D;&quot;isLast&quot;
-      (click)&#x3D;&quot;uppercaseEnabled &#x3D; !uppercaseEnabled&quot;
-      [class]&#x3D;&quot;{ active: uppercaseEnabled }&quot;
-    &gt;
-      &lt;fa-icon [icon]&#x3D;&quot;icons.uppercase&quot; /&gt;
-    &lt;/div&gt;
-    &lt;div
-      #letterKeyRef
-      *ngFor&#x3D;&quot;let key of row; let columnIndex &#x3D; index&quot;
-      class&#x3D;&quot;keyboard-key&quot;
-      matRipple
-      [matRippleCentered]&#x3D;&quot;true&quot;
-      chfLongPress
-      (longPress)&#x3D;&quot;openTones(key, columnIndex, letterKeyRef)&quot;
-      (click)&#x3D;&quot;writeCharacter(key)&quot;
-    &gt;
-      &lt;ng-container *ngIf&#x3D;&quot;uppercaseEnabled&quot;&gt;{{ key }}&lt;/ng-container&gt;
-      &lt;ng-container *ngIf&#x3D;&quot;!uppercaseEnabled&quot;&gt;{{ key | lowercase }}&lt;/ng-container&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;keyboard-key&quot; *ngIf&#x3D;&quot;isLast&quot; (click)&#x3D;&quot;backspace.emit()&quot;&gt;
-      &lt;fa-icon [icon]&#x3D;&quot;icons.backspace&quot; /&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class&#x3D;&quot;keyboard-row&quot;&gt;
-    &lt;div class&#x3D;&quot;keyboard-key plain&quot;&gt;?123&lt;/div&gt;
-    &lt;div class&#x3D;&quot;keyboard-key plain space&quot; (click)&#x3D;&quot;writeCharacter(&#x27; &#x27;, true)&quot;&gt;Space&lt;/div&gt;
-    &lt;div class&#x3D;&quot;keyboard-key plain validate&quot; (click)&#x3D;&quot;submitText.emit()&quot;&gt;
-      &lt;fa-icon [icon]&#x3D;&quot;icons.done&quot; /&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;ng-template
-  *ngIf&#x3D;&quot;toneOverlayOrigin&quot;
-  cdkConnectedOverlay
-  [cdkConnectedOverlayOrigin]&#x3D;&quot;toneOverlayOrigin&quot;
-  [cdkConnectedOverlayOpen]&#x3D;&quot;toneOverlayOpen&quot;
-  [cdkConnectedOverlayOffsetY]&#x3D;&quot;toneOverlayOffsetY&quot;
-  [cdkConnectedOverlayOffsetX]&#x3D;&quot;toneOverlayOffsetX&quot;
-  cdkConnectedOverlayPanelClass&#x3D;&quot;tone-overlay-container&quot;
-  cdkConnectedOverlayHasBackdrop
-  (backdropClick)&#x3D;&quot;toneOverlayOpen &#x3D; false&quot;
-&gt;
-  &lt;div class&#x3D;&quot;tone-overlay&quot;&gt;
-    &lt;div
-      class&#x3D;&quot;keyboard-key mat-elevation-z8&quot;
-      *ngFor&#x3D;&quot;let tone of toneKeys&quot;
-      (click)&#x3D;&quot;writeCharacter(tone)&quot;
-    &gt;
-      {{ tone }}
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/ng-template&gt;
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="styleData">
-                <p class="comment">
-                    <code>./virtual-keyboard.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">:host {
-  display: block;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 10;
-  background-color: #141414;
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-$keyGap: 4px;
-
-.main-keyboard {
-  display: flex;
-  flex-direction: column;
-  gap: $keyGap;
-}
-
-.keyboard-row {
-  display: flex;
-  gap: $keyGap;
-}
-
-.keyboard-key {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-  color: white;
-  cursor: pointer;
-
-  // Disable text selection
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-
-  &amp;.plain {
-    background-color: #323232;
-    border-radius: 25px;
-    height: 40px;
-  }
-
-  &amp;.active {
-    --tone-line-color: orange;
-    color: orange;
-  }
-
-  &amp;.space {
-    flex: 3;
-  }
-
-  &amp;.validate {
-    background-color: var(--primary-color);
-  }
-}
-
-.tone-keyboard {
-  margin-top: 10px;
-  margin-bottom: 15px;
-  display: flex;
-  gap: $keyGap * 2;
-  justify-content: center;
-
-  .keyboard-key {
-    max-width: 40px;
-  }
-}
-
-.tone-overlay-container {
-  background-color: red;
-  width: 170px;
-}
-
-$toneKeySize: 30px;
-.tone-overlay {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $keyGap;
-  width: 140px;
-  max-width: 170px;
-
-  .keyboard-key {
-    background-color: #565656;
-    min-width: $toneKeySize;
-    max-width: $toneKeySize;
-    height: 40px;
-  }
-}
-</code></pre>
-    </div>
-
-    <div class="tab-pane fade " id="tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
-            </div>
         </div>
     </div>
-
-    
-</div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div><div class="main-keyboard">  <div class="keyboard-row" *ngFor="let row of layout; let isLast = last">    <div      class="keyboard-key"      *ngIf="isLast"      (click)="uppercaseEnabled = !uppercaseEnabled"      [class]="{ active: uppercaseEnabled }"    >      <fa-icon [icon]="icons.uppercase" />    </div>    <div      #letterKeyRef      *ngFor="let key of row; let columnIndex = index"      class="keyboard-key"      matRipple      [matRippleCentered]="true"      chfLongPress      (longPress)="openTones(key, columnIndex, letterKeyRef)"      (click)="writeCharacter(key)"    >      <ng-container *ngIf="uppercaseEnabled">{{ key }}</ng-container>      <ng-container *ngIf="!uppercaseEnabled">{{ key | lowercase }}</ng-container>    </div>    <div class="keyboard-key" *ngIf="isLast" (click)="backspace.emit()">      <fa-icon [icon]="icons.backspace" />    </div>  </div>  <div class="keyboard-row">    <div class="keyboard-key plain">?123</div>    <div class="keyboard-key plain space" (click)="writeCharacter(\' \', true)">Space</div>    <div class="keyboard-key plain validate" (click)="submitText.emit()">      <fa-icon [icon]="icons.done" />    </div>  </div></div><ng-template  *ngIf="toneOverlayOrigin"  cdkConnectedOverlay  [cdkConnectedOverlayOrigin]="toneOverlayOrigin"  [cdkConnectedOverlayOpen]="toneOverlayOpen"  [cdkConnectedOverlayOffsetY]="toneOverlayOffsetY"  [cdkConnectedOverlayOffsetX]="toneOverlayOffsetX"  cdkConnectedOverlayPanelClass="tone-overlay-container"  cdkConnectedOverlayHasBackdrop  (backdropClick)="toneOverlayOpen = false">  <div class="tone-overlay">    <div      class="keyboard-key mat-elevation-z8"      *ngFor="let tone of toneKeys"      (click)="writeCharacter(tone)"    >      {{ tone }}    </div>  </div></ng-template></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'chf-root'},{'name': 'ButtonComponent', 'selector': 'chf-button'},{'name': 'CardComponent', 'selector': 'chf-card'},{'name': 'CardDifficultyComponent', 'selector': 'chf-card-difficulty'},{'name': 'CardEditorComponent', 'selector': 'chf-card-editor'},{'name': 'CardProgressBarComponent', 'selector': 'chf-card-progress-bar'},{'name': 'CardProgressIndicatorComponent', 'selector': 'chf-card-progress-indicator'},{'name': 'CardViewerComponent', 'selector': 'chf-card-viewer'},{'name': 'CollectionCardsComponent', 'selector': 'chf-collection-cards'},{'name': 'CollectionEditorComponent', 'selector': 'chf-collection-editor'},{'name': 'CollectionListComponent', 'selector': 'chf-collection-list'},{'name': 'ConfirmDialogComponent', 'selector': 'chf-confirm-dialog'},{'name': 'InlineConfirmDialogComponent', 'selector': 'chf-inline-confirm-dialog'},{'name': 'NavbarComponent', 'selector': 'chf-navbar'},{'name': 'PinyinFormFieldComponent', 'selector': 'chf-pinyin-form-field'},{'name': 'SessionComponent', 'selector': 'chf-session'},{'name': 'SessionFillingStepComponent', 'selector': 'chf-session-filling-step'},{'name': 'SessionLauncherComponent', 'selector': 'chf-session-launcher'},{'name': 'SessionMatchingStepComponent', 'selector': 'chf-session-matching-step'},{'name': 'SettingsComponent', 'selector': 'chf-settings'},{'name': 'SidenavComponent', 'selector': 'chf-sidenav'},{'name': 'SlideToggleComponent', 'selector': 'chf-slide-toggle'},{'name': 'TabBarComponent', 'selector': 'chf-tab-bar'},{'name': 'VirtualKeyboardComponent', 'selector': 'chf-virtual-keyboard'}];
-    var DIRECTIVES = [{'name': 'LongPressDirective', 'selector': '[chfLongPress]'}];
-    var ACTUAL_COMPONENT = {'name': 'VirtualKeyboardComponent'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
-
-
-
-
 
 
 
@@ -1175,31 +1244,8 @@ $toneKeySize: 30px;
     </div>
 </div>
 </div>
-               <!-- END CONTENT -->
            </div>
        </div>
-
-          <label class="dark-mode-switch">
-               <input type="checkbox">
-               <span class="slider">
-                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                    </svg>
-               </span>
-          </label>
-
-       <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'VirtualKeyboardComponent.html';
-            var MAX_SEARCH_RESULTS = 15;
-       </script>
-
-       <script src="../js/libs/custom-elements.min.js"></script>
-       <script src="../js/libs/lit-html.js"></script>
-
-       <script src="../js/menu-wc.js" defer></script>
-       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
@@ -1210,17 +1256,20 @@ $toneKeySize: 30px;
 
        <script src="../js/compodoc.js"></script>
 
-       <script src="../js/tabs.js"></script>
-       <script src="../js/menu.js"></script>
-       <script src="../js/libs/clipboard.min.js"></script>
-       <script src="../js/libs/prism.js"></script>
-       <script src="../js/sourceCode.js"></script>
-          <script src="../js/search/search.js"></script>
-          <script src="../js/search/lunr.min.js"></script>
-          <script src="../js/search/search-lunr.js"></script>
-          <script src="../js/search/search_index.js"></script>
-       <script src="../js/lazy-load-graphs.js"></script>
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
 
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/highlight.pack.js"></script>
+       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
+       <script src="../js/search/search_index.js"></script>
+       <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
+            });
+       </script>
 
     </body>
 </html>

@@ -1,6 +1,13 @@
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { SwUpdate } from "@angular/service-worker";
 
+/**
+ * Forces the service worker to check for updates and notify the user
+ * that a new version can be installed.
+ *
+ * @param swUpdate Service worker update service
+ * @param snackbar SnackBar service to notify the user
+ */
 export const checkForUpdates = (
   swUpdate: SwUpdate,
   snackbar: MatSnackBar

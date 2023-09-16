@@ -34,6 +34,10 @@ export class Database extends Dexie {
     return this.open();
   }
 
+  /**
+   * Creates a test dataset for development purposes. Should not be used
+   * in production.
+   */
   private async populate() {
     console.info("Populating database with demo cards and collections");
     const firstCollection = await this.cardCollections.add({
