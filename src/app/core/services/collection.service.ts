@@ -46,6 +46,8 @@ export class CollectionService {
 
   deleteCollection(collection: number) {
     this.database.cardCollections.delete(collection);
+    const cards = this.database.cards.filter((card) => card.collectionId === collection);
+    cards.delete();
   }
 
   /**
