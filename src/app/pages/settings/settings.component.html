@@ -65,9 +65,17 @@
   <chf-button (click)="exportToJSON()">Download a backup file</chf-button>
 </div>
 
-<div class="setting-group" *ngIf="!isProductionEnv">
-  <div class="title">Development options</div>
-  <chf-button type="error" (click)="deleteDatabase()">Delete database</chf-button>
+<div class="setting-group">
+  <div class="title" [ngClass]="{ dimmed: !showDeveloperOptions }">
+    Developer options
+    <chf-slide-toggle [(active)]="showDeveloperOptions" />
+  </div>
+  @if (showDeveloperOptions) {
+    <div class="developer-options-warning">
+      Be careful, using the actions below may cause you to lose data.
+    </div>
+    <chf-button type="error" (click)="deleteDatabase()">Delete database</chf-button>
+  }
 </div>
 
 <div class="setting-group">
