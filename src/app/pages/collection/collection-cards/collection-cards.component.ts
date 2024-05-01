@@ -9,13 +9,15 @@ import { Card } from "@core/model/card.model";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
-import { normalizeForComparison } from "@core/utils/general.utils";
+import { normalizeForComparison, removeOnce } from "@core/utils/general.utils";
 import {
   faAdd,
   faChevronLeft,
   faClose,
   faEdit,
   faMagnifyingGlass,
+  faShareFromSquare,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { Subject, debounceTime } from "rxjs";
 import { ActionTab, TabBarService } from "src/app/components/tab-bar/tab-bar.service";
@@ -50,6 +52,8 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     "=1": "1 card",
     other: "# cards",
   };
+  public multiselectActive = false;
+  public selectedCards: Card[] = [];
 
   private collectionId = 0;
   private readonly tabBarActions: ActionTab[] = [
@@ -61,6 +65,23 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     {
       label: "New card",
       icon: faAdd,
+      action: () => this.openCardEditor(),
+    },
+  ];
+  private readonly tabBarMultiselectActions: ActionTab[] = [
+    {
+      label: "Cancel",
+      icon: faClose,
+      action: () => this.stopMultiselect(),
+    },
+    {
+      label: "Move",
+      icon: faShareFromSquare,
+      action: () => this.openCardEditor(),
+    },
+    {
+      label: "Delete",
+      icon: faTrash,
       action: () => this.openCardEditor(),
     },
   ];
@@ -111,13 +132,12 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
       .subscribe(() => this.loadCollectionCards());
   }
 
-  openCardViewer(card: Card): void {
-    this.dialog
-      .open(CardViewerComponent, {
-        data: { card, collection: this.collectionId },
-      })
-      .afterClosed()
-      .subscribe(() => this.loadCollectionCards());
+  rowClicked(card: Card): void {
+    if (this.multiselectActive) {
+      this.handleRowSelection(card);
+    } else {
+      this.openCardViewer(card);
+    }
   }
 
   toggleSearch(): void {
@@ -131,6 +151,22 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   clearSearchBar(): void {
     this.filter = "";
     this.filter$.next(null);
+  }
+
+  startMultiselect(): void {
+    this.multiselectActive = true;
+    this.tabBarService.setActions(this.tabBarMultiselectActions);
+  }
+
+  private handleRowSelection(card: Card): void {
+    if (this.selectedCards.includes(card)) {
+      removeOnce(this.selectedCards, card);
+      if (this.selectedCards.length === 0) {
+        this.stopMultiselect();
+      }
+    } else {
+      this.selectedCards.push(card);
+    }
   }
 
   private loadCollectionCards(): void {
@@ -167,6 +203,15 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     };
   }
 
+  private openCardViewer(card: Card): void {
+    this.dialog
+      .open(CardViewerComponent, {
+        data: { card, collection: this.collectionId },
+      })
+      .afterClosed()
+      .subscribe(() => this.loadCollectionCards());
+  }
+
   private openCategoryEditor(): void {
     this.dialog
       .open(CollectionEditorComponent, {
@@ -178,5 +223,11 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
           .getCollection(this.collectionId)
           .then((refreshedCollection) => (this.collection = refreshedCollection))
       );
+  }
+
+  private stopMultiselect(): void {
+    this.selectedCards = [];
+    this.multiselectActive = false;
+    this.tabBarService.setActions(this.tabBarActions);
   }
 }

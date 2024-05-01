@@ -21,6 +21,7 @@ import { ButtonComponent } from "src/app/components/button/button.component";
 import { CardComponent } from "src/app/components/card/card.component";
 import { InlineConfirmDialogComponent } from "src/app/components/dialog/inline-confirm-dialog/inline-confirm-dialog.component";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
+import { LongPressDirective } from "src/app/components/virtual-keyboard/long-press.directive";
 import { CardDifficultyComponent } from "../shared/components/card-difficulty/card-difficulty.component";
 import { CardEditorComponent } from "./card-editor/card-editor.component";
 import { CardProgressBarComponent } from "./card-viewer/card-progress-bar/card-progress-bar.component";
@@ -48,6 +49,7 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     FormsModule,
     InlineConfirmDialogComponent,
     JoinPipe,
+    LongPressDirective,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
