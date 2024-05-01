@@ -20,7 +20,7 @@ export type ActionTabBar = { tabs: ActionTab[]; type: "action" };
 export class TabBarService {
   private readonly rootTabs: RouterTab[] = [
     { icon: faCirclePlay, label: "Start session", route: "/sessions" },
-    { icon: faBook, label: "Browser cards", route: "/collections" },
+    { icon: faBook, label: "Browse cards", route: "/collections" },
     { icon: faGear, label: "Settings", route: "/settings" },
   ];
 

@@ -30,6 +30,13 @@
     margin-bottom: 1rem;
     padding: 0.5rem 0;
     font-family: var(--font-title);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.dimmed {
+      color: gray;
+    }
   }
 }
 
@@ -46,4 +53,12 @@
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+
+.developer-options-warning {
+  background-color: rgba($color: red, $alpha: 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  margin-bottom: 1rem;
 }

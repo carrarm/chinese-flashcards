@@ -16,6 +16,9 @@ export class DatabaseService {
     // TODO: synchronize with Dexie cloud
   }
 
+  /**
+   * Stores the database content into a JSON file.
+   */
   async exportAsFile(): Promise<void> {
     const collections = await this.database.cardCollections.toArray();
     const cards = await this.database.cards.toArray();

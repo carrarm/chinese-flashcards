@@ -1,0 +1,24 @@
+{
+  "files.watcherExclude": {
+    "**/documentation/*/**": true
+  },
+  "formatFiles.excludedFolders": [
+    "node_modules",
+    ".vscode",
+    ".git",
+    "dist",
+    ".chrome",
+    "documentation"
+  ],
+  "search.exclude": {
+    "**/documentation": true
+  },
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "files.eol": "\n"
+}

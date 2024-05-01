@@ -2,8 +2,14 @@ import { ControlValueAccessor } from "@angular/forms";
 
 type Callback<T> = (value: T) => void;
 
+/**
+ * Components that need Reactive Form compatibility can extend `ControlValueAccessorComponent`
+ * to pre-configure `ControlValueAccessor` methods.
+ */
 export class ControlValueAccessorComponent<T> implements ControlValueAccessor {
+  /** Model value, synchronized with Reactive Forms */
   public value!: T;
+
   private propagateChange: Callback<T> = () => {
     // Do nothing
   };

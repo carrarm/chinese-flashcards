@@ -1,9 +1,13 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -11,7 +15,9 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:prettier/recommended"
       ],
-      "plugins": ["unused-imports"],
+      "plugins": [
+        "unused-imports"
+      ],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -29,17 +35,38 @@
             "style": "kebab-case"
           }
         ],
-        "no-shadow": "off", // Disable the base rule as it can report incorrect errors
-        "@typescript-eslint/no-shadow": ["error"],
-        "no-console": ["warn", { "allow": ["info", "warn", "error"] }],
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": [
+          "error"
+        ],
+        "no-console": [
+          "warn",
+          {
+            "allow": [
+              "info",
+              "warn",
+              "error"
+            ]
+          }
+        ],
         "unused-imports/no-unused-imports": "error",
-        "brace-style": ["warn", "1tbs", { "allowSingleLine": true }],
+        "brace-style": [
+          "warn",
+          "1tbs",
+          {
+            "allowSingleLine": true
+          }
+        ],
         "curly": "warn"
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
       "rules": {}
     }
   ]

@@ -17,7 +17,6 @@ import { RouterModule } from "@angular/router";
 import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { JoinPipe } from "@core/pipes/join.pipe";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { NgxFormControlMessagesModule } from "@varrmcault/ngx-form-control-messages";
 import { ButtonComponent } from "src/app/components/button/button.component";
 import { CardComponent } from "src/app/components/card/card.component";
 import { InlineConfirmDialogComponent } from "src/app/components/dialog/inline-confirm-dialog/inline-confirm-dialog.component";
@@ -61,7 +60,6 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     MatSlideToggleModule,
     MatSortModule,
     MatTableModule,
-    NgxFormControlMessagesModule,
     PinyinFormFieldComponent,
     ReactiveFormsModule,
     RouterModule,

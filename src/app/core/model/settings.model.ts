@@ -1,4 +1,5 @@
 export type AppTheme = "dark" | "light";
+export type CardReviewType = "oldest" | "newest";
 
 export interface SettingsModel {
   id?: number;
@@ -9,6 +10,7 @@ export interface SettingsModel {
   theme: AppTheme;
   leitnerBoxes: number;
   resetCardProgress: boolean;
+  cardSelectionType: CardReviewType;
 }
 
 export class Settings implements SettingsModel {
@@ -20,6 +22,7 @@ export class Settings implements SettingsModel {
   public theme: AppTheme = "dark";
   public leitnerBoxes = 5;
   public resetCardProgress = true;
+  public cardSelectionType: CardReviewType = "newest";
 
   constructor(settings?: SettingsModel) {
     if (settings) {
@@ -31,6 +34,7 @@ export class Settings implements SettingsModel {
       this.theme = settings.theme;
       this.leitnerBoxes = settings.leitnerBoxes;
       this.resetCardProgress = settings.resetCardProgress;
+      this.cardSelectionType = settings.cardSelectionType;
     }
   }
 

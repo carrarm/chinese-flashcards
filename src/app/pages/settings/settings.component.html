@@ -21,6 +21,18 @@
         <chf-slide-toggle formControlName="enableReviewMatching" />
       </div>
     </div>
+
+    <div class="setting">
+      <div class="label">Card selection</div>
+      <div class="field">
+        <mat-form-field subscriptSizing="dynamic">
+          <mat-select formControlName="cardSelectionType">
+            <mat-option value="newest">Newest first</mat-option>
+            <mat-option value="oldest">Oldest first</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
   </div>
 
   <div class="setting-group">
@@ -53,9 +65,17 @@
   <chf-button (click)="exportToJSON()">Download a backup file</chf-button>
 </div>
 
-<div class="setting-group" *ngIf="!isProductionEnv">
-  <div class="title">Development options</div>
-  <chf-button type="error" (click)="deleteDatabase()">Delete database</chf-button>
+<div class="setting-group">
+  <div class="title" [ngClass]="{ dimmed: !showDeveloperOptions }">
+    Developer options
+    <chf-slide-toggle [(active)]="showDeveloperOptions" />
+  </div>
+  @if (showDeveloperOptions) {
+    <div class="developer-options-warning">
+      Be careful, using the actions below may cause you to lose data.
+    </div>
+    <chf-button type="error" (click)="deleteDatabase()">Delete database</chf-button>
+  }
 </div>
 
 <div class="setting-group">

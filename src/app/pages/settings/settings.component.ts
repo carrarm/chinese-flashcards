@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { DatabaseService } from "@core/db/database.service";
-import { Settings } from "@core/model/settings.model";
+import { CardReviewType, Settings } from "@core/model/settings.model";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { environment } from "src/environments/environment";
@@ -15,6 +15,7 @@ interface SettingsForm {
   pageSize: FormControl<number | null>;
   wordsPerSession: FormControl<number | null>;
   leitnerBoxes: FormControl<number | null>;
+  cardSelectionType: FormControl<CardReviewType | null>;
   resetCardProgress: FormControl<boolean | null>;
 }
 
@@ -32,13 +33,14 @@ export class SettingsComponent implements OnInit {
     pageSize: new FormControl<number | null>(10),
     wordsPerSession: new FormControl<number | null>(10),
     leitnerBoxes: new FormControl<number | null>(5),
+    cardSelectionType: new FormControl<CardReviewType | null>("newest"),
     resetCardProgress: new FormControl<boolean | null>(true),
   });
   public pageOptions = [5, 10, 15, 20, 50, 100];
   public wordsOptions = [5, 10, 15];
-  public isProductionEnv = environment.production;
   public appVersion = environment.version;
   public appLicense = environment.license;
+  public showDeveloperOptions = !environment.production;
 
   constructor(
     private navigationService: NavigationService,
@@ -59,6 +61,7 @@ export class SettingsComponent implements OnInit {
         pageSize: this.settings.pageSize,
         wordsPerSession: this.settings.wordsPerSession,
         resetCardProgress: this.settings.resetCardProgress,
+        cardSelectionType: this.settings.cardSelectionType,
       });
     });
     this.form.valueChanges.subscribe(() => {
@@ -70,6 +73,7 @@ export class SettingsComponent implements OnInit {
         this.settings.pageSize = this.form.value.pageSize ?? 10;
         this.settings.leitnerBoxes = this.form.value.leitnerBoxes ?? 5;
         this.settings.resetCardProgress = this.form.value.resetCardProgress ?? true;
+        this.settings.cardSelectionType = this.form.value.cardSelectionType ?? "newest";
         this.settingsService.updateSettings(this.settings);
       }
     });
