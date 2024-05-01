@@ -1,5 +1,4 @@
 <div class="slider" [ngClass]="{ active: value }" (click)="updateValue(!value)">
   <div class="circle"></div>
-  <div class="text" *ngIf="value">Yes</div>
-  <div class="text" *ngIf="!value">No</div>
+  <div class="text">{{ value ? "Yes" : "No" }}</div>
 </div>

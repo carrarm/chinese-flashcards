@@ -38,9 +38,9 @@ export class SettingsComponent implements OnInit {
   });
   public pageOptions = [5, 10, 15, 20, 50, 100];
   public wordsOptions = [5, 10, 15];
-  public isProductionEnv = environment.production;
   public appVersion = environment.version;
   public appLicense = environment.license;
+  public showDeveloperOptions = !environment.production;
 
   constructor(
     private navigationService: NavigationService,
