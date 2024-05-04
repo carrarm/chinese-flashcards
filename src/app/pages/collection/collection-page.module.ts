@@ -21,6 +21,7 @@ import { ButtonComponent } from "src/app/components/button/button.component";
 import { CardComponent } from "src/app/components/card/card.component";
 import { InlineConfirmDialogComponent } from "src/app/components/dialog/inline-confirm-dialog/inline-confirm-dialog.component";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
+import { LongPressDirective } from "src/app/components/virtual-keyboard/long-press.directive";
 import { CardDifficultyComponent } from "../shared/components/card-difficulty/card-difficulty.component";
 import { CardEditorComponent } from "./card-editor/card-editor.component";
 import { CardProgressBarComponent } from "./card-viewer/card-progress-bar/card-progress-bar.component";
@@ -28,6 +29,7 @@ import { CardViewerComponent } from "./card-viewer/card-viewer.component";
 import { CollectionCardsComponent } from "./collection-cards/collection-cards.component";
 import { CollectionEditorComponent } from "./collection-editor/collection-editor.component";
 import { CollectionListComponent } from "./collection-list/collection-list.component";
+import { MoveCardDialogComponent } from "./move-card-dialog/move-card-dialog.component";
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     FormsModule,
     InlineConfirmDialogComponent,
     JoinPipe,
+    LongPressDirective,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -60,6 +63,7 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     MatSlideToggleModule,
     MatSortModule,
     MatTableModule,
+    MoveCardDialogComponent,
     PinyinFormFieldComponent,
     ReactiveFormsModule,
     RouterModule,

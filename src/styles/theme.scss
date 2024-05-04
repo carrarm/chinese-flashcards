@@ -100,6 +100,9 @@ $chinese-flashcards-dark-theme: mat.define-dark-theme(
   --dialog-bg: #2d3132;
   --field-bg: #272a2b;
   --field-label-fg: #898989;
+
+  // Material configuration
+  --mat-dialog-actions-alignment: end;
 }
 
 body {
@@ -141,6 +144,10 @@ body {
       flex: 1;
     }
   }
+}
+
+.mat-mdc-dialog-actions {
+  gap: 1rem;
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
