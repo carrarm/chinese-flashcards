@@ -15,15 +15,19 @@ export class CollectionService {
     this.database = databaseService.database;
   }
 
-  async getCollections(): Promise<CardCollection[]> {
+  async getCollections(fetchCards = true): Promise<CardCollection[]> {
     try {
       return await this.database.cardCollections
         .orderBy("label")
         .toArray((collections: CardCollectionModel[]) => {
-          const filledCollectionPromises = collections.map((collection) =>
-            this.loadCollectionCards(collection)
-          );
-          return Promise.all(filledCollectionPromises);
+          if (fetchCards) {
+            const filledCollectionPromises = collections.map((collection) =>
+              this.loadCollectionCards(collection)
+            );
+            return Promise.all(filledCollectionPromises);
+          } else {
+            return collections.map((collection) => new CardCollection(collection));
+          }
         });
     } catch (error) {
       console.error("Unable to load card collections", error);

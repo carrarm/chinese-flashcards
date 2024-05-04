@@ -29,6 +29,7 @@ import { CardViewerComponent } from "./card-viewer/card-viewer.component";
 import { CollectionCardsComponent } from "./collection-cards/collection-cards.component";
 import { CollectionEditorComponent } from "./collection-editor/collection-editor.component";
 import { CollectionListComponent } from "./collection-list/collection-list.component";
+import { MoveCardDialogComponent } from "./move-card-dialog/move-card-dialog.component";
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
     MatSlideToggleModule,
     MatSortModule,
     MatTableModule,
+    MoveCardDialogComponent,
     PinyinFormFieldComponent,
     ReactiveFormsModule,
     RouterModule,

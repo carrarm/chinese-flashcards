@@ -24,6 +24,8 @@ import { ActionTab, TabBarService } from "src/app/components/tab-bar/tab-bar.ser
 import { CardEditorComponent } from "../card-editor/card-editor.component";
 import { CardViewerComponent } from "../card-viewer/card-viewer.component";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
+import { MoveCardDialogComponent } from "../move-card-dialog/move-card-dialog.component";
+import { DialogData } from "../move-card-dialog/move-card-dialog.types";
 
 @Component({
   selector: "chf-collection-cards",
@@ -34,7 +36,7 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   @ViewChild(MatSort) sort?: MatSort;
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  public icons = {
+  public readonly icons = {
     goBack: faChevronLeft,
     search: faMagnifyingGlass,
     clear: faClose,
@@ -77,7 +79,7 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     {
       label: "Move",
       icon: faShareFromSquare,
-      action: () => this.openCardEditor(),
+      action: () => this.openMoveCardDialog(),
     },
     {
       label: "Delete",
@@ -170,6 +172,7 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   private loadCollectionCards(): void {
+    this.stopMultiselect();
     this.collectionService.getCollection(this.collectionId).then((collection) => {
       if (collection) {
         this.collection = collection;
@@ -223,6 +226,21 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
           .getCollection(this.collectionId)
           .then((refreshedCollection) => (this.collection = refreshedCollection))
       );
+  }
+
+  private openMoveCardDialog(): void {
+    const data: DialogData = {
+      cards: this.selectedCards,
+      initialCategory: this.collectionId,
+    };
+    this.dialog
+      .open(MoveCardDialogComponent, { data })
+      .afterClosed()
+      .subscribe((refreshNeeded) => {
+        if (refreshNeeded) {
+          this.loadCollectionCards();
+        }
+      });
   }
 
   private stopMultiselect(): void {
