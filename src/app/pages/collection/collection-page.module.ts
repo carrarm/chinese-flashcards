@@ -20,6 +20,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ButtonComponent } from "src/app/components/button/button.component";
 import { CardComponent } from "src/app/components/card/card.component";
 import { InlineConfirmDialogComponent } from "src/app/components/dialog/inline-confirm-dialog/inline-confirm-dialog.component";
+import { FormErrorMessagesComponent } from "src/app/components/form-error-messages/form-error-messages.component";
 import { PinyinFormFieldComponent } from "src/app/components/pinyin-form-field/pinyin-form-field.component";
 import { LongPressDirective } from "src/app/components/virtual-keyboard/long-press.directive";
 import { CardDifficultyComponent } from "../shared/components/card-difficulty/card-difficulty.component";
@@ -47,6 +48,7 @@ import { MoveCardDialogComponent } from "./move-card-dialog/move-card-dialog.com
     CardMeaningsPipe,
     CommonModule,
     FontAwesomeModule,
+    FormErrorMessagesComponent,
     FormsModule,
     InlineConfirmDialogComponent,
     JoinPipe,
