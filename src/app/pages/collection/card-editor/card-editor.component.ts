@@ -4,13 +4,14 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Card } from "@core/model/card.model";
 import { CardService } from "@core/services/card.service";
 import { SettingsService } from "@core/services/settings.service";
+import { Nullable } from "@core/types";
 import { toOptional } from "@core/utils/form.utils";
 import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
 
 interface CardForm {
-  meaning: FormControl<string | null>;
-  pinyin: FormControl<string | null>;
-  chinese: FormControl<string | null>;
+  meaning: FormControl<Nullable<string>>;
+  pinyin: FormControl<Nullable<string>>;
+  chinese: FormControl<Nullable<string>>;
 }
 
 @Component({
@@ -25,9 +26,9 @@ export class CardEditorComponent implements OnInit {
   public cardDuplicate?: Card;
 
   public form = new FormGroup<CardForm>({
-    meaning: new FormControl<string | null>(null, Validators.required),
-    pinyin: new FormControl<string | null>(null),
-    chinese: new FormControl<string | null>(null),
+    meaning: new FormControl<Nullable<string>>(null, Validators.required),
+    pinyin: new FormControl<Nullable<string>>(null),
+    chinese: new FormControl<Nullable<string>>(null),
   });
   public icons = {
     cancel: faClose,
