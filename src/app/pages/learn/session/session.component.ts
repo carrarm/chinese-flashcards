@@ -50,7 +50,7 @@ export class SessionComponent implements PendingChangesComponent {
     tabBarService.setActions([
       {
         icon: faCircleStop,
-        label: "Cancel session",
+        label: "Stop session",
         action: () => router.navigateByUrl("/sessions"),
       },
     ]);
@@ -63,9 +63,9 @@ export class SessionComponent implements PendingChangesComponent {
           .open(ConfirmDialogComponent, {
             data: {
               confirmType: "primary",
-              confirmText: "Yes, stop this session",
-              cancelText: "I changed my mind",
-              title: "Cancel the session",
+              confirmText: "Stop session",
+              cancelText: "Forget it",
+              title: "Stop this session",
               message: "You will lose any progress made during the session.",
             },
           })

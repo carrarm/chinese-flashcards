@@ -12,10 +12,8 @@ import { SettingsService } from "@core/services/settings.service";
 import { normalizeForComparison, removeOnce } from "@core/utils/general.utils";
 import {
   faAdd,
-  faChevronLeft,
   faClose,
   faEdit,
-  faMagnifyingGlass,
   faShareFromSquare,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
@@ -35,12 +33,6 @@ import { DialogData } from "../move-card-dialog/move-card-dialog.types";
 export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort) sort?: MatSort;
   @ViewChild(MatPaginator) paginator?: MatPaginator;
-
-  public readonly icons = {
-    goBack: faChevronLeft,
-    search: faMagnifyingGlass,
-    clear: faClose,
-  };
 
   public columns = ["meanings", "pinyin", "characters"];
   public dataSource = new MatTableDataSource<Card>();
