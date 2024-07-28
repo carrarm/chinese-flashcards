@@ -21,6 +21,7 @@ import {
   faRotateLeft,
   faShareFromSquare,
   faTrash,
+  faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import { filter } from "rxjs";
 import { SettingsService } from "./core/services/settings.service";
@@ -80,6 +81,8 @@ export class AppComponent {
     this.faLibrary.addIcons(faBox, faBoxOpen);
     // Card validation, card success / error
     this.faLibrary.addIcons(faCheckToSlot, faCheckCircle, faCircleXmark);
+    // Duplicate warning
+    this.faLibrary.addIcons(faTriangleExclamation);
   }
 
   private addSvgIcon(name: string, icon: string): void {

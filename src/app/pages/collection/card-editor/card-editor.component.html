@@ -8,6 +8,17 @@
       <mat-label>Meanings</mat-label>
       <input matInput formControlName="meaning" />
       <mat-hint>Separate meanings with « ; » </mat-hint>
+
+      @if (cardDuplicate) {
+        <button
+          class="btn-warning-duplicate"
+          mat-icon-button
+          matSuffix
+          (click)="duplicateMessageVisible = !duplicateMessageVisible"
+        >
+          <fa-icon icon="triangle-exclamation" />
+        </button>
+      }
     </mat-form-field>
 
     <mat-form-field subscriptSizing="dynamic">
@@ -18,7 +29,7 @@
     <chf-pinyin-form-field formControlName="pinyin" />
   </form>
 
-  @if (cardDuplicate) {
+  @if (cardDuplicate && duplicateMessageVisible) {
     <div class="duplicate-warning">
       A card with this meaning already exists:
       <div class="duplicate-card-wrapper">
@@ -53,8 +64,5 @@
     Cancel
   </chf-button>
 
-  <chf-button type="primary" (click)="saveCard()">
-    <fa-icon icon="check" />
-    {{ texts.save }}
-  </chf-button>
+  <chf-button type="primary" icon="check" [text]="texts.save" (click)="saveCard()" />
 </div>

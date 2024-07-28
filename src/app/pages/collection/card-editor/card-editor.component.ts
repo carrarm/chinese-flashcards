@@ -1,11 +1,24 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { ButtonComponent } from "@components/button/button.component";
 import { Card } from "@core/model/card.model";
+import { JoinPipe } from "@core/pipes/join.pipe";
 import { CardService } from "@core/services/card.service";
 import { SettingsService } from "@core/services/settings.service";
 import { Nullable } from "@core/types";
 import { toOptional } from "@core/utils/form.utils";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 interface CardForm {
   meaning: FormControl<Nullable<string>>;
@@ -14,6 +27,19 @@ interface CardForm {
 }
 
 @Component({
+  standalone: true,
+  imports: [
+    ButtonComponent,
+    FontAwesomeModule,
+    FormsModule,
+    JoinPipe,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+  ],
   selector: "chf-card-editor",
   templateUrl: "./card-editor.component.html",
   styleUrls: ["./card-editor.component.scss"],
@@ -23,6 +49,7 @@ export class CardEditorComponent implements OnInit {
   public virtualKeyboardOpen = false;
   public creationMode = true;
   public cardDuplicate?: Card;
+  public duplicateMessageVisible = false;
 
   public form = new FormGroup<CardForm>({
     meaning: new FormControl<Nullable<string>>(null, Validators.required),
@@ -108,6 +135,7 @@ export class CardEditorComponent implements OnInit {
 
   private trackDuplicates(): void {
     this.form.valueChanges.subscribe(async (formValues) => {
+      this.duplicateMessageVisible = false;
       this.cardDuplicate = undefined;
       const { meaning } = formValues;
       if (meaning) {

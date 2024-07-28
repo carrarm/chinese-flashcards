@@ -36,13 +36,13 @@ import { MoveCardDialogComponent } from "./move-card-dialog/move-card-dialog.com
   declarations: [
     CollectionListComponent,
     CollectionCardsComponent,
-    CardEditorComponent,
     CollectionEditorComponent,
   ],
   imports: [
     ButtonComponent,
     CardComponent,
     CardDifficultyComponent,
+    CardEditorComponent,
     CardMeaningsPipe,
     CardProgressBarComponent,
     CardViewerComponent,
