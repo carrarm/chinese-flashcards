@@ -12,6 +12,7 @@ export interface CardModel {
   leitnerBox: number;
   lastSession?: string;
   difficulty?: CardDifficultyLevel;
+  archived?: boolean;
 }
 
 /**
@@ -28,6 +29,7 @@ export class Card implements CardModel {
   leitnerBox = 0;
   lastSession?: string;
   difficulty?: CardDifficultyLevel;
+  archived?: boolean;
 
   constructor(data?: CardModel) {
     if (data) {
@@ -50,10 +52,14 @@ export class Card implements CardModel {
   }
 
   isKnown(): boolean {
-    return !this.isUnknown() && dayjs().isBefore(this.nextReview());
+    return this.archived || (!this.isUnknown() && dayjs().isBefore(this.nextReview()));
   }
 
   needsReview(): boolean {
+    if (this.archived) {
+      return false;
+    }
+
     const nextSession = this.nextReview();
     return (
       (!this.isUnknown() && dayjs().isSame(nextSession)) || dayjs().isAfter(nextSession)

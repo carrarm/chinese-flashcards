@@ -21,7 +21,10 @@ export class ButtonComponent extends CoercionComponent implements OnChanges {
   @Input() icon?: IconDefinition | IconName;
   @Input() text?: string;
 
+  isIconButton = false;
+
   ngOnChanges(): void {
     this.coerceAll(["callToAction", "disabled", "iconButton"]);
+    this.isIconButton = this.coerced["iconButton"] || !!(this.icon && !this.text);
   }
 }

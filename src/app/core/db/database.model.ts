@@ -49,7 +49,7 @@ export class Database extends Dexie {
         pinyin: "mǎ",
         characters: "马",
         collectionId: firstCollection,
-        leitnerBox: 5,
+        leitnerBox: 4,
         lastSession: dayjs().subtract(4, "day").toISOString(),
       },
       {
