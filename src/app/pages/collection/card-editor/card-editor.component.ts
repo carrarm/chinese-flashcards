@@ -111,7 +111,7 @@ export class CardEditorComponent implements OnInit {
       this.cardDuplicate = undefined;
       const { meaning } = formValues;
       if (meaning) {
-        this.cardDuplicate = await this.cardService.findCard({
+        this.cardDuplicate = await this.cardService.findCard(this.collectionId, {
           meanings: meaning.split(";").map((m) => m.trim()),
         });
       }

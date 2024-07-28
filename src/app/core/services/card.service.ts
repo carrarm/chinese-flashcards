@@ -44,19 +44,23 @@ export class CardService {
     }
   }
 
-  async findCard(search: {
-    meanings?: string[];
-    pinyin?: string;
-    characters?: string;
-  }): Promise<Card | undefined> {
+  async findCard(
+    fromCollection: number,
+    search: {
+      meanings?: string[];
+      pinyin?: string;
+      characters?: string;
+    }
+  ): Promise<Card | undefined> {
     const cardModel = await this.database.cards
       .filter(
         (card) =>
-          search.meanings?.some((meaning) =>
+          card.collectionId === fromCollection &&
+          (search.meanings?.some((meaning) =>
             card.meanings.some((cardMeaning) => areEqual(cardMeaning, meaning))
           ) ||
-          areEqual(search.pinyin, card.pinyin) ||
-          areEqual(search.characters, card.characters)
+            areEqual(search.pinyin, card.pinyin) ||
+            areEqual(search.characters, card.characters))
       )
       .first();
     return cardModel ? new Card(cardModel) : undefined;
