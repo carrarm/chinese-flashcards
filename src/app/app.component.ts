@@ -6,15 +6,22 @@ import { NavigationEnd, Router } from "@angular/router";
 import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
 import {
   faAdd,
+  faArrowRight,
+  faBox,
+  faBoxOpen,
   faCheck,
+  faCheckCircle,
+  faCheckToSlot,
   faChevronLeft,
   faChevronRight,
+  faCircleXmark,
   faClose,
   faEdit,
   faMagnifyingGlass,
   faRotateLeft,
   faShareFromSquare,
   faTrash,
+  faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import { filter } from "rxjs";
 import { SettingsService } from "./core/services/settings.service";
@@ -62,16 +69,20 @@ export class AppComponent {
     this.faLibrary.addIcons(faRotateLeft);
     // Share / Move
     this.faLibrary.addIcons(faShareFromSquare);
-    // Go back
-    this.faLibrary.addIcons(faChevronLeft);
-    // Go to
-    this.faLibrary.addIcons(faChevronRight);
+    // Go back, Go to, Go next
+    this.faLibrary.addIcons(faChevronLeft, faChevronRight, faArrowRight);
     // Search
     this.faLibrary.addIcons(faMagnifyingGlass);
     // New element
     this.faLibrary.addIcons(faAdd);
     // Save / Validate
     this.faLibrary.addIcons(faCheck);
+    // Archive, unarchive
+    this.faLibrary.addIcons(faBox, faBoxOpen);
+    // Card validation, card success / error
+    this.faLibrary.addIcons(faCheckToSlot, faCheckCircle, faCircleXmark);
+    // Duplicate warning
+    this.faLibrary.addIcons(faTriangleExclamation);
   }
 
   private addSvgIcon(name: string, icon: string): void {

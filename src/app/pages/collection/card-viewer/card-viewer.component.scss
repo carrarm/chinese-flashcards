@@ -1,3 +1,9 @@
+div[mat-dialog-title] {
+  fa-icon {
+    margin-left: 0.5rem;
+  }
+}
+
 chf-card {
   --card-bg-color: #1c1c1c;
   width: 60vw;
@@ -24,7 +30,7 @@ chf-card {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  margin-top: 1.5rem;
+  // margin-top: 1.5rem;
 }
 
 .section-title {
@@ -43,4 +49,9 @@ chf-card {
   chf-card-progress-bar {
     width: 100%;
   }
+}
+
+.archive-button {
+  width: fit-content;
+  margin: 0.5rem auto 0 auto;
 }

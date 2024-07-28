@@ -8,12 +8,6 @@ import {
   shuffleArray,
   uniqueValues,
 } from "@core/utils/general.utils";
-import {
-  faArrowRight,
-  faCheckCircle,
-  faCheckToSlot,
-  faCircleXmark,
-} from "@fortawesome/free-solid-svg-icons";
 import { SessionCard } from "../session-card.model";
 
 @Component({
@@ -24,13 +18,6 @@ import { SessionCard } from "../session-card.model";
 export class SessionFillingStepComponent implements OnInit {
   @Input() cards: Card[] = [];
   @Output() completed = new EventEmitter<SessionCard[]>();
-
-  public readonly icons = {
-    check: faCheckToSlot,
-    next: faArrowRight,
-    success: faCheckCircle,
-    failed: faCircleXmark,
-  };
 
   public sessionCards = new Map<number, SessionCard>();
   public session: number[] = [];

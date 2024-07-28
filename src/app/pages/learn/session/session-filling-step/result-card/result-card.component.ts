@@ -1,9 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import {
-  IconDefinition,
-  faCheckCircle,
-  faXmarkCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { IconName } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "chf-result-card",
@@ -16,11 +12,11 @@ export class ResultCardComponent implements OnInit {
   @Input({ required: true }) result!: "failed" | "passed" | "solution";
 
   public diff?: { characters: DiffCharacter[]; pinyin: DiffCharacter[] };
-  public resultIcon: IconDefinition = faCheckCircle;
+  public resultIcon: IconName = "check-circle";
 
   ngOnInit(): void {
     if (this.result === "failed") {
-      this.resultIcon = faXmarkCircle;
+      this.resultIcon = "xmark-circle";
       if (this.expected) {
         this.diff = {
           characters: this.computeDiff(this.expected.characters, this.content.characters),

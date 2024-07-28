@@ -12,10 +12,6 @@ export class DatabaseService {
     this.database.open();
   }
 
-  syncWithCloud(): void {
-    // TODO: synchronize with Dexie cloud
-  }
-
   /**
    * Stores the database content into a JSON file.
    */
