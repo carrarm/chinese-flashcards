@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { Database } from "@core/db/database.model";
 import { DatabaseService } from "@core/db/database.service";
 import { Card } from "@core/model/card.model";
-import { Optional } from "@core/types";
 import { areEqual } from "@core/utils/general.utils";
 
 @Injectable({
@@ -45,19 +44,23 @@ export class CardService {
     }
   }
 
-  async findCard(search: {
-    meanings?: Optional<string[]>;
-    pinyin?: Optional<string>;
-    characters?: Optional<string>;
-  }): Promise<Card | undefined> {
+  async findCard(
+    fromCollection: number,
+    search: {
+      meanings?: string[];
+      pinyin?: string;
+      characters?: string;
+    }
+  ): Promise<Card | undefined> {
     const cardModel = await this.database.cards
       .filter(
         (card) =>
-          search.meanings?.some((meaning) =>
+          card.collectionId === fromCollection &&
+          (search.meanings?.some((meaning) =>
             card.meanings.some((cardMeaning) => areEqual(cardMeaning, meaning))
           ) ||
-          areEqual(search.pinyin, card.pinyin) ||
-          areEqual(search.characters, card.characters)
+            areEqual(search.pinyin, card.pinyin) ||
+            areEqual(search.characters, card.characters))
       )
       .first();
     return cardModel ? new Card(cardModel) : undefined;

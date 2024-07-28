@@ -32,7 +32,7 @@ export class CollectionEditorComponent {
   };
   public texts = {
     title: "New collection",
-    save: "Create collection",
+    save: "Create",
   };
 
   constructor(
@@ -43,7 +43,7 @@ export class CollectionEditorComponent {
   ) {
     if (data.collection) {
       this.collectionId = data.collection.id;
-      this.texts = { title: "Edit collection", save: "Update collection" };
+      this.texts = { title: "Edit collection", save: "Update" };
       this.form.patchValue(data.collection);
     }
   }

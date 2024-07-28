@@ -1,9 +1,5 @@
 <div mat-dialog-title>
   <div>{{ texts.title }}</div>
-  <chf-button mat-dialog-close>
-    <fa-icon [icon]="icons.cancel" />
-    Cancel
-  </chf-button>
 </div>
 
 <div mat-dialog-content>
@@ -12,6 +8,17 @@
       <mat-label>Meanings</mat-label>
       <input matInput formControlName="meaning" />
       <mat-hint>Separate meanings with « ; » </mat-hint>
+
+      @if (cardDuplicate) {
+        <button
+          class="btn-warning-duplicate"
+          mat-icon-button
+          matSuffix
+          (click)="duplicateMessageVisible = !duplicateMessageVisible"
+        >
+          <fa-icon icon="triangle-exclamation" />
+        </button>
+      }
     </mat-form-field>
 
     <mat-form-field subscriptSizing="dynamic">
@@ -22,34 +29,40 @@
     <chf-pinyin-form-field formControlName="pinyin" />
   </form>
 
-  <div *ngIf="cardDuplicate" class="duplicate-warning">
-    A card with this meaning already exists:
-    <div class="duplicate-card-wrapper">
-      <div>
-        <span>Meanings</span>
-        {{ cardDuplicate.meanings | join : " ; " }}
-      </div>
-      <div *ngIf="cardDuplicate.characters">
-        <span>Characters</span> {{ cardDuplicate.characters }}
-      </div>
-      <div *ngIf="cardDuplicate.pinyin">
-        <span>Pinyin</span> {{ cardDuplicate.pinyin }}
+  @if (cardDuplicate && duplicateMessageVisible) {
+    <div class="duplicate-warning">
+      A card with this meaning already exists:
+      <div class="duplicate-card-wrapper">
+        <div>
+          <span>Meanings</span>
+          {{ cardDuplicate.meanings | join: " ; " }}
+        </div>
+        @if (cardDuplicate.characters) {
+          <span>Characters</span> {{ cardDuplicate.characters }}
+        }
+        @if (cardDuplicate.pinyin) {
+          <span>Pinyin</span> {{ cardDuplicate.pinyin }}
+        }
       </div>
     </div>
-  </div>
+  }
 
-  <mat-checkbox [(ngModel)]="keepEditorOpen" *ngIf="creationMode">
-    Add another card after this one
-  </mat-checkbox>
-
-  <p class="reset-warning" *ngIf="!creationMode">
-    Changing the characters or pinyin fields will automatically reset the progress.
-  </p>
+  @if (creationMode) {
+    <mat-checkbox [(ngModel)]="keepEditorOpen">
+      Add another card after this one
+    </mat-checkbox>
+  } @else {
+    <p class="reset-warning">
+      Changing the characters or pinyin fields will automatically reset the progress.
+    </p>
+  }
 </div>
 
 <div mat-dialog-actions>
-  <chf-button type="primary" (click)="saveCard()">
-    <fa-icon [icon]="icons.save" />
-    {{ texts.save }}
+  <chf-button mat-dialog-close>
+    <fa-icon icon="close" />
+    Cancel
   </chf-button>
+
+  <chf-button type="primary" icon="check" [text]="texts.save" (click)="saveCard()" />
 </div>

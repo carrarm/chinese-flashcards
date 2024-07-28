@@ -1,12 +1,9 @@
-@import "theme.scss";
-
 html,
 body {
   height: 100%;
 }
 body {
   margin: 0;
-  // font-family: Raleway, Roboto, "Helvetica Neue", sans-serif;
 }
 
 mat-card-actions {
@@ -30,4 +27,18 @@ chf-session-launcher {
   .known .mat-mdc-progress-spinner {
     --mdc-circular-progress-active-indicator-color: #4d5bff;
   }
+}
+
+// Snackbar colors
+
+.chf-notification-error {
+  --mdc-snackbar-container-color: #8b0000;
+  --mdc-snackbar-supporting-text-color: white;
+  --mat-snack-bar-button-color: white;
+}
+
+.chf-notification-info {
+  --mdc-snackbar-container-color: #1c395e;
+  --mdc-snackbar-supporting-text-color: white;
+  --mat-snack-bar-button-color: white;
 }

@@ -1,31 +1,43 @@
 import { Component, Inject } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { Card } from "@core/model/card.model";
-import { CardService } from "@core/services/card.service";
 import {
-  faClose,
-  faEdit,
-  faRotateLeft,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from "@angular/material/dialog";
+import { MatDividerModule } from "@angular/material/divider";
+import { ButtonComponent } from "@components/button/button.component";
+import { CardComponent } from "@components/card/card.component";
+import { InlineConfirmDialogComponent } from "@components/dialog/inline-confirm-dialog/inline-confirm-dialog.component";
+import { Card } from "@core/model/card.model";
+import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
+import { CardService } from "@core/services/card.service";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { CardDifficultyComponent } from "../../shared/components/card-difficulty/card-difficulty.component";
 import { CardEditorComponent } from "../card-editor/card-editor.component";
+import { CardProgressBarComponent } from "./card-progress-bar/card-progress-bar.component";
 
 @Component({
+  standalone: true,
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CardDifficultyComponent,
+    CardMeaningsPipe,
+    CardProgressBarComponent,
+    FontAwesomeModule,
+    InlineConfirmDialogComponent,
+    MatDialogModule,
+    MatDividerModule,
+  ],
   selector: "chf-card-viewer",
   templateUrl: "./card-viewer.component.html",
   styleUrls: ["./card-viewer.component.scss"],
 })
 export class CardViewerComponent {
-  public icons = {
-    close: faClose,
-    edit: faEdit,
-    delete: faTrash,
-    reset: faRotateLeft,
-  };
   public card: Card;
-  public isDeleteConfirm = false;
-  public isResetConfirm = false;
   public isEditActive = false;
+  public openedConfirmDialog?: "delete" | "reset" | "archive";
 
   private collectionId: number;
 
@@ -37,6 +49,11 @@ export class CardViewerComponent {
   ) {
     this.card = data.card;
     this.collectionId = data.collection;
+  }
+
+  public async deleteCard(): Promise<void> {
+    await this.cardService.deleteCard(this.card);
+    this.dialogRef.close();
   }
 
   public editCard(): void {
@@ -55,16 +72,17 @@ export class CardViewerComponent {
       });
   }
 
-  public async deleteCard(): Promise<void> {
-    await this.cardService.deleteCard(this.card);
-    this.dialogRef.close();
-  }
-
   public async resetProgress(): Promise<void> {
     let updatedCard = this.card.clone();
     updatedCard.reset();
     updatedCard = await this.cardService.updateCard(updatedCard);
     this.card = updatedCard;
-    this.isResetConfirm = false;
+    this.openedConfirmDialog = undefined;
+  }
+
+  public async toggleArchivedCard(): Promise<void> {
+    this.card.archived = !this.card.archived;
+    this.card = await this.cardService.updateCard(this.card);
+    this.openedConfirmDialog = undefined;
   }
 }

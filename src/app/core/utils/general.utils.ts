@@ -80,11 +80,12 @@ export function uniqueValues<T>(arr: T[]): T[] {
  * the source array.
  *
  * @param source Array of items
- * @param toRemove Items to remove
+ * @param toRemove Item(s) to remove
  * @returns Source array without the removed occurrences
  */
-export function removeOnce<T>(source: T[], toRemove: T[]): T[] {
-  toRemove.forEach((value) => {
+export function removeOnce<T>(source: T[], toRemove: T | T[]): T[] {
+  const valuesToRemove = Array.isArray(toRemove) ? toRemove : [toRemove];
+  valuesToRemove.forEach((value) => {
     const sourceIndex = source.findIndex((sourceValue) => sourceValue === value);
     if (sourceIndex !== -1) {
       source.splice(sourceIndex, 1);

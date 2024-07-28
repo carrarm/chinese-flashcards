@@ -1,3 +1,7 @@
+:host {
+  position: relative;
+}
+
 .page-header {
   display: flex;
   gap: 1rem;
@@ -56,6 +60,10 @@ mat-table {
   .meaning-column {
     font-size: 0.9em;
   }
+
+  mat-row.selected {
+    background-color: #656565;
+  }
 }
 
 mat-form-field {
@@ -65,4 +73,18 @@ mat-form-field {
 mat-paginator {
   position: sticky;
   bottom: 0;
+}
+
+.card-selected-message {
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  text-align: center;
+
+  span {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color-darker);
+    font-weight: bold;
+    border-radius: 3px;
+  }
 }

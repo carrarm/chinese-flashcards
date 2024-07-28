@@ -1,19 +1,45 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { ButtonComponent } from "@components/button/button.component";
 import { Card } from "@core/model/card.model";
+import { JoinPipe } from "@core/pipes/join.pipe";
 import { CardService } from "@core/services/card.service";
 import { SettingsService } from "@core/services/settings.service";
+import { Nullable } from "@core/types";
 import { toOptional } from "@core/utils/form.utils";
-import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 interface CardForm {
-  meaning: FormControl<string | null>;
-  pinyin: FormControl<string | null>;
-  chinese: FormControl<string | null>;
+  meaning: FormControl<Nullable<string>>;
+  pinyin: FormControl<Nullable<string>>;
+  chinese: FormControl<Nullable<string>>;
 }
 
 @Component({
+  standalone: true,
+  imports: [
+    ButtonComponent,
+    FontAwesomeModule,
+    FormsModule,
+    JoinPipe,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+  ],
   selector: "chf-card-editor",
   templateUrl: "./card-editor.component.html",
   styleUrls: ["./card-editor.component.scss"],
@@ -23,19 +49,16 @@ export class CardEditorComponent implements OnInit {
   public virtualKeyboardOpen = false;
   public creationMode = true;
   public cardDuplicate?: Card;
+  public duplicateMessageVisible = false;
 
   public form = new FormGroup<CardForm>({
-    meaning: new FormControl<string | null>(null, Validators.required),
-    pinyin: new FormControl<string | null>(null),
-    chinese: new FormControl<string | null>(null),
+    meaning: new FormControl<Nullable<string>>(null, Validators.required),
+    pinyin: new FormControl<Nullable<string>>(null),
+    chinese: new FormControl<Nullable<string>>(null),
   });
-  public icons = {
-    cancel: faClose,
-    save: faCheck,
-  };
   public texts = {
     title: "New card",
-    save: "Create card",
+    save: "Create",
   };
 
   private collectionId: number;
@@ -56,7 +79,7 @@ export class CardEditorComponent implements OnInit {
       });
       this.creationMode = false;
       this.originalCard = data.card;
-      this.texts = { title: "Edit card", save: "Update card" };
+      this.texts = { title: "Edit card", save: "Update" };
     }
     this.collectionId = data.collection;
   }
@@ -112,10 +135,11 @@ export class CardEditorComponent implements OnInit {
 
   private trackDuplicates(): void {
     this.form.valueChanges.subscribe(async (formValues) => {
+      this.duplicateMessageVisible = false;
       this.cardDuplicate = undefined;
       const { meaning } = formValues;
       if (meaning) {
-        this.cardDuplicate = await this.cardService.findCard({
+        this.cardDuplicate = await this.cardService.findCard(this.collectionId, {
           meanings: meaning.split(";").map((m) => m.trim()),
         });
       }

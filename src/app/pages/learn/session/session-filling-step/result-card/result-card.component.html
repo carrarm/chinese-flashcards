@@ -4,7 +4,7 @@
       <fa-icon [class]="result" [icon]="resultIcon" size="lg" />
     </div>
     <!-- Spans will be hidden using CSS if they are empty -->
-    <ng-container *ngIf="diff; else plainText">
+    @if (diff) {
       <span>
         <ng-container
           *ngTemplateOutlet="diffText; context: { $implicit: diff.characters }"
@@ -13,17 +13,15 @@
       <span class="chf-pinyin-font">
         <ng-container *ngTemplateOutlet="diffText; context: { $implicit: diff.pinyin }" />
       </span>
-    </ng-container>
+    } @else {
+      <span>{{ content.characters }}</span>
+      <span class="chf-pinyin-font">{{ content.pinyin }}</span>
+    }
   </div>
 </chf-card>
 
-<ng-template #plainText>
-  <span>{{ content.characters }}</span>
-  <span class="chf-pinyin-font">{{ content.pinyin }}</span>
-</ng-template>
-
 <ng-template #diffText let-diff>
-  <span *ngFor="let char of diff" class="diff-character" [class]="char.type">{{
-    char.char
-  }}</span>
+  @for (char of diff; track $index) {
+    <span class="diff-character" [class]="char.type">{{ char.char }}</span>
+  }
 </ng-template>

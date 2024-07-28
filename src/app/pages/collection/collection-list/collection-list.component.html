@@ -1,5 +1,5 @@
 <chf-button type="primary" (click)="openEditor()">
-  <fa-icon [icon]="icons.add" size="lg" />
+  <fa-icon icon="add" size="lg" />
   New collection
 </chf-button>
 
@@ -8,8 +8,8 @@
   <div card-subtitle *ngIf="collection.description">{{ collection.description }}</div>
   <div card-header-end [routerLink]="[collection.id]">
     <div class="card-count">
-      {{ collection.cards.length | i18nPlural : cardCountPlural }}
+      {{ collection.cards.length | i18nPlural: cardCountPlural }}
     </div>
-    <fa-icon [icon]="icons.goTo" size="lg" />
+    <fa-icon icon="chevron-right" size="lg" />
   </div>
 </chf-card>

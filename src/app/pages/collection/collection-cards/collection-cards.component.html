@@ -1,9 +1,9 @@
 <div class="page-header">
-  <fa-icon [icon]="icons.goBack" routerLink="/collections" />
+  <fa-icon icon="chevron-left" routerLink="/collections" />
   <div class="collection-name">{{ collection?.label }}</div>
   <div class="filler"></div>
   <div class="card-count">
-    {{ dataSource.data.length | i18nPlural : cardCountPlural }}
+    {{ dataSource.data.length | i18nPlural: cardCountPlural }}
   </div>
 </div>
 
@@ -16,11 +16,11 @@
     placeholder="Search a card"
   />
   <div matSuffix class="search-icon-wrapper">
-    <ng-container *ngIf="filter.length">
-      <fa-icon [icon]="icons.clear" (click)="clearSearchBar()" />
+    @if (filter.length) {
+      <fa-icon icon="close" (click)="clearSearchBar()" />
       <mat-divider vertical />
-    </ng-container>
-    <fa-icon [icon]="icons.search" />
+    }
+    <fa-icon icon="magnifying-glass" />
   </div>
 </mat-form-field>
 
@@ -55,8 +55,20 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="columns; sticky: true" />
-    <mat-row *matRowDef="let row; columns: columns" (click)="openCardViewer(row)" />
+    <mat-row
+      [ngClass]="{ selected: selectedCards.includes(row) }"
+      *matRowDef="let row; columns: columns"
+      chfLongPress
+      (longPress)="startMultiselect()"
+      (click)="rowClicked(row)"
+    />
   </mat-table>
 
   <mat-paginator [pageSize]="pageSize" hidePageSize showFirstLastButtons />
 </div>
+
+@if (selectedCards.length) {
+  <div class="card-selected-message">
+    <span>{{ selectedCards.length }} selected</span>
+  </div>
+}

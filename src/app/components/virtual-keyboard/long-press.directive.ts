@@ -10,41 +10,47 @@ import { Subscription, filter, fromEvent, map, merge, of, switchMap, timer } fro
   standalone: true,
 })
 export class LongPressDirective implements OnDestroy {
-  @Output() longPress = new EventEmitter<void>();
+  @Output() longPress = new EventEmitter<Event>();
 
   private events$: Subscription;
   private pressDuration = 500;
 
   constructor(elementRef: ElementRef) {
     const mouseDown$ = fromEvent<MouseEvent>(elementRef.nativeElement, "mousedown").pipe(
-      filter((event) => event.button === 0), // Only allow left button
-      map(() => true)
+      filter(this.isLeftClickEvent),
+      map((event) => ({ isPressing: true, event }))
     );
 
     const mouseUp$ = fromEvent<MouseEvent>(elementRef.nativeElement, "mouseup").pipe(
-      filter((event) => event.button === 0), // Only allow left button
-      map(() => false)
+      filter(this.isLeftClickEvent),
+      map((event) => ({ isPressing: false, event }))
     );
 
-    const touchStart$ = fromEvent(elementRef.nativeElement, "touchstart").pipe(
-      map(() => true)
+    const touchStart$ = fromEvent<Event>(elementRef.nativeElement, "touchstart").pipe(
+      map((event) => ({ isPressing: true, event }))
     );
 
-    const touchEnd$ = fromEvent(elementRef.nativeElement, "touchend").pipe(
-      map(() => false)
+    const touchEnd$ = fromEvent<Event>(elementRef.nativeElement, "touchend").pipe(
+      map((event) => ({ isPressing: false, event }))
     );
 
     this.events$ = merge(mouseDown$, mouseUp$, touchStart$, touchEnd$)
       .pipe(
-        switchMap((isPressing) => (isPressing ? timer(this.pressDuration) : of(null))),
+        switchMap((event) =>
+          event.isPressing ? timer(this.pressDuration).pipe(map(() => event)) : of(null)
+        ),
         filter((value) => value !== null)
       )
-      .subscribe(() => this.longPress.emit());
+      .subscribe((event) => this.longPress.emit(event!.event));
   }
 
   ngOnDestroy(): void {
     if (this.events$) {
       this.events$.unsubscribe();
     }
+  }
+
+  private isLeftClickEvent(event: MouseEvent): boolean {
+    return event.button === 0;
   }
 }

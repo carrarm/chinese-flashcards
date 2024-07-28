@@ -1,22 +1,23 @@
-<chf-session-matching-step
-  *ngIf="isMatchingStep"
-  [cards]="sessionCards"
-  (completed)="matchingCompleted()"
-/>
+@if (isMatchingStep) {
+  <chf-session-matching-step [cards]="sessionCards" (completed)="matchingCompleted()" />
+}
 
-<chf-session-filling-step
-  *ngIf="isFillingStep"
-  [cards]="sessionCards"
-  (completed)="sessionCompleted($event)"
-/>
+@if (isFillingStep) {
+  <chf-session-filling-step
+    [cards]="sessionCards"
+    (completed)="sessionCompleted($event)"
+  />
+}
 
-<div *ngIf="isSessionDone">
-  <div *ngFor="let card of sessionResults" class="card-result-row">
-    <div>
-      {{ card.characters ?? card.pinyin }}
+@if (isSessionDone) {
+  @for (card of sessionResults; track $index) {
+    <div class="card-result-row">
+      <div>
+        {{ card.characters ?? card.pinyin }}
+      </div>
+      <div class="progress" [ngClass]="card.sessionProgress">
+        <fa-icon [icon]="card.sessionResultIcon" size="lg" />
+      </div>
     </div>
-    <div class="progress" [ngClass]="card.sessionProgress">
-      <fa-icon [icon]="card.sessionResultIcon" size="lg" />
-    </div>
-  </div>
-</div>
+  }
+}

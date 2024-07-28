@@ -1,0 +1,25 @@
+<div mat-dialog-title>
+  <div>Move cards to another category</div>
+</div>
+
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Select a collection</mat-label>
+    <mat-select [(value)]="targetCollection">
+      @for (collection of collections; track collection.id) {
+        <mat-option [value]="collection">{{ collection.label }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <chf-button mat-dialog-close>
+    <fa-icon icon="close" />
+    Cancel
+  </chf-button>
+  <chf-button type="primary" (click)="moveCards()">
+    <fa-icon icon="share-from-square" />
+    {{ data.cards.length | i18nPlural: cardPlural }}
+  </chf-button>
+</div>
