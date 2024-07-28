@@ -14,8 +14,12 @@
 </div>
 
 <div mat-dialog-actions>
-  <chf-button mat-dialog-close>Cancel</chf-button>
+  <chf-button mat-dialog-close>
+    <fa-icon icon="close" />
+    Cancel
+  </chf-button>
   <chf-button type="primary" (click)="moveCards()">
+    <fa-icon icon="share-from-square" />
     {{ data.cards.length | i18nPlural: cardPlural }}
   </chf-button>
 </div>

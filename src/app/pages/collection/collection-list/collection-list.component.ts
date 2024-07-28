@@ -3,7 +3,6 @@ import { MatDialog } from "@angular/material/dialog";
 import { CardCollection } from "@core/model/card-collection.model";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
-import { faAdd, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
 
@@ -13,10 +12,6 @@ import { CollectionEditorComponent } from "../collection-editor/collection-edito
   styleUrls: ["./collection-list.component.scss"],
 })
 export class CollectionListComponent implements OnInit {
-  public icons = {
-    add: faAdd,
-    goTo: faChevronRight,
-  };
   public collections: CardCollection[] = [];
   public cardCountPlural = {
     "=0": "No card",

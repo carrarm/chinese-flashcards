@@ -1,5 +1,5 @@
 <div class="page-header">
-  <fa-icon [icon]="icons.goBack" routerLink="/collections" />
+  <fa-icon icon="chevron-left" routerLink="/collections" />
   <div class="collection-name">{{ collection?.label }}</div>
   <div class="filler"></div>
   <div class="card-count">
@@ -16,11 +16,11 @@
     placeholder="Search a card"
   />
   <div matSuffix class="search-icon-wrapper">
-    <ng-container *ngIf="filter.length">
-      <fa-icon [icon]="icons.clear" (click)="clearSearchBar()" />
+    @if (filter.length) {
+      <fa-icon icon="close" (click)="clearSearchBar()" />
       <mat-divider vertical />
-    </ng-container>
-    <fa-icon [icon]="icons.search" />
+    }
+    <fa-icon icon="magnifying-glass" />
   </div>
 </mat-form-field>
 

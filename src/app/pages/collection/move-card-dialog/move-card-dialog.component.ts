@@ -7,6 +7,7 @@ import { CardCollection } from "@core/model/card-collection.model";
 import { CardService } from "@core/services/card.service";
 import { CollectionService } from "@core/services/collection.service";
 import { ToasterService } from "@core/services/toaster.service";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ButtonComponent } from "src/app/components/button/button.component";
 import { DialogData } from "./move-card-dialog.types";
 
@@ -16,6 +17,7 @@ import { DialogData } from "./move-card-dialog.types";
   imports: [
     ButtonComponent,
     CommonModule,
+    FontAwesomeModule,
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,

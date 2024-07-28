@@ -6,7 +6,6 @@ import { CardService } from "@core/services/card.service";
 import { SettingsService } from "@core/services/settings.service";
 import { Nullable } from "@core/types";
 import { toOptional } from "@core/utils/form.utils";
-import { faCheck, faClose } from "@fortawesome/free-solid-svg-icons";
 
 interface CardForm {
   meaning: FormControl<Nullable<string>>;
@@ -30,13 +29,9 @@ export class CardEditorComponent implements OnInit {
     pinyin: new FormControl<Nullable<string>>(null),
     chinese: new FormControl<Nullable<string>>(null),
   });
-  public icons = {
-    cancel: faClose,
-    save: faCheck,
-  };
   public texts = {
     title: "New card",
-    save: "Create card",
+    save: "Create",
   };
 
   private collectionId: number;
@@ -57,7 +52,7 @@ export class CardEditorComponent implements OnInit {
       });
       this.creationMode = false;
       this.originalCard = data.card;
-      this.texts = { title: "Edit card", save: "Update card" };
+      this.texts = { title: "Edit card", save: "Update" };
     }
     this.collectionId = data.collection;
   }
