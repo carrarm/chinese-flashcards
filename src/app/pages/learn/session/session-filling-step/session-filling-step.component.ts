@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Card, CardDifficultyLevel } from "@core/model/card.model";
 import { NavigationService } from "@core/services/navigation.service";
-import { SettingsService } from "@core/services/settings.service";
 import {
   removeOnce,
   removeTimes,
@@ -24,14 +23,10 @@ export class SessionFillingStepComponent implements OnInit {
   public currentCard?: SessionCard;
   public characterInput?: string;
   public pinyinInput?: string;
-  public learnPinyin = true;
   public cardRevealed = false;
   public isMistake = false;
 
-  constructor(settingsService: SettingsService, navigationService: NavigationService) {
-    settingsService
-      .getSettings()
-      .then((settings) => (this.learnPinyin = settings.learnPinyin));
+  constructor(navigationService: NavigationService) {
     navigationService.navbarType.next("description");
     navigationService.navbarText.next(
       "Translate the card by filling in both the characters and the pinyin transcription"

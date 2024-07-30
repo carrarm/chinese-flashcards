@@ -11,7 +11,6 @@ import { environment } from "src/environments/environment";
 interface SettingsForm {
   darkTheme: FormControl<boolean | null>;
   enableReviewMatching: FormControl<boolean | null>;
-  learnPinyin: FormControl<boolean | null>;
   pageSize: FormControl<number | null>;
   wordsPerSession: FormControl<number | null>;
   leitnerBoxes: FormControl<number | null>;
@@ -29,7 +28,6 @@ export class SettingsComponent implements OnInit {
   public form = new FormGroup<SettingsForm>({
     darkTheme: new FormControl<boolean | null>(false),
     enableReviewMatching: new FormControl<boolean | null>(false),
-    learnPinyin: new FormControl<boolean | null>(true),
     pageSize: new FormControl<number | null>(10),
     wordsPerSession: new FormControl<number | null>(10),
     leitnerBoxes: new FormControl<number | null>(5),
@@ -56,7 +54,6 @@ export class SettingsComponent implements OnInit {
       this.form.patchValue({
         darkTheme: this.settings.theme === "dark",
         enableReviewMatching: this.settings.enableReviewMatching,
-        learnPinyin: this.settings.learnPinyin,
         leitnerBoxes: this.settings.leitnerBoxes,
         pageSize: this.settings.pageSize,
         wordsPerSession: this.settings.wordsPerSession,
@@ -68,7 +65,6 @@ export class SettingsComponent implements OnInit {
       if (this.settings) {
         this.settings.theme = this.form.value.darkTheme ? "dark" : "light";
         this.settings.enableReviewMatching = !!this.form.value.enableReviewMatching;
-        this.settings.learnPinyin = this.form.value.learnPinyin ?? true;
         this.settings.wordsPerSession = this.form.value.wordsPerSession ?? 10;
         this.settings.pageSize = this.form.value.pageSize ?? 10;
         this.settings.leitnerBoxes = this.form.value.leitnerBoxes ?? 5;

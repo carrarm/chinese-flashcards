@@ -4,14 +4,20 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute } from "@angular/router";
+import {
+  ConfirmDialogComponent,
+  ConfirmDialogConfig,
+} from "@components/dialog/confirm-dialog/confirm-dialog.component";
 import { CardCollection } from "@core/model/card-collection.model";
 import { Card } from "@core/model/card.model";
+import { CardService } from "@core/services/card.service";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { normalizeForComparison, removeOnce } from "@core/utils/general.utils";
 import {
   faAdd,
+  faBox,
   faClose,
   faEdit,
   faShareFromSquare,
@@ -69,6 +75,11 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
       action: () => this.stopMultiselect(),
     },
     {
+      label: "Archive",
+      icon: faBox,
+      action: () => this.openArchiveAllConfirm(),
+    },
+    {
       label: "Move",
       icon: faShareFromSquare,
       action: () => this.openMoveCardDialog(),
@@ -81,12 +92,13 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   ];
 
   constructor(
-    private route: ActivatedRoute,
+    private cardService: CardService,
     private collectionService: CollectionService,
-    private tabBarService: TabBarService,
     private dialog: MatDialog,
     private navigationService: NavigationService,
-    private settingsService: SettingsService
+    private route: ActivatedRoute,
+    private settingsService: SettingsService,
+    private tabBarService: TabBarService
   ) {}
 
   ngOnInit(): void {
@@ -189,13 +201,35 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     this.dataSource.sortingDataAccessor = (data: Card, sortHeaderId: string): string => {
       const columnData = data[sortHeaderId as keyof Card];
       if (Array.isArray(columnData)) {
-        return columnData[0].toLocaleLowerCase();
+        return normalizeForComparison(columnData[0].toLocaleLowerCase());
       }
       if (typeof columnData === "string") {
-        return columnData.toLocaleLowerCase();
+        return normalizeForComparison(columnData.toLocaleLowerCase());
       }
       throw "Unhandled data type: only meanings and pinyin column should be sorted";
     };
+  }
+
+  private openArchiveAllConfirm(): void {
+    const data: ConfirmDialogConfig = {
+      confirmText: "Archive selection",
+      cancelText: "Forget it",
+      title: "Archive selected cards",
+      message:
+        "The selected cards will be archived and won't appear during review sessions.",
+      confirmType: "primary",
+    };
+    this.dialog
+      .open(ConfirmDialogComponent, { data })
+      .afterClosed()
+      .subscribe((confirmed) => {
+        if (confirmed) {
+          this.selectedCards.forEach((card) => (card.archived = true));
+          this.cardService
+            .updateCards(this.selectedCards)
+            .then(() => this.loadCollectionCards());
+        }
+      });
   }
 
   private openCardViewer(card: Card): void {

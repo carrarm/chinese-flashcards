@@ -4,7 +4,6 @@ export type CardReviewType = "oldest" | "newest";
 export interface SettingsModel {
   id?: number;
   enableReviewMatching: boolean;
-  learnPinyin: boolean;
   pageSize: number;
   wordsPerSession: number;
   theme: AppTheme;
@@ -16,7 +15,6 @@ export interface SettingsModel {
 export class Settings implements SettingsModel {
   public id?: number;
   public enableReviewMatching = false;
-  public learnPinyin = true;
   public pageSize = 10;
   public wordsPerSession = 10;
   public theme: AppTheme = "dark";
@@ -28,7 +26,6 @@ export class Settings implements SettingsModel {
     if (settings) {
       this.id = settings.id;
       this.enableReviewMatching = settings.enableReviewMatching;
-      this.learnPinyin = settings.learnPinyin;
       this.pageSize = settings.pageSize;
       this.wordsPerSession = settings.wordsPerSession;
       this.theme = settings.theme;
