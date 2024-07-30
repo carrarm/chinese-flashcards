@@ -189,10 +189,10 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     this.dataSource.sortingDataAccessor = (data: Card, sortHeaderId: string): string => {
       const columnData = data[sortHeaderId as keyof Card];
       if (Array.isArray(columnData)) {
-        return columnData[0].toLocaleLowerCase();
+        return normalizeForComparison(columnData[0].toLocaleLowerCase());
       }
       if (typeof columnData === "string") {
-        return columnData.toLocaleLowerCase();
+        return normalizeForComparison(columnData.toLocaleLowerCase());
       }
       throw "Unhandled data type: only meanings and pinyin column should be sorted";
     };
