@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/materia
 import { ButtonType } from "../../button/button.types";
 import { InlineConfirmDialogComponent } from "../inline-confirm-dialog/inline-confirm-dialog.component";
 
-interface ConfirmDialogConfig {
+export interface ConfirmDialogConfig {
   confirmText?: string;
   cancelText?: string;
   confirmType: ButtonType;
