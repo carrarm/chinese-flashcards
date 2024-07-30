@@ -38,7 +38,7 @@
           </mat-form-field>
         }
 
-        @if (learnPinyin && currentCard.card.pinyin) {
+        @if (currentCard.card.pinyin) {
           <chf-pinyin-form-field [(ngModel)]="pinyinInput" />
         }
       </div>

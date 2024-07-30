@@ -12,6 +12,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/materia
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ButtonComponent } from "@components/button/button.component";
+import { PinyinFormFieldComponent } from "@components/pinyin-form-field/pinyin-form-field.component";
 import { Card } from "@core/model/card.model";
 import { JoinPipe } from "@core/pipes/join.pipe";
 import { CardService } from "@core/services/card.service";
@@ -38,6 +39,7 @@ interface CardForm {
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    PinyinFormFieldComponent,
     ReactiveFormsModule,
   ],
   selector: "chf-card-editor",
