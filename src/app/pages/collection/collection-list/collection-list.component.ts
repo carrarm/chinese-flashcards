@@ -10,6 +10,7 @@ import { CollectionEditorComponent } from "../collection-editor/collection-edito
   selector: "chf-collection-list",
   templateUrl: "./collection-list.component.html",
   styleUrls: ["./collection-list.component.scss"],
+  standalone: false,
 })
 export class CollectionListComponent implements OnInit {
   public collections: CardCollection[] = [];

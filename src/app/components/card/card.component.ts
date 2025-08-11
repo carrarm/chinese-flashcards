@@ -5,7 +5,6 @@ import { CoercionComponent } from "@core/coercion-component";
 
 @Component({
   selector: "chf-card",
-  standalone: true,
   imports: [CommonModule],
   templateUrl: "./card.component.html",
   styleUrls: ["./card.component.scss"],

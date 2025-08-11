@@ -22,7 +22,6 @@ type PropagateFct = (_?: string) => void;
 
 @Component({
   selector: "chf-pinyin-form-field",
-  standalone: true,
   imports: modules,
   templateUrl: "./pinyin-form-field.component.html",
   styleUrls: ["./pinyin-form-field.component.scss"],

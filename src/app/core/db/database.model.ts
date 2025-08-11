@@ -1,4 +1,4 @@
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import Dexie, { Table } from "dexie";
 import { environment } from "src/environments/environment";
 import { CardCollectionModel } from "../model/card-collection.model";

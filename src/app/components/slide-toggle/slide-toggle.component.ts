@@ -5,7 +5,6 @@ import { ControlValueAccessorComponent } from "@core/control-value-accessor-comp
 
 @Component({
   selector: "chf-slide-toggle",
-  standalone: true,
   imports: [CommonModule],
   templateUrl: "./slide-toggle.component.html",
   styleUrls: ["./slide-toggle.component.scss"],

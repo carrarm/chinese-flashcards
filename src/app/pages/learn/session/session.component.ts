@@ -17,6 +17,7 @@ import { SessionCard } from "./session-card.model";
   selector: "chf-session",
   templateUrl: "./session.component.html",
   styleUrls: ["./session.component.scss"],
+  standalone: false,
 })
 export class SessionComponent implements PendingChangesComponent {
   public sessionCards: Card[] = [];

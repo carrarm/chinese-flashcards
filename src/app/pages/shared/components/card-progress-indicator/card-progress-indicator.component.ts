@@ -3,7 +3,6 @@ import { NgCircleProgressModule } from "ng-circle-progress";
 
 @Component({
   selector: "chf-card-progress-indicator",
-  standalone: true,
   imports: [NgCircleProgressModule],
   templateUrl: "./card-progress-indicator.component.html",
   styleUrls: ["./card-progress-indicator.component.scss"],

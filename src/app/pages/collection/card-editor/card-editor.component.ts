@@ -28,7 +28,6 @@ interface CardForm {
 }
 
 @Component({
-  standalone: true,
   imports: [
     ButtonComponent,
     FontAwesomeModule,

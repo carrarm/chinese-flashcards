@@ -13,7 +13,6 @@ import { DialogData } from "./move-card-dialog.types";
 
 @Component({
   selector: "chf-move-card-dialog",
-  standalone: true,
   imports: [
     ButtonComponent,
     CommonModule,

@@ -35,6 +35,7 @@ import { DialogData } from "../move-card-dialog/move-card-dialog.types";
   selector: "chf-collection-cards",
   templateUrl: "./collection-cards.component.html",
   styleUrls: ["./collection-cards.component.scss"],
+  standalone: false,
 })
 export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatSort) sort?: MatSort;

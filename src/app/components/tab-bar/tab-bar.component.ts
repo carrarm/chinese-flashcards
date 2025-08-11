@@ -6,7 +6,6 @@ import { ActionTab, RouterTab, TabBarService } from "./tab-bar.service";
 
 @Component({
   selector: "chf-tab-bar",
-  standalone: true,
   imports: [CommonModule, FontAwesomeModule, RouterModule],
   templateUrl: "./tab-bar.component.html",
   styleUrls: ["./tab-bar.component.scss"],

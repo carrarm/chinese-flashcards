@@ -5,7 +5,7 @@ import {
   faArrowTrendDown,
   faArrowTrendUp,
 } from "@fortawesome/free-solid-svg-icons";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
 const EASY_REPS = 2;
 const MEDIUM_REPS = 3;

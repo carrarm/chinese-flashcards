@@ -13,6 +13,7 @@ import { SessionCard } from "../session-card.model";
   selector: "chf-session-filling-step",
   templateUrl: "./session-filling-step.component.html",
   styleUrls: ["./session-filling-step.component.scss"],
+  standalone: false,
 })
 export class SessionFillingStepComponent implements OnInit {
   @Input() cards: Card[] = [];

@@ -1,9 +1,9 @@
-import { APP_INITIALIZER, isDevMode, NgModule } from "@angular/core";
+import { isDevMode, NgModule, inject, provideAppInitializer } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ServiceWorkerModule, SwUpdate } from "@angular/service-worker";
 
-import { HttpClientModule } from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { checkForUpdates } from "@core/pwa-updates";
 import { NgCircleProgressModule } from "ng-circle-progress";
@@ -17,12 +17,12 @@ import { SettingsModule } from "./pages/settings/settings.module";
 
 @NgModule({
   declarations: [AppComponent],
+  bootstrap: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     CollectionPageModule,
-    HttpClientModule,
     LearnPageModule,
     NavbarComponent,
     NgCircleProgressModule.forRoot(),
@@ -36,13 +36,11 @@ import { SettingsModule } from "./pages/settings/settings.module";
     TabBarComponent,
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: checkForUpdates,
-      multi: true,
-      deps: [SwUpdate, MatSnackBar],
-    },
+    provideAppInitializer(() => {
+      const initializerFn = checkForUpdates(inject(SwUpdate), inject(MatSnackBar));
+      return initializerFn();
+    }),
+    provideHttpClient(withInterceptorsFromDi()),
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}
