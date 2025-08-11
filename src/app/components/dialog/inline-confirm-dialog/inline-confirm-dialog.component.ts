@@ -7,7 +7,6 @@ import { ButtonType } from "../../button/button.types";
 
 @Component({
   selector: "chf-inline-confirm-dialog",
-  standalone: true,
   imports: [CommonModule, ButtonComponent, FontAwesomeModule],
   templateUrl: "./inline-confirm-dialog.component.html",
   styleUrls: ["./inline-confirm-dialog.component.scss"],

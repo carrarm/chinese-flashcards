@@ -10,7 +10,6 @@ import {
 
 @Component({
   selector: "chf-card-difficulty",
-  standalone: true,
   imports: [CommonModule, FontAwesomeModule],
   templateUrl: "./card-difficulty.component.html",
   styleUrls: ["./card-difficulty.component.scss"],

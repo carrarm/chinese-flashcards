@@ -21,7 +21,6 @@ const BASE_TONE_OVERLAY_OFFSET_Y = -TONE_KEY_WIDTH_PX * 2.5;
 
 @Component({
   selector: "chf-virtual-keyboard",
-  standalone: true,
   imports: [
     CommonModule,
     FontAwesomeModule,

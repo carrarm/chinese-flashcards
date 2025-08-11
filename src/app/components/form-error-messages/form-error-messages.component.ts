@@ -8,7 +8,6 @@ const DEFAULT = {
 
 @Component({
   selector: "chf-form-error-messages",
-  standalone: true,
   imports: [],
   templateUrl: "./form-error-messages.component.html",
   styleUrl: "./form-error-messages.component.scss",

@@ -9,7 +9,6 @@ const importedModules = [CommonModule, MatButtonModule, MatIconModule];
 
 @Component({
   selector: "chf-navbar",
-  standalone: true,
   imports: importedModules,
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.scss"],

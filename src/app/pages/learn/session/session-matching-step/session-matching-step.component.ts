@@ -12,6 +12,7 @@ interface MatchingCard {
   selector: "chf-session-matching-step",
   templateUrl: "./session-matching-step.component.html",
   styleUrls: ["./session-matching-step.component.scss"],
+  standalone: false,
 })
 export class SessionMatchingStepComponent implements OnInit {
   @Input() cards: Card[] = [];

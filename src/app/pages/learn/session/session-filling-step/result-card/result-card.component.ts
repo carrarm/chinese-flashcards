@@ -5,6 +5,7 @@ import { IconName } from "@fortawesome/free-solid-svg-icons";
   selector: "chf-result-card",
   templateUrl: "./result-card.component.html",
   styleUrls: ["./result-card.component.scss"],
+  standalone: false,
 })
 export class ResultCardComponent implements OnInit {
   @Input({ required: true }) content!: TypedContent;

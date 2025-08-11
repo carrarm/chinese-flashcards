@@ -18,7 +18,6 @@ import { CardEditorComponent } from "../card-editor/card-editor.component";
 import { CardProgressBarComponent } from "./card-progress-bar/card-progress-bar.component";
 
 @Component({
-  standalone: true,
   imports: [
     ButtonComponent,
     CardComponent,

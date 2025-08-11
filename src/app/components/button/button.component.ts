@@ -8,7 +8,6 @@ import { ButtonType } from "./button.types";
 
 @Component({
   selector: "chf-button",
-  standalone: true,
   imports: [CommonModule, FontAwesomeModule],
   templateUrl: "./button.component.html",
   styleUrls: ["./button.component.scss"],

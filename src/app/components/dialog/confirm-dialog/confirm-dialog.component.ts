@@ -13,7 +13,6 @@ export interface ConfirmDialogConfig {
 
 @Component({
   selector: "chf-confirm-dialog",
-  standalone: true,
   imports: [InlineConfirmDialogComponent, MatDialogModule],
   templateUrl: "./confirm-dialog.component.html",
   styleUrls: ["./confirm-dialog.component.scss"],

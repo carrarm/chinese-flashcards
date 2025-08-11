@@ -16,6 +16,7 @@ interface CollectionForm {
   selector: "chf-collection-editor",
   templateUrl: "./collection-editor.component.html",
   styleUrls: ["./collection-editor.component.scss"],
+  standalone: false,
 })
 export class CollectionEditorComponent {
   public form = new FormGroup<CollectionForm>({

@@ -14,6 +14,7 @@ import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
   selector: "chf-session-launcher",
   templateUrl: "./session-launcher.component.html",
   styleUrls: ["./session-launcher.component.scss"],
+  standalone: false,
 })
 export class SessionLauncherComponent implements OnInit {
   public settings?: Settings;
