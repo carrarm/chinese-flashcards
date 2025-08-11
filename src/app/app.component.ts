@@ -1,30 +1,12 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, inject, OnInit, viewChild } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
 import { MatDrawer } from "@angular/material/sidenav";
 import { DomSanitizer } from "@angular/platform-browser";
 import { NavigationEnd, Router } from "@angular/router";
 import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
-import {
-  faAdd,
-  faArrowRight,
-  faBox,
-  faBoxOpen,
-  faCheck,
-  faCheckCircle,
-  faCheckToSlot,
-  faChevronLeft,
-  faChevronRight,
-  faCircleXmark,
-  faClose,
-  faEdit,
-  faMagnifyingGlass,
-  faRotateLeft,
-  faShareFromSquare,
-  faTrash,
-  faTriangleExclamation,
-} from "@fortawesome/free-solid-svg-icons";
 import { filter } from "rxjs";
 import { SettingsService } from "./core/services/settings.service";
+import { registerIcons } from "@core/font-awesome.config";
 
 @Component({
   selector: "chf-root",
@@ -32,64 +14,26 @@ import { SettingsService } from "./core/services/settings.service";
   styleUrls: ["./app.component.scss"],
   standalone: false,
 })
-export class AppComponent {
-  @ViewChild(MatDrawer) drawer?: MatDrawer;
+export class AppComponent implements OnInit{
+  protected readonly drawer = viewChild.required(MatDrawer);
 
-  public isDarkMode = true;
+  private readonly domSanitizer = inject(DomSanitizer);
+  private readonly faLibrary = inject(FaIconLibrary);
+  private readonly iconRegistry = inject(MatIconRegistry);
+  private readonly router = inject(Router,);
+  private readonly settingsService = inject(SettingsService);
 
-  constructor(
-    private domSanitizer: DomSanitizer,
-    private faLibrary: FaIconLibrary,
-    private iconRegistry: MatIconRegistry,
-    router: Router,
-    settingsService: SettingsService
-  ) {
-    router.events
+  protected isDarkMode = true;
+
+  public ngOnInit(): void {
+      this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.drawer?.close();
+        this.drawer().close();
       });
 
-    settingsService.isDarkMode().subscribe((darkMode) => (this.isDarkMode = darkMode));
+    this.settingsService.isDarkMode().subscribe((darkMode) => (this.isDarkMode = darkMode));
 
-    this.registerIcons();
-  }
-
-  private registerIcons(): void {
-    this.addSvgIcon("face-sob", "face-sad-cry-solid");
-    this.addSvgIcon("face-laugh", "face-laugh-beam-solid");
-    this.addSvgIcon("face-smile", "face-smile-solid");
-
-    // Close / Cancel / Forget it
-    this.faLibrary.addIcons(faClose);
-    // Delete
-    this.faLibrary.addIcons(faTrash);
-    // Edit
-    this.faLibrary.addIcons(faEdit);
-    // Reset
-    this.faLibrary.addIcons(faRotateLeft);
-    // Share / Move
-    this.faLibrary.addIcons(faShareFromSquare);
-    // Go back, Go to, Go next
-    this.faLibrary.addIcons(faChevronLeft, faChevronRight, faArrowRight);
-    // Search
-    this.faLibrary.addIcons(faMagnifyingGlass);
-    // New element
-    this.faLibrary.addIcons(faAdd);
-    // Save / Validate
-    this.faLibrary.addIcons(faCheck);
-    // Archive, unarchive
-    this.faLibrary.addIcons(faBox, faBoxOpen);
-    // Card validation, card success / error
-    this.faLibrary.addIcons(faCheckToSlot, faCheckCircle, faCircleXmark);
-    // Duplicate warning
-    this.faLibrary.addIcons(faTriangleExclamation);
-  }
-
-  private addSvgIcon(name: string, icon: string): void {
-    this.iconRegistry.addSvgIcon(
-      name,
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icons/" + icon + ".svg")
-    );
+    registerIcons(this.faLibrary, this.iconRegistry, this.domSanitizer);
   }
 }

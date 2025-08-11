@@ -1,7 +1,7 @@
 <chf-card>
   <div card-content class="centered-card chinese">
     <div class="floating-icon">
-      <fa-icon [class]="result" [icon]="resultIcon" size="lg" />
+      <fa-icon [class]="result()" [icon]="resultIcon" size="lg" />
     </div>
     <!-- Spans will be hidden using CSS if they are empty -->
     @if (diff) {
@@ -14,8 +14,8 @@
         <ng-container *ngTemplateOutlet="diffText; context: { $implicit: diff.pinyin }" />
       </span>
     } @else {
-      <span>{{ content.characters }}</span>
-      <span class="chf-pinyin-font">{{ content.pinyin }}</span>
+      <span>{{ content().characters }}</span>
+      <span class="chf-pinyin-font">{{ content().pinyin }}</span>
     }
   </div>
 </chf-card>

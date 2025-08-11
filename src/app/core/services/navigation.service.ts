@@ -1,6 +1,5 @@
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { BehaviorSubject } from "rxjs";
 
 export type NavbarType = "main" | "description";
 
@@ -9,22 +8,22 @@ export type NavbarType = "main" | "description";
 })
 export class NavigationService {
   public static readonly APP_NAME = "Chinese Flashcards";
-  public readonly navbarType = new BehaviorSubject<NavbarType>("main");
-  public readonly navbarText = new BehaviorSubject<string>("");
-  public readonly navbarVisible = new BehaviorSubject<boolean>(true);
+  public readonly navbarType = signal<NavbarType>("main");
+  public readonly navbarText = signal("");
+  public readonly navbarVisible = signal(true);
 
   constructor(private titleService: Title) {}
 
-  setTitle(title: string): void {
+  public setTitle(title: string): void {
     this.titleService.setTitle(NavigationService.APP_NAME + " | " + title);
   }
 
-  resetNavbarText(): void {
+  public resetNavbarText(): void {
     this.setNavbarText(NavigationService.APP_NAME, "main");
   }
 
-  setNavbarText(text: string, type: NavbarType): void {
-    this.navbarType.next(type);
-    this.navbarText.next(text);
+  public setNavbarText(text: string, type: NavbarType): void {
+    this.navbarType.set(type);
+    this.navbarText.set(text);
   }
 }

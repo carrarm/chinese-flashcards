@@ -3,14 +3,9 @@ import {
   OverlayModule,
 } from "@angular/cdk/overlay";
 import { CommonModule } from "@angular/common";
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, output } from "@angular/core";
 import { MatRippleModule } from "@angular/material/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import {
-  faArrowUpFromBracket,
-  faCheck,
-  faDeleteLeft,
-} from "@fortawesome/free-solid-svg-icons";
 import { QWERTY } from "./keyboard-layout.model";
 import { LongPressDirective } from "./long-press.directive";
 import { getTones, hasTones } from "./tones";
@@ -33,27 +28,22 @@ const BASE_TONE_OVERLAY_OFFSET_Y = -TONE_KEY_WIDTH_PX * 2.5;
 })
 export class VirtualKeyboardComponent {
   /** A character has been typed */
-  @Output() typed = new EventEmitter<string>();
+  public readonly typed = output<string>();
 
   /** Backspace key pressed */
-  @Output() backspace = new EventEmitter<void>();
+  public readonly backspace = output<void>();
 
   /** Keyboard's "Submit" button pressed */
-  @Output() submitText = new EventEmitter<void>();
+  public readonly submitText = output<void>();
 
-  public toneOverlayOffsetY = BASE_TONE_OVERLAY_OFFSET_Y;
-  public toneOverlayOffsetX = BASE_TONE_OVERLAY_OFFSET_X;
+  protected toneOverlayOffsetY = BASE_TONE_OVERLAY_OFFSET_Y;
+  protected toneOverlayOffsetX = BASE_TONE_OVERLAY_OFFSET_X;
 
-  public layout = QWERTY;
-  public uppercaseEnabled = false;
-  public toneOverlayOpen = false;
-  public toneOverlayOrigin?: FlexibleConnectedPositionStrategyOrigin;
-  public toneKeys: string[] = [];
-  public icons = {
-    uppercase: faArrowUpFromBracket,
-    backspace: faDeleteLeft,
-    done: faCheck,
-  };
+  protected layout = QWERTY;
+  protected uppercaseEnabled = false;
+  protected toneOverlayOpen = false;
+  protected toneOverlayOrigin?: FlexibleConnectedPositionStrategyOrigin;
+  protected toneKeys: string[] = [];
 
   /**
    * Select a character to write. This method is used for both the standard keyboard

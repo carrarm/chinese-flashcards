@@ -1,26 +1,12 @@
-import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
-import { MatButtonModule } from "@angular/material/button";
-import { MatIconModule } from "@angular/material/icon";
-import { NavbarType, NavigationService } from "@core/services/navigation.service";
-import { Observable, of } from "rxjs";
-
-const importedModules = [CommonModule, MatButtonModule, MatIconModule];
+import { Component, inject } from "@angular/core";
+import {  NavigationService } from "@core/services/navigation.service";
 
 @Component({
   selector: "chf-navbar",
-  imports: importedModules,
+  imports: [],
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.scss"],
 })
 export class NavbarComponent {
-  public navbarType$: Observable<NavbarType> = of();
-  public navbarText$: Observable<string> = of();
-  public navbarVisible$: Observable<boolean> = of();
-
-  constructor(navigation: NavigationService) {
-    this.navbarType$ = navigation.navbarType.asObservable();
-    this.navbarText$ = navigation.navbarText.asObservable();
-    this.navbarVisible$ = navigation.navbarVisible.asObservable();
-  }
+  protected readonly navigation = inject(NavigationService);
 }

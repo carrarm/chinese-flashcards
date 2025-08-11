@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, input, Input, OnInit } from "@angular/core";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -8,20 +8,20 @@ import { IconName } from "@fortawesome/free-solid-svg-icons";
   standalone: false,
 })
 export class ResultCardComponent implements OnInit {
-  @Input({ required: true }) content!: TypedContent;
-  @Input() expected?: TypedContent;
-  @Input({ required: true }) result!: "failed" | "passed" | "solution";
+  public readonly content = input.required<TypedContent>();
+  public readonly result = input.required<"failed" | "passed" | "solution">();
+  public readonly expected =input<TypedContent>();
 
-  public diff?: { characters: DiffCharacter[]; pinyin: DiffCharacter[] };
-  public resultIcon: IconName = "check-circle";
+  protected diff?: { characters: DiffCharacter[]; pinyin: DiffCharacter[] };
+  protected resultIcon: IconName = "check-circle";
 
-  ngOnInit(): void {
-    if (this.result === "failed") {
+  public ngOnInit(): void {
+    if (this.result() === "failed") {
       this.resultIcon = "xmark-circle";
       if (this.expected) {
         this.diff = {
-          characters: this.computeDiff(this.expected.characters, this.content.characters),
-          pinyin: this.computeDiff(this.expected.pinyin, this.content.pinyin),
+          characters: this.computeDiff(this.expected()?.characters, this.content().characters),
+          pinyin: this.computeDiff(this.expected()?.pinyin, this.content().pinyin),
         };
       }
     }

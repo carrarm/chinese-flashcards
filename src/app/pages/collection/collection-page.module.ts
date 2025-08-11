@@ -35,7 +35,6 @@ import { MoveCardDialogComponent } from "./move-card-dialog/move-card-dialog.com
 @NgModule({
   declarations: [
     CollectionListComponent,
-    CollectionCardsComponent,
     CollectionEditorComponent,
   ],
   imports: [
@@ -46,6 +45,7 @@ import { MoveCardDialogComponent } from "./move-card-dialog/move-card-dialog.com
     CardMeaningsPipe,
     CardProgressBarComponent,
     CardViewerComponent,
+    CollectionCardsComponent,
     CommonModule,
     FontAwesomeModule,
     FormErrorMessagesComponent,
