@@ -8,16 +8,17 @@
     [readonly]="virtualKeyboardOpen"
   />
   <button mat-icon-button matSuffix (click)="virtualKeyboardOpen = !virtualKeyboardOpen">
-    <fa-icon [icon]="keyboardIcon" />
+    <fa-icon icon="keyboard" />
   </button>
-  <mat-hint *ngIf="virtualKeyboardOpen">
-    Close the virtual keyboard to edit this field
-  </mat-hint>
+  @if (virtualKeyboardOpen) {
+    <mat-hint> Close the virtual keyboard to edit this field </mat-hint>
+  }
 </mat-form-field>
 
-<chf-virtual-keyboard
-  *ngIf="virtualKeyboardOpen"
-  (typed)="writePinyinCharacter($event)"
-  (backspace)="removePinyinCharacter()"
-  (submitText)="virtualKeyboardOpen = false"
-/>
+@if (virtualKeyboardOpen) {
+  <chf-virtual-keyboard
+    (typed)="writePinyinCharacter($event)"
+    (backspace)="removePinyinCharacter()"
+    (submitText)="virtualKeyboardOpen = false"
+  />
+}

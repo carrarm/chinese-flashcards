@@ -1,21 +1,23 @@
-import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, effect, inject } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ActionTab, RouterTab, TabBarService } from "./tab-bar.service";
 
 @Component({
   selector: "chf-tab-bar",
-  imports: [CommonModule, FontAwesomeModule, RouterModule],
+  imports: [FontAwesomeModule, RouterModule],
   templateUrl: "./tab-bar.component.html",
   styleUrls: ["./tab-bar.component.scss"],
 })
 export class TabBarComponent {
-  public actions: ActionTab[] = [];
-  public routes: RouterTab[] = [];
+  private readonly tabBarService = inject(TabBarService);
 
-  constructor(tabBarService: TabBarService) {
-    tabBarService.tabs.asObservable().subscribe((tabBar) => {
+  protected actions: ActionTab[] = [];
+  protected routes: RouterTab[] = [];
+
+  constructor() {
+    effect(() => {
+      const tabBar = this.tabBarService.tabs();
       if (tabBar.type === "action") {
         this.actions = tabBar.tabs;
         this.routes = [];

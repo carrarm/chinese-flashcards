@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Database } from "@core/db/database.model";
 import { DatabaseService } from "@core/db/database.service";
 import { Card } from "@core/model/card.model";
@@ -8,19 +8,17 @@ import { areEqual } from "@core/utils/general.utils";
   providedIn: "root",
 })
 export class CardService {
-  private database: Database;
+  private readonly databaseService = inject(DatabaseService);
 
-  constructor(databaseService: DatabaseService) {
-    this.database = databaseService.database;
-  }
+  private readonly database: Database = this.databaseService.database;
 
-  async createCard(card: Card, collection: number): Promise<Card> {
+  public async createCard(card: Card, collection: number): Promise<Card> {
     card.collectionId = collection;
     const newCardId = await this.database.cards.add(card);
     return this.getCard(newCardId);
   }
 
-  async updateCard(card: Card): Promise<Card> {
+  public async updateCard(card: Card): Promise<Card> {
     let error = "ID is undefined";
     if (card.id) {
       try {
@@ -33,18 +31,18 @@ export class CardService {
     throw new Error(`Unable to update the card with id ${card.id}: ${error}`);
   }
 
-  async updateCards(cards: Card[]): Promise<unknown> {
+  public async updateCards(cards: Card[]): Promise<unknown> {
     return this.database.cards.bulkPut(cards);
   }
 
-  async deleteCard(card: Card | number): Promise<void> {
+  public async deleteCard(card: Card | number): Promise<void> {
     const cardId = typeof card === "number" ? card : card.id;
     if (cardId) {
       return this.database.cards.delete(cardId);
     }
   }
 
-  async findCard(
+  public async findCard(
     fromCollection: number,
     search: {
       meanings?: string[];
@@ -66,7 +64,7 @@ export class CardService {
     return cardModel ? new Card(cardModel) : undefined;
   }
 
-  async getCard(id: number): Promise<Card> {
+  public async getCard(id: number): Promise<Card> {
     const card = await this.database.cards.get(id);
     if (!card) {
       throw new Error(`Card with id ${id} does not exist`);

@@ -22,5 +22,5 @@ const importedModules = [
   styleUrls: ["./sidenav.component.scss"],
 })
 export class SidenavComponent {
-  public appVersion = environment.version;
+  protected readonly appVersion = environment.version;
 }

@@ -7,9 +7,9 @@
       <div class="field">
         <mat-form-field subscriptSizing="dynamic">
           <mat-select formControlName="wordsPerSession">
-            <mat-option *ngFor="let words of wordsOptions" [value]="words">
-              {{ words }} words
-            </mat-option>
+            @for (words of wordsOptions; track words) {
+              <mat-option [value]="words"> {{ words }} words </mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </div>
@@ -43,9 +43,9 @@
       <div class="field">
         <mat-form-field subscriptSizing="dynamic">
           <mat-select formControlName="pageSize">
-            <mat-option *ngFor="let size of pageOptions" [value]="size">
-              {{ size }} cards
-            </mat-option>
+            @for (size of pageOptions; track size) {
+              <mat-option [value]="size"> {{ size }} cards </mat-option>
+            }
           </mat-select>
         </mat-form-field>
       </div>

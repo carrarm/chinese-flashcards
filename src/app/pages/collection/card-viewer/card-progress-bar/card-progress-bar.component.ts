@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, computed, inject, input, OnInit, signal } from "@angular/core";
 import { Card } from "@core/model/card.model";
 import { SettingsService } from "@core/services/settings.service";
 
@@ -10,19 +10,18 @@ import { SettingsService } from "@core/services/settings.service";
   styleUrls: ["./card-progress-bar.component.scss"],
 })
 export class CardProgressBarComponent implements OnInit {
-  @Input() card!: Card;
+  public readonly card = input.required<Card>();
 
-  constructor(private settings: SettingsService) {}
+  private readonly settings = inject(SettingsService);
 
-  public steps: number[] = [];
+  protected readonly currentStepPercent = computed(
+    () => ((this.card().leitnerBox + 1) * 100) / this.steps().length
+  );
+  protected readonly steps = signal<number[]>([]);
 
-  get currentStepPercent(): number {
-    return ((this.card.leitnerBox + 1) * 100) / this.steps.length;
-  }
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.settings.getSettings().then((settings) => {
-      this.steps = Array.from({ length: settings.leitnerBoxes }, (_, key) => key);
+      this.steps.set(Array.from({ length: settings.leitnerBoxes }, (_, key) => key));
     });
   }
 }

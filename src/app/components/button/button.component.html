@@ -1,17 +1,17 @@
 <button
-  [class]="type"
+  [class]="type()"
   [ngClass]="{
-    cta: coerced['callToAction'],
-    disabled: coerced['disabled'],
-    icon: isIconButton
+    cta: callToAction(),
+    disabled: disabled(),
+    icon: isIconButton(),
   }"
-  [disabled]="coerced['disabled']"
+  [disabled]="disabled()"
 >
-  @if (icon) {
-    <fa-icon [icon]="icon" />
+  @if (icon()) {
+    <fa-icon [icon]="icon()" />
   }
-  @if (text) {
-    {{ text }}
+  @if (text()) {
+    {{ text() }}
   }
   <ng-content />
 </button>

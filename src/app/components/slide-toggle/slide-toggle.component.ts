@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, EventEmitter, Input, Output, forwardRef } from "@angular/core";
+import { Component, effect, forwardRef, model } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import { ControlValueAccessorComponent } from "@core/control-value-accessor-component";
 
@@ -17,17 +17,20 @@ import { ControlValueAccessorComponent } from "@core/control-value-accessor-comp
   ],
 })
 export class SlideToggleComponent extends ControlValueAccessorComponent<boolean> {
-  @Input()
-  set active(isActive: boolean) {
-    this.updateValue(isActive);
-  }
+  public readonly active = model<boolean>();
 
-  @Output() activeChange = new EventEmitter<boolean>();
+  constructor() {
+    super();
+
+    effect(() => {
+      this.updateValue(!!this.active());
+    });
+  }
 
   public override updateValue(newValue: boolean): void {
     if (newValue !== this.value) {
       super.updateValue(newValue);
-      this.activeChange.emit(newValue);
+      this.active.set(newValue);
     }
   }
 }

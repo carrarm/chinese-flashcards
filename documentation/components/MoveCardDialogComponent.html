@@ -81,7 +81,7 @@
                                     <a href="components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="components/CardProgressIndicatorComponent.html"  class="active" >CardProgressIndicatorComponent</a>
+                                    <a href="components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="components/CardViewerComponent.html" >CardViewerComponent</a>
@@ -105,7 +105,7 @@
                                     <a href="components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="components/MoveCardDialogComponent.html" >MoveCardDialogComponent</a>
+                                    <a href="components/MoveCardDialogComponent.html"  class="active" >MoveCardDialogComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="components/NavbarComponent.html" >NavbarComponent</a>
@@ -396,7 +396,7 @@
                                            <a href="components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="components/CardProgressIndicatorComponent.html"  class="active" >CardProgressIndicatorComponent</a>
+                                           <a href="components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="components/CardViewerComponent.html" >CardViewerComponent</a>
@@ -420,7 +420,7 @@
                                            <a href="components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="components/MoveCardDialogComponent.html" >MoveCardDialogComponent</a>
+                                           <a href="components/MoveCardDialogComponent.html"  class="active" >MoveCardDialogComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="components/NavbarComponent.html" >NavbarComponent</a>
@@ -650,7 +650,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>CardProgressIndicatorComponent</li>
+  <li>MoveCardDialogComponent</li>
 </ol>
 
 
@@ -668,7 +668,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/pages/shared/components/card-progress-indicator/card-progress-indicator.component.ts</code>
+    <code>src/app/pages/collection/move-card-dialog/move-card-dialog.component.ts</code>
 </p>
 
 
@@ -691,19 +691,15 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>chf-card-progress-indicator</code></td>
+                <td class="col-md-9"><code>chf-move-card-dialog</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>card-progress-indicator.component.scss</code></td>
-            </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>card-progress-indicator.component.html</code></td>
+                <td class="col-md-9"><code>move-card-dialog.component.html</code></td>
             </tr>
 
 
@@ -714,6 +710,36 @@
 
 
 
+    <section>
+        <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Protected</span> moveCards</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            <code>moveCards()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
 
     <section>
         <h3 id="inputs">Properties</h3>
@@ -721,12 +747,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> cardCount</b>
+                            <b><span class="modifier">Protected</span> cardPlural</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>cardCount:     <code>InputSignal&lt;string&gt;</code>
+                            <span class="modifier-icon fa fa-lock"></span><code>cardPlural:     <code>{ &quot;&#x3D;1&quot;: string; other: string; }</code>
     </bcode>
                         </td>
                     </tr>
@@ -736,12 +762,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> label</b>
+                            <b><span class="modifier">Private</span> cardService</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>label:     <code>InputSignal&lt;string&gt;</code>
+                            <span class="modifier-icon fa fa-lock"></span><code>cardService:     <code>{}</code>
     </bcode>
                         </td>
                     </tr>
@@ -751,12 +777,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> percent</b>
+                            <b><span class="modifier">Protected</span> collections</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>percent:     <code>InputSignal&lt;number&gt;</code>
+                            <span class="modifier-icon fa fa-lock"></span><code>collections:     <code>any[]</code>
     </bcode>
                         </td>
                     </tr>
@@ -766,12 +792,72 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Protected</span> subtitle</b>
+                            <b><span class="modifier">Private</span> collectionService</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>subtitle:     <code>any</code>
+                            <span class="modifier-icon fa fa-lock"></span><code>collectionService:     <code>{}</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Protected</span> data</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>data:     <code>DialogData</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> dialogRef</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>dialogRef:     <code>{}</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Protected</span> targetCollection</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>targetCollection:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> toaster</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>toaster:     <code>{}</code>
     </bcode>
                         </td>
                     </tr>
@@ -780,23 +866,77 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, computed, input } from &quot;@angular/core&quot;;
-import { NgCircleProgressModule } from &quot;ng-circle-progress&quot;;
+            <pre><code class="hljs javascript">import { CommonModule } from &quot;@angular/common&quot;;
+import { Component, inject, OnInit } from &quot;@angular/core&quot;;
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from &quot;@angular/material/dialog&quot;;
+import { MatFormFieldModule } from &quot;@angular/material/form-field&quot;;
+import { MatSelectModule } from &quot;@angular/material/select&quot;;
+import { CardCollection } from &quot;@core/model/card-collection.model&quot;;
+import { CardService } from &quot;@core/services/card.service&quot;;
+import { CollectionService } from &quot;@core/services/collection.service&quot;;
+import { ToasterService } from &quot;@core/services/toaster.service&quot;;
+import { FontAwesomeModule } from &quot;@fortawesome/angular-fontawesome&quot;;
+import { ButtonComponent } from &quot;src/app/components/button/button.component&quot;;
+import { DialogData } from &quot;./move-card-dialog.types&quot;;
 
 @Component({
-  selector: &quot;chf-card-progress-indicator&quot;,
-  imports: [NgCircleProgressModule],
-  templateUrl: &quot;./card-progress-indicator.component.html&quot;,
-  styleUrls: [&quot;./card-progress-indicator.component.scss&quot;],
+  selector: &quot;chf-move-card-dialog&quot;,
+  imports: [
+    ButtonComponent,
+    CommonModule,
+    FontAwesomeModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+  ],
+  templateUrl: &quot;./move-card-dialog.component.html&quot;,
+  styleUrl: &quot;./move-card-dialog.component.scss&quot;,
 })
-export class CardProgressIndicatorComponent {
-  public readonly label &#x3D; input&lt;string&gt;();
-  public readonly percent &#x3D; input(0);
-  public readonly cardCount &#x3D; input(&quot;0&quot;, { transform: (value: number) &#x3D;&gt; &#x60;${value}&#x60; });
+export class MoveCardDialogComponent implements OnInit {
+  protected readonly cardPlural &#x3D; {
+    &quot;&#x3D;1&quot;: &quot;Move 1 card&quot;,
+    other: &quot;Move # cards&quot;,
+  };
 
-  protected readonly subtitle &#x3D; computed(() &#x3D;&gt;
-    Number(this.cardCount()) &gt; 1 ? &quot;cards&quot; : &quot;card&quot;
-  );
+  protected readonly data: DialogData &#x3D; inject(MAT_DIALOG_DATA);
+
+  private readonly cardService &#x3D; inject(CardService);
+  private readonly collectionService &#x3D; inject(CollectionService);
+  private readonly dialogRef &#x3D; inject(MatDialogRef&lt;MoveCardDialogComponent&gt;);
+  private readonly toaster &#x3D; inject(ToasterService);
+
+  protected collections: CardCollection[] &#x3D; [];
+  protected targetCollection?: CardCollection;
+
+  public ngOnInit(): void {
+    this.collectionService
+      .getCollections(false)
+      .then(
+        (collections) &#x3D;&gt;
+          (this.collections &#x3D; collections.filter(
+            (c) &#x3D;&gt; c.id !&#x3D;&#x3D; this.data.initialCategory
+          ))
+      );
+  }
+
+  protected moveCards(): void {
+    if (!this.targetCollection) {
+      this.toaster.error(&quot;No collection selected&quot;);
+      return;
+    }
+
+    const updatedCards &#x3D; this.data.cards.map((c) &#x3D;&gt; c.clone());
+    updatedCards.forEach((card) &#x3D;&gt; {
+      card.collectionId &#x3D; this.targetCollection!.id;
+    });
+    this.cardService.updateCards(updatedCards);
+
+    this.toaster.info(
+      &#x60;${updatedCards.length} card(s) moved to ${this.targetCollection.label}&#x60;
+    );
+
+    this.dialogRef.close(true);
+  }
 }
 </code></pre>
         </div>

@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, inject, input, OnInit, output } from "@angular/core";
+import { CardComponent } from "@components/card/card.component";
 import { Card } from "@core/model/card.model";
+import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { NavigationService } from "@core/services/navigation.service";
 import { shuffleArray } from "@core/utils/general.utils";
 
@@ -10,42 +12,42 @@ interface MatchingCard {
 
 @Component({
   selector: "chf-session-matching-step",
+  imports: [CardComponent, CardMeaningsPipe],
   templateUrl: "./session-matching-step.component.html",
   styleUrls: ["./session-matching-step.component.scss"],
-  standalone: false,
 })
 export class SessionMatchingStepComponent implements OnInit {
-  @Input() cards: Card[] = [];
-  @Input() repeat = 1;
-  @Output() completed = new EventEmitter<void>();
+  public readonly cards = input<Card[]>([]);
+  public readonly repeat = input(1);
+  public readonly completed = output<void>();
 
-  public matchingPages: Card[][] = [];
-  public leftColumnCards: MatchingCard[] = [];
-  public rightColumnCards: MatchingCard[] = [];
-  public selectedLeftCard?: MatchingCard;
-  public selectedRightCard?: MatchingCard;
+  private readonly navigationService = inject(NavigationService);
 
-  constructor(navigationService: NavigationService) {
-    navigationService.setNavbarText(
+  protected matchingPages: Card[][] = [];
+  protected leftColumnCards: MatchingCard[] = [];
+  protected rightColumnCards: MatchingCard[] = [];
+  protected selectedLeftCard?: MatchingCard;
+  protected selectedRightCard?: MatchingCard;
+
+  public ngOnInit(): void {
+    this.navigationService.setNavbarText(
       "Match cards on the left with their translation on the right",
       "description"
     );
-  }
 
-  ngOnInit(): void {
-    for (let i = 0; i <= this.repeat; i++) {
-      this.matchingPages = this.matchingPages.concat(this.buildStepPages(this.cards));
+    for (let i = 0; i <= this.repeat(); i++) {
+      this.matchingPages = this.matchingPages.concat(this.buildStepPages(this.cards()));
     }
 
     this.learnNewPage();
   }
 
-  selectLeftCard(card: MatchingCard): void {
+  protected selectLeftCard(card: MatchingCard): void {
     this.selectedLeftCard = card;
     this.matchSelectedCards();
   }
 
-  selectRightCard(card: MatchingCard): void {
+  protected selectRightCard(card: MatchingCard): void {
     this.selectedRightCard = card;
     this.matchSelectedCards();
   }

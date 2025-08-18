@@ -47,7 +47,7 @@ export class SessionCard {
     this.numberOfRepetitions = this.getNumberOfRepetitions();
   }
 
-  changeDifficulty(difficulty: CardDifficultyLevel): void {
+  changeDifficulty(difficulty?: CardDifficultyLevel): void {
     if (this.card.difficulty === difficulty) {
       this.card.difficulty = undefined;
     } else {
