@@ -81,7 +81,7 @@
                                     <a href="components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="components/CardProgressIndicatorComponent.html"  class="active" >CardProgressIndicatorComponent</a>
+                                    <a href="components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="components/CardViewerComponent.html" >CardViewerComponent</a>
@@ -99,7 +99,7 @@
                                     <a href="components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="components/FormErrorMessagesComponent.html" >FormErrorMessagesComponent</a>
+                                    <a href="components/FormErrorMessagesComponent.html"  class="active" >FormErrorMessagesComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
@@ -396,7 +396,7 @@
                                            <a href="components/CardProgressBarComponent.html" >CardProgressBarComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="components/CardProgressIndicatorComponent.html"  class="active" >CardProgressIndicatorComponent</a>
+                                           <a href="components/CardProgressIndicatorComponent.html" >CardProgressIndicatorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="components/CardViewerComponent.html" >CardViewerComponent</a>
@@ -414,7 +414,7 @@
                                            <a href="components/ConfirmDialogComponent.html" >ConfirmDialogComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="components/FormErrorMessagesComponent.html" >FormErrorMessagesComponent</a>
+                                           <a href="components/FormErrorMessagesComponent.html"  class="active" >FormErrorMessagesComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="components/InlineConfirmDialogComponent.html" >InlineConfirmDialogComponent</a>
@@ -650,7 +650,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>CardProgressIndicatorComponent</li>
+  <li>FormErrorMessagesComponent</li>
 </ol>
 
 
@@ -668,7 +668,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/pages/shared/components/card-progress-indicator/card-progress-indicator.component.ts</code>
+    <code>src/app/components/form-error-messages/form-error-messages.component.ts</code>
 </p>
 
 
@@ -678,6 +678,10 @@
     <table class="table table-sm table-hover">
         <tbody>
 
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
 
 
 
@@ -691,19 +695,15 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>chf-card-progress-indicator</code></td>
+                <td class="col-md-9"><code>chf-form-error-messages</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>card-progress-indicator.component.scss</code></td>
-            </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>card-progress-indicator.component.html</code></td>
+                <td class="col-md-9"><code>form-error-messages.component.html</code></td>
             </tr>
 
 
@@ -721,12 +721,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> cardCount</b>
+                            <b><span class="modifier">Public</span> customMessages</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>cardCount:     <code>InputSignal&lt;string&gt;</code>
+                            <span class="modifier-icon fa fa-circle"></span><code>customMessages:     <code>InputSignal&lt;Record&lt;string, string&gt;&gt;</code>
     </bcode>
                         </td>
                     </tr>
@@ -736,12 +736,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> label</b>
+                            <b><span class="modifier">Public</span> errorOrder</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>label:     <code>InputSignal&lt;string&gt;</code>
+                            <span class="modifier-icon fa fa-circle"></span><code>errorOrder:     <code>InputSignal&lt;string[]&gt;</code>
     </bcode>
                         </td>
                     </tr>
@@ -751,12 +751,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> percent</b>
+                            <b><span class="modifier">Public</span> errors</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>percent:     <code>InputSignal&lt;number&gt;</code>
+                            <span class="modifier-icon fa fa-circle"></span><code>errors:     <code>InputSignal&lt;any&gt;</code>
     </bcode>
                         </td>
                     </tr>
@@ -766,12 +766,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Protected</span> subtitle</b>
+                            <b><span class="modifier">Protected</span> getMainError</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>subtitle:     <code>any</code>
+                            <span class="modifier-icon fa fa-lock"></span><code>getMainError:     <code>any</code>
     </bcode>
                         </td>
                     </tr>
@@ -780,23 +780,44 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, computed, input } from &quot;@angular/core&quot;;
-import { NgCircleProgressModule } from &quot;ng-circle-progress&quot;;
+            <pre><code class="hljs javascript">import { ChangeDetectionStrategy, Component, computed, input } from &quot;@angular/core&quot;;
+import { ValidationErrors } from &quot;@angular/forms&quot;;
+import { Nullable } from &quot;@core/types&quot;;
+
+const DEFAULT &#x3D; {
+  required: &quot;Field required&quot;,
+};
 
 @Component({
-  selector: &quot;chf-card-progress-indicator&quot;,
-  imports: [NgCircleProgressModule],
-  templateUrl: &quot;./card-progress-indicator.component.html&quot;,
-  styleUrls: [&quot;./card-progress-indicator.component.scss&quot;],
+  selector: &quot;chf-form-error-messages&quot;,
+  imports: [],
+  templateUrl: &quot;./form-error-messages.component.html&quot;,
+  styleUrl: &quot;./form-error-messages.component.scss&quot;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CardProgressIndicatorComponent {
-  public readonly label &#x3D; input&lt;string&gt;();
-  public readonly percent &#x3D; input(0);
-  public readonly cardCount &#x3D; input(&quot;0&quot;, { transform: (value: number) &#x3D;&gt; &#x60;${value}&#x60; });
+export class FormErrorMessagesComponent {
+  public readonly errors &#x3D; input.required&lt;Nullable&lt;ValidationErrors&gt;&gt;();
+  public readonly customMessages &#x3D; input&lt;Record&lt;string, string&gt;&gt;({});
+  public readonly errorOrder &#x3D; input&lt;string[]&gt;([&quot;required&quot;]);
 
-  protected readonly subtitle &#x3D; computed(() &#x3D;&gt;
-    Number(this.cardCount()) &gt; 1 ? &quot;cards&quot; : &quot;card&quot;
-  );
+  protected readonly getMainError &#x3D; computed(() &#x3D;&gt; {
+    // Copy to a variable so that TS will be happy with the errors[error] later
+    const errors &#x3D; this.errors() ? { ...this.errors() } : undefined;
+    let errorMessage &#x3D; &quot;&quot;;
+
+    if (errors) {
+      const mergedErrorMessages: Record&lt;string, string&gt; &#x3D; {
+        ...DEFAULT,
+        ...this.customMessages(),
+      };
+      const mainError &#x3D; this.errorOrder().find((error) &#x3D;&gt; !!errors[error]);
+      if (mainError) {
+        errorMessage &#x3D; mergedErrorMessages[mainError];
+      }
+    }
+
+    return errorMessage;
+  });
 }
 </code></pre>
         </div>
