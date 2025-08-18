@@ -33,10 +33,7 @@ import { CollectionListComponent } from "./collection-list/collection-list.compo
 import { MoveCardDialogComponent } from "./move-card-dialog/move-card-dialog.component";
 
 @NgModule({
-  declarations: [
-    CollectionListComponent,
-    CollectionEditorComponent,
-  ],
+  declarations: [CollectionListComponent, CollectionEditorComponent],
   imports: [
     ButtonComponent,
     CardComponent,

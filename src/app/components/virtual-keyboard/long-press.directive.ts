@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, OnDestroy, Output } from "@angular/core";
+import { Directive, ElementRef, OnDestroy, output } from "@angular/core";
 import { Subscription, filter, fromEvent, map, merge, of, switchMap, timer } from "rxjs";
 
 /**
@@ -10,7 +10,7 @@ import { Subscription, filter, fromEvent, map, merge, of, switchMap, timer } fro
   standalone: true,
 })
 export class LongPressDirective implements OnDestroy {
-  @Output() longPress = new EventEmitter<Event>();
+  public readonly longPress = output<Event>();
 
   private events$: Subscription;
   private pressDuration = 500;
@@ -44,7 +44,7 @@ export class LongPressDirective implements OnDestroy {
       .subscribe((event) => this.longPress.emit(event!.event));
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     if (this.events$) {
       this.events$.unsubscribe();
     }

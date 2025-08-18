@@ -1,24 +1,24 @@
 <div class="difficulty-levels">
   <div
     class="level hard"
-    [class]="{ active: difficulty === 'hard' }"
-    (click)="difficultyChange.emit('hard')"
+    [class]="{ active: difficulty() === 'hard' }"
+    (click)="difficulty.set('hard')"
   >
     <fa-icon icon="face-sad-tear" size="3x" />
     <span>Hard</span>
   </div>
   <div
     class="level medium"
-    [class]="{ active: difficulty === 'medium' }"
-    (click)="difficultyChange.emit('medium')"
+    [class]="{ active: difficulty() === 'medium' }"
+    (click)="difficulty.set('medium')"
   >
     <fa-icon icon="face-smile" size="3x" />
     <span>OK</span>
   </div>
   <div
     class="level easy"
-    [class]="{ active: difficulty === 'easy' }"
-    (click)="difficultyChange.emit('easy')"
+    [class]="{ active: difficulty() === 'easy' }"
+    (click)="difficulty.set('easy')"
   >
     <fa-icon icon="face-laugh" size="3x" />
     <span>Easy</span>

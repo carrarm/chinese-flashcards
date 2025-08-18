@@ -8,9 +8,7 @@
         <mat-form-field subscriptSizing="dynamic">
           <mat-select formControlName="wordsPerSession">
             @for (words of wordsOptions; track words) {
-              <mat-option [value]="words">
-                {{ words }} words
-              </mat-option>
+              <mat-option [value]="words"> {{ words }} words </mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -46,9 +44,7 @@
         <mat-form-field subscriptSizing="dynamic">
           <mat-select formControlName="pageSize">
             @for (size of pageOptions; track size) {
-              <mat-option [value]="size">
-                {{ size }} cards
-              </mat-option>
+              <mat-option [value]="size"> {{ size }} cards </mat-option>
             }
           </mat-select>
         </mat-form-field>

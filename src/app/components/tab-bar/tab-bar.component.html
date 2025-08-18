@@ -9,11 +9,7 @@
   </ng-container>
 } @else {
   @for (tab of routes; track tab) {
-    <div
-      class="tab"
-      [routerLink]="tab.route"
-      routerLinkActive="active"
-      >
+    <div class="tab" [routerLink]="tab.route" routerLinkActive="active">
       <fa-icon [icon]="tab.icon" size="lg" />
       <div>{{ tab.label }}</div>
     </div>

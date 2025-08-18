@@ -1,5 +1,5 @@
 import { Component, inject } from "@angular/core";
-import {  NavigationService } from "@core/services/navigation.service";
+import { NavigationService } from "@core/services/navigation.service";
 
 @Component({
   selector: "chf-navbar",

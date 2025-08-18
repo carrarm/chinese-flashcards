@@ -51,7 +51,7 @@ export class VirtualKeyboardComponent {
    *
    * @param character Character to emit
    */
-  public writeCharacter(character: string, preserverCase = false): void {
+  protected writeCharacter(character: string, preserverCase = false): void {
     this.typed.emit(this.uppercaseEnabled ? character : character.toLowerCase());
     if (!preserverCase) {
       this.uppercaseEnabled = false;
@@ -66,7 +66,7 @@ export class VirtualKeyboardComponent {
    * @param positionInColumn Index of the letter in the row
    * @param elementRef Reference to the HTML container of the letter
    */
-  public openTones(
+  protected openTones(
     letter: string,
     positionInColumn: number,
     elementRef: HTMLElement

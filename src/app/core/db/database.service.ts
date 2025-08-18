@@ -15,7 +15,7 @@ export class DatabaseService {
   /**
    * Stores the database content into a JSON file.
    */
-  async exportAsFile(): Promise<void> {
+  public async exportAsFile(): Promise<void> {
     const collections = await this.database.cardCollections.toArray();
     const cards = await this.database.cards.toArray();
     const settings = await this.database.settings.toCollection().first();
@@ -29,7 +29,7 @@ export class DatabaseService {
     downloadFile("chinese-flashcards-backup.json", JSON.stringify(backup));
   }
 
-  clearDatabase(): Promise<unknown> {
+  public clearDatabase(): Promise<unknown> {
     return this.database.deleteAndRebuild();
   }
 }

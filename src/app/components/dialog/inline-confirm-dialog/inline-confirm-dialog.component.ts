@@ -1,5 +1,4 @@
-
-import { Component, Input, output } from "@angular/core";
+import { Component, input, output } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ButtonComponent } from "../../button/button.component";
 import { ButtonType } from "../../button/button.types";
@@ -11,9 +10,10 @@ import { ButtonType } from "../../button/button.types";
   styleUrls: ["./inline-confirm-dialog.component.scss"],
 })
 export class InlineConfirmDialogComponent {
-  @Input() confirmText?: string;
-  @Input() cancelText?: string;
-  @Input() confirmType: ButtonType = "primary";
+  public readonly confirmText = input("");
+  public readonly cancelText = input("");
+  public readonly confirmType = input<ButtonType>("primary");
+
   public readonly cancelled = output<void>();
   public readonly confirmed = output<void>();
 }

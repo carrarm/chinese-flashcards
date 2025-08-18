@@ -28,7 +28,7 @@ export class Database extends Dexie {
     }
   }
 
-  deleteAndRebuild(): Promise<unknown> {
+  public deleteAndRebuild(): Promise<unknown> {
     this.delete();
     this.version(environment.dbVersion).stores(schema);
     return this.open();

@@ -1,4 +1,3 @@
-
 import { Component, model } from "@angular/core";
 import { CardDifficultyLevel } from "@core/model/card.model";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CardCollection } from "@core/model/card-collection.model";
 import { Settings } from "@core/model/settings.model";
@@ -17,24 +17,22 @@ import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
   standalone: false,
 })
 export class SessionLauncherComponent implements OnInit {
-  public settings?: Settings;
-  public collections: Partial<CardCollection>[] = [];
-  public allCollectionStats?: {
+  private readonly navigationService = inject(NavigationService);
+  private readonly tabBarService = inject(TabBarService);
+  private readonly settingsService = inject(SettingsService);
+  private readonly collectionService = inject(CollectionService);
+  private readonly statisticsService = inject(StatisticsService);
+  private readonly learningSessionService = inject(LearningSessionService);
+  private readonly router = inject(Router);
+
+  protected settings?: Settings;
+  protected collections: Partial<CardCollection>[] = [];
+  protected allCollectionStats?: {
     numbers: CollectionStats;
     percents: CollectionStats;
   };
 
-  constructor(
-    private navigationService: NavigationService,
-    private tabBarService: TabBarService,
-    private settingsService: SettingsService,
-    private collectionService: CollectionService,
-    private statisticsService: StatisticsService,
-    private learningSessionService: LearningSessionService,
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.navigationService.setTitle("Start a session");
     this.navigationService.resetNavbarText();
     this.tabBarService.resetTabBar();
@@ -66,19 +64,19 @@ export class SessionLauncherComponent implements OnInit {
     });
   }
 
-  async learn(collection?: number): Promise<void> {
+  protected async learn(collection?: number): Promise<void> {
     const cardsToLearn =
       await this.learningSessionService.createLearningSession(collection);
 
-    this.learningSessionService.currentSession.next(cardsToLearn);
+    this.learningSessionService.currentSession.set(cardsToLearn);
     this.router.navigateByUrl("/sessions/active");
   }
 
-  async review(collection?: number): Promise<void> {
+  protected async review(collection?: number): Promise<void> {
     const cardsToReview =
       await this.learningSessionService.createReviewSession(collection);
 
-    this.learningSessionService.currentSession.next(cardsToReview);
+    this.learningSessionService.currentSession.set(cardsToReview);
     this.router.navigateByUrl("/sessions/active");
   }
 }

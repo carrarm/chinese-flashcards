@@ -7,33 +7,33 @@
     @if (collection.percentStatistics) {
       <div card-content>
         <ng-container
-      *ngTemplateOutlet="
-        statistics;
-        context: {
-          numbers: collection.statistics,
-          percents: collection.percentStatistics
-        }
-      "
+          *ngTemplateOutlet="
+            statistics;
+            context: {
+              numbers: collection.statistics,
+              percents: collection.percentStatistics,
+            }
+          "
         />
-      <div class="card-actions">
-        <chf-button
-          class="learn-button"
-          [disabled]="!collection.statistics?.toLearn"
-          (click)="learn(collection.id)"
+        <div class="card-actions">
+          <chf-button
+            class="learn-button"
+            [disabled]="!collection.statistics?.toLearn"
+            (click)="learn(collection.id)"
           >
-          Learn
-        </chf-button>
-        <chf-button
-          class="review-button"
-          [disabled]="!collection.statistics?.toReview"
-          (click)="review(collection.id)"
+            Learn
+          </chf-button>
+          <chf-button
+            class="review-button"
+            [disabled]="!collection.statistics?.toReview"
+            (click)="review(collection.id)"
           >
-          Review
-        </chf-button>
+            Review
+          </chf-button>
+        </div>
       </div>
-    </div>
-  }
-</chf-card>
+    }
+  </chf-card>
 }
 
 <ng-template #statistics let-numbers="numbers" let-percents="percents">
@@ -43,21 +43,21 @@
         label="To learn"
         [percent]="percents.toLearn"
         [cardCount]="numbers.toLearn"
-        />
+      />
     </div>
     <div class="to-review">
       <chf-card-progress-indicator
         label="To review"
         [percent]="percents.toReview"
         [cardCount]="numbers.toReview"
-        />
+      />
     </div>
     <div class="known">
       <chf-card-progress-indicator
         label="Known"
         [percent]="percents.known"
         [cardCount]="numbers.known"
-        />
+      />
     </div>
   </div>
 </ng-template>

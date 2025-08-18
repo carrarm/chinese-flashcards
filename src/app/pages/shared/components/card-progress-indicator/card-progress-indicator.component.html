@@ -1,11 +1,11 @@
-<div>{{ label }}</div>
+<div>{{ label() }}</div>
 <circle-progress
-  [percent]="percent"
+  [percent]="percent()"
   [radius]="30"
-  [title]="circleTitle"
+  [title]="cardCount()"
   titleColor="white"
   [showUnits]="false"
-  [subtitle]="subtitle"
+  [subtitle]="subtitle()"
   [outerStrokeWidth]="6"
   [innerStrokeWidth]="1"
   titleFontSize="0.9rem"

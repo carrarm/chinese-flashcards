@@ -7,9 +7,9 @@
 <div class="actions">
   <chf-button (click)="cancelled.emit()">
     <fa-icon icon="close" />
-    {{ cancelText }}</chf-button
-  >
-  <chf-button [type]="confirmType" (click)="confirmed.emit()">
-    {{ confirmText }}
+    {{ cancelText() }}
+  </chf-button>
+  <chf-button [type]="confirmType()" (click)="confirmed.emit()">
+    {{ confirmText() }}
   </chf-button>
 </div>

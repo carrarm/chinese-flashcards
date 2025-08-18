@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 const DEFAULT_DURATION_SECONDS = 2;
 
 @Injectable({ providedIn: "root" })
 export class ToasterService {
-  constructor(private snackbar: MatSnackBar) {}
+  private readonly snackbar = inject(MatSnackBar);
 
   public info(message: string, durationInSeconds = DEFAULT_DURATION_SECONDS): void {
     this.openNotification(message, "chf-notification-info", durationInSeconds);

@@ -6,7 +6,7 @@
           class="keyboard-key"
           (click)="uppercaseEnabled = !uppercaseEnabled"
           [class]="{ active: uppercaseEnabled }"
-          >
+        >
           <fa-icon icon="arrow-up-from-bracket" />
         </div>
       }
@@ -19,7 +19,7 @@
           chfLongPress
           (longPress)="openTones(key, columnIndex, letterKeyRef)"
           (click)="writeCharacter(key)"
-          >
+        >
           @if (uppercaseEnabled) {
             {{ key }}
           }
@@ -54,13 +54,10 @@
     cdkConnectedOverlayPanelClass="tone-overlay-container"
     cdkConnectedOverlayHasBackdrop
     (backdropClick)="toneOverlayOpen = false"
-    >
+  >
     <div class="tone-overlay">
       @for (tone of toneKeys; track tone) {
-        <div
-          class="keyboard-key mat-elevation-z8"
-          (click)="writeCharacter(tone)"
-          >
+        <div class="keyboard-key mat-elevation-z8" (click)="writeCharacter(tone)">
           {{ tone }}
         </div>
       }

@@ -1,5 +1,4 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { inject, Injectable, signal } from "@angular/core";
 import { Card } from "../model/card.model";
 import { CollectionService } from "./collection.service";
 import { SettingsService } from "./settings.service";
@@ -10,26 +9,24 @@ type SessionType = "review" | "learn";
   providedIn: "root",
 })
 export class LearningSessionService {
-  public readonly currentSession = new BehaviorSubject<Card[]>([]);
-  public readonly sessionType = new BehaviorSubject<SessionType>("learn");
+  public readonly currentSession = signal<Card[]>([]);
+  public readonly sessionType = signal<SessionType>("learn");
 
-  constructor(
-    private collectionService: CollectionService,
-    private settingsService: SettingsService
-  ) {}
+  private readonly collectionService = inject(CollectionService);
+  private readonly settingsService = inject(SettingsService);
 
-  async createLearningSession(collection?: number): Promise<Card[]> {
+  public async createLearningSession(collection?: number): Promise<Card[]> {
     const cards = await this.collectionService
       .getUnknownCardRequest(collection)
       .limit(await this.getWordsPerSession())
       .toArray();
 
-    this.sessionType.next("learn");
+    this.sessionType.set("learn");
 
     return cards.map((card) => new Card(card));
   }
 
-  async createReviewSession(collection?: number): Promise<Card[]> {
+  public async createReviewSession(collection?: number): Promise<Card[]> {
     const settings = await this.settingsService.getSettings();
     const cards = await this.collectionService
       .getReviewCardRequest(collection)
@@ -39,18 +36,17 @@ export class LearningSessionService {
       cards.reverse();
     }
 
-    this.sessionType.next("review");
+    this.sessionType.set("review");
 
     return cards.slice(0, settings.wordsPerSession).map((card) => new Card(card));
   }
 
   public isLearningSession(): boolean {
-    return this.sessionType.getValue() === "learn";
+    return this.sessionType() === "learn";
   }
 
-  private getWordsPerSession(): Promise<number> {
-    return this.settingsService
-      .getSettings()
-      .then((settings) => settings.wordsPerSession);
+  private async getWordsPerSession(): Promise<number> {
+    const settings = await this.settingsService.getSettings();
+    return settings.wordsPerSession;
   }
 }

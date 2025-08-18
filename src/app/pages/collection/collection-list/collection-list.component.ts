@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { CardCollection } from "@core/model/card-collection.model";
 import { CollectionService } from "@core/services/collection.service";
@@ -13,28 +13,27 @@ import { CollectionEditorComponent } from "../collection-editor/collection-edito
   standalone: false,
 })
 export class CollectionListComponent implements OnInit {
-  public collections: CardCollection[] = [];
-  public cardCountPlural = {
+  protected readonly cardCountPlural = {
     "=0": "No card",
     "=1": "1 card",
     other: "# cards",
   };
 
-  constructor(
-    private collectionService: CollectionService,
-    private navigationService: NavigationService,
-    private tabBarService: TabBarService,
-    private dialog: MatDialog
-  ) {}
+  private readonly collectionService = inject(CollectionService);
+  private readonly navigationService = inject(NavigationService);
+  private readonly tabBarService = inject(TabBarService);
+  private readonly dialog = inject(MatDialog);
 
-  ngOnInit(): void {
+  public collections: CardCollection[] = [];
+
+  public ngOnInit(): void {
     this.loadCollections();
     this.navigationService.setTitle("Manage collections");
     this.navigationService.resetNavbarText();
     this.tabBarService.resetTabBar();
   }
 
-  openEditor(collection?: CardCollection): void {
+  protected openEditor(collection?: CardCollection): void {
     this.dialog
       .open(CollectionEditorComponent, {
         data: { collection },

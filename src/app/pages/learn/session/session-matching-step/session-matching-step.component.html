@@ -2,12 +2,12 @@
   @for (matchCard of leftColumnCards; track matchCard) {
     <chf-card
       class="left-card"
-    [class]="{
-      selected: matchCard === selectedLeftCard,
-      matched: matchCard.matched
-    }"
+      [class]="{
+        selected: matchCard === selectedLeftCard,
+        matched: matchCard.matched,
+      }"
       (click)="selectLeftCard(matchCard)"
-      >
+    >
       <div card-content [innerHTML]="matchCard.card.meanings | cardMeanings"></div>
     </chf-card>
   }
@@ -16,12 +16,12 @@
   @for (matchCard of rightColumnCards; track matchCard) {
     <chf-card
       class="right-card"
-    [class]="{
-      selected: matchCard === selectedRightCard,
-      matched: matchCard.matched
-    }"
+      [class]="{
+        selected: matchCard === selectedRightCard,
+        matched: matchCard.matched,
+      }"
       (click)="selectRightCard(matchCard)"
-      >
+    >
       <div card-content class="chf-pinyin-font chinese-translation">
         <span>{{ matchCard.card.characters }}</span>
         <span>{{ matchCard.card.pinyin }}</span>

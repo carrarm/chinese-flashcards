@@ -14,25 +14,27 @@ import { registerIcons } from "@core/font-awesome.config";
   styleUrls: ["./app.component.scss"],
   standalone: false,
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   protected readonly drawer = viewChild.required(MatDrawer);
 
   private readonly domSanitizer = inject(DomSanitizer);
   private readonly faLibrary = inject(FaIconLibrary);
   private readonly iconRegistry = inject(MatIconRegistry);
-  private readonly router = inject(Router,);
+  private readonly router = inject(Router);
   private readonly settingsService = inject(SettingsService);
 
   protected isDarkMode = true;
 
   public ngOnInit(): void {
-      this.router.events
+    this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.drawer().close();
       });
 
-    this.settingsService.isDarkMode().subscribe((darkMode) => (this.isDarkMode = darkMode));
+    this.settingsService
+      .isDarkMode()
+      .subscribe((darkMode) => (this.isDarkMode = darkMode));
 
     registerIcons(this.faLibrary, this.iconRegistry, this.domSanitizer);
   }

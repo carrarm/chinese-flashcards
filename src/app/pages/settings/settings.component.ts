@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { DatabaseService } from "@core/db/database.service";
@@ -25,8 +25,12 @@ interface SettingsForm {
   standalone: false,
 })
 export class SettingsComponent implements OnInit {
-  public settings?: Settings;
-  public form = new FormGroup<SettingsForm>({
+  private readonly navigationService = inject(NavigationService);
+  private readonly settingsService = inject(SettingsService);
+  private readonly databaseService = inject(DatabaseService);
+  private readonly snackbar = inject(MatSnackBar);
+
+  protected readonly form = new FormGroup<SettingsForm>({
     darkTheme: new FormControl<boolean | null>(false),
     enableReviewMatching: new FormControl<boolean | null>(false),
     pageSize: new FormControl<number | null>(10),
@@ -35,20 +39,15 @@ export class SettingsComponent implements OnInit {
     cardSelectionType: new FormControl<CardReviewType | null>("newest"),
     resetCardProgress: new FormControl<boolean | null>(true),
   });
-  public pageOptions = [5, 10, 15, 20, 50, 100];
-  public wordsOptions = [5, 10, 15];
-  public appVersion = environment.version;
-  public appLicense = environment.license;
-  public showDeveloperOptions = !environment.production;
+  protected readonly pageOptions = [5, 10, 15, 20, 50, 100];
+  protected readonly wordsOptions = [5, 10, 15];
+  protected readonly appVersion = environment.version;
+  protected readonly appLicense = environment.license;
+  protected readonly showDeveloperOptions = !environment.production;
 
-  constructor(
-    private navigationService: NavigationService,
-    private settingsService: SettingsService,
-    private databaseService: DatabaseService,
-    private snackbar: MatSnackBar
-  ) {}
+  protected settings?: Settings;
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.navigationService.setTitle("Settings");
     this.settingsService.getSettings().then((settings) => {
       this.settings = settings;
@@ -76,13 +75,13 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-  deleteDatabase(): void {
+  protected deleteDatabase(): void {
     this.databaseService
       .clearDatabase()
       .then(() => this.snackbar.open("Database deleted successfully", "Close"));
   }
 
-  exportToJSON(): void {
+  protected exportToJSON(): void {
     this.databaseService.exportAsFile();
   }
 }

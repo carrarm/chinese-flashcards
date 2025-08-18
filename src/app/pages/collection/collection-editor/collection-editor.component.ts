@@ -1,11 +1,10 @@
-import { Component, Inject } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { CardCollection, CardCollectionModel } from "@core/model/card-collection.model";
 import { CollectionService } from "@core/services/collection.service";
 import { toOptional } from "@core/utils/form.utils";
-import { faCheck, faClose, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 interface CollectionForm {
   label: FormControl<string | null>;
@@ -18,38 +17,33 @@ interface CollectionForm {
   styleUrls: ["./collection-editor.component.scss"],
   standalone: false,
 })
-export class CollectionEditorComponent {
-  public form = new FormGroup<CollectionForm>({
+export class CollectionEditorComponent implements OnInit {
+  private readonly data: { collection?: CardCollection } = inject(MAT_DIALOG_DATA);
+  private readonly collectionService = inject(CollectionService);
+  private readonly router = inject(Router);
+  private readonly dialogRef = inject(MatDialogRef<CollectionEditorComponent>);
+
+  protected readonly form = new FormGroup<CollectionForm>({
     label: new FormControl<string | null>(null, Validators.required),
     description: new FormControl<string | null>(null),
   });
 
-  public isDeleteConfirm = false;
-  public collectionId?: number;
-  public icons = {
-    cancel: faClose,
-    save: faCheck,
-    delete: faTrash,
-  };
-  public texts = {
+  protected isDeleteConfirm = false;
+  protected collectionId?: number;
+  protected texts = {
     title: "New collection",
     save: "Create",
   };
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) data: { collection?: CardCollection },
-    private collectionService: CollectionService,
-    private router: Router,
-    public dialogRef: MatDialogRef<CollectionEditorComponent>
-  ) {
-    if (data.collection) {
-      this.collectionId = data.collection.id;
+  public ngOnInit(): void {
+    if (this.data.collection) {
+      this.collectionId = this.data.collection.id;
       this.texts = { title: "Edit collection", save: "Update" };
-      this.form.patchValue(data.collection);
+      this.form.patchValue(this.data.collection);
     }
   }
 
-  async saveCollection(): Promise<void> {
+  protected async saveCollection(): Promise<void> {
     const { label, description } = this.form.value;
     if (label) {
       const collection: CardCollectionModel = {
@@ -68,7 +62,7 @@ export class CollectionEditorComponent {
     }
   }
 
-  async deleteCollection(): Promise<void> {
+  protected async deleteCollection(): Promise<void> {
     if (this.collectionId) {
       await this.collectionService.deleteCollection(this.collectionId);
     }
