@@ -2,20 +2,23 @@ import { Component, inject, OnInit, viewChild } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
 import { MatDrawer } from "@angular/material/sidenav";
 import { DomSanitizer } from "@angular/platform-browser";
-import { NavigationEnd, Router } from "@angular/router";
+import { NavigationEnd, Router, RouterOutlet } from "@angular/router";
 import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
 import { filter } from "rxjs";
-import { SettingsService } from "./core/services/settings.service";
+
 import { registerIcons } from "@core/font-awesome.config";
+import { SettingsService } from "@core/services/settings.service";
+import { NavbarComponent } from "@components/navbar/navbar.component";
+import { TabBarComponent } from "@components/tab-bar/tab-bar.component";
 
 @Component({
   selector: "chf-root",
+  imports: [NavbarComponent, RouterOutlet, TabBarComponent],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
-  standalone: false,
 })
 export class AppComponent implements OnInit {
-  protected readonly drawer = viewChild.required(MatDrawer);
+  protected readonly drawer = viewChild(MatDrawer);
 
   private readonly domSanitizer = inject(DomSanitizer);
   private readonly faLibrary = inject(FaIconLibrary);
@@ -29,7 +32,7 @@ export class AppComponent implements OnInit {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.drawer().close();
+        this.drawer()?.close();
       });
 
     this.settingsService

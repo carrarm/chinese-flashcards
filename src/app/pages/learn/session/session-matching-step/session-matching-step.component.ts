@@ -1,5 +1,7 @@
 import { Component, inject, input, OnInit, output } from "@angular/core";
+import { CardComponent } from "@components/card/card.component";
 import { Card } from "@core/model/card.model";
+import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { NavigationService } from "@core/services/navigation.service";
 import { shuffleArray } from "@core/utils/general.utils";
 
@@ -10,9 +12,9 @@ interface MatchingCard {
 
 @Component({
   selector: "chf-session-matching-step",
+  imports: [CardComponent, CardMeaningsPipe],
   templateUrl: "./session-matching-step.component.html",
   styleUrls: ["./session-matching-step.component.scss"],
-  standalone: false,
 })
 export class SessionMatchingStepComponent implements OnInit {
   public readonly cards = input<Card[]>([]);

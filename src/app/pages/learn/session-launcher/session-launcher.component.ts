@@ -1,5 +1,7 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { ButtonComponent } from "@components/button/button.component";
+import { CardComponent } from "@components/card/card.component";
 import { CardCollection } from "@core/model/card-collection.model";
 import { Settings } from "@core/model/settings.model";
 import { CollectionStats } from "@core/model/statistics.model";
@@ -9,12 +11,19 @@ import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { StatisticsService } from "@core/services/statistics.service";
 import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
+import { CardProgressIndicatorComponent } from "../../shared/components/card-progress-indicator/card-progress-indicator.component";
+import { NgTemplateOutlet } from "@angular/common";
 
 @Component({
   selector: "chf-session-launcher",
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CardProgressIndicatorComponent,
+    NgTemplateOutlet,
+  ],
   templateUrl: "./session-launcher.component.html",
   styleUrls: ["./session-launcher.component.scss"],
-  standalone: false,
 })
 export class SessionLauncherComponent implements OnInit {
   private readonly navigationService = inject(NavigationService);

@@ -8,12 +8,31 @@ import {
   uniqueValues,
 } from "@core/utils/general.utils";
 import { SessionCard } from "../session-card.model";
+import { CardComponent } from "@components/card/card.component";
+import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
+import { ResultCardComponent } from "./result-card/result-card.component";
+import { CardDifficultyComponent } from "src/app/pages/shared/components/card-difficulty/card-difficulty.component";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { FormsModule } from "@angular/forms";
+import { ButtonComponent } from "@components/button/button.component";
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: "chf-session-filling-step",
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CardDifficultyComponent,
+    CardMeaningsPipe,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NgClass,
+    ResultCardComponent,
+  ],
   templateUrl: "./session-filling-step.component.html",
   styleUrls: ["./session-filling-step.component.scss"],
-  standalone: false,
 })
 export class SessionFillingStepComponent implements OnInit {
   public readonly cards = input<Card[]>([]);
@@ -44,7 +63,7 @@ export class SessionFillingStepComponent implements OnInit {
     this.nextCard();
   }
 
-  protected changeDifficulty(difficulty: CardDifficultyLevel): void {
+  protected changeDifficulty(difficulty?: CardDifficultyLevel): void {
     this.currentCard?.changeDifficulty(difficulty);
   }
 

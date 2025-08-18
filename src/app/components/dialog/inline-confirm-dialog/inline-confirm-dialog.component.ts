@@ -10,8 +10,8 @@ import { ButtonType } from "../../button/button.types";
   styleUrls: ["./inline-confirm-dialog.component.scss"],
 })
 export class InlineConfirmDialogComponent {
-  public readonly confirmText = input("");
-  public readonly cancelText = input("");
+  public readonly confirmText = input<string>();
+  public readonly cancelText = input<string>();
   public readonly confirmType = input<ButtonType>("primary");
 
   public readonly cancelled = output<void>();

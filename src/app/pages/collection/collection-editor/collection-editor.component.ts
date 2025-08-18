@@ -1,10 +1,16 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 import { Router } from "@angular/router";
+import { ButtonComponent } from "@components/button/button.component";
+import { InlineConfirmDialogComponent } from "@components/dialog/inline-confirm-dialog/inline-confirm-dialog.component";
+import { FormErrorMessagesComponent } from "@components/form-error-messages/form-error-messages.component";
 import { CardCollection, CardCollectionModel } from "@core/model/card-collection.model";
 import { CollectionService } from "@core/services/collection.service";
 import { toOptional } from "@core/utils/form.utils";
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 
 interface CollectionForm {
   label: FormControl<string | null>;
@@ -13,9 +19,18 @@ interface CollectionForm {
 
 @Component({
   selector: "chf-collection-editor",
+  imports: [
+    ButtonComponent,
+    FaIconComponent,
+    FormErrorMessagesComponent,
+    InlineConfirmDialogComponent,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: "./collection-editor.component.html",
   styleUrls: ["./collection-editor.component.scss"],
-  standalone: false,
 })
 export class CollectionEditorComponent implements OnInit {
   private readonly data: { collection?: CardCollection } = inject(MAT_DIALOG_DATA);

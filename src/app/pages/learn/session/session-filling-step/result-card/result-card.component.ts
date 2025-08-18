@@ -1,11 +1,14 @@
+import { NgTemplateOutlet } from "@angular/common";
 import { Component, input, OnInit } from "@angular/core";
+import { CardComponent } from "@components/card/card.component";
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "chf-result-card",
+  imports: [CardComponent, FaIconComponent, NgTemplateOutlet],
   templateUrl: "./result-card.component.html",
   styleUrls: ["./result-card.component.scss"],
-  standalone: false,
 })
 export class ResultCardComponent implements OnInit {
   public readonly content = input.required<TypedContent>();

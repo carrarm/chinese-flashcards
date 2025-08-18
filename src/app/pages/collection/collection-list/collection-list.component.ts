@@ -5,12 +5,23 @@ import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
+import { ButtonComponent } from "@components/button/button.component";
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { CardComponent } from "@components/card/card.component";
+import { RouterModule } from "@angular/router";
+import { I18nPluralPipe } from "@angular/common";
 
 @Component({
   selector: "chf-collection-list",
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    FaIconComponent,
+    I18nPluralPipe,
+    RouterModule,
+  ],
   templateUrl: "./collection-list.component.html",
   styleUrls: ["./collection-list.component.scss"],
-  standalone: false,
 })
 export class CollectionListComponent implements OnInit {
   protected readonly cardCountPlural = {
