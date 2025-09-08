@@ -3,15 +3,19 @@ import { Component, inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import { MatDialog } from "@angular/material/dialog";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
+
 import { ButtonComponent } from "@components/button/button.component";
 import { SlideToggleComponent } from "@components/slide-toggle/slide-toggle.component";
 import { DatabaseService } from "@core/db/database.service";
 import { CardReviewType, Settings } from "@core/model/settings.model";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
-import { environment } from "src/environments/environment";
+import { environment } from "@environment";
+
+import { ExcelImportDialogComponent } from "./excel-import-dialog/excel-import-dialog.component";
 
 // TODO: clean forms (remove unnecessary typings, use non-nullable fields)
 interface SettingsForm {
@@ -40,6 +44,7 @@ interface SettingsForm {
   styleUrls: ["./settings.component.scss"],
 })
 export class SettingsComponent implements OnInit {
+  private readonly dialog = inject(MatDialog);
   private readonly navigationService = inject(NavigationService);
   private readonly settingsService = inject(SettingsService);
   private readonly databaseService = inject(DatabaseService);
@@ -98,5 +103,9 @@ export class SettingsComponent implements OnInit {
 
   protected exportToJSON(): void {
     this.databaseService.exportAsFile();
+  }
+
+  protected importFromExcel(): void {
+    this.dialog.open(ExcelImportDialogComponent);
   }
 }

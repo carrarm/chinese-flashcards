@@ -1,6 +1,6 @@
 {
   "name": "chinese-flashcards",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "author": "Carrm",
   "license": "MIT",
   "scripts": {
@@ -32,7 +32,10 @@
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "dayjs": "^1.11.13",
     "dexie": "^4.0.11",
+    "file-saver": "^2.0.5",
+    "lodash-es": "^4.17.21",
     "ng-circle-progress": "^1.7.1",
+    "read-excel-file": "^5.8.8",
     "rxjs": "~7.8.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.1"
@@ -46,6 +49,8 @@
     "@angular/build": "^20.1.5",
     "@angular/cli": "~20.1.5",
     "@angular/compiler-cli": "^20.1.6",
+    "@types/file-saver": "^2.0.7",
+    "@types/lodash-es": "^4.17.12",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.39.0",
     "compodoc": "^0.0.41",

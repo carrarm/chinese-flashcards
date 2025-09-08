@@ -42,3 +42,18 @@ chf-session-launcher {
   --mdc-snackbar-supporting-text-color: white;
   --mat-snack-bar-button-color: white;
 }
+
+// Components
+.chf-message-box {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+  background-color: #1e1e1e;
+
+  color: white;
+  font-size: 0.9rem;
+
+  &.chf-warning {
+    background-color: rgba($color: red, $alpha: 0.2);
+  }
+}
