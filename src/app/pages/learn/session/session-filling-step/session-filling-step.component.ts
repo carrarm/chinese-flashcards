@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, inject, input, OnInit, output } from "@angular/core";
 import { Card, CardDifficultyLevel } from "@core/model/card.model";
 import { NavigationService } from "@core/services/navigation.service";
 import {
@@ -8,33 +8,53 @@ import {
   uniqueValues,
 } from "@core/utils/general.utils";
 import { SessionCard } from "../session-card.model";
+import { CardComponent } from "@components/card/card.component";
+import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
+import { ResultCardComponent } from "./result-card/result-card.component";
+import { CardDifficultyComponent } from "src/app/pages/shared/components/card-difficulty/card-difficulty.component";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { FormsModule } from "@angular/forms";
+import { ButtonComponent } from "@components/button/button.component";
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: "chf-session-filling-step",
+  imports: [
+    ButtonComponent,
+    CardComponent,
+    CardDifficultyComponent,
+    CardMeaningsPipe,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    NgClass,
+    ResultCardComponent,
+  ],
   templateUrl: "./session-filling-step.component.html",
   styleUrls: ["./session-filling-step.component.scss"],
 })
 export class SessionFillingStepComponent implements OnInit {
-  @Input() cards: Card[] = [];
-  @Output() completed = new EventEmitter<SessionCard[]>();
+  public readonly cards = input<Card[]>([]);
+  public readonly completed = output<SessionCard[]>();
 
-  public sessionCards = new Map<number, SessionCard>();
-  public session: number[] = [];
-  public currentCard?: SessionCard;
-  public characterInput?: string;
-  public pinyinInput?: string;
-  public cardRevealed = false;
-  public isMistake = false;
+  private readonly navigationService = inject(NavigationService);
 
-  constructor(navigationService: NavigationService) {
-    navigationService.navbarType.next("description");
-    navigationService.navbarText.next(
-      "Translate the card by filling in both the characters and the pinyin transcription"
-    );
-  }
+  protected sessionCards = new Map<number, SessionCard>();
+  protected session: number[] = [];
+  protected currentCard?: SessionCard;
+  protected characterInput?: string;
+  protected pinyinInput?: string;
+  protected cardRevealed = false;
+  protected isMistake = false;
 
   public ngOnInit(): void {
-    this.cards.forEach((card) => {
+    this.navigationService.navbarType.set("description");
+    this.navigationService.navbarText.set(
+      "Translate the card by filling in both the characters and the pinyin transcription"
+    );
+
+    this.cards().forEach((card) => {
       const sessionCard = new SessionCard(card);
       this.sessionCards.set(sessionCard.id, sessionCard);
     });
@@ -43,11 +63,11 @@ export class SessionFillingStepComponent implements OnInit {
     this.nextCard();
   }
 
-  public changeDifficulty(difficulty: CardDifficultyLevel): void {
+  protected changeDifficulty(difficulty?: CardDifficultyLevel): void {
     this.currentCard?.changeDifficulty(difficulty);
   }
 
-  public checkResponse(): void {
+  protected checkResponse(): void {
     let chineseMatch = true;
     let pinyinMatch = true;
     if (this.currentCard) {
@@ -68,13 +88,13 @@ export class SessionFillingStepComponent implements OnInit {
     }
   }
 
-  public reveal(): void {
+  protected reveal(): void {
     this.cardRevealed = true;
     this.isMistake = true;
     this.wrongAnswer();
   }
 
-  public nextCard(): void {
+  protected nextCard(): void {
     this.updateSessionCards();
     const nextCard = this.session.shift();
     this.cardRevealed = false;

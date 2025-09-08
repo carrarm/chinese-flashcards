@@ -1,5 +1,4 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { Routes } from "@angular/router";
 import { PendingChangesGuard } from "@core/guards/pending-changes.guard";
 import { CollectionCardsComponent } from "./pages/collection/collection-cards/collection-cards.component";
 import { CollectionListComponent } from "./pages/collection/collection-list/collection-list.component";
@@ -7,7 +6,7 @@ import { SessionLauncherComponent } from "./pages/learn/session-launcher/session
 import { SessionComponent } from "./pages/learn/session/session.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: "sessions",
     component: SessionLauncherComponent,
@@ -31,9 +30,3 @@ const routes: Routes = [
   },
   { path: "", pathMatch: "full", redirectTo: "/sessions" },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

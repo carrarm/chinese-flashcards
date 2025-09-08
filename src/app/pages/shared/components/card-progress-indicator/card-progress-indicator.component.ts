@@ -1,20 +1,18 @@
-import { Component, Input } from "@angular/core";
+import { Component, computed, input } from "@angular/core";
 import { NgCircleProgressModule } from "ng-circle-progress";
 
 @Component({
   selector: "chf-card-progress-indicator",
-  standalone: true,
   imports: [NgCircleProgressModule],
   templateUrl: "./card-progress-indicator.component.html",
   styleUrls: ["./card-progress-indicator.component.scss"],
 })
 export class CardProgressIndicatorComponent {
-  @Input() label?: string;
-  @Input() percent = 0;
-  @Input() set cardCount(value: number) {
-    this.circleTitle = `${value}`;
-    this.subtitle = value > 1 ? "cards" : "card";
-  }
-  public circleTitle = "0";
-  public subtitle = "card";
+  public readonly label = input<string>();
+  public readonly percent = input(0);
+  public readonly cardCount = input("0", { transform: (value: number) => `${value}` });
+
+  protected readonly subtitle = computed(() =>
+    Number(this.cardCount()) > 1 ? "cards" : "card"
+  );
 }

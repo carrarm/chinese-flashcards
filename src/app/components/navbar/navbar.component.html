@@ -1,6 +1,8 @@
-<div class="navbar" *ngIf="navbarVisible$ | async">
-  <img src="assets/chinese-flashcards-logo.svg" />
-  <div [class]="navbarType$ | async">
-    {{ navbarText$ | async }}
+@if (navigation.navbarVisible()) {
+  <div class="navbar">
+    <img src="assets/chinese-flashcards-logo.svg" />
+    <div [class]="navigation.navbarType()">
+      {{ navigation.navbarText() }}
+    </div>
   </div>
-</div>
+}

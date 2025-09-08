@@ -3,14 +3,9 @@ import {
   OverlayModule,
 } from "@angular/cdk/overlay";
 import { CommonModule } from "@angular/common";
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, output } from "@angular/core";
 import { MatRippleModule } from "@angular/material/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import {
-  faArrowUpFromBracket,
-  faCheck,
-  faDeleteLeft,
-} from "@fortawesome/free-solid-svg-icons";
 import { QWERTY } from "./keyboard-layout.model";
 import { LongPressDirective } from "./long-press.directive";
 import { getTones, hasTones } from "./tones";
@@ -21,7 +16,6 @@ const BASE_TONE_OVERLAY_OFFSET_Y = -TONE_KEY_WIDTH_PX * 2.5;
 
 @Component({
   selector: "chf-virtual-keyboard",
-  standalone: true,
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -34,27 +28,22 @@ const BASE_TONE_OVERLAY_OFFSET_Y = -TONE_KEY_WIDTH_PX * 2.5;
 })
 export class VirtualKeyboardComponent {
   /** A character has been typed */
-  @Output() typed = new EventEmitter<string>();
+  public readonly typed = output<string>();
 
   /** Backspace key pressed */
-  @Output() backspace = new EventEmitter<void>();
+  public readonly backspace = output<void>();
 
   /** Keyboard's "Submit" button pressed */
-  @Output() submitText = new EventEmitter<void>();
+  public readonly submitText = output<void>();
 
-  public toneOverlayOffsetY = BASE_TONE_OVERLAY_OFFSET_Y;
-  public toneOverlayOffsetX = BASE_TONE_OVERLAY_OFFSET_X;
+  protected toneOverlayOffsetY = BASE_TONE_OVERLAY_OFFSET_Y;
+  protected toneOverlayOffsetX = BASE_TONE_OVERLAY_OFFSET_X;
 
-  public layout = QWERTY;
-  public uppercaseEnabled = false;
-  public toneOverlayOpen = false;
-  public toneOverlayOrigin?: FlexibleConnectedPositionStrategyOrigin;
-  public toneKeys: string[] = [];
-  public icons = {
-    uppercase: faArrowUpFromBracket,
-    backspace: faDeleteLeft,
-    done: faCheck,
-  };
+  protected layout = QWERTY;
+  protected uppercaseEnabled = false;
+  protected toneOverlayOpen = false;
+  protected toneOverlayOrigin?: FlexibleConnectedPositionStrategyOrigin;
+  protected toneKeys: string[] = [];
 
   /**
    * Select a character to write. This method is used for both the standard keyboard
@@ -62,7 +51,7 @@ export class VirtualKeyboardComponent {
    *
    * @param character Character to emit
    */
-  public writeCharacter(character: string, preserverCase = false): void {
+  protected writeCharacter(character: string, preserverCase = false): void {
     this.typed.emit(this.uppercaseEnabled ? character : character.toLowerCase());
     if (!preserverCase) {
       this.uppercaseEnabled = false;
@@ -77,7 +66,7 @@ export class VirtualKeyboardComponent {
    * @param positionInColumn Index of the letter in the row
    * @param elementRef Reference to the HTML container of the letter
    */
-  public openTones(
+  protected openTones(
     letter: string,
     positionInColumn: number,
     elementRef: HTMLElement

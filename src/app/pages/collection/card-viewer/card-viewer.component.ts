@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import {
   MAT_DIALOG_DATA,
   MatDialog,
@@ -18,7 +18,6 @@ import { CardEditorComponent } from "../card-editor/card-editor.component";
 import { CardProgressBarComponent } from "./card-progress-bar/card-progress-bar.component";
 
 @Component({
-  standalone: true,
   imports: [
     ButtonComponent,
     CardComponent,
@@ -35,34 +34,27 @@ import { CardProgressBarComponent } from "./card-progress-bar/card-progress-bar.
   styleUrls: ["./card-viewer.component.scss"],
 })
 export class CardViewerComponent {
-  public card: Card;
-  public isEditActive = false;
-  public openedConfirmDialog?: "delete" | "reset" | "archive";
+  protected readonly dialogRef = inject(MatDialogRef<CardViewerComponent>);
+  private readonly data: { card: Card; collection: number } = inject(MAT_DIALOG_DATA);
+  private readonly cardService = inject(CardService);
+  private readonly dialog = inject(MatDialog);
 
-  private collectionId: number;
+  protected card = this.data.card;
+  protected isEditActive = false;
+  protected openedConfirmDialog?: "delete" | "reset" | "archive";
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) data: { card: Card; collection: number },
-    public dialogRef: MatDialogRef<CardViewerComponent>,
-    private cardService: CardService,
-    private dialog: MatDialog
-  ) {
-    this.card = data.card;
-    this.collectionId = data.collection;
-  }
-
-  public async deleteCard(): Promise<void> {
+  protected async deleteCard(): Promise<void> {
     await this.cardService.deleteCard(this.card);
     this.dialogRef.close();
   }
 
-  public editCard(): void {
+  protected editCard(): void {
     this.isEditActive = true;
     this.dialog
       .open(CardEditorComponent, {
         data: {
           card: this.card,
-          collection: this.collectionId,
+          collection: this.data.collection,
         },
       })
       .afterClosed()
@@ -72,7 +64,7 @@ export class CardViewerComponent {
       });
   }
 
-  public async resetProgress(): Promise<void> {
+  protected async resetProgress(): Promise<void> {
     let updatedCard = this.card.clone();
     updatedCard.reset();
     updatedCard = await this.cardService.updateCard(updatedCard);
@@ -80,7 +72,7 @@ export class CardViewerComponent {
     this.openedConfirmDialog = undefined;
   }
 
-  public async toggleArchivedCard(): Promise<void> {
+  protected async toggleArchivedCard(): Promise<void> {
     this.card.archived = !this.card.archived;
     this.card = await this.cardService.updateCard(this.card);
     this.openedConfirmDialog = undefined;

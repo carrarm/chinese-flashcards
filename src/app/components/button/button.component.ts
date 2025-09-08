@@ -1,30 +1,24 @@
-import { BooleanInput } from "@angular/cdk/coercion";
 import { CommonModule } from "@angular/common";
-import { Component, Input, OnChanges } from "@angular/core";
-import { CoercionComponent } from "@core/coercion-component";
+import { booleanAttribute, Component, computed, input } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { IconDefinition, IconName } from "@fortawesome/free-solid-svg-icons";
 import { ButtonType } from "./button.types";
 
 @Component({
   selector: "chf-button",
-  standalone: true,
   imports: [CommonModule, FontAwesomeModule],
   templateUrl: "./button.component.html",
   styleUrls: ["./button.component.scss"],
 })
-export class ButtonComponent extends CoercionComponent implements OnChanges {
-  @Input() type: ButtonType = "default";
-  @Input() callToAction?: BooleanInput;
-  @Input() disabled?: BooleanInput;
-  @Input() iconButton?: BooleanInput;
-  @Input() icon?: IconDefinition | IconName;
-  @Input() text?: string;
+export class ButtonComponent {
+  public readonly type = input<ButtonType>("default");
+  public readonly callToAction = input(false, { transform: booleanAttribute });
+  public readonly disabled = input(false, { transform: booleanAttribute });
+  public readonly iconButton = input(false, { transform: booleanAttribute });
+  public readonly icon = input<IconDefinition | IconName>();
+  public readonly text = input("");
 
-  isIconButton = false;
-
-  ngOnChanges(): void {
-    this.coerceAll(["callToAction", "disabled", "iconButton"]);
-    this.isIconButton = this.coerced["iconButton"] || !!(this.icon && !this.text);
-  }
+  protected isIconButton = computed(
+    () => this.iconButton() || !!(this.icon() && !this.text())
+  );
 }

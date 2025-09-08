@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import {
   FormControl,
   FormGroup,
@@ -28,7 +28,6 @@ interface CardForm {
 }
 
 @Component({
-  standalone: true,
   imports: [
     ButtonComponent,
     FontAwesomeModule,
@@ -47,46 +46,45 @@ interface CardForm {
   styleUrls: ["./card-editor.component.scss"],
 })
 export class CardEditorComponent implements OnInit {
-  public keepEditorOpen = false;
-  public virtualKeyboardOpen = false;
-  public creationMode = true;
-  public cardDuplicate?: Card;
-  public duplicateMessageVisible = false;
+  private readonly data: { card?: Card; collection: number } = inject(MAT_DIALOG_DATA);
+  private readonly dialogRef = inject(MatDialogRef<CardEditorComponent>);
+  private readonly cardService = inject(CardService);
+  private readonly settingsService = inject(SettingsService);
 
-  public form = new FormGroup<CardForm>({
+  protected readonly form = new FormGroup<CardForm>({
     meaning: new FormControl<Nullable<string>>(null, Validators.required),
     pinyin: new FormControl<Nullable<string>>(null),
     chinese: new FormControl<Nullable<string>>(null),
   });
-  public texts = {
+
+  protected texts = {
     title: "New card",
     save: "Create",
   };
 
-  private collectionId: number;
+  protected keepEditorOpen = false;
+  protected virtualKeyboardOpen = false;
+  protected creationMode = true;
+  protected cardDuplicate?: Card;
+  protected duplicateMessageVisible = false;
+
+  private collectionId = 0;
   private originalCard?: Card;
   private resetRequired = false;
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) data: { card?: Card; collection: number },
-    public dialogRef: MatDialogRef<CardEditorComponent>,
-    private cardService: CardService,
-    private settingsService: SettingsService
-  ) {
-    if (data.card) {
+  public ngOnInit(): void {
+    if (this.data.card) {
       this.form.patchValue({
-        meaning: data.card.meanings.join(" ; "),
-        pinyin: data.card.pinyin,
-        chinese: data.card.characters,
+        meaning: this.data.card.meanings.join(" ; "),
+        pinyin: this.data.card.pinyin,
+        chinese: this.data.card.characters,
       });
       this.creationMode = false;
-      this.originalCard = data.card;
+      this.originalCard = this.data.card;
       this.texts = { title: "Edit card", save: "Update" };
     }
-    this.collectionId = data.collection;
-  }
+    this.collectionId = this.data.collection;
 
-  ngOnInit(): void {
     this.settingsService.getSettings().then((settings) => {
       if (this.creationMode) {
         this.trackDuplicates();
@@ -96,7 +94,7 @@ export class CardEditorComponent implements OnInit {
     });
   }
 
-  public async saveCard(): Promise<void> {
+  protected async saveCard(): Promise<void> {
     const { meaning, chinese, pinyin } = this.form.value;
     if (meaning && (chinese || pinyin)) {
       const card: Card = new Card({

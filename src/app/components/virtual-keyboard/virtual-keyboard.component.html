@@ -1,57 +1,66 @@
 <div class="main-keyboard">
-  <div class="keyboard-row" *ngFor="let row of layout; let isLast = last">
-    <div
-      class="keyboard-key"
-      *ngIf="isLast"
-      (click)="uppercaseEnabled = !uppercaseEnabled"
-      [class]="{ active: uppercaseEnabled }"
-    >
-      <fa-icon [icon]="icons.uppercase" />
+  @for (row of layout; track row; let isLast = $last) {
+    <div class="keyboard-row">
+      @if (isLast) {
+        <div
+          class="keyboard-key"
+          (click)="uppercaseEnabled = !uppercaseEnabled"
+          [class]="{ active: uppercaseEnabled }"
+        >
+          <fa-icon icon="arrow-up-from-bracket" />
+        </div>
+      }
+      @for (key of row; track key; let columnIndex = $index) {
+        <div
+          #letterKeyRef
+          class="keyboard-key"
+          matRipple
+          [matRippleCentered]="true"
+          chfLongPress
+          (longPress)="openTones(key, columnIndex, letterKeyRef)"
+          (click)="writeCharacter(key)"
+        >
+          @if (uppercaseEnabled) {
+            {{ key }}
+          }
+          @if (!uppercaseEnabled) {
+            {{ key | lowercase }}
+          }
+        </div>
+      }
+      @if (isLast) {
+        <div class="keyboard-key" (click)="backspace.emit()">
+          <fa-icon icon="delete-left" />
+        </div>
+      }
     </div>
-    <div
-      #letterKeyRef
-      *ngFor="let key of row; let columnIndex = index"
-      class="keyboard-key"
-      matRipple
-      [matRippleCentered]="true"
-      chfLongPress
-      (longPress)="openTones(key, columnIndex, letterKeyRef)"
-      (click)="writeCharacter(key)"
-    >
-      <ng-container *ngIf="uppercaseEnabled">{{ key }}</ng-container>
-      <ng-container *ngIf="!uppercaseEnabled">{{ key | lowercase }}</ng-container>
-    </div>
-    <div class="keyboard-key" *ngIf="isLast" (click)="backspace.emit()">
-      <fa-icon [icon]="icons.backspace" />
-    </div>
-  </div>
+  }
   <div class="keyboard-row">
     <div class="keyboard-key plain">?123</div>
     <div class="keyboard-key plain space" (click)="writeCharacter(' ', true)">Space</div>
     <div class="keyboard-key plain validate" (click)="submitText.emit()">
-      <fa-icon [icon]="icons.done" />
+      <fa-icon icon="check" />
     </div>
   </div>
 </div>
 
-<ng-template
-  *ngIf="toneOverlayOrigin"
-  cdkConnectedOverlay
-  [cdkConnectedOverlayOrigin]="toneOverlayOrigin"
-  [cdkConnectedOverlayOpen]="toneOverlayOpen"
-  [cdkConnectedOverlayOffsetY]="toneOverlayOffsetY"
-  [cdkConnectedOverlayOffsetX]="toneOverlayOffsetX"
-  cdkConnectedOverlayPanelClass="tone-overlay-container"
-  cdkConnectedOverlayHasBackdrop
-  (backdropClick)="toneOverlayOpen = false"
->
-  <div class="tone-overlay">
-    <div
-      class="keyboard-key mat-elevation-z8"
-      *ngFor="let tone of toneKeys"
-      (click)="writeCharacter(tone)"
-    >
-      {{ tone }}
+@if (toneOverlayOrigin) {
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="toneOverlayOrigin"
+    [cdkConnectedOverlayOpen]="toneOverlayOpen"
+    [cdkConnectedOverlayOffsetY]="toneOverlayOffsetY"
+    [cdkConnectedOverlayOffsetX]="toneOverlayOffsetX"
+    cdkConnectedOverlayPanelClass="tone-overlay-container"
+    cdkConnectedOverlayHasBackdrop
+    (backdropClick)="toneOverlayOpen = false"
+  >
+    <div class="tone-overlay">
+      @for (tone of toneKeys; track tone) {
+        <div class="keyboard-key mat-elevation-z8" (click)="writeCharacter(tone)">
+          {{ tone }}
+        </div>
+      }
     </div>
-  </div>
-</ng-template>
+  </ng-template>
+}

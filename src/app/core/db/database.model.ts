@@ -1,4 +1,4 @@
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import Dexie, { Table } from "dexie";
 import { environment } from "src/environments/environment";
 import { CardCollectionModel } from "../model/card-collection.model";
@@ -28,7 +28,7 @@ export class Database extends Dexie {
     }
   }
 
-  deleteAndRebuild(): Promise<unknown> {
+  public deleteAndRebuild(): Promise<unknown> {
     this.delete();
     this.version(environment.dbVersion).stores(schema);
     return this.open();

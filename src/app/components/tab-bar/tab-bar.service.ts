@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import {
   IconDefinition,
   faBook,
   faCirclePlay,
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
-import { BehaviorSubject } from "rxjs";
 
 type Tab = { icon: IconDefinition; label: string };
 export type RouterTab = Tab & { route: string };
@@ -24,20 +23,20 @@ export class TabBarService {
     { icon: faGear, label: "Settings", route: "/settings" },
   ];
 
-  public readonly tabs = new BehaviorSubject<RouterTabBar | ActionTabBar>({
+  public readonly tabs = signal<RouterTabBar | ActionTabBar>({
     type: "router",
     tabs: this.rootTabs,
   });
 
-  resetTabBar(): void {
+  public resetTabBar(): void {
     this.setRoutes(this.rootTabs);
   }
 
-  setRoutes(tabs: RouterTab[]): void {
-    this.tabs.next({ type: "router", tabs });
+  public setRoutes(tabs: RouterTab[]): void {
+    this.tabs.set({ type: "router", tabs });
   }
 
-  setActions(tabs: ActionTab[]): void {
-    this.tabs.next({ type: "action", tabs });
+  public setActions(tabs: ActionTab[]): void {
+    this.tabs.set({ type: "action", tabs });
   }
 }

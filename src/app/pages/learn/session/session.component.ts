@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { PendingChangesComponent } from "@core/guards/pending-changes.guard";
@@ -12,51 +12,40 @@ import { Observable, map, of } from "rxjs";
 import { ConfirmDialogComponent } from "src/app/components/dialog/confirm-dialog/confirm-dialog.component";
 import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { SessionCard } from "./session-card.model";
+import { SessionMatchingStepComponent } from "./session-matching-step/session-matching-step.component";
+import { SessionFillingStepComponent } from "./session-filling-step/session-filling-step.component";
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: "chf-session",
+  imports: [
+    FaIconComponent,
+    NgClass,
+    SessionFillingStepComponent,
+    SessionMatchingStepComponent,
+  ],
   templateUrl: "./session.component.html",
   styleUrls: ["./session.component.scss"],
 })
-export class SessionComponent implements PendingChangesComponent {
-  public sessionCards: Card[] = [];
-  public isMatchingStep = false;
-  public isFillingStep = false;
-  public isSessionDone = false;
-  public sessionResults: SessionCard[] = [];
+export class SessionComponent implements PendingChangesComponent, OnInit {
+  private readonly cardService = inject(CardService);
+  private readonly dialog = inject(MatDialog);
+  private readonly router = inject(Router);
+  private readonly tabBarService = inject(TabBarService);
+  private readonly navigationService = inject(NavigationService);
+  private readonly learningSessionService = inject(LearningSessionService);
+  private readonly settingsService = inject(SettingsService);
+
+  protected sessionCards: Card[] = [];
+  protected isMatchingStep = false;
+  protected isFillingStep = false;
+  protected isSessionDone = false;
+  protected sessionResults: SessionCard[] = [];
 
   private invalidSession = false;
 
-  constructor(
-    private cardService: CardService,
-    private dialog: MatDialog,
-    private router: Router,
-    private tabBarService: TabBarService,
-    private navigationService: NavigationService,
-    learningSessionService: LearningSessionService,
-    settingsService: SettingsService
-  ) {
-    navigationService.setTitle("Learning session");
-    this.sessionCards = learningSessionService.currentSession.getValue();
-    if (!this.sessionCards.length) {
-      this.invalidSession = true;
-      router.navigateByUrl("/sessions");
-    }
-    settingsService.getSettings().then((settings) => {
-      this.isMatchingStep =
-        learningSessionService.isLearningSession() || settings.enableReviewMatching;
-      this.isFillingStep = !this.isMatchingStep;
-    });
-    tabBarService.setActions([
-      {
-        icon: faCircleStop,
-        label: "Stop session",
-        action: () => router.navigateByUrl("/sessions"),
-      },
-    ]);
-  }
-
-  canDeactivate(): Observable<boolean> {
+  public canDeactivate(): Observable<boolean> {
     return this.invalidSession || this.isSessionDone
       ? of(true)
       : this.dialog
@@ -74,12 +63,33 @@ export class SessionComponent implements PendingChangesComponent {
           .pipe(map((confirmed) => !!confirmed));
   }
 
-  matchingCompleted(): void {
+  public ngOnInit(): void {
+    this.navigationService.setTitle("Learning session");
+    this.sessionCards = this.learningSessionService.currentSession();
+    if (!this.sessionCards.length) {
+      this.invalidSession = true;
+      this.router.navigateByUrl("/sessions");
+    }
+    this.settingsService.getSettings().then((settings) => {
+      this.isMatchingStep =
+        this.learningSessionService.isLearningSession() || settings.enableReviewMatching;
+      this.isFillingStep = !this.isMatchingStep;
+    });
+    this.tabBarService.setActions([
+      {
+        icon: faCircleStop,
+        label: "Stop session",
+        action: () => this.router.navigateByUrl("/sessions"),
+      },
+    ]);
+  }
+
+  protected matchingCompleted(): void {
     this.isMatchingStep = false;
     this.isFillingStep = true;
   }
 
-  sessionCompleted(cards: SessionCard[]): void {
+  protected sessionCompleted(cards: SessionCard[]): void {
     this.isFillingStep = false;
     this.isSessionDone = true;
     this.sessionResults = cards;

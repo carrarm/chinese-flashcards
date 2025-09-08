@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Collection } from "dexie";
 import { Database } from "../db/database.model";
 import { DatabaseService } from "../db/database.service";
@@ -9,13 +9,11 @@ import { Card, CardModel } from "../model/card.model";
   providedIn: "root",
 })
 export class CollectionService {
-  private database: Database;
+  private readonly databaseService = inject(DatabaseService);
 
-  constructor(databaseService: DatabaseService) {
-    this.database = databaseService.database;
-  }
+  private readonly database: Database = this.databaseService.database;
 
-  async getCollections(fetchCards = true): Promise<CardCollection[]> {
+  public async getCollections(fetchCards = true): Promise<CardCollection[]> {
     try {
       return await this.database.cardCollections
         .orderBy("label")
@@ -35,20 +33,29 @@ export class CollectionService {
     }
   }
 
-  async getCollection(id: number): Promise<CardCollection | undefined> {
+  public async getCollection(id: number): Promise<CardCollection | undefined> {
     const cardCollection = await this.database.cardCollections.get(id);
     return cardCollection ? this.loadCollectionCards(cardCollection) : undefined;
   }
 
-  createCollection(collection: CardCollectionModel): Promise<number> {
+  public async getCollectionByName(
+    collectionName: string
+  ): Promise<CardCollection | undefined> {
+    const cardCollection = await this.database.cardCollections
+      .filter((collection) => collection.label === collectionName)
+      .first();
+    return cardCollection ? this.loadCollectionCards(cardCollection) : cardCollection;
+  }
+
+  public createCollection(collection: CardCollectionModel): Promise<number> {
     return this.database.cardCollections.add(collection);
   }
 
-  updateCollection(collection: CardCollectionModel): Promise<number> {
+  public updateCollection(collection: CardCollectionModel): Promise<number> {
     return this.database.cardCollections.put(collection);
   }
 
-  deleteCollection(collection: number) {
+  public deleteCollection(collection: number) {
     this.database.cardCollections.delete(collection);
     const cards = this.database.cards.filter((card) => card.collectionId === collection);
     cards.delete();
@@ -60,7 +67,7 @@ export class CollectionService {
    * @param collectionId Card collection id
    * @returns Dexie `Collection<CardModel, number>`
    */
-  getUnknownCardRequest(collectionId?: number): Collection<CardModel, number> {
+  public getUnknownCardRequest(collectionId?: number): Collection<CardModel, number> {
     const request = collectionId ? { collectionId, leitnerBox: 0 } : { leitnerBox: 0 };
     return this.database.cards.where(request);
   }
@@ -71,7 +78,7 @@ export class CollectionService {
    * @param collectionId Card collection id
    * @returns Dexie `Collection<CardModel, number>`
    */
-  getKnownCardRequest(collectionId: number): Collection<CardModel, number> {
+  public getKnownCardRequest(collectionId: number): Collection<CardModel, number> {
     return this.database.cards
       .where({ collectionId })
       .and((card) => new Card(card).isKnown());
@@ -83,7 +90,7 @@ export class CollectionService {
    * @param collectionId Card collection id
    * @returns Dexie `Collection<CardModel, number>`
    */
-  getReviewCardRequest(collectionId?: number): Collection<CardModel, number> {
+  public getReviewCardRequest(collectionId?: number): Collection<CardModel, number> {
     if (collectionId) {
       return this.database.cards
         .where({ collectionId })

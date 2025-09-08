@@ -5,7 +5,7 @@ import {
   faArrowTrendDown,
   faArrowTrendUp,
 } from "@fortawesome/free-solid-svg-icons";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
 const EASY_REPS = 2;
 const MEDIUM_REPS = 3;
@@ -47,7 +47,7 @@ export class SessionCard {
     this.numberOfRepetitions = this.getNumberOfRepetitions();
   }
 
-  changeDifficulty(difficulty: CardDifficultyLevel): void {
+  changeDifficulty(difficulty?: CardDifficultyLevel): void {
     if (this.card.difficulty === difficulty) {
       this.card.difficulty = undefined;
     } else {

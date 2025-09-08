@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { ButtonType } from "../../button/button.types";
 import { InlineConfirmDialogComponent } from "../inline-confirm-dialog/inline-confirm-dialog.component";
@@ -13,14 +13,11 @@ export interface ConfirmDialogConfig {
 
 @Component({
   selector: "chf-confirm-dialog",
-  standalone: true,
   imports: [InlineConfirmDialogComponent, MatDialogModule],
   templateUrl: "./confirm-dialog.component.html",
   styleUrls: ["./confirm-dialog.component.scss"],
 })
 export class ConfirmDialogComponent {
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public config: ConfirmDialogConfig,
-    public dialogRef: MatDialogRef<ConfirmDialogComponent>
-  ) {}
+  protected readonly config: ConfirmDialogConfig = inject(MAT_DIALOG_DATA);
+  protected readonly dialogRef = inject(MatDialogRef<ConfirmDialogComponent>);
 }

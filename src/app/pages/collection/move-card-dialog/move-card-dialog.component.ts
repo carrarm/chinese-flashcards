@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
@@ -13,7 +13,6 @@ import { DialogData } from "./move-card-dialog.types";
 
 @Component({
   selector: "chf-move-card-dialog",
-  standalone: true,
   imports: [
     ButtonComponent,
     CommonModule,
@@ -26,22 +25,33 @@ import { DialogData } from "./move-card-dialog.types";
   styleUrl: "./move-card-dialog.component.scss",
 })
 export class MoveCardDialogComponent implements OnInit {
-  public cardPlural = {
+  protected readonly cardPlural = {
     "=1": "Move 1 card",
     other: "Move # cards",
   };
-  public collections: CardCollection[] = [];
-  public targetCollection?: CardCollection;
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private cardService: CardService,
-    private collectionService: CollectionService,
-    private dialogRef: MatDialogRef<MoveCardDialogComponent>,
-    private toaster: ToasterService
-  ) {}
+  protected readonly data: DialogData = inject(MAT_DIALOG_DATA);
 
-  public moveCards(): void {
+  private readonly cardService = inject(CardService);
+  private readonly collectionService = inject(CollectionService);
+  private readonly dialogRef = inject(MatDialogRef<MoveCardDialogComponent>);
+  private readonly toaster = inject(ToasterService);
+
+  protected collections: CardCollection[] = [];
+  protected targetCollection?: CardCollection;
+
+  public ngOnInit(): void {
+    this.collectionService
+      .getCollections(false)
+      .then(
+        (collections) =>
+          (this.collections = collections.filter(
+            (c) => c.id !== this.data.initialCategory
+          ))
+      );
+  }
+
+  protected moveCards(): void {
     if (!this.targetCollection) {
       this.toaster.error("No collection selected");
       return;
@@ -58,16 +68,5 @@ export class MoveCardDialogComponent implements OnInit {
     );
 
     this.dialogRef.close(true);
-  }
-
-  public ngOnInit(): void {
-    this.collectionService
-      .getCollections(false)
-      .then(
-        (collections) =>
-          (this.collections = collections.filter(
-            (c) => c.id !== this.data.initialCategory
-          ))
-      );
   }
 }

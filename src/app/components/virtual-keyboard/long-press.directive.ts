@@ -1,5 +1,6 @@
-import { Directive, ElementRef, EventEmitter, OnDestroy, Output } from "@angular/core";
-import { Subscription, filter, fromEvent, map, merge, of, switchMap, timer } from "rxjs";
+import { Directive, ElementRef, inject, output } from "@angular/core";
+import { filter, fromEvent, map, merge, of, switchMap, timer } from "rxjs";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 /**
  * Use this directive to detect long press events (at least 500ms) on any
@@ -7,47 +8,46 @@ import { Subscription, filter, fromEvent, map, merge, of, switchMap, timer } fro
  */
 @Directive({
   selector: "[chfLongPress]",
-  standalone: true,
 })
-export class LongPressDirective implements OnDestroy {
-  @Output() longPress = new EventEmitter<Event>();
+export class LongPressDirective {
+  public readonly longPress = output<Event>();
 
-  private events$: Subscription;
+  private readonly elementRef = inject(ElementRef);
+
   private pressDuration = 500;
 
-  constructor(elementRef: ElementRef) {
-    const mouseDown$ = fromEvent<MouseEvent>(elementRef.nativeElement, "mousedown").pipe(
+  constructor() {
+    const mouseDown$ = fromEvent<MouseEvent>(
+      this.elementRef.nativeElement,
+      "mousedown"
+    ).pipe(
       filter(this.isLeftClickEvent),
       map((event) => ({ isPressing: true, event }))
     );
 
-    const mouseUp$ = fromEvent<MouseEvent>(elementRef.nativeElement, "mouseup").pipe(
+    const mouseUp$ = fromEvent<MouseEvent>(this.elementRef.nativeElement, "mouseup").pipe(
       filter(this.isLeftClickEvent),
       map((event) => ({ isPressing: false, event }))
     );
 
-    const touchStart$ = fromEvent<Event>(elementRef.nativeElement, "touchstart").pipe(
-      map((event) => ({ isPressing: true, event }))
-    );
+    const touchStart$ = fromEvent<Event>(
+      this.elementRef.nativeElement,
+      "touchstart"
+    ).pipe(map((event) => ({ isPressing: true, event })));
 
-    const touchEnd$ = fromEvent<Event>(elementRef.nativeElement, "touchend").pipe(
+    const touchEnd$ = fromEvent<Event>(this.elementRef.nativeElement, "touchend").pipe(
       map((event) => ({ isPressing: false, event }))
     );
 
-    this.events$ = merge(mouseDown$, mouseUp$, touchStart$, touchEnd$)
+    merge(mouseDown$, mouseUp$, touchStart$, touchEnd$)
       .pipe(
+        takeUntilDestroyed(),
         switchMap((event) =>
           event.isPressing ? timer(this.pressDuration).pipe(map(() => event)) : of(null)
         ),
         filter((value) => value !== null)
       )
       .subscribe((event) => this.longPress.emit(event!.event));
-  }
-
-  ngOnDestroy(): void {
-    if (this.events$) {
-      this.events$.unsubscribe();
-    }
   }
 
   private isLeftClickEvent(event: MouseEvent): boolean {

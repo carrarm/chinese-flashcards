@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, input } from "@angular/core";
 import { ValidationErrors } from "@angular/forms";
-import { Indexable, Nullable } from "@core/types";
+import { Nullable } from "@core/types";
 
 const DEFAULT = {
   required: "Field required",
@@ -8,33 +8,32 @@ const DEFAULT = {
 
 @Component({
   selector: "chf-form-error-messages",
-  standalone: true,
   imports: [],
   templateUrl: "./form-error-messages.component.html",
   styleUrl: "./form-error-messages.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormErrorMessagesComponent {
-  @Input({ required: true }) errors!: Nullable<ValidationErrors>;
-  @Input() customMessages: Indexable<string> = {};
-  @Input() errorOrder = ["required"];
+  public readonly errors = input.required<Nullable<ValidationErrors>>();
+  public readonly customMessages = input<Record<string, string>>({});
+  public readonly errorOrder = input<string[]>(["required"]);
 
-  public getMainError(): string {
+  protected readonly getMainError = computed(() => {
     // Copy to a variable so that TS will be happy with the errors[error] later
-    const errors = this.errors ? { ...this.errors } : undefined;
+    const errors = this.errors() ? { ...this.errors() } : undefined;
     let errorMessage = "";
 
     if (errors) {
-      const mergedErrorMessages: Indexable<string> = {
+      const mergedErrorMessages: Record<string, string> = {
         ...DEFAULT,
-        ...this.customMessages,
+        ...this.customMessages(),
       };
-      const mainError = this.errorOrder.find((error) => !!errors[error]);
+      const mainError = this.errorOrder().find((error) => !!errors[error]);
       if (mainError) {
         errorMessage = mergedErrorMessages[mainError];
       }
     }
 
     return errorMessage;
-  }
+  });
 }
