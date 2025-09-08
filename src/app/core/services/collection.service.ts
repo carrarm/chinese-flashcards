@@ -38,6 +38,15 @@ export class CollectionService {
     return cardCollection ? this.loadCollectionCards(cardCollection) : undefined;
   }
 
+  public async getCollectionByName(
+    collectionName: string
+  ): Promise<CardCollection | undefined> {
+    const cardCollection = await this.database.cardCollections
+      .filter((collection) => collection.label === collectionName)
+      .first();
+    return cardCollection ? this.loadCollectionCards(cardCollection) : cardCollection;
+  }
+
   public createCollection(collection: CardCollectionModel): Promise<number> {
     return this.database.cardCollections.add(collection);
   }

@@ -26,6 +26,6 @@ export const appConfig: ApplicationConfig = {
       return initializerFn();
     }),
     provideHttpClient(withInterceptorsFromDi()),
-    provideRouter(routes)
+    provideRouter(routes),
   ],
 };

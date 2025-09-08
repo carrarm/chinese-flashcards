@@ -1,0 +1,14 @@
+<input type="file" (change)="fileSelected($event)" #fileUpload />
+
+<div>
+  <chf-button type="primary" (click)="fileUpload.click()">
+    <fa-icon icon="paperclip" />
+  </chf-button>
+  <span>
+    @if (fileName) {
+      {{ fileName }}
+    } @else {
+      No file uploaded yet
+    }
+  </span>
+</div>

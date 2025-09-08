@@ -4,13 +4,14 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/materia
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { Router } from "@angular/router";
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+
 import { ButtonComponent } from "@components/button/button.component";
 import { InlineConfirmDialogComponent } from "@components/dialog/inline-confirm-dialog/inline-confirm-dialog.component";
 import { FormErrorMessagesComponent } from "@components/form-error-messages/form-error-messages.component";
 import { CardCollection, CardCollectionModel } from "@core/model/card-collection.model";
 import { CollectionService } from "@core/services/collection.service";
 import { toOptional } from "@core/utils/form.utils";
-import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 
 interface CollectionForm {
   label: FormControl<string | null>;

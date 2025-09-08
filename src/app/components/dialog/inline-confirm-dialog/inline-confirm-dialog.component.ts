@@ -1,7 +1,8 @@
 import { Component, input, output } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { ButtonComponent } from "../../button/button.component";
-import { ButtonType } from "../../button/button.types";
+
+import { ButtonComponent } from "@components/button/button.component";
+import { ButtonType } from "@components/button/button.types";
 
 @Component({
   selector: "chf-inline-confirm-dialog",
