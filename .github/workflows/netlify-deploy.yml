@@ -27,20 +27,10 @@ jobs:
         run: npm ci
       - name: Build static files
         run: npm run build
-      - name: Clean Netlify branch
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git checkout -b netlify
-          git rm -rf .
-          git clean -fdx
-          git commit -m "Clean Netlify branch [skip ci]" || echo "No files to clean"
       - name: Copy build to Netlify
         run: |
-          git checkout netlify
+          git checkout -b netlify
           cp -r dist/* .
           git add .
           git commit -m "Update build artifacts [skip ci]" || echo "No changes to commit"
-      - name: Push to Netlify branch
-        run: |
           git push origin netlify --force
