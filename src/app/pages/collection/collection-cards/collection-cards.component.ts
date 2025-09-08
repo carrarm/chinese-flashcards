@@ -10,7 +10,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterModule } from "@angular/router";
 import {
   ConfirmDialogComponent,
   ConfirmDialogConfig,
@@ -51,6 +51,7 @@ import { SOLID_ICONS } from "@core/font-awesome.config";
     MatPaginatorModule,
     MatTableModule,
     NgClass,
+    RouterModule,
   ],
   templateUrl: "./collection-cards.component.html",
   styleUrls: ["./collection-cards.component.scss"],
