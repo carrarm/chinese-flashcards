@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
   dbVersion: 2,
-  version: "2.3.0-local",
+  version: "2.3.1-local",
   license: "MIT",
 };
