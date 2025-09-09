@@ -1,6 +1,6 @@
 @if (actions.length) {
   <ng-container>
-    @for (tab of actions; track tab) {
+    @for (tab of actions(); track tab) {
       <div class="tab active" (click)="tab.action()">
         <fa-icon [icon]="tab.icon" size="lg" />
         <div>{{ tab.label }}</div>
@@ -8,7 +8,7 @@
     }
   </ng-container>
 } @else {
-  @for (tab of routes; track tab) {
+  @for (tab of routes(); track tab) {
     <div class="tab" [routerLink]="tab.route" routerLinkActive="active">
       <fa-icon [icon]="tab.icon" size="lg" />
       <div>{{ tab.label }}</div>
