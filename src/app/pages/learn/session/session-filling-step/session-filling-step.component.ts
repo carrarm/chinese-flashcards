@@ -1,4 +1,14 @@
+import { NgClass } from "@angular/common";
 import { Component, inject, input, OnInit, output } from "@angular/core";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { FormsModule } from "@angular/forms";
+
+
+import { CardComponent } from "@components/card/card.component";
+import { PinyinFormFieldComponent } from "@components/pinyin-form-field/pinyin-form-field.component";
+import { ButtonComponent } from "@components/button/button.component";
+import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { Card, CardDifficultyLevel } from "@core/model/card.model";
 import { NavigationService } from "@core/services/navigation.service";
 import {
@@ -7,16 +17,10 @@ import {
   shuffleArray,
   uniqueValues,
 } from "@core/utils/general.utils";
+import { CardDifficultyComponent } from "@pages/shared/components/card-difficulty/card-difficulty.component";
+
 import { SessionCard } from "../session-card.model";
-import { CardComponent } from "@components/card/card.component";
-import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { ResultCardComponent } from "./result-card/result-card.component";
-import { CardDifficultyComponent } from "src/app/pages/shared/components/card-difficulty/card-difficulty.component";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { FormsModule } from "@angular/forms";
-import { ButtonComponent } from "@components/button/button.component";
-import { NgClass } from "@angular/common";
 
 @Component({
   selector: "chf-session-filling-step",
@@ -29,6 +33,7 @@ import { NgClass } from "@angular/common";
     MatFormFieldModule,
     MatInputModule,
     NgClass,
+    PinyinFormFieldComponent,
     ResultCardComponent,
   ],
   templateUrl: "./session-filling-step.component.html",

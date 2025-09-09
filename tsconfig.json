@@ -11,7 +11,10 @@
       "@components/*": [
         "src/app/components/*"
       ],
-      "@environment": ["src/environments/environment.ts"]
+      "@environment": ["src/environments/environment.ts"],
+      "@pages/*": [
+        "src/app/pages/*"
+      ],
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

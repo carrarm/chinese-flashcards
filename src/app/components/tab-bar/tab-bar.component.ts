@@ -1,4 +1,4 @@
-import { Component, effect, inject } from "@angular/core";
+import { Component, computed, inject } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ActionTab, RouterTab, TabBarService } from "./tab-bar.service";
@@ -12,19 +12,12 @@ import { ActionTab, RouterTab, TabBarService } from "./tab-bar.service";
 export class TabBarComponent {
   private readonly tabBarService = inject(TabBarService);
 
-  protected actions: ActionTab[] = [];
-  protected routes: RouterTab[] = [];
-
-  constructor() {
-    effect(() => {
-      const tabBar = this.tabBarService.tabs();
-      if (tabBar.type === "action") {
-        this.actions = tabBar.tabs;
-        this.routes = [];
-      } else {
-        this.routes = tabBar.tabs;
-        this.actions = [];
-      }
-    });
-  }
+  protected actions = computed(() => {
+    const tabBar = this.tabBarService.tabs();
+    return tabBar.type === "action" ? tabBar.tabs : [];
+  });
+  protected routes = computed(() => {
+    const tabBar = this.tabBarService.tabs();
+    return tabBar.type === "action" ? [] : tabBar.tabs;
+  });
 }
