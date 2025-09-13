@@ -4,6 +4,7 @@ import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
 import {
   faAdd,
   faArrowRight,
+  faArrowUpFromBracket,
   faBox,
   faBoxOpen,
   faCheck,
@@ -13,6 +14,7 @@ import {
   faChevronRight,
   faCircleXmark,
   faClose,
+  faDeleteLeft,
   faDownload,
   faEdit,
   faFaceLaugh,
@@ -30,6 +32,8 @@ import {
 
 export const SOLID_ICONS = {
   faAdd,
+  faArrowRight,
+  faArrowUpFromBracket,
   faBox,
   faBoxOpen,
   faCheck,
@@ -39,6 +43,7 @@ export const SOLID_ICONS = {
   faChevronRight,
   faCircleXmark,
   faClose,
+  faDeleteLeft,
   faDownload,
   faEdit,
   faFaceLaugh,
@@ -51,7 +56,6 @@ export const SOLID_ICONS = {
   faRotateLeft,
   faShareFromSquare,
   faTrash,
-  faArrowRight,
   faTriangleExclamation,
 };
 
