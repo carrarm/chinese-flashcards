@@ -3,48 +3,57 @@
 </div>
 
 <div mat-dialog-content>
-  <div class="chf-message-box">
-    <p>To import an Excel file, fill up the template below.</p>
-    <chf-button (click)="downloadTemplate()">
-      <fa-icon icon="download" />
-      Download template
-    </chf-button>
-    <div class="help-toggle" (click)="textExpanded = !textExpanded">
-      How does it work?
+  @if (importInProgress) {
+    <div class="chf-message-box import-loader">
+      <mat-progress-spinner mode="indeterminate" diameter="20" />
+      <span>Import in progress</span>
+    </div>
+  } @else {
+    <div class="chf-message-box">
+      <p>To import an Excel file, fill up the template below.</p>
+      <chf-button (click)="downloadTemplate()">
+        <fa-icon icon="download" />
+        Download template
+      </chf-button>
+      <div class="help-toggle" (click)="textExpanded = !textExpanded">
+        How does it work?
+        @if (textExpanded) {
+          (hide)
+        }
+      </div>
       @if (textExpanded) {
-        (hide)
+        <p>
+          Each worksheet will be imported into a category; if the category does not exist
+          it will be created during the import.
+        </p>
+        <p>
+          Cards that already exist will have their progress reset if the character(s) or
+          pinyin associated with the translation changed.
+        </p>
       }
     </div>
-    @if (textExpanded) {
-      <p>
-        Each worksheet will be imported into a category; if the category does not exist it
-        will be created during the import.
-      </p>
-      <p>
-        Cards that already exist will have their progress reset if the character(s) or
-        pinyin associated with the translation changed.
-      </p>
+
+    <chf-file-upload (file)="fileToImport = $event" accept=".xls,.xlsx" />
+
+    @if (parsingErrors.length) {
+      <div class="chf-message-box chf-warning">
+        @for (error of parsingErrors; track error) {
+          <div>{{ error }}</div>
+        }
+      </div>
     }
-  </div>
-
-  <chf-file-upload (file)="fileToImport = $event" />
-
-  @if (parsingErrors.length) {
-    <div class="chf-message-box chf-warning">
-      @for (error of parsingErrors; track error) {
-        <div>{{ error }}</div>
-      }
-    </div>
   }
 </div>
 
-<div mat-dialog-actions>
-  <chf-button mat-dialog-close>
-    <fa-icon icon="close" />
-    Cancel
-  </chf-button>
-  <chf-button type="primary" (click)="importFile()" [disabled]="!fileToImport">
-    <fa-icon icon="file-import" />
-    Import file
-  </chf-button>
-</div>
+@if (!importInProgress) {
+  <div mat-dialog-actions>
+    <chf-button mat-dialog-close>
+      <fa-icon icon="close" />
+      Cancel
+    </chf-button>
+    <chf-button type="primary" (click)="importFile()" [disabled]="!fileToImport">
+      <fa-icon icon="file-import" />
+      Import file
+    </chf-button>
+  </div>
+}
