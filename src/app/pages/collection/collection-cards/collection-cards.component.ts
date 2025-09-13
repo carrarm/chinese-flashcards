@@ -8,7 +8,7 @@ import {
 } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
+import { MatSort, MatSortModule } from "@angular/material/sort";
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { ActivatedRoute, RouterModule } from "@angular/router";
 import {
@@ -49,6 +49,7 @@ import { SOLID_ICONS } from "@core/font-awesome.config";
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
+    MatSortModule,
     MatTableModule,
     NgClass,
     RouterModule,
