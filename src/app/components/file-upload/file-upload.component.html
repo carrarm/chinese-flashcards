@@ -1,4 +1,4 @@
-<input type="file" (change)="fileSelected($event)" #fileUpload />
+<input type="file" (change)="fileSelected($event)" [accept]="accept()" #fileUpload />
 
 <div>
   <chf-button type="primary" (click)="fileUpload.click()">
