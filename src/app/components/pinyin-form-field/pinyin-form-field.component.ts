@@ -4,6 +4,10 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+
+import { hasTones, toTone } from "@core/utils/pinyin.utils";
+import { findLastIndex, replaceCharAt } from "@core/utils/general.utils";
+
 import { VirtualKeyboardComponent } from "../virtual-keyboard/virtual-keyboard.component";
 
 type PropagateFct = (_?: string) => void;
@@ -48,7 +52,9 @@ export class PinyinFormFieldComponent implements ControlValueAccessor {
   }
 
   public updateValue(newValue?: string): void {
-    this.fieldValue = newValue;
+    this.fieldValue = newValue
+      ? this.simplifyText(newValue, newValue.at(-1) ?? "")
+      : newValue;
     this.propagateChange(newValue);
   }
 
@@ -66,5 +72,36 @@ export class PinyinFormFieldComponent implements ControlValueAccessor {
 
   public setDisabledState(): void {
     // Do nothing
+  }
+
+  private applyTone(word: string, tone: number): string {
+    let wordWithTone = word;
+    const toTransformIdx = findLastIndex(word.toUpperCase().split(""), (letter: string) =>
+      hasTones(letter)
+    );
+    if (toTransformIdx > -1) {
+      const charWithTone = toTone(wordWithTone.charAt(toTransformIdx), tone);
+      wordWithTone = replaceCharAt(wordWithTone, toTransformIdx, charWithTone).slice(
+        0,
+        -1
+      );
+    }
+    return wordWithTone;
+  }
+
+  private simplifyText(text: string, lastTyped: string): string {
+    const lastWord = text.split(" ").at(-1) ?? "";
+    let simplified = lastWord;
+
+    if (lastTyped.toUpperCase() === "V") {
+      const replacedV = lastTyped === "V" ? "Ü" : "ü";
+      simplified = simplified.replace(lastTyped, replacedV);
+    }
+
+    const digit = Number.parseInt(lastTyped);
+    if (!Number.isNaN(digit) && lastWord.length > 1) {
+      simplified = this.applyTone(lastWord, digit);
+    }
+    return text.replace(lastWord, simplified);
   }
 }
