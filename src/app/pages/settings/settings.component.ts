@@ -106,6 +106,6 @@ export class SettingsComponent implements OnInit {
   }
 
   protected importFromExcel(): void {
-    this.dialog.open(ExcelImportDialogComponent);
+    this.dialog.open(ExcelImportDialogComponent, { disableClose: true });
   }
 }

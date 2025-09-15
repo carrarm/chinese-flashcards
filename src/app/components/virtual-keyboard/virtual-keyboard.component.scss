@@ -59,6 +59,11 @@ $keyGap: 4px;
   &.validate {
     background-color: var(--primary-color);
   }
+
+  &.disabled {
+    background-color: #1a1a1a;
+    color: #6f6f6f;
+  }
 }
 
 .tone-keyboard {

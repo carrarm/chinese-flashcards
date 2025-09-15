@@ -8,7 +8,7 @@ import {
 import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { checkForUpdates } from "@core/pwa-updates";
 import { provideServiceWorker, SwUpdate } from "@angular/service-worker";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatSnackBar, MAT_SNACK_BAR_DEFAULT_OPTIONS } from "@angular/material/snack-bar";
 import { NgCircleProgressModule } from "ng-circle-progress";
 import { provideRouter } from "@angular/router";
 import { routes } from "./app.routes";
@@ -27,5 +27,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(routes),
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2000 } },
   ],
 };

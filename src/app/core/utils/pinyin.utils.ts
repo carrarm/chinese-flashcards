@@ -15,8 +15,8 @@ const TONES: Indexable<string[]> = Object.freeze({
 /**
  * Get all the available tones for the key.
  *
- * @param letter Letter to fetch tones for
- * @param letterCase Whether the tones should be uppercase or lowercased
+ * @param letter       Letter to fetch tones for
+ * @param letterCase   Whether the tones should be uppercase or lowercased
  * @returns Array of tones for the letter
  */
 export const getTones = (letter: string, letterCase: "UPPER" | "LOWER"): string[] => {
@@ -35,4 +35,23 @@ export const getTones = (letter: string, letterCase: "UPPER" | "LOWER"): string[
  */
 export const hasTones = (letter: string): boolean => {
   return Object.keys(TONES).includes(letter.toUpperCase());
+};
+
+/**
+ * Transform a letter to a specific tone.
+ *
+ * @param letter  Base letter
+ * @param digit   Tone, between 1-4
+ * @returns Transformed letter
+ */
+export const toTone = (letter: string, digit: number): string => {
+  const isUppercased = letter.toUpperCase() === letter;
+  const letterTones = getTones(letter.toUpperCase(), "UPPER");
+
+  let transformed = letter;
+  if (letterTones.length && digit >= 1 && digit <= 4) {
+    const matchedTone = letterTones[digit - 1];
+    transformed = isUppercased ? matchedTone : matchedTone.toLowerCase();
+  }
+  return transformed;
 };

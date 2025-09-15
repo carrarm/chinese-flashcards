@@ -1,5 +1,6 @@
 import { Component, inject } from "@angular/core";
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { saveAs } from "file-saver";
@@ -21,6 +22,7 @@ type CardUpdate = { card: Card; status: "updated" | "created" };
     FaIconComponent,
     FileUploadComponent,
     MatDialogModule,
+    MatProgressSpinnerModule,
     MatSnackBarModule,
   ],
   templateUrl: "./excel-import-dialog.component.html",
@@ -33,6 +35,7 @@ export class ExcelImportDialogComponent {
   private readonly snackbar = inject(MatSnackBar);
 
   protected fileToImport?: File;
+  protected importInProgress = false;
   protected parsingErrors: string[] = [];
   protected textExpanded = false;
 
@@ -42,31 +45,38 @@ export class ExcelImportDialogComponent {
 
   protected importFile(): void {
     if (this.fileToImport) {
-      VocabularySheetParser.parse(this.fileToImport).then(async (result) => {
-        this.parsingErrors = result.parsingErrors;
-        if (!result.parsingErrors.length) {
-          const promises: Promise<CardUpdate>[] = [];
-          for (const sheetName in result.sheets) {
-            const collection = await this.getCollection(sheetName);
-            for (const tuple of result.sheets[sheetName]) {
-              promises.push(this.createOrUpdateCard(collection, tuple));
+      this.importInProgress = true;
+      VocabularySheetParser.parse(this.fileToImport)
+        .then(async (result) => {
+          this.parsingErrors = result.parsingErrors;
+          if (!result.parsingErrors.length) {
+            const promises: Promise<CardUpdate>[] = [];
+            for (const sheetName in result.sheets) {
+              const collection = await this.getCollection(sheetName);
+              for (const tuple of result.sheets[sheetName]) {
+                promises.push(this.createOrUpdateCard(collection, tuple));
+              }
             }
-          }
 
-          Promise.all(promises).then((cards) => {
-            const totalCreated = cards.reduce(
-              (acc, card) => acc + (card.status === "created" ? 1 : 0),
-              0
-            );
-            const totalUpdated = cards.length - totalCreated;
-            this.snackbar.open(
-              `Vocabulary imported successfully (${totalCreated} created, ${totalUpdated} updated)`,
-              "Close"
-            );
-            this.dialogRef.close();
-          });
-        }
-      });
+            Promise.all(promises).then((cards) => {
+              const totalCreated = cards.reduce(
+                (acc, card) => acc + (card.status === "created" ? 1 : 0),
+                0
+              );
+              const totalUpdated = cards.length - totalCreated;
+              this.snackbar.open(
+                `Vocabulary imported successfully (${totalCreated} created, ${totalUpdated} updated)`,
+                "Close"
+              );
+              this.dialogRef.close();
+            });
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          this.snackbar.open("An error occurrent during the import", "Close");
+        })
+        .finally(() => (this.importInProgress = false));
     }
   }
 
