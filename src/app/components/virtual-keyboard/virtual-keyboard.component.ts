@@ -6,9 +6,11 @@ import { CommonModule } from "@angular/common";
 import { Component, output } from "@angular/core";
 import { MatRippleModule } from "@angular/material/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+
+import { getTones, hasTones } from "@core/utils/pinyin.utils";
+
 import { QWERTY } from "./keyboard-layout.model";
 import { LongPressDirective } from "./long-press.directive";
-import { getTones, hasTones } from "./tones";
 
 const TONE_KEY_WIDTH_PX = 34; // Key width + gap with other keys
 const BASE_TONE_OVERLAY_OFFSET_X = -(TONE_KEY_WIDTH_PX * 1.5);
