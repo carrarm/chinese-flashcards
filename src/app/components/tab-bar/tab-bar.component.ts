@@ -12,11 +12,11 @@ import { ActionTab, RouterTab, TabBarService } from "./tab-bar.service";
 export class TabBarComponent {
   private readonly tabBarService = inject(TabBarService);
 
-  protected actions = computed(() => {
+  protected readonly actions = computed(() => {
     const tabBar = this.tabBarService.tabs();
     return tabBar.type === "action" ? tabBar.tabs : [];
   });
-  protected routes = computed(() => {
+  protected readonly routes = computed(() => {
     const tabBar = this.tabBarService.tabs();
     return tabBar.type === "action" ? [] : tabBar.tabs;
   });
