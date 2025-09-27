@@ -15,6 +15,8 @@ import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { environment } from "@environment";
 
+import { license, version } from "@root/package.json";
+
 import { ExcelImportDialogComponent } from "./excel-import-dialog/excel-import-dialog.component";
 
 // TODO: clean forms (remove unnecessary typings, use non-nullable fields)
@@ -61,8 +63,8 @@ export class SettingsComponent implements OnInit {
   });
   protected readonly pageOptions = [5, 10, 15, 20, 50, 100];
   protected readonly wordsOptions = [5, 10, 15];
-  protected readonly appVersion = environment.version;
-  protected readonly appLicense = environment.license;
+  protected readonly appVersion = version;
+  protected readonly appLicense = license;
   protected readonly showDeveloperOptions = !environment.production;
 
   protected settings?: Settings;
