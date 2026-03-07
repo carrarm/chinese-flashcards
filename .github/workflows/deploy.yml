@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/common-setup
+
+      # Build and deploy
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compute next dev version
+        run: |
+          CURRENT=$(node -p "require('./package.json').version")
+          BASE=${CURRENT%%-*}
+
+          if [[ "$CURRENT" == *"-dev."* ]]; then
+            NUM=${CURRENT##*.}
+            NEXT="${BASE}-dev.$((NUM+1))"
+          else
+            NEXT="${BASE}-dev.1"
+          fi
+
+          npm version "$NEXT" --no-git-tag-version
+          git commit -am "chore(preprod): $NEXT"
+          git push origin develop
+
+      - name: Build application
+        run: npm run build:github
+
+      - name: Deploy to Github Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/chinese-flashcards/browser
+          branch: gh-pages
