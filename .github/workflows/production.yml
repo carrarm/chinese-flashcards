@@ -1,0 +1,61 @@
+name: Create Production Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: "Release type"
+        type: choice
+        required: true
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/common-setup
+
+      - name: Compute production version
+        run: |
+          npm version ${{ inputs.release_type }} --no-git-tag-version
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Create release branch
+        run: |
+          git checkout -b release/v${VERSION}
+          git commit -am "chore(release): v${VERSION}"
+          git push origin release/v${VERSION}
+
+      - name: Open PR to main
+        run: |
+          gh pr create \
+            --base main \
+            --head release/v${VERSION} \
+            --title "v${VERSION}" \
+            --body "Production release v${VERSION}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open PR to develop
+        run: |
+          gh pr create \
+            --base develop \
+            --head release/v${VERSION} \
+            --title "Sync develop to v${VERSION}" \
+            --body "Align develop baseline with production v${VERSION}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
