@@ -4,6 +4,7 @@ import { CollectionService } from "./collection.service";
 import { SettingsService } from "./settings.service";
 
 type SessionType = "review" | "learn";
+type SessionStep = "filling" | "matching";
 
 @Injectable({
   providedIn: "root",
@@ -11,6 +12,7 @@ type SessionType = "review" | "learn";
 export class LearningSessionService {
   public readonly currentSession = signal<Card[]>([]);
   public readonly sessionType = signal<SessionType>("learn");
+  public readonly sessionStep = signal<SessionStep>("filling");
 
   private readonly collectionService = inject(CollectionService);
   private readonly settingsService = inject(SettingsService);

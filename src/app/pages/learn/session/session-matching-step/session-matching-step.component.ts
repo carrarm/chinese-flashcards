@@ -4,6 +4,7 @@ import { Card } from "@core/model/card.model";
 import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { NavigationService } from "@core/services/navigation.service";
 import { shuffleArray } from "@core/utils/general.utils";
+import { LearningSessionService } from "@core/services/learning-session.service";
 
 interface MatchingCard {
   card: Card;
@@ -17,11 +18,13 @@ interface MatchingCard {
   styleUrls: ["./session-matching-step.component.scss"],
 })
 export class SessionMatchingStepComponent implements OnInit {
-  public readonly cards = input<Card[]>([]);
   public readonly repeat = input(1);
   public readonly completed = output<void>();
 
+  private readonly learningSessionService = inject(LearningSessionService);
   private readonly navigationService = inject(NavigationService);
+
+  protected readonly cards = this.learningSessionService.currentSession;
 
   protected matchingPages: Card[][] = [];
   protected leftColumnCards: MatchingCard[] = [];

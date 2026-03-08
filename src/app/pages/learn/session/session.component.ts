@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, computed, inject, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { PendingChangesComponent } from "@core/guards/pending-changes.guard";
@@ -31,9 +31,10 @@ export class SessionComponent implements PendingChangesComponent, OnInit {
   private readonly learningSessionService = inject(LearningSessionService);
   private readonly settingsService = inject(SettingsService);
 
-  protected sessionCards: Card[] = [];
-  protected isMatchingStep = false;
-  protected isFillingStep = false;
+  protected readonly isMatchingStep = computed(
+    () => this.learningSessionService.sessionStep() === "matching"
+  );
+
   protected isSessionDone = false;
   protected sessionResults: SessionCard[] = [];
 
@@ -59,15 +60,14 @@ export class SessionComponent implements PendingChangesComponent, OnInit {
 
   public ngOnInit(): void {
     this.navigationService.setTitle("Learning session");
-    this.sessionCards = this.learningSessionService.currentSession();
-    if (!this.sessionCards.length) {
+    if (!this.learningSessionService.currentSession().length) {
       this.invalidSession = true;
       this.router.navigateByUrl("/sessions");
     }
     this.settingsService.getSettings().then((settings) => {
-      this.isMatchingStep =
+      const matchingStep =
         this.learningSessionService.isLearningSession() || settings.enableReviewMatching;
-      this.isFillingStep = !this.isMatchingStep;
+      this.learningSessionService.sessionStep.set(matchingStep ? "matching" : "filling");
     });
     this.tabBarService.setActions([
       {
@@ -79,12 +79,10 @@ export class SessionComponent implements PendingChangesComponent, OnInit {
   }
 
   protected matchingCompleted(): void {
-    this.isMatchingStep = false;
-    this.isFillingStep = true;
+    this.learningSessionService.sessionStep.set("filling");
   }
 
   protected sessionCompleted(cards: SessionCard[]): void {
-    this.isFillingStep = false;
     this.isSessionDone = true;
     this.sessionResults = cards;
     const toUpdate: Card[] = [];
