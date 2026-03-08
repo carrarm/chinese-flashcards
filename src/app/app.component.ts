@@ -10,6 +10,7 @@ import { registerIcons } from "@core/font-awesome.config";
 import { SettingsService } from "@core/services/settings.service";
 import { NavbarComponent } from "@components/navbar/navbar.component";
 import { TabBarComponent } from "@components/tab-bar/tab-bar.component";
+import { LearningSessionService } from "@core/services/learning-session.service";
 
 @Component({
   selector: "chf-root",
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
   private readonly domSanitizer = inject(DomSanitizer);
   private readonly faLibrary = inject(FaIconLibrary);
   private readonly iconRegistry = inject(MatIconRegistry);
+  private readonly learningSessionService = inject(LearningSessionService);
   private readonly router = inject(Router);
   private readonly settingsService = inject(SettingsService);
 
@@ -40,5 +42,9 @@ export class AppComponent implements OnInit {
       .subscribe((darkMode) => (this.isDarkMode = darkMode));
 
     registerIcons(this.faLibrary, this.iconRegistry, this.domSanitizer);
+
+    if (this.learningSessionService.hasActiveSession()) {
+      this.router.navigateByUrl("/sessions/active");
+    }
   }
 }

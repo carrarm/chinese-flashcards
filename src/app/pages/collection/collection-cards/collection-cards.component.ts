@@ -22,14 +22,14 @@ import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { normalizeForComparison, removeOnce } from "@core/utils/general.utils";
-import { Subject, debounceTime } from "rxjs";
+import { debounceTime, Subject } from "rxjs";
 import { ActionTab, TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { CardEditorComponent } from "../card-editor/card-editor.component";
 import { CardViewerComponent } from "../card-viewer/card-viewer.component";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
 import { MoveCardDialogComponent } from "../move-card-dialog/move-card-dialog.component";
 import { DialogData } from "../move-card-dialog/move-card-dialog.types";
-import { I18nPluralPipe, NgClass } from "@angular/common";
+import { I18nPluralPipe } from "@angular/common";
 import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { FormsModule } from "@angular/forms";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
@@ -51,7 +51,6 @@ import { SOLID_ICONS } from "@core/font-awesome.config";
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    NgClass,
     RouterModule,
   ],
   templateUrl: "./collection-cards.component.html",

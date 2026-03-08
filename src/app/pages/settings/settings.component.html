@@ -67,7 +67,7 @@
 </div>
 
 <div class="setting-group">
-  <div class="title" [ngClass]="{ dimmed: !showDeveloperOptions }">
+  <div class="title" [class.dimmed]="!showDeveloperOptions">
     Developer options
     <chf-slide-toggle [(active)]="showDeveloperOptions" />
   </div>

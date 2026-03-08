@@ -1,12 +1,13 @@
 import { Component, inject, input, OnInit, output } from "@angular/core";
 import { CardComponent } from "@components/card/card.component";
-import { Card } from "@core/model/card.model";
 import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { NavigationService } from "@core/services/navigation.service";
 import { shuffleArray } from "@core/utils/general.utils";
+import { LearningSessionService } from "@core/services/learning-session.service";
+import { SessionCard } from "@pages/learn/session/session-card.model";
 
 interface MatchingCard {
-  card: Card;
+  card: SessionCard;
   matched: boolean;
 }
 
@@ -17,13 +18,15 @@ interface MatchingCard {
   styleUrls: ["./session-matching-step.component.scss"],
 })
 export class SessionMatchingStepComponent implements OnInit {
-  public readonly cards = input<Card[]>([]);
   public readonly repeat = input(1);
   public readonly completed = output<void>();
 
+  private readonly learningSessionService = inject(LearningSessionService);
   private readonly navigationService = inject(NavigationService);
 
-  protected matchingPages: Card[][] = [];
+  protected readonly cards = this.learningSessionService.sessionCards;
+
+  protected matchingPages: SessionCard[][] = [];
   protected leftColumnCards: MatchingCard[] = [];
   protected rightColumnCards: MatchingCard[] = [];
   protected selectedLeftCard?: MatchingCard;
@@ -77,9 +80,9 @@ export class SessionMatchingStepComponent implements OnInit {
    * @param cards All the cards to match during this session
    * @returns A randomized set of pages
    */
-  private buildStepPages(cards: Card[]): Card[][] {
+  private buildStepPages(cards: SessionCard[]): SessionCard[][] {
     const toSplit = shuffleArray(cards);
-    const pages: Card[][] = [];
+    const pages: SessionCard[][] = [];
     while (toSplit.length) {
       pages.push(toSplit.splice(0, 5));
     }
@@ -92,8 +95,9 @@ export class SessionMatchingStepComponent implements OnInit {
    * load two new columns of cards to match.
    */
   private learnNewPage(): void {
+    this.learningSessionService.saveSession();
     if (this.matchingPages.length) {
-      const page: Card[] = this.matchingPages.splice(0, 1)[0];
+      const page: SessionCard[] = this.matchingPages.splice(0, 1)[0];
       this.leftColumnCards = shuffleArray(page.map((card) => ({ card, matched: false })));
       this.rightColumnCards = shuffleArray(
         page.map((card) => ({ card, matched: false }))

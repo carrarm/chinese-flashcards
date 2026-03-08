@@ -1,0 +1,32 @@
+name: Compile PR branch
+
+on:
+  pull_request:
+    branches: [ develop ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/common-setup
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build:github
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/

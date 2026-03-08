@@ -1,7 +1,7 @@
 import { Component, computed, inject } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { ActionTab, RouterTab, TabBarService } from "./tab-bar.service";
+import { TabBarService } from "./tab-bar.service";
 
 @Component({
   selector: "chf-tab-bar",

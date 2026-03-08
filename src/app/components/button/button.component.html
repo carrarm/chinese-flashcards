@@ -1,10 +1,8 @@
 <button
   [class]="type()"
-  [ngClass]="{
-    cta: callToAction(),
-    disabled: disabled(),
-    icon: isIconButton(),
-  }"
+  [class.cta]="callToAction()"
+  [class.disabled]="disabled()"
+  [class.icon]="isIconButton()"
   [disabled]="disabled()"
 >
   @if (icon()) {

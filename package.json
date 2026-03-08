@@ -1,6 +1,6 @@
 {
   "name": "chinese-flashcards",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "author": "Carrm",
   "license": "MIT",
   "scripts": {
@@ -8,11 +8,11 @@
     "start": "ng serve",
     "build": "ng build",
     "build:staging": "ng build --configuration development",
+    "build:github": "ng build --base-href /chinese-flashcards/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prettier": "prettier --config .prettierrc --write \"src/**/*{.ts,.html,.scss}\"",
-    "lint": "ng lint",
-    "compodoc": "compodoc -p tsconfig.doc.json"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -53,7 +53,6 @@
     "@types/lodash-es": "^4.17.12",
     "@typescript-eslint/eslint-plugin": "^8.55.0",
     "@typescript-eslint/parser": "^8.55.0",
-    "compodoc": "^0.0.6",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
