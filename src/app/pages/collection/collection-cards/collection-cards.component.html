@@ -56,7 +56,8 @@
 
     <mat-header-row *matHeaderRowDef="columns; sticky: true" />
     <mat-row
-      [ngClass]="{ selected: selectedCards.includes(row), archived: row.archived }"
+      [class.selected]="selectedCards.includes(row)"
+      [class.archived]="row.archived"
       *matRowDef="let row; columns: columns"
       chfLongPress
       (longPress)="startMultiselect()"
