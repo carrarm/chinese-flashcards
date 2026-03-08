@@ -6,7 +6,7 @@
       [class.matched]="matchCard.matched"
       (click)="selectLeftCard(matchCard)"
     >
-      <div card-content [innerHTML]="matchCard.card.meanings | cardMeanings"></div>
+      <div card-content [innerHTML]="matchCard.card.card.meanings | cardMeanings"></div>
     </chf-card>
   }
 </div>

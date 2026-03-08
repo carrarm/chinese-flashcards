@@ -77,7 +77,7 @@ export class SessionLauncherComponent implements OnInit {
     const cardsToLearn =
       await this.learningSessionService.createLearningSession(collection);
 
-    this.learningSessionService.currentSession.set(cardsToLearn);
+    this.learningSessionService.sessionCards.set(cardsToLearn);
     this.router.navigateByUrl("/sessions/active");
   }
 
@@ -85,7 +85,7 @@ export class SessionLauncherComponent implements OnInit {
     const cardsToReview =
       await this.learningSessionService.createReviewSession(collection);
 
-    this.learningSessionService.currentSession.set(cardsToReview);
+    this.learningSessionService.sessionCards.set(cardsToReview);
     this.router.navigateByUrl("/sessions/active");
   }
 }

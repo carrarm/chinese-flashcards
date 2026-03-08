@@ -43,7 +43,7 @@ export class SessionFillingStepComponent implements OnInit {
   private readonly learningSessionService = inject(LearningSessionService);
   private readonly navigationService = inject(NavigationService);
 
-  protected readonly cards = this.learningSessionService.currentSession;
+  protected readonly cards = this.learningSessionService.sessionCards;
 
   protected sessionCards = new Map<number, SessionCard>();
   protected session: number[] = [];
@@ -60,8 +60,7 @@ export class SessionFillingStepComponent implements OnInit {
     );
 
     this.cards().forEach((card) => {
-      const sessionCard = new SessionCard(card);
-      this.sessionCards.set(sessionCard.id, sessionCard);
+      this.sessionCards.set(card.id, card);
     });
 
     this.buildSessionCards();
@@ -105,6 +104,7 @@ export class SessionFillingStepComponent implements OnInit {
     this.cardRevealed = false;
     this.characterInput = undefined;
     this.pinyinInput = undefined;
+    this.learningSessionService.saveSession();
     if (nextCard) {
       this.currentCard = this.sessionCards.get(nextCard);
     } else {
@@ -123,9 +123,11 @@ export class SessionFillingStepComponent implements OnInit {
   private buildSessionCards(): void {
     let allCards: number[] = [];
     this.sessionCards.forEach((sessionCard: SessionCard) => {
-      allCards = allCards.concat(
-        Array(sessionCard.numberOfRepetitions).fill(sessionCard.id)
-      );
+      if (!sessionCard.isCompleted) {
+        allCards = allCards.concat(
+          Array(sessionCard.numberOfRepetitions).fill(sessionCard.id)
+        );
+      }
     });
 
     this.session = [];

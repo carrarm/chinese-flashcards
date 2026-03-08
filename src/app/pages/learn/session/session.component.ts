@@ -8,7 +8,7 @@ import { LearningSessionService } from "@core/services/learning-session.service"
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { faCircleStop, faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
-import { map, Observable, of } from "rxjs";
+import { map, Observable, of, tap } from "rxjs";
 import { ConfirmDialogComponent } from "src/app/components/dialog/confirm-dialog/confirm-dialog.component";
 import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { SessionCard } from "./session-card.model";
@@ -55,20 +55,30 @@ export class SessionComponent implements PendingChangesComponent, OnInit {
           })
           .afterClosed()
           // Need to use a pipe because "undefined" does not prevent the route change
-          .pipe(map((confirmed) => !!confirmed));
+          .pipe(
+            tap(() => this.learningSessionService.clearActiveSession()),
+            map((confirmed) => !!confirmed)
+          );
   }
 
   public ngOnInit(): void {
     this.navigationService.setTitle("Learning session");
-    if (!this.learningSessionService.currentSession().length) {
-      this.invalidSession = true;
-      this.router.navigateByUrl("/sessions");
+    if (this.learningSessionService.hasActiveSession()) {
+      this.learningSessionService.restoreSession();
+    } else {
+      if (!this.learningSessionService.sessionCards().length) {
+        this.invalidSession = true;
+        this.router.navigateByUrl("/sessions");
+      }
+      this.settingsService.getSettings().then((settings) => {
+        const matchingStep =
+          this.learningSessionService.isLearningSession() ||
+          settings.enableReviewMatching;
+        this.learningSessionService.sessionStep.set(
+          matchingStep ? "matching" : "filling"
+        );
+      });
     }
-    this.settingsService.getSettings().then((settings) => {
-      const matchingStep =
-        this.learningSessionService.isLearningSession() || settings.enableReviewMatching;
-      this.learningSessionService.sessionStep.set(matchingStep ? "matching" : "filling");
-    });
     this.tabBarService.setActions([
       {
         icon: faCircleStop,
@@ -90,6 +100,7 @@ export class SessionComponent implements PendingChangesComponent, OnInit {
       sessionCard.endSession();
       toUpdate.push(sessionCard.card);
     });
+    this.learningSessionService.clearActiveSession();
     this.cardService.updateCards(toUpdate);
     this.tabBarService.setActions([
       {
