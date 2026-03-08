@@ -1,4 +1,3 @@
-import { NgClass } from "@angular/common";
 import { Component, inject, input, OnInit, output } from "@angular/core";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -31,7 +30,6 @@ import { ResultCardComponent } from "./result-card/result-card.component";
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    NgClass,
     PinyinFormFieldComponent,
     ResultCardComponent,
   ],

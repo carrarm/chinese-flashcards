@@ -8,23 +8,17 @@ import { LearningSessionService } from "@core/services/learning-session.service"
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { faCircleStop, faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
-import { Observable, map, of } from "rxjs";
+import { map, Observable, of } from "rxjs";
 import { ConfirmDialogComponent } from "src/app/components/dialog/confirm-dialog/confirm-dialog.component";
 import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { SessionCard } from "./session-card.model";
 import { SessionMatchingStepComponent } from "./session-matching-step/session-matching-step.component";
 import { SessionFillingStepComponent } from "./session-filling-step/session-filling-step.component";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
-import { NgClass } from "@angular/common";
 
 @Component({
   selector: "chf-session",
-  imports: [
-    FaIconComponent,
-    NgClass,
-    SessionFillingStepComponent,
-    SessionMatchingStepComponent,
-  ],
+  imports: [FaIconComponent, SessionFillingStepComponent, SessionMatchingStepComponent],
   templateUrl: "./session.component.html",
   styleUrls: ["./session.component.scss"],
 })

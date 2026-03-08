@@ -54,7 +54,7 @@
     </chf-card>
   }
 
-  <div class="bottom-actions" [ngClass]="{ centered: cardRevealed }">
+  <div class="bottom-actions" [class.centered]="cardRevealed">
     @if (cardRevealed) {
       <chf-button
         type="primary"

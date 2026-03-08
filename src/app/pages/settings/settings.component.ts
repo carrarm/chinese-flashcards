@@ -1,4 +1,3 @@
-import { NgClass } from "@angular/common";
 import { Component, inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -37,7 +36,6 @@ interface SettingsForm {
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    NgClass,
     MatSnackBarModule,
     ReactiveFormsModule,
     SlideToggleComponent,

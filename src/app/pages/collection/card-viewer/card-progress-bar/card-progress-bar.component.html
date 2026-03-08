@@ -1,6 +1,6 @@
 <div class="card-progress-track">
   @for (step of steps(); track $index) {
-    <div class="step" [ngClass]="{ completed: card().leitnerBox >= step }">
+    <div class="step" [class.complete]="card().leitnerBox >= step">
       @if (step === card().leitnerBox) {
         <div class="current-step">{{ currentStepPercent() }} %</div>
       }

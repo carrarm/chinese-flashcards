@@ -15,7 +15,7 @@
       <div>
         {{ card.characters ?? card.pinyin }}
       </div>
-      <div class="progress" [ngClass]="card.sessionProgress">
+      <div class="progress" [class]="card.sessionProgress">
         <fa-icon [icon]="card.sessionResultIcon" size="lg" />
       </div>
     </div>
