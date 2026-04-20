@@ -26,15 +26,17 @@ export class Card implements CardModel {
   pinyin?: string;
   characters?: string;
   collectionId = 0;
+  collectionName?: string;
   leitnerBox = 0;
   lastSession?: string;
   difficulty?: CardDifficultyLevel;
   archived?: boolean;
 
-  constructor(data?: CardModel) {
+  constructor(data?: CardModel, collectionName?: string) {
     if (data) {
       Object.assign(this, data);
     }
+    this.collectionName = collectionName;
   }
 
   isUnknown(): boolean {

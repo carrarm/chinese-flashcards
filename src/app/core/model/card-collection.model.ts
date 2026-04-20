@@ -23,7 +23,7 @@ export class CardCollection implements CardCollectionModel {
   }
 
   addCards(cards: CardModel[]): void {
-    this.cards = cards.map((card) => new Card(card));
+    this.cards = cards.map((card) => new Card(card, this.label));
   }
 
   setStatistics(stats: CollectionStats): void {

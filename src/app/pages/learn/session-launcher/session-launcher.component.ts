@@ -47,7 +47,7 @@ export class SessionLauncherComponent implements OnInit {
     this.tabBarService.resetTabBar();
 
     this.settingsService.getSettings().then((settings) => (this.settings = settings));
-    this.collectionService.getCollections().then(async (collections) => {
+    this.collectionService.getCollections(true, true).then(async (collections) => {
       this.collections =
         await this.statisticsService.getCollectionsReviewStats(collections);
       const numberStats: CollectionStats = {
