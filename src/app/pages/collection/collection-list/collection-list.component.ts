@@ -57,6 +57,13 @@ export class CollectionListComponent implements OnInit {
   private loadCollections(): void {
     this.collectionService
       .getCollections()
-      .then((collections) => (this.collections = collections));
+      .then((collections) => {
+        const allCardsCollection = new CardCollection({
+          id: -1,
+          label: "All collections",
+        });
+        allCardsCollection.cards = collections.flatMap((collection) => collection.cards);
+        this.collections = [...collections, allCardsCollection];
+      });
   }
 }

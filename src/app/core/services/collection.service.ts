@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Collection } from "dexie";
 import { Database } from "../db/database.model";
 import { DatabaseService } from "../db/database.service";
@@ -13,32 +13,20 @@ export class CollectionService {
 
   private readonly database: Database = this.databaseService.database;
 
-  public readonly allCardsCollection = signal<CardCollection>(new CardCollection({
-    id: -1,
-    label: "All collections"
-  }));
-
   public async getCollections(fetchCards = true, session = false): Promise<CardCollection[]> {
     try {
-      const collections = await this.database.cardCollections
+      return await this.database.cardCollections
         .orderBy("label")
-        .toArray();
-
-      let result: CardCollection[] = [];
-
-      if (fetchCards) {
-        result = await Promise.all(
-          collections.map((collection) => this.loadCollectionCards(collection))
-        );
-        if (!session) {
-          this.updateAllCardsCollection(result);
-          result = [...result, this.allCardsCollection()];
-        }
-      } else {
-        result = collections.map((collection) => new CardCollection(collection));
-      }
-
-      return result;
+        .toArray((collections: CardCollectionModel[]) => {
+          if (fetchCards) {
+            const filledCollectionPromises = collections.map((collection) =>
+              this.loadCollectionCards(collection)
+            );
+            return Promise.all(filledCollectionPromises);
+          } else {
+            return collections.map((collection) => new CardCollection(collection));
+          }
+        });
     } catch (error) {
       console.error("Unable to load card collections", error);
       return [];
@@ -46,15 +34,8 @@ export class CollectionService {
   }
 
   public async getCollection(id: number): Promise<CardCollection | undefined> {
-    if (id === this.allCardsCollection().id) {
-      if (!this.allCardsCollection().cards.length) {
-        await this.getCollections();
-      }
-      return this.allCardsCollection();
-    } else {
-      const cardCollection = await this.database.cardCollections.get(id);
-      return cardCollection ? this.loadCollectionCards(cardCollection) : undefined;
-    }
+    const cardCollection = await this.database.cardCollections.get(id);
+    return cardCollection ? this.loadCollectionCards(cardCollection) : undefined;
   }
 
   public async getCollectionByName(
@@ -129,13 +110,5 @@ export class CollectionService {
       .where({ collectionId: collection.id })
       .toArray((cards) => cardCollection.addCards(cards));
     return cardCollection;
-  }
-
-  private updateAllCardsCollection(collections: CardCollection[]): void {
-    const allCards = collections.flatMap((collection) => collection.cards);
-    this.allCardsCollection.update((collection) => {
-      collection.cards = [...allCards];
-      return collection;
-    });
   }
 }

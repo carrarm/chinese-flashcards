@@ -196,15 +196,25 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     }
   }
 
-  private loadCollectionCards(): void {
+  private async loadCollectionCards(): Promise<void> {
     this.stopMultiselect();
-    this.collectionService.getCollection(this.collectionId).then((collection) => {
-      if (collection) {
-        this.collection = collection;
-        this.navigationService.setTitle("Manage collections - " + collection.label);
-        this.dataSource.data = collection.cards;
-      }
-    });
+    let collection: CardCollection | undefined;
+    if (this.collectionId !== -1) {
+      collection = await this.collectionService.getCollection(this.collectionId);
+   } else {
+     const collections = await this.collectionService.getCollections();
+       collection = new CardCollection({
+         id: -1,
+         label: "All collections",
+       });
+       collection.cards = collections.flatMap((collection) => collection.cards);
+    };
+    if (!collection) {
+      return;
+    }
+    this.collection = collection;
+    this.navigationService.setTitle("Manage collections - " + collection.label);
+    this.dataSource.data = collection.cards;
   }
 
   private initializeDataSource(): void {
