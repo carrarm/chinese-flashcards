@@ -134,7 +134,6 @@ export class CollectionService {
   private updateAllCardsCollection(collections: CardCollection[]): void {
     const allCards = collections.flatMap((collection) => collection.cards);
     this.allCardsCollection.update((collection) => {
-      collection.cards = [];
       collection.cards = [...allCards];
       return collection;
     });
