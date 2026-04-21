@@ -1,3 +1,4 @@
+import { I18nPluralPipe } from "@angular/common";
 import {
   AfterViewInit,
   Component,
@@ -6,7 +7,11 @@ import {
   OnInit,
   viewChild,
 } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
 import { MatSort, MatSortModule } from "@angular/material/sort";
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";
@@ -15,13 +20,16 @@ import {
   ConfirmDialogComponent,
   ConfirmDialogConfig,
 } from "@components/dialog/confirm-dialog/confirm-dialog.component";
-import { CardCollection } from "@core/model/card-collection.model";
+import { SOLID_ICONS } from "@core/font-awesome.config";
+import { ALL_CARDS_COLLECTION_ID, CardCollection } from "@core/model/card-collection.model";
 import { Card } from "@core/model/card.model";
+import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { CardService } from "@core/services/card.service";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { normalizeForComparison, removeOnce } from "@core/utils/general.utils";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { debounceTime, Subject } from "rxjs";
 import { ActionTab, TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { CardEditorComponent } from "../card-editor/card-editor.component";
@@ -29,14 +37,6 @@ import { CardViewerComponent } from "../card-viewer/card-viewer.component";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
 import { MoveCardDialogComponent } from "../move-card-dialog/move-card-dialog.component";
 import { DialogData } from "../move-card-dialog/move-card-dialog.types";
-import { I18nPluralPipe } from "@angular/common";
-import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
-import { FormsModule } from "@angular/forms";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { MatDividerModule } from "@angular/material/divider";
-import { SOLID_ICONS } from "@core/font-awesome.config";
 
 @Component({
   selector: "chf-collection-cards",
@@ -199,12 +199,12 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   private async loadCollectionCards(): Promise<void> {
     this.stopMultiselect();
     let collection: CardCollection | undefined;
-    if (this.collectionId !== -1) {
+    if (this.collectionId !== ALL_CARDS_COLLECTION_ID) {
       collection = await this.collectionService.getCollection(this.collectionId);
    } else {
      const collections = await this.collectionService.getCollections();
        collection = new CardCollection({
-         id: -1,
+         id: ALL_CARDS_COLLECTION_ID,
          label: "All collections",
        });
        collection.cards = collections.flatMap((collection) => collection.cards);
