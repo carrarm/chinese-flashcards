@@ -13,7 +13,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { ButtonComponent } from "@components/button/button.component";
 import { PinyinFormFieldComponent } from "@components/pinyin-form-field/pinyin-form-field.component";
-import { Card, defaultNextSession } from "@core/model/card.model";
+import { Card } from "@core/model/card.model";
 import { JoinPipe } from "@core/pipes/join.pipe";
 import { CardService } from "@core/services/card.service";
 import { SettingsService } from "@core/services/settings.service";
@@ -105,7 +105,6 @@ export class CardEditorComponent implements OnInit {
         id: this.originalCard?.id,
         leitnerBox: this.originalCard?.leitnerBox ?? 0,
         lastSession: this.originalCard?.lastSession,
-        nextSession: this.originalCard?.nextSession ?? defaultNextSession,
       });
 
       if (this.resetRequired) {

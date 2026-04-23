@@ -1,6 +1,3 @@
-import { CardCollection } from "@core/model/card-collection.model";
-import { boxReviewDelay, CardModel, defaultNextSession } from "@core/model/card.model";
-import dayjs from "dayjs";
 import { Transaction } from "dexie";
 
 type DbUpgrades = {
@@ -13,25 +10,5 @@ type DbUpgrades = {
 export const upgrades: DbUpgrades = {
   1: () => Promise.resolve(),
   2: () => Promise.resolve(),
-  3: async (tx: Transaction) => {
-    const cards = tx.table<CardModel>("cards");
-    const collectionTable = tx.table<CardCollection>("cardCollections");
-
-    const collections = await collectionTable.toArray();
-    const collectionMap = new Map(collections.map((collection) => [collection.id, collection.label]));
-
-    await cards.toCollection().modify((card) => {
-      const collectionName = collectionMap.get(card.collectionId);
-      if (collectionName) {
-        card.collectionName = collectionName;
-      }
-
-      if (card.lastSession && card.leitnerBox > 0) {
-        const delay = boxReviewDelay[card.leitnerBox];
-        card.nextSession = dayjs(card.lastSession).add(delay, "day").toISOString();
-      } else {
-        card.nextSession = defaultNextSession;
-      }
-    });
-  },
+  3: () => Promise.resolve(),
 };

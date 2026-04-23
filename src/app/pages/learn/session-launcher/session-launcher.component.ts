@@ -1,4 +1,3 @@
-import { NgTemplateOutlet } from "@angular/common";
 import { Component, inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ButtonComponent } from "@components/button/button.component";
@@ -13,6 +12,7 @@ import { SettingsService } from "@core/services/settings.service";
 import { StatisticsService } from "@core/services/statistics.service";
 import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { CardProgressIndicatorComponent } from "../../shared/components/card-progress-indicator/card-progress-indicator.component";
+import { NgTemplateOutlet } from "@angular/common";
 
 @Component({
   selector: "chf-session-launcher",
