@@ -76,6 +76,7 @@ export class SessionCard {
       this.sessionResultIcon = faArrowTrendDown;
     }
     this.card.lastSession = dayjs().toISOString();
+    this.card.nextSession = this.card.nextReview();
   }
 
   /**

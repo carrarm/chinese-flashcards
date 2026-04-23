@@ -2,13 +2,21 @@ import dayjs from "dayjs";
 import Dexie, { Table } from "dexie";
 import { environment } from "src/environments/environment";
 import { CardCollectionModel } from "../model/card-collection.model";
-import { CardModel } from "../model/card.model";
+import { CardModel, defaultNextSession } from "../model/card.model";
 import { SettingsModel } from "../model/settings.model";
 import { upgrades } from "./database-upgrades";
 
 const schema = {
   cardCollections: "++id, label",
-  cards: "++id, collectionId, leitnerBox, [collectionId+leitnerBox]",
+  cards: `
+    ++id, 
+    collectionId, 
+    collectionName, 
+    leitnerBox, 
+    nextSession, 
+    [collectionId+leitnerBox], 
+    [collectionId+nextSession]
+  `,
   settings: "++id",
 };
 
@@ -51,6 +59,7 @@ export class Database extends Dexie {
         collectionId: firstCollection,
         leitnerBox: 4,
         lastSession: dayjs().subtract(4, "day").toISOString(),
+        nextSession: defaultNextSession,
       },
       {
         meanings: ["Goat"],
@@ -59,6 +68,7 @@ export class Database extends Dexie {
         collectionId: firstCollection,
         leitnerBox: 2,
         lastSession: dayjs().subtract(10, "day").toISOString(),
+        nextSession: defaultNextSession,
       },
       {
         meanings: ["Rooster"],
@@ -67,6 +77,7 @@ export class Database extends Dexie {
         collectionId: firstCollection,
         leitnerBox: 4,
         lastSession: dayjs().subtract(10, "day").toISOString(),
+        nextSession: defaultNextSession,
       },
       {
         meanings: ["Dog"],
@@ -74,6 +85,7 @@ export class Database extends Dexie {
         characters: "狗",
         collectionId: firstCollection,
         leitnerBox: 0,
+        nextSession: defaultNextSession,
       },
     ]);
 
@@ -88,6 +100,7 @@ export class Database extends Dexie {
         collectionId: secondCollection,
         leitnerBox: 3,
         lastSession: dayjs().toISOString(),
+        nextSession: defaultNextSession,
       },
       {
         meanings: ["Two"],
@@ -96,6 +109,7 @@ export class Database extends Dexie {
         collectionId: secondCollection,
         leitnerBox: 1,
         lastSession: dayjs().toISOString(),
+        nextSession: defaultNextSession,
       },
       {
         meanings: ["Three"],
@@ -104,6 +118,7 @@ export class Database extends Dexie {
         collectionId: secondCollection,
         leitnerBox: 3,
         lastSession: dayjs().toISOString(),
+        nextSession: defaultNextSession,
       },
       {
         meanings: ["Four"],
@@ -111,6 +126,7 @@ export class Database extends Dexie {
         characters: "四",
         collectionId: secondCollection,
         leitnerBox: 0,
+        nextSession: defaultNextSession,
       },
       {
         meanings: ["Five"],
@@ -118,6 +134,7 @@ export class Database extends Dexie {
         characters: "五",
         collectionId: secondCollection,
         leitnerBox: 0,
+        nextSession: defaultNextSession,
       },
     ]);
   }

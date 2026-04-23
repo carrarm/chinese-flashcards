@@ -1,7 +1,8 @@
 import dayjs from "dayjs";
-import { Dayjs } from "dayjs";
 
 export type CardDifficultyLevel = "easy" | "medium" | "hard";
+
+export const defaultNextSession = dayjs('1970-01-01').toISOString();
 
 export interface CardModel {
   id?: number;
@@ -9,8 +10,10 @@ export interface CardModel {
   pinyin?: string;
   characters?: string;
   collectionId: number;
+  collectionName?: string;
   leitnerBox: number;
   lastSession?: string;
+  nextSession: string;
   difficulty?: CardDifficultyLevel;
   archived?: boolean;
 }
@@ -18,7 +21,7 @@ export interface CardModel {
 /**
  * Review delay for each box from 0 to 6 (using the index of the array)
  */
-const boxReviewDelay = [0, 0.5, 1, 2, 4, 7, 14];
+export const boxReviewDelay = [0, 0.5, 1, 2, 4, 7, 14];
 
 export class Card implements CardModel {
   id?: number;
@@ -29,6 +32,7 @@ export class Card implements CardModel {
   collectionName?: string;
   leitnerBox = 0;
   lastSession?: string;
+  nextSession: string = defaultNextSession;
   difficulty?: CardDifficultyLevel;
   archived?: boolean;
 
@@ -43,10 +47,10 @@ export class Card implements CardModel {
     return this.leitnerBox === 0 || !this.lastSession;
   }
 
-  nextReview(): Dayjs | undefined {
+  nextReview(): string {
     return this.isUnknown()
-      ? undefined
-      : dayjs(this.lastSession).add(boxReviewDelay[this.leitnerBox], "day");
+      ? defaultNextSession
+      : dayjs(this.lastSession).add(boxReviewDelay[this.leitnerBox], "day").toISOString();
   }
 
   nextReviewInDays(): number {
@@ -54,18 +58,8 @@ export class Card implements CardModel {
   }
 
   isKnown(): boolean {
-    return this.archived || (!this.isUnknown() && dayjs().isBefore(this.nextReview()));
-  }
-
-  needsReview(): boolean {
-    if (this.archived) {
-      return false;
-    }
-
-    const nextSession = this.nextReview();
-    return (
-      (!this.isUnknown() && dayjs().isSame(nextSession)) || dayjs().isAfter(nextSession)
-    );
+    const nextReview = dayjs(this.nextReview());
+    return this.archived || (!this.isUnknown() && dayjs().isBefore(nextReview));
   }
 
   moveNextBox(): void {
