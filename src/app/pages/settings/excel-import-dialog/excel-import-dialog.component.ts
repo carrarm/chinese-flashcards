@@ -7,11 +7,11 @@ import { saveAs } from "file-saver";
 
 import { ButtonComponent } from "@components/button/button.component";
 import { FileUploadComponent } from "@components/file-upload/file-upload.component";
-import { Card } from "@core/model/card.model";
 import { CardCollection } from "@core/model/card-collection.model";
-import { VocabularySheetParser, VocabSheetTuple } from "@core/utils/excel-parser.utils";
+import { Card, defaultNextSession } from "@core/model/card.model";
 import { CardService } from "@core/services/card.service";
 import { CollectionService } from "@core/services/collection.service";
+import { VocabSheetTuple, VocabularySheetParser } from "@core/utils/excel-parser.utils";
 
 type CardUpdate = { card: Card; status: "updated" | "created" };
 
@@ -117,6 +117,7 @@ export class ExcelImportDialogComponent {
           meanings,
           leitnerBox: 0,
           collectionId: 0,
+          nextSession: defaultNextSession,
         }),
         collection.id
       );

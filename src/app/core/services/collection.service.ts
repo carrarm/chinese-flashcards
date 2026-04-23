@@ -1,5 +1,6 @@
 import { inject, Injectable } from "@angular/core";
-import { Collection } from "dexie";
+import dayjs from "dayjs";
+import Dexie, { Collection } from "dexie";
 import { Database } from "../db/database.model";
 import { DatabaseService } from "../db/database.service";
 import { CardCollection, CardCollectionModel } from "../model/card-collection.model";
@@ -91,14 +92,17 @@ export class CollectionService {
    * @returns Dexie `Collection<CardModel, number>`
    */
   public getReviewCardRequest(collectionId?: number): Collection<CardModel, number> {
+    const now = dayjs().toISOString();
     if (collectionId) {
       return this.database.cards
-        .where({ collectionId })
-        .and((card) => new Card(card).needsReview());
+        .where('[collectionId+nextSession]')
+        .between([collectionId, Dexie.minKey], [collectionId, now])
+        .and((card) => !card.archived);
     } else {
       return this.database.cards
-        .toCollection()
-        .and((card: CardModel) => new Card(card).needsReview());
+        .where('nextSession')
+        .belowOrEqual(now)
+        .and((card) => !card.archived);
     }
   }
 
