@@ -1,0 +1,16 @@
+<mat-form-field appearance="outline">
+  <mat-label>Find a card</mat-label>
+  <input
+    matInput
+    [ngModel]="filter()"
+    (ngModelChange)="onInput($event)"
+    placeholder="Search a card"
+  />
+  <div matSuffix class="search-icon-wrapper">
+    @if (filter().length) {
+      <fa-icon icon="close" (click)="onClear()" />
+      <mat-divider vertical />
+    }
+    <fa-icon icon="magnifying-glass" />
+  </div>
+</mat-form-field>

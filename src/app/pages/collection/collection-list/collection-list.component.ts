@@ -1,15 +1,15 @@
+import { I18nPluralPipe } from "@angular/common";
 import { Component, inject, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { CardCollection } from "@core/model/card-collection.model";
+import { RouterModule } from "@angular/router";
+import { ButtonComponent } from "@components/button/button.component";
+import { CardComponent } from "@components/card/card.component";
+import { ALL_CARDS_COLLECTION_ID, CardCollection } from "@core/model/card-collection.model";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { TabBarService } from "src/app/components/tab-bar/tab-bar.service";
 import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
-import { ButtonComponent } from "@components/button/button.component";
-import { FaIconComponent } from "@fortawesome/angular-fontawesome";
-import { CardComponent } from "@components/card/card.component";
-import { RouterModule } from "@angular/router";
-import { I18nPluralPipe } from "@angular/common";
 
 @Component({
   selector: "chf-collection-list",
@@ -57,6 +57,13 @@ export class CollectionListComponent implements OnInit {
   private loadCollections(): void {
     this.collectionService
       .getCollections()
-      .then((collections) => (this.collections = collections));
+      .then((collections) => {
+        const allCardsCollection = new CardCollection({
+          id: ALL_CARDS_COLLECTION_ID,
+          label: "All collections",
+        });
+        allCardsCollection.cards = collections.flatMap((collection) => collection.cards);
+        this.collections = [...collections, allCardsCollection];
+      });
   }
 }

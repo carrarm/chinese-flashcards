@@ -1,0 +1,8 @@
+<div class="page-header">
+  <fa-icon icon="chevron-left" routerLink="/collections" />
+  <div class="collection-name">{{ label() }}</div>
+  <div class="filler"></div>
+  <div class="card-count">
+    {{ cardCount() | i18nPlural: cardCountPlural }}
+  </div>
+</div>

@@ -33,11 +33,15 @@ chf-card {
   // margin-top: 1.5rem;
 }
 
-.section-title {
+.title {
   padding-bottom: 0.2rem;
   border-bottom: solid 1px #6c6c6c;
   font-family: var(--font-title);
   margin-bottom: 0.5rem;
+}
+
+.section-title {
+  @extend .title;
   margin-top: 1rem;
 }
 

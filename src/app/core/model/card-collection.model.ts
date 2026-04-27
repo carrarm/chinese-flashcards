@@ -7,6 +7,8 @@ export interface CardCollectionModel {
   description?: string;
 }
 
+export const ALL_CARDS_COLLECTION_ID = -1;
+
 export class CardCollection implements CardCollectionModel {
   id: number;
   label: string;
@@ -23,7 +25,7 @@ export class CardCollection implements CardCollectionModel {
   }
 
   addCards(cards: CardModel[]): void {
-    this.cards = cards.map((card) => new Card(card));
+    this.cards = cards.map((card) => new Card(card, this.label));
   }
 
   setStatistics(stats: CollectionStats): void {

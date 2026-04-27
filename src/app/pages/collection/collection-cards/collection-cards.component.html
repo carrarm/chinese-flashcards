@@ -1,28 +1,6 @@
-<div class="page-header">
-  <fa-icon icon="chevron-left" routerLink="/collections" />
-  <div class="collection-name">{{ collection?.label }}</div>
-  <div class="filler"></div>
-  <div class="card-count">
-    {{ dataSource.data.length | i18nPlural: cardCountPlural }}
-  </div>
-</div>
+<chf-collection-header [label]="collection?.label" [cardCount]="dataSource.data.length" />
 
-<mat-form-field appearance="outline">
-  <mat-label>Find a card</mat-label>
-  <input
-    matInput
-    [(ngModel)]="filter"
-    (ngModelChange)="filter$.next($event)"
-    placeholder="Search a card"
-  />
-  <div matSuffix class="search-icon-wrapper">
-    @if (filter.length) {
-      <fa-icon icon="close" (click)="clearSearchBar()" />
-      <mat-divider vertical />
-    }
-    <fa-icon icon="magnifying-glass" />
-  </div>
-</mat-form-field>
+<chf-card-search (searchChange)="onFilterChange($event)" />
 
 <div class="table-wrapper">
   <mat-table
