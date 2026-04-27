@@ -1,4 +1,3 @@
-import { I18nPluralPipe } from "@angular/common";
 import {
   AfterViewInit,
   Component,
@@ -7,51 +6,38 @@ import {
   OnInit,
   viewChild,
 } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { MatDialog } from "@angular/material/dialog";
 import { MatDividerModule } from "@angular/material/divider";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
 import { MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
 import { MatSort, MatSortModule } from "@angular/material/sort";
 import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { ActivatedRoute, RouterModule } from "@angular/router";
-import {
-  ConfirmDialogComponent,
-  ConfirmDialogConfig,
-} from "@components/dialog/confirm-dialog/confirm-dialog.component";
 import { SOLID_ICONS } from "@core/font-awesome.config";
 import { ALL_CARDS_COLLECTION_ID, CardCollection } from "@core/model/card-collection.model";
 import { Card } from "@core/model/card.model";
 import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { CardService } from "@core/services/card.service";
+import { CollectionCardDialogService } from "@core/services/collection-card-dialog.service";
 import { CollectionService } from "@core/services/collection.service";
 import { NavigationService } from "@core/services/navigation.service";
 import { SettingsService } from "@core/services/settings.service";
 import { normalizeForComparison, removeOnce } from "@core/utils/general.utils";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { debounceTime, Subject } from "rxjs";
 import { ActionTab, TabBarService } from "src/app/components/tab-bar/tab-bar.service";
-import { CardEditorComponent } from "../card-editor/card-editor.component";
-import { CardViewerComponent } from "../card-viewer/card-viewer.component";
-import { CollectionEditorComponent } from "../collection-editor/collection-editor.component";
-import { MoveCardDialogComponent } from "../move-card-dialog/move-card-dialog.component";
-import { DialogData } from "../move-card-dialog/move-card-dialog.types";
+import { CardSearchComponent } from "./card-search/card-search.component";
+import { CollectionHeaderComponent } from "./collection-header/collection-header.component";
 
 @Component({
   selector: "chf-collection-cards",
   imports: [
     CardMeaningsPipe,
     FontAwesomeModule,
-    FormsModule,
-    I18nPluralPipe,
     MatDividerModule,
-    MatFormFieldModule,
-    MatInputModule,
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
     RouterModule,
+    CollectionHeaderComponent,
+    CardSearchComponent,
   ],
   templateUrl: "./collection-cards.component.html",
   styleUrls: ["./collection-cards.component.scss"],
@@ -62,24 +48,15 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
 
   private readonly cardService = inject(CardService);
   private readonly collectionService = inject(CollectionService);
-  private readonly dialog = inject(MatDialog);
   private readonly navigationService = inject(NavigationService);
   private readonly route = inject(ActivatedRoute);
   private readonly settingsService = inject(SettingsService);
   private readonly tabBarService = inject(TabBarService);
+  private readonly collectionCardDialogService = inject(CollectionCardDialogService);
 
   protected readonly columns = ["meanings", "pinyin", "characters"];
   protected readonly dataSource = new MatTableDataSource<Card>();
-  protected readonly filter$ = new Subject<string | null>();
 
-  protected readonly cardCountPlural = {
-    "=0": "0 card",
-    "=1": "1 card",
-    other: "# cards",
-  };
-
-  protected filter = "";
-  protected searchActive = false;
   protected collection?: CardCollection;
   protected pageSize = 20;
   protected multiselectActive = false;
@@ -135,10 +112,6 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
       .then((settings) => (this.pageSize = settings.pageSize));
 
     this.initializeDataSource();
-
-    this.filter$
-      .pipe(debounceTime(250))
-      .subscribe(() => (this.dataSource.filter = this.filter));
   }
 
   public ngAfterViewInit(): void {
@@ -151,11 +124,8 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   protected openCardEditor(card?: Card): void {
-    this.dialog
-      .open(CardEditorComponent, {
-        data: { card, collection: this.collectionId },
-      })
-      .afterClosed()
+    this.collectionCardDialogService
+      .openCardEditorDialog(this.collectionId, card)
       .subscribe(() => this.loadCollectionCards());
   }
 
@@ -167,17 +137,8 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
     }
   }
 
-  protected toggleSearch(): void {
-    this.searchActive = !this.searchActive;
-    if (!this.searchActive) {
-      this.filter = "";
-      this.filter$.next(null);
-    }
-  }
-
-  protected clearSearchBar(): void {
-    this.filter = "";
-    this.filter$.next(null);
+  protected onFilterChange(value: string | null): void {
+    this.dataSource.filter = value ?? "";
   }
 
   protected startMultiselect(): void {
@@ -242,17 +203,8 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   private openArchiveAllConfirm(): void {
-    const data: ConfirmDialogConfig = {
-      confirmText: "Archive selection",
-      cancelText: "Forget it",
-      title: "Archive selected cards",
-      message:
-        "The selected cards will be archived and won't appear during review sessions.",
-      confirmType: "primary",
-    };
-    this.dialog
-      .open(ConfirmDialogComponent, { data })
-      .afterClosed()
+    this.collectionCardDialogService
+      .openArchiveAllConfirmDialog()
       .subscribe((confirmed) => {
         if (confirmed) {
           this.selectedCards.forEach((card) => (card.archived = true));
@@ -264,20 +216,14 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   private openCardViewer(card: Card): void {
-    this.dialog
-      .open(CardViewerComponent, {
-        data: { card, collection: this.collectionId },
-      })
-      .afterClosed()
+    this.collectionCardDialogService
+      .openCardViewerDialog(card, this.collectionId)
       .subscribe(() => this.loadCollectionCards());
   }
 
   private openCategoryEditor(): void {
-    this.dialog
-      .open(CollectionEditorComponent, {
-        data: { collection: this.collection },
-      })
-      .afterClosed()
+    this.collectionCardDialogService
+      .openCategoryEditorDialog(this.collection)
       .subscribe(() =>
         this.collectionService
           .getCollection(this.collectionId)
@@ -286,13 +232,8 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   private openMoveCardDialog(): void {
-    const data: DialogData = {
-      cards: this.selectedCards,
-      initialCategory: this.collectionId,
-    };
-    this.dialog
-      .open(MoveCardDialogComponent, { data })
-      .afterClosed()
+    this.collectionCardDialogService
+      .openMoveCardDialog(this.selectedCards, this.collectionId)
       .subscribe((refreshNeeded) => {
         if (refreshNeeded) {
           this.loadCollectionCards();

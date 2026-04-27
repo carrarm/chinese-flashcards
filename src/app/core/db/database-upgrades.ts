@@ -21,10 +21,7 @@ export const upgrades: DbUpgrades = {
     const collectionMap = new Map(collections.map((collection) => [collection.id, collection.label]));
 
     await cards.toCollection().modify((card) => {
-      const collectionName = collectionMap.get(card.collectionId);
-      if (collectionName) {
-        card.collectionName = collectionName;
-      }
+      card.collectionName = collectionMap.get(card.collectionId);
 
       if (card.lastSession && card.leitnerBox > 0) {
         const delay = boxReviewDelay[card.leitnerBox];
