@@ -1,0 +1,91 @@
+{
+  "configVersion": 1,
+  "timestamp": 1777296131341,
+  "index": "/chinese-flashcards/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/chinese-flashcards/favicon.ico",
+        "/chinese-flashcards/index.html",
+        "/chinese-flashcards/main-5I7KBBWG.js",
+        "/chinese-flashcards/manifest.webmanifest",
+        "/chinese-flashcards/polyfills-5CFQRCPP.js",
+        "/chinese-flashcards/styles-3X65NCUW.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/chinese-flashcards/assets/chinese-flashcards-logo.svg",
+        "/chinese-flashcards/assets/icons/face-laugh-beam-solid.svg",
+        "/chinese-flashcards/assets/icons/face-sad-cry-solid.svg",
+        "/chinese-flashcards/assets/icons/face-smile-solid.svg",
+        "/chinese-flashcards/assets/icons/icon-128x128.png",
+        "/chinese-flashcards/assets/icons/icon-144x144.png",
+        "/chinese-flashcards/assets/icons/icon-152x152.png",
+        "/chinese-flashcards/assets/icons/icon-192x192.png",
+        "/chinese-flashcards/assets/icons/icon-384x384.png",
+        "/chinese-flashcards/assets/icons/icon-512x512.png",
+        "/chinese-flashcards/assets/icons/icon-72x72.png",
+        "/chinese-flashcards/assets/icons/icon-96x96.png",
+        "/chinese-flashcards/assets/vocabulary-sheet-template.xlsx"
+      ],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/css2\\?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Quicksand:wght@300;400;500;600&family=Ubuntu\\+Mono"
+      ]
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/chinese-flashcards/assets/chinese-flashcards-logo.svg": "ae29ef658c537aac47db197be2ac4e3c685fd37d",
+    "/chinese-flashcards/assets/icons/face-laugh-beam-solid.svg": "2ae847432a24dbfc0f3451af8afb71ab0a5ccc1c",
+    "/chinese-flashcards/assets/icons/face-sad-cry-solid.svg": "74ed105f566b024a83f684ec672a647d192f3731",
+    "/chinese-flashcards/assets/icons/face-smile-solid.svg": "1db307f6ea6eff3f8168a9c6ab90385ed11be429",
+    "/chinese-flashcards/assets/icons/icon-128x128.png": "038def9080e7c8c695fc8a239ed7653e4f75317b",
+    "/chinese-flashcards/assets/icons/icon-144x144.png": "acdf7a377073bf7659af1eb79df3dfddc5c8168c",
+    "/chinese-flashcards/assets/icons/icon-152x152.png": "127b017f0c19714549c2f24ed2dd8a32ea8dfa49",
+    "/chinese-flashcards/assets/icons/icon-192x192.png": "45614e8eaabc90d89687cb0ad2e67137d9fb28ca",
+    "/chinese-flashcards/assets/icons/icon-384x384.png": "412d57f27aad1b16ac5fb0000c497f77a1024cb9",
+    "/chinese-flashcards/assets/icons/icon-512x512.png": "aca9a1dd27461642289368a07d61b2d787a805af",
+    "/chinese-flashcards/assets/icons/icon-72x72.png": "e2efd394416f261c1441a1753cba134b84cd5118",
+    "/chinese-flashcards/assets/icons/icon-96x96.png": "2158f5c7dfe8ef309c9a51c7d248c8feb1398ff4",
+    "/chinese-flashcards/assets/vocabulary-sheet-template.xlsx": "c81d1841fd55a633eff3c3c611f854cd56c9571c",
+    "/chinese-flashcards/favicon.ico": "416c1286c4e8ea6de0c657f2d8ea77cac2cdbfe3",
+    "/chinese-flashcards/index.html": "31ac4cb854438e795edd7e9e649a01238ca3f000",
+    "/chinese-flashcards/main-5I7KBBWG.js": "13f2fe03463775e7593be642cd1d41e4ba61f773",
+    "/chinese-flashcards/manifest.webmanifest": "d290a25719f3819bc1330ca0679216c7d38a7bb6",
+    "/chinese-flashcards/polyfills-5CFQRCPP.js": "f2241e9a25858f895ce299d15f6f22e849e2fd72",
+    "/chinese-flashcards/styles-3X65NCUW.css": "af554f619529788af5552714ab8a5d95d419511b"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
