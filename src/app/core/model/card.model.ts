@@ -40,7 +40,7 @@ export class Card implements CardModel {
     if (data) {
       Object.assign(this, data);
     }
-    this.collectionName = collectionName;
+    this.collectionName ??= collectionName;
   }
 
   isUnknown(): boolean {

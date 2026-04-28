@@ -1,13 +1,13 @@
 import { Component, inject, OnInit, output } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { FormsModule } from "@angular/forms";
 
+import { ButtonComponent } from "@components/button/button.component";
 import { CardComponent } from "@components/card/card.component";
 import { PinyinFormFieldComponent } from "@components/pinyin-form-field/pinyin-form-field.component";
-import { ButtonComponent } from "@components/button/button.component";
-import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { CardDifficultyLevel } from "@core/model/card.model";
+import { CardMeaningsPipe } from "@core/pipes/card-meanings.pipe";
 import { NavigationService } from "@core/services/navigation.service";
 import {
   removeOnce,
@@ -17,9 +17,9 @@ import {
 } from "@core/utils/general.utils";
 import { CardDifficultyComponent } from "@pages/shared/components/card-difficulty/card-difficulty.component";
 
+import { LearningSessionService } from "@core/services/learning-session.service";
 import { SessionCard } from "../session-card.model";
 import { ResultCardComponent } from "./result-card/result-card.component";
-import { LearningSessionService } from "@core/services/learning-session.service";
 
 @Component({
   selector: "chf-session-filling-step",

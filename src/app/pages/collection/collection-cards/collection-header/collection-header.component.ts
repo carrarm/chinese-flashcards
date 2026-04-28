@@ -1,10 +1,11 @@
 import { I18nPluralPipe } from '@angular/common';
 import { Component, input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'chf-collection-header',
-  imports: [FontAwesomeModule, I18nPluralPipe],
+  imports: [FontAwesomeModule, I18nPluralPipe, RouterModule],
   templateUrl: './collection-header.component.html',
   styleUrl: './collection-header.component.scss',
 })

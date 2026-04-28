@@ -18,6 +18,13 @@ chf-pinyin-form-field {
   text-align: right;
 }
 
+.card-category {
+  width: 100%;
+  padding-bottom: 0.2rem;
+  border-bottom: solid 1px #6c6c6c;
+  font-family: var(--font-title);
+}
+
 .centered-card {
   display: flex;
   flex-direction: column;
