@@ -1,9 +1,9 @@
 import { inject, Injectable, signal } from "@angular/core";
+import { SessionCard } from "@pages/learn/session/session-card.model";
+import { omit } from "lodash-es";
 import { Card } from "../model/card.model";
 import { CollectionService } from "./collection.service";
 import { SettingsService } from "./settings.service";
-import { SessionCard } from "@pages/learn/session/session-card.model";
-import { omit } from "lodash-es";
 
 type SessionType = "review" | "learn";
 type SessionStep = "filling" | "matching";

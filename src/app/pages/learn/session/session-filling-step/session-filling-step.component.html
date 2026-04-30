@@ -2,6 +2,9 @@
   <!-- Text to translate into Chinese -->
   <chf-card>
     <div card-content class="translation centered-card">
+      <div class="card-category">
+        <span>Category: {{ currentCard.card.collectionName }}</span>
+      </div>
       <span [innerHTML]="currentCard.card.meanings | cardMeanings"></span>
       @if (currentCard.isCompleted) {
         <span class="card-done-text"> Card completed for this session! </span>
