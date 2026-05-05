@@ -54,12 +54,15 @@ export class SessionLauncherComponent implements OnInit {
         toLearn: 0,
         toReview: 0,
         known: 0,
+        archived: 0,
       };
       this.collections.forEach((collection) => {
         numberStats.toLearn += collection.statistics?.toLearn ?? 0;
         numberStats.toReview += collection.statistics?.toReview ?? 0;
         numberStats.known += collection.statistics?.known ?? 0;
+        numberStats.archived += collection.statistics?.archived ?? 0;
       });
+
       this.allCollectionStats = {
         numbers: numberStats,
         percents: CardCollection.computePercentStats(numberStats),

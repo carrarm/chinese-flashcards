@@ -52,6 +52,7 @@ export class SessionFillingStepComponent implements OnInit {
   protected pinyinInput?: string;
   protected cardRevealed = false;
   protected isMistake = false;
+  protected unarchiveCard = false;
 
   public ngOnInit(): void {
     this.navigationService.navbarType.set("description");
