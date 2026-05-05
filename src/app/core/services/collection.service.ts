@@ -103,6 +103,20 @@ export class CollectionService {
         .belowOrEqual([now, 0]);
     }
   }
+
+  /**
+   * Build the Dexie request to fetch archived cards ready for review.
+   * 
+   * @param collection Optional Card collection id
+   * @returns Dexie `Collection<CardModel, number>`
+   */
+  public getArchivedCardRequest(collectionId?: number): Collection<CardModel, number> {
+    if (collectionId) {
+      return this.database.cards
+        .where({collectionId, archived: 1});
+    } else {
+      return this.database.cards
+        .where({ archived: 1 });
     }
   }
 

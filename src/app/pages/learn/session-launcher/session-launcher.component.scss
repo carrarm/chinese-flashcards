@@ -8,6 +8,7 @@
 $learnColor: #559d00;
 $reviewColor: #9524ff;
 $knownColor: #289dd7;
+$archivedColor: #6c6c6c;
 
 .learn-button {
   --chf-button-bg: #{$learnColor};
@@ -15,6 +16,10 @@ $knownColor: #289dd7;
 
 .review-button {
   --chf-button-bg: #{$reviewColor};
+}
+
+.archived-button {
+  --chf-button-bg: #{$archivedColor};
 }
 
 .statistic-section {
@@ -36,6 +41,11 @@ $knownColor: #289dd7;
   .known {
     --chf-progress-outer-stroke: #{$knownColor};
     --chf-progress-inner-stroke: #289dd77b;
+  }
+
+  .archived {
+    --chf-progress-outer-stroke: #6c6c6c;
+    --chf-progress-inner-stroke: #6c6c6c7b;
   }
 }
 

@@ -84,9 +84,9 @@ export class SessionLauncherComponent implements OnInit {
     this.router.navigateByUrl("/sessions/active");
   }
 
-  protected async review(collection?: number): Promise<void> {
-    const cardsToReview =
-      await this.learningSessionService.createReviewSession(collection);
+  protected async review(archivedSession: boolean, collection?: number): Promise<void> {
+    const cardsToReview = 
+      await this.learningSessionService.createReviewSession(archivedSession, collection);
 
     this.learningSessionService.sessionCards.set(cardsToReview);
     this.router.navigateByUrl("/sessions/active");

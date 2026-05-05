@@ -17,6 +17,8 @@ import {
 } from "@core/utils/general.utils";
 import { CardDifficultyComponent } from "@pages/shared/components/card-difficulty/card-difficulty.component";
 
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { CardService } from "@core/services/card.service";
 import { LearningSessionService } from "@core/services/learning-session.service";
 import { SessionCard } from "../session-card.model";
 import { ResultCardComponent } from "./result-card/result-card.component";
@@ -33,6 +35,7 @@ import { ResultCardComponent } from "./result-card/result-card.component";
     MatInputModule,
     PinyinFormFieldComponent,
     ResultCardComponent,
+    MatCheckboxModule,
   ],
   templateUrl: "./session-filling-step.component.html",
   styleUrls: ["./session-filling-step.component.scss"],
@@ -42,6 +45,7 @@ export class SessionFillingStepComponent implements OnInit {
 
   private readonly learningSessionService = inject(LearningSessionService);
   private readonly navigationService = inject(NavigationService);
+  private readonly cardService = inject(CardService);
 
   protected readonly cards = this.learningSessionService.sessionCards;
 
@@ -101,6 +105,7 @@ export class SessionFillingStepComponent implements OnInit {
 
   protected nextCard(): void {
     this.updateSessionCards();
+    this.unarchiveCurrentCard();
     const nextCard = this.session.shift();
     this.cardRevealed = false;
     this.characterInput = undefined;
@@ -164,6 +169,14 @@ export class SessionFillingStepComponent implements OnInit {
       } else {
         this.session = this.session.filter((card) => card !== this.currentCard?.id);
       }
+    }
+  }
+
+  private async unarchiveCurrentCard(): Promise<void> {
+    if (this.currentCard && this.unarchiveCard) {
+      this.currentCard.card.archived = 0;
+      this.unarchiveCard = false;
+      await this.cardService.updateCard(this.currentCard.card);
     }
   }
 }

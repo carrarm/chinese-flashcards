@@ -24,6 +24,12 @@
 
     @if (isMistake) {
       <chf-result-card [content]="currentCard.card" result="solution" />
+
+      @if (currentCard.card.archived) {
+        <mat-checkbox class="unarchive-checkbox" [(ngModel)]="unarchiveCard">
+          Unarchive this card
+        </mat-checkbox>
+      }
     }
 
     <p>How did you find this card?</p>
