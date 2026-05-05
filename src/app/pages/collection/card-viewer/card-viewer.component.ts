@@ -73,7 +73,7 @@ export class CardViewerComponent {
   }
 
   protected async toggleArchivedCard(): Promise<void> {
-    this.card.archived = !this.card.archived;
+    this.card.archived = this.card.archived === 0 ? 1 : 0;
     this.card = await this.cardService.updateCard(this.card);
     this.openedConfirmDialog = undefined;
   }

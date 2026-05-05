@@ -118,6 +118,7 @@ export class ExcelImportDialogComponent {
           leitnerBox: 0,
           collectionId: 0,
           nextSession: defaultNextSession,
+          archived: 0,
         }),
         collection.id
       );

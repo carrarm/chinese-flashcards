@@ -207,7 +207,7 @@ export class CollectionCardsComponent implements OnInit, AfterViewInit, OnDestro
       .openArchiveAllConfirmDialog()
       .subscribe((confirmed) => {
         if (confirmed) {
-          this.selectedCards.forEach((card) => (card.archived = true));
+          this.selectedCards.forEach((card) => (card.archived = 1));
           this.cardService
             .updateCards(this.selectedCards)
             .then(() => this.loadCollectionCards());

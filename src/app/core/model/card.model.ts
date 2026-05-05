@@ -15,7 +15,7 @@ export interface CardModel {
   lastSession?: string;
   nextSession: string;
   difficulty?: CardDifficultyLevel;
-  archived?: boolean;
+  archived: 0 | 1;
 }
 
 /**
@@ -34,7 +34,7 @@ export class Card implements CardModel {
   lastSession?: string;
   nextSession: string = defaultNextSession;
   difficulty?: CardDifficultyLevel;
-  archived?: boolean;
+  archived: 0 | 1 = 0;
 
   constructor(data?: CardModel, collectionName?: string) {
     if (data) {
