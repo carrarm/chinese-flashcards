@@ -44,7 +44,7 @@ export class Card implements CardModel {
   }
 
   isUnknown(): boolean {
-    return this.leitnerBox === 0 || !this.lastSession;
+    return !this.archived && (this.leitnerBox === 0 || !this.lastSession);
   }
 
   nextReview(): string {
@@ -59,7 +59,7 @@ export class Card implements CardModel {
 
   isKnown(): boolean {
     const nextReview = dayjs(this.nextReview());
-    return this.archived || (!this.isUnknown() && dayjs().isBefore(nextReview));
+    return !this.archived && (!this.isUnknown() && dayjs().isBefore(nextReview));
   }
 
   moveNextBox(): void {

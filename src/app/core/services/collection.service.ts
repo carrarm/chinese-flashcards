@@ -69,7 +69,7 @@ export class CollectionService {
    * @returns Dexie `Collection<CardModel, number>`
    */
   public getUnknownCardRequest(collectionId?: number): Collection<CardModel, number> {
-    const request = collectionId ? { collectionId, leitnerBox: 0 } : { leitnerBox: 0 };
+    const request = collectionId ? { collectionId, leitnerBox: 0, archived: 0 } : { leitnerBox: 0, archived: 0 };
     return this.database.cards.where(request);
   }
 
@@ -95,14 +95,14 @@ export class CollectionService {
     const now = dayjs().toISOString();
     if (collectionId) {
       return this.database.cards
-        .where('[collectionId+nextSession]')
-        .between([collectionId, Dexie.minKey], [collectionId, now])
-        .and((card) => !card.archived);
+        .where('[collectionId+nextSession+archived]')
+        .between([collectionId, Dexie.minKey, 0], [collectionId, now, 0]);
     } else {
       return this.database.cards
-        .where('nextSession')
-        .belowOrEqual(now)
-        .and((card) => !card.archived);
+        .where('[nextSession+archived]')
+        .belowOrEqual([now, 0]);
+    }
+  }
     }
   }
 

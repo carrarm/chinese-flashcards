@@ -13,9 +13,13 @@ const schema = {
     collectionId, 
     collectionName, 
     leitnerBox, 
-    nextSession, 
-    [collectionId+leitnerBox], 
-    [collectionId+nextSession]
+    nextSession,
+    archived,
+    [leitnerBox+archived],
+    [nextSession+archived],
+    [collectionId+leitnerBox+archived], 
+    [collectionId+nextSession+archived],
+    [collectionId+archived]
   `,
   settings: "++id",
 };
