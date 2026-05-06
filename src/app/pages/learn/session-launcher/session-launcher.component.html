@@ -30,8 +30,8 @@
           >
             Review
           </chf-button>
-          @let archived = collection.statistics?.archived;
-          @if (archived && archived > 0) {
+          @let archivedCards = collection.statistics?.archivedCards;
+          @if (archivedCards) {
             <chf-button class="archived-button" (click)="review(true, collection.id)">
               Archived
             </chf-button>

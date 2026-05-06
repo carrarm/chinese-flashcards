@@ -54,13 +54,13 @@ export class SessionLauncherComponent implements OnInit {
         toLearn: 0,
         toReview: 0,
         known: 0,
-        archived: 0,
+        archivedCards: 0,
       };
       this.collections.forEach((collection) => {
         numberStats.toLearn += collection.statistics?.toLearn ?? 0;
         numberStats.toReview += collection.statistics?.toReview ?? 0;
         numberStats.known += collection.statistics?.known ?? 0;
-        numberStats.archived += collection.statistics?.archived ?? 0;
+        numberStats.archivedCards += collection.statistics?.archivedCards ?? 0;
       });
 
       this.allCollectionStats = {
@@ -85,8 +85,10 @@ export class SessionLauncherComponent implements OnInit {
   }
 
   protected async review(archivedSession: boolean, collection?: number): Promise<void> {
-    const cardsToReview = 
-      await this.learningSessionService.createReviewSession(archivedSession, collection);
+    const cardsToReview = await this.learningSessionService.createReviewSession(
+      archivedSession,
+      collection
+    );
 
     this.learningSessionService.sessionCards.set(cardsToReview);
     this.router.navigateByUrl("/sessions/active");

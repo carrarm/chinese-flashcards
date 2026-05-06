@@ -19,10 +19,10 @@ export class StatisticsService {
       .getReviewCardRequest(collectionId)
       .count();
 
-    const archived = await this.collectionService
+    const archivedCards = await this.collectionService
       .getArchivedCardRequest(collectionId)
       .count();
-    return { toLearn, toReview, known, archived };
+    return { toLearn, toReview, known, archivedCards };
   }
 
   public async getCollectionsReviewStats(

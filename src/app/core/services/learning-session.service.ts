@@ -43,11 +43,18 @@ export class LearningSessionService {
     return cards.map((card) => new SessionCard(new Card(card)));
   }
 
-  public async createReviewSession(archivedSession: boolean, collection?: number): Promise<SessionCard[]> {
+  public async createReviewSession(
+    archivedSession: boolean,
+    collection?: number
+  ): Promise<SessionCard[]> {
     const settings = await this.settingsService.getSettings();
     const cards = archivedSession
-      ? await this.collectionService.getArchivedCardRequest(collection).sortBy("leitnerBox")
-      : await this.collectionService.getReviewCardRequest(collection).sortBy("leitnerBox");
+      ? await this.collectionService
+          .getArchivedCardRequest(collection)
+          .sortBy("nextSession")
+      : await this.collectionService
+          .getReviewCardRequest(collection)
+          .sortBy("leitnerBox");
 
     if (settings.cardSelectionType === "oldest") {
       cards.reverse();

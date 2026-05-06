@@ -105,7 +105,11 @@ export class SessionFillingStepComponent implements OnInit {
 
   protected nextCard(): void {
     this.updateSessionCards();
-    this.unarchiveCurrentCard();
+
+    if (this.unarchiveCard) {
+      this.unarchiveCurrentCard();
+    }
+
     const nextCard = this.session.shift();
     this.cardRevealed = false;
     this.characterInput = undefined;
@@ -173,7 +177,7 @@ export class SessionFillingStepComponent implements OnInit {
   }
 
   private async unarchiveCurrentCard(): Promise<void> {
-    if (this.currentCard && this.unarchiveCard) {
+    if (this.currentCard) {
       this.currentCard.card.archived = 0;
       this.unarchiveCard = false;
       await this.cardService.updateCard(this.currentCard.card);

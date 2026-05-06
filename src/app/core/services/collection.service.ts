@@ -14,7 +14,10 @@ export class CollectionService {
 
   private readonly database: Database = this.databaseService.database;
 
-  public async getCollections(fetchCards = true, session = false): Promise<CardCollection[]> {
+  public async getCollections(
+    fetchCards = true,
+    session = false
+  ): Promise<CardCollection[]> {
     try {
       return await this.database.cardCollections
         .orderBy("label")
@@ -69,7 +72,9 @@ export class CollectionService {
    * @returns Dexie `Collection<CardModel, number>`
    */
   public getUnknownCardRequest(collectionId?: number): Collection<CardModel, number> {
-    const request = collectionId ? { collectionId, leitnerBox: 0, archived: 0 } : { leitnerBox: 0, archived: 0 };
+    const request = collectionId
+      ? { collectionId, leitnerBox: 0, archived: 0 }
+      : { leitnerBox: 0, archived: 0 };
     return this.database.cards.where(request);
   }
 
@@ -95,28 +100,24 @@ export class CollectionService {
     const now = dayjs().toISOString();
     if (collectionId) {
       return this.database.cards
-        .where('[collectionId+nextSession+archived]')
+        .where("[collectionId+nextSession+archived]")
         .between([collectionId, Dexie.minKey, 0], [collectionId, now, 0]);
     } else {
-      return this.database.cards
-        .where('[nextSession+archived]')
-        .belowOrEqual([now, 0]);
+      return this.database.cards.where("[nextSession+archived]").belowOrEqual([now, 0]);
     }
   }
 
   /**
    * Build the Dexie request to fetch archived cards ready for review.
-   * 
+   *
    * @param collection Optional Card collection id
    * @returns Dexie `Collection<CardModel, number>`
    */
   public getArchivedCardRequest(collectionId?: number): Collection<CardModel, number> {
     if (collectionId) {
-      return this.database.cards
-        .where({collectionId, archived: 1});
+      return this.database.cards.where({ collectionId, archived: 1 });
     } else {
-      return this.database.cards
-        .where({ archived: 1 });
+      return this.database.cards.where({ archived: 1 });
     }
   }
 

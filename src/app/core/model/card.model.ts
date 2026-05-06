@@ -15,7 +15,7 @@ export interface CardModel {
   lastSession?: string;
   nextSession: string;
   difficulty?: CardDifficultyLevel;
-  archived: 0 | 1;
+  archived: 0 | 1; // Dexie doesn't support boolean, so we use 0 and 1 instead
 }
 
 /**
@@ -34,7 +34,7 @@ export class Card implements CardModel {
   lastSession?: string;
   nextSession: string = defaultNextSession;
   difficulty?: CardDifficultyLevel;
-  archived: 0 | 1 = 0;
+  archived: 0 | 1 = 0; // 0 for false, 1 for true
 
   constructor(data?: CardModel, collectionName?: string) {
     if (data) {

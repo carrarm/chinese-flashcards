@@ -39,7 +39,7 @@ export class CardCollection implements CardCollectionModel {
       toLearn: CardCollection.cardPercentage(stats.toLearn, totalCards),
       toReview: CardCollection.cardPercentage(stats.toReview, totalCards),
       known: CardCollection.cardPercentage(stats.known, totalCards),
-      archived: CardCollection.cardPercentage(stats.archived, totalCards),
+      archivedCards: CardCollection.cardPercentage(stats.archivedCards, totalCards),
     };
   }
 
