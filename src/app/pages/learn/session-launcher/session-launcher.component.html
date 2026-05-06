@@ -26,10 +26,15 @@
           <chf-button
             class="review-button"
             [disabled]="!collection.statistics?.toReview"
-            (click)="review(collection.id)"
+            (click)="review(false, collection.id)"
           >
             Review
           </chf-button>
+          @if (collection.statistics?.archivedCards) {
+            <chf-button class="archived-button" (click)="review(true, collection.id)">
+              Archived
+            </chf-button>
+          }
         </div>
       </div>
     }
@@ -59,5 +64,14 @@
         [cardCount]="numbers.known"
       />
     </div>
+    @if (numbers.archived && percents.archived) {
+      <div class="archived">
+        <chf-card-progress-indicator
+          label="Archived"
+          [percent]="percents.archived"
+          [cardCount]="numbers.archived"
+        />
+      </div>
+    }
   </div>
 </ng-template>

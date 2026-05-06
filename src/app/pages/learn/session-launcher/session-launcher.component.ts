@@ -54,12 +54,15 @@ export class SessionLauncherComponent implements OnInit {
         toLearn: 0,
         toReview: 0,
         known: 0,
+        archivedCards: 0,
       };
       this.collections.forEach((collection) => {
         numberStats.toLearn += collection.statistics?.toLearn ?? 0;
         numberStats.toReview += collection.statistics?.toReview ?? 0;
         numberStats.known += collection.statistics?.known ?? 0;
+        numberStats.archivedCards += collection.statistics?.archivedCards ?? 0;
       });
+
       this.allCollectionStats = {
         numbers: numberStats,
         percents: CardCollection.computePercentStats(numberStats),
@@ -81,9 +84,11 @@ export class SessionLauncherComponent implements OnInit {
     this.router.navigateByUrl("/sessions/active");
   }
 
-  protected async review(collection?: number): Promise<void> {
-    const cardsToReview =
-      await this.learningSessionService.createReviewSession(collection);
+  protected async review(archivedSession: boolean, collection?: number): Promise<void> {
+    const cardsToReview = await this.learningSessionService.createReviewSession(
+      archivedSession,
+      collection
+    );
 
     this.learningSessionService.sessionCards.set(cardsToReview);
     this.router.navigateByUrl("/sessions/active");

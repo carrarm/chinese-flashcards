@@ -13,9 +13,13 @@ const schema = {
     collectionId, 
     collectionName, 
     leitnerBox, 
-    nextSession, 
-    [collectionId+leitnerBox], 
-    [collectionId+nextSession]
+    nextSession,
+    archived,
+    [leitnerBox+archived],
+    [nextSession+archived],
+    [collectionId+leitnerBox+archived], 
+    [collectionId+nextSession+archived],
+    [collectionId+archived]
   `,
   settings: "++id",
 };
@@ -61,6 +65,7 @@ export class Database extends Dexie {
         leitnerBox: 4,
         lastSession: dayjs().subtract(4, "day").toISOString(),
         nextSession: defaultNextSession,
+        archived: 0,
       },
       {
         meanings: ["Goat"],
@@ -71,6 +76,7 @@ export class Database extends Dexie {
         leitnerBox: 2,
         lastSession: dayjs().subtract(10, "day").toISOString(),
         nextSession: defaultNextSession,
+        archived: 0,
       },
       {
         meanings: ["Rooster"],
@@ -81,6 +87,7 @@ export class Database extends Dexie {
         leitnerBox: 4,
         lastSession: dayjs().subtract(10, "day").toISOString(),
         nextSession: defaultNextSession,
+        archived: 0,
       },
       {
         meanings: ["Dog"],
@@ -90,6 +97,7 @@ export class Database extends Dexie {
         collectionName: "Animals",
         leitnerBox: 0,
         nextSession: defaultNextSession,
+        archived: 0,
       },
     ]);
 
@@ -106,6 +114,7 @@ export class Database extends Dexie {
         leitnerBox: 3,
         lastSession: dayjs().toISOString(),
         nextSession: defaultNextSession,
+        archived: 0,
       },
       {
         meanings: ["Two"],
@@ -116,6 +125,7 @@ export class Database extends Dexie {
         leitnerBox: 1,
         lastSession: dayjs().toISOString(),
         nextSession: defaultNextSession,
+        archived: 0,
       },
       {
         meanings: ["Three"],
@@ -126,6 +136,7 @@ export class Database extends Dexie {
         leitnerBox: 3,
         lastSession: dayjs().toISOString(),
         nextSession: defaultNextSession,
+        archived: 0,
       },
       {
         meanings: ["Four"],
@@ -135,6 +146,7 @@ export class Database extends Dexie {
         collectionName: "Numbers",
         leitnerBox: 0,
         nextSession: defaultNextSession,
+        archived: 1,
       },
       {
         meanings: ["Five"],
@@ -144,6 +156,7 @@ export class Database extends Dexie {
         collectionName: "Numbers",
         leitnerBox: 0,
         nextSession: defaultNextSession,
+        archived: 1,
       },
     ]);
   }

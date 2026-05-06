@@ -1,5 +1,5 @@
 <div class="column">
-  @for (matchCard of leftColumnCards; track matchCard) {
+  @for (matchCard of leftColumnCards; track matchCard.card.id) {
     <chf-card
       class="left-card"
       [class.selected]="matchCard === selectedLeftCard"
@@ -11,7 +11,7 @@
   }
 </div>
 <div class="column">
-  @for (matchCard of rightColumnCards; track matchCard) {
+  @for (matchCard of rightColumnCards; track matchCard.card.id) {
     <chf-card
       class="right-card"
       [class.selected]="matchCard === selectedRightCard"

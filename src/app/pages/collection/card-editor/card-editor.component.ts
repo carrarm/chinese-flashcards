@@ -106,6 +106,7 @@ export class CardEditorComponent implements OnInit {
         leitnerBox: this.originalCard?.leitnerBox ?? 0,
         lastSession: this.originalCard?.lastSession,
         nextSession: this.originalCard?.nextSession ?? defaultNextSession,
+        archived: this.originalCard?.archived ?? 0,
       });
 
       if (this.resetRequired) {
